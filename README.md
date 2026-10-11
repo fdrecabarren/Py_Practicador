@@ -2,6 +2,8 @@
 
 App local para practicar lo que se ve en el bootcamp de Data Analytics (Factoría F5), con tus propios datos de Kiva y Olist. Python + Streamlit, todo en tu ordenador, sin APIs de pago.
 
+**¿Eres compañero/a del bootcamp?** Empieza por el [manual de instalación y uso](MANUAL.md).
+
 **Estado:** Fases 1 y 2 hechas (Python básico, pandas, SQL, Excel/Power Query y Terminal/Git). La fase 3 (repaso espaciado, "Sesión de hoy") está por hacer.
 
 ## Cómo funciona
@@ -20,6 +22,8 @@ Necesitas Windows y Python 3.13 (el mismo que usas en el curso).
 1. Doble clic en **`instalar.bat`**. Crea el entorno `.venv`, instala las dependencias, crea tu `.env` y prepara los datasets.
 2. Edita **`.env`** con tus credenciales de MySQL (para los ejercicios SQL). Mira abajo cómo crear un usuario de solo lectura.
 3. Doble clic en **`practicar.bat`**. Se abre la app en el navegador (solo escucha en tu ordenador, `127.0.0.1`).
+
+**Modo oscuro:** menú **⋮** de arriba a la derecha > **Dark** (o **System** para seguir el de Windows). El navegador lo recuerda. Si lo cambias con un ejercicio abierto, el editor de código se adapta al siguiente clic.
 
 Si prefieres la terminal (Git Bash):
 
@@ -73,7 +77,9 @@ Seguridad: la app nunca toca tus repositorios reales. El Git de la carpeta de pr
 
 ## Datos
 
-`python scripts/preparar_datos.py` crea en `datos/` muestras pequeñas y siempre iguales (semilla fija) a partir del material del curso, que solo se lee:
+Los CSV de práctica **ya vienen incluidos** en `datos/` (procedencia y fuentes en [`datos/LEEME.md`](datos/LEEME.md)). No los modifiques: los ejercicios están calibrados con esas filas exactas.
+
+`python scripts/preparar_datos.py` solo crea los que falten y deja los existentes como están. Para regenerarlos todos desde el material del curso (solo lo necesita quien mantiene el proyecto) usa `python scripts/preparar_datos.py --forzar`. Salen muestras pequeñas y siempre iguales (semilla fija) a partir del material del curso, que solo se lee:
 
 | Archivo | Origen |
 |---|---|
@@ -112,7 +118,9 @@ motor/            lógica sin Streamlit: banco, comparador, ejecutor Python, SQL
 ejercicios/       banco en YAML (un archivo por tema + preguntas tipo test)
 scripts/          preparar_datos, validar_banco, probar_conexion, usuario_mysql.sql
 tests/            pytest
-datos/ progreso/ sandbox/  generados en local (no se suben a Git)
+datos/            CSV de muestra (incluidos en el repositorio, ver datos/LEEME.md)
+docs/img/         capturas del manual
+progreso/ sandbox/  generados en local (no se suben a Git)
 ```
 
 Tu progreso vive en `progreso/progreso.db` (SQLite). Puedes borrarlo desde **Mi progreso > Borrar todo mi progreso**.

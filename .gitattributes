@@ -1,2 +1,4 @@
 * text=auto
 *.bat text eol=crlf
+# Los CSV de datos/ se guardan byte a byte: los ejercicios dependen de sus filas exactas
+*.csv -text

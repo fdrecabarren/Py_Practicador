@@ -1,11 +1,15 @@
-"""Prepara los datasets de practica en datos/ a partir del material del curso.
+"""Prepara los datasets de practica en datos/.
+
+Los CSV de muestra ya vienen incluidos en el repositorio (ver datos/LEEME.md), asi que
+normalmente este script no hace nada: los archivos que ya existen se dejan como estan.
 
 Uso (con el venv activo):
-    python scripts/preparar_datos.py
+    python scripts/preparar_datos.py            # crea solo los que falten
+    python scripts/preparar_datos.py --forzar   # los regenera todos desde el material del curso
 
-Lee (solo lectura) de la carpeta del curso (por defecto E:\\Data_Analytic) y escribe
-muestras pequenas y reproducibles en practicador/datos/. Siempre salen las mismas filas
-(semilla fija), asi los ejercicios y sus soluciones no cambian entre ejecuciones.
+Para regenerar lee (solo lectura) de la carpeta del curso (por defecto E:\\Data_Analytic) y
+escribe muestras pequenas y reproducibles en practicador/datos/. Siempre salen las mismas
+filas (semilla fija), asi los ejercicios y sus soluciones no cambian entre ejecuciones.
 """
 import shutil
 import sys
@@ -31,7 +35,18 @@ def _necesita(ruta: Path) -> bool:
     return True
 
 
-def kiva() -> None:
+def _ya_existe(destino: Path, forzar: bool) -> bool:
+    """True si el CSV ya esta y no hay que tocarlo (salvo con --forzar)."""
+    if destino.exists() and not forzar:
+        print(f"  {destino.name}: ya existe, lo dejo (usa --forzar para regenerarlo)")
+        return True
+    return False
+
+
+def kiva(forzar: bool = False) -> None:
+    destino = DIR_DATOS / "kiva_muestra.csv"
+    if _ya_existe(destino, forzar):
+        return
     origen = KIVA_COMPLETO if KIVA_COMPLETO.exists() else KIVA_REDUCIDO
     if not _necesita(origen):
         return
@@ -45,16 +60,18 @@ def kiva() -> None:
     resto = df.drop(namibia.index).sample(n=min(3000, len(df) - len(namibia)), random_state=SEMILLA)
     muestra = pd.concat([resto, namibia]).sort_index()
     # Se guarda sin cambiar nada: nulos, espacios y fechas como texto, tal como llegan en el curso
-    muestra.to_csv(DIR_DATOS / "kiva_muestra.csv", index=False)
+    muestra.to_csv(destino, index=False)
     print(f"  kiva_muestra.csv: {len(muestra)} filas ({len(namibia)} de Namibia)")
 
 
-def olist() -> None:
+def olist(forzar: bool = False) -> None:
     for nombre, destino, n in [
         ("ventas_detalle.csv", "olist_ventas.csv", 4000),
         ("df1_actividad_clientes.csv", "olist_pedidos.csv", 4000),
         ("df3_vendedores.csv", "olist_vendedores.csv", None),
     ]:
+        if _ya_existe(DIR_DATOS / destino, forzar):
+            continue
         origen = OLIST_OUT / nombre
         if not _necesita(origen):
             continue
@@ -65,19 +82,22 @@ def olist() -> None:
         print(f"  {destino}: {len(df)} filas")
 
 
-def customer() -> None:
+def customer(forzar: bool = False) -> None:
+    destino = DIR_DATOS / "customer_activity.csv"
+    if _ya_existe(destino, forzar):
+        return
     if _necesita(CUSTOMER):
-        shutil.copyfile(CUSTOMER, DIR_DATOS / "customer_activity.csv")
+        shutil.copyfile(CUSTOMER, destino)
         print("  customer_activity.csv: copiado tal cual (separador ';', cabecera ' amount ')")
 
 
-def main() -> None:
+def main(forzar: bool = False) -> None:
     DIR_DATOS.mkdir(exist_ok=True)
-    kiva()
-    olist()
-    customer()
+    kiva(forzar)
+    olist(forzar)
+    customer(forzar)
     print(f"Listo. Datos en {DIR_DATOS}")
 
 
 if __name__ == "__main__":
-    main()
+    main(forzar="--forzar" in sys.argv[1:])

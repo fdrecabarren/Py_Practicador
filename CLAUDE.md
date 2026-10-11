@@ -10,7 +10,7 @@ Cuando el alumno diga "añade ejercicios de la clase X", sigue la sección **Có
 - Todo local y gratis. Sin APIs de pago.
 - Credenciales siempre en `.env` (ignorado por Git). Nunca leas, imprimas ni copies `.env` ni el `.env` de otros proyectos del curso.
 - Nunca modifiques el material del curso en `E:\Data_Analytic` (Clases, Pildoras, Proyetos, SQL) ni sus repos Git. Solo lectura.
-- Los datasets de `datos/` y el progreso de `progreso/` no se suben a Git (`.gitignore`).
+- Los CSV de `datos/` SÍ se suben a Git (muestras fijas que usan los compañeros; procedencia en `datos/LEEME.md`) y no se modifican. El progreso (`progreso/`) y `sandbox/` no se suben (`.gitignore`).
 - Antes de dar por bueno un cambio: `python scripts/validar_banco.py` y `python -m pytest -q`.
 
 ## Estructura
@@ -34,7 +34,9 @@ motor/
 ejercicios/                _temas.yaml + un YAML por tema (+ preguntas_test.yaml)
 scripts/                   preparar_datos.py, validar_banco.py, probar_conexion.py, usuario_mysql.sql
 tests/                     pytest del motor, del banco y de la interfaz (AppTest)
-datos/ progreso/ sandbox/  generados en local, ignorados por Git
+datos/                     CSV de muestra, versionados en Git (ver datos/LEEME.md)
+progreso/ sandbox/         generados en local, ignorados por Git
+docs/img/                  capturas del MANUAL.md
 ```
 
 ## Reglas de aprendizaje (ya implementadas)
@@ -221,7 +223,7 @@ No llevan `pistas`, `codigo_inicial` ni `solucion`. No cuentan para superar nive
 2. Elige conceptos que la clase cubre y reparte niveles con realismo: el alumno parte casi de cero (Python básico = print/input/operadores; intermedio = if/for/listas/funciones sencillas; junior = lo que combina varios conceptos).
 3. Basa los ejercicios en **sus datasets**: Kiva (`kiva_muestra.csv`), Olist (`olist_*.csv` o la base MySQL) y Customer_Activity. Prefiere casos reales que ya le dieron problemas (nulos de Namibia, importes x10, `31/02`, el JOIN que multiplica filas).
 4. Añade los ejercicios al YAML del tema (ids nuevos) o crea otro `ejercicios/<tema>_<clase>.yaml`. Si el tema es nuevo, decláralo en `_temas.yaml`.
-5. Si necesitas un dataset nuevo, añádelo a `scripts/preparar_datos.py` (muestra pequeña, semilla fija, solo lectura del curso) y lístalo en `datos:`.
+5. Si necesitas un dataset nuevo, añádelo a `scripts/preparar_datos.py` (muestra pequeña, semilla fija, solo lectura del curso), genéralo con `python scripts/preparar_datos.py --forzar`, **commitea el CSV** (los de `datos/` se suben), descríbelo en `datos/LEEME.md` y lístalo en `datos:`. Sin `--forzar` el script no pisa los CSV que ya existen.
 6. Valida: `python scripts/validar_banco.py` (cada solución pasa sus tests, el código inicial no, las pistas 1 no filtran la solución) y `python -m pytest -q`.
 7. Si algún SQL solo se puede probar con MySQL real, avísalo al alumno: `python scripts/validar_banco.py --sql mysql`.
 8. Haz commit (`git add ejercicios scripts tests`) con un mensaje claro.

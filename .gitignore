@@ -3,11 +3,11 @@
 venv/
 .env
 
-# Datasets y progreso del alumno (no se suben)
-datos/
+# Progreso y sandbox del alumno (no se suben). Los CSV de muestra de datos/ si se suben.
 progreso/
 sandbox/
 *.csv
+!datos/*.csv
 *.parquet
 *.xlsx
 *.db

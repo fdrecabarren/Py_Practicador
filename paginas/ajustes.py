@@ -55,7 +55,7 @@ for d in usados:
     if not existe:
         faltan.append(d)
 if faltan:
-    st.warning("Faltan datasets. Se generan a partir del material del curso (solo lectura).")
+    st.warning("Faltan datasets. Vienen incluidos en el repositorio: actualiza con `git pull` o vuelve a descargar el proyecto.")
 st.caption(f"Carpeta del curso: `{config.DIR_CURSO}`")
 if st.button("Preparar datos ahora", icon=":material/database:"):
     with st.spinner("Preparando datasets..."):

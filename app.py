@@ -12,4 +12,6 @@ paginas = [
     st.Page("paginas/progreso.py", title="Mi progreso", icon=":material/monitoring:"),
     st.Page("paginas/ajustes.py", title="Conexión y ajustes", icon=":material/settings:"),
 ]
-st.navigation(paginas).run()
+pagina = st.navigation(paginas)
+st.sidebar.caption("Modo claro u oscuro: menú ⋮ de arriba a la derecha.")
+pagina.run()

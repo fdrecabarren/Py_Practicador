@@ -6,5 +6,10 @@ headless = false
 address = "127.0.0.1"
 runOnSave = false
 
-[theme]
+# Tema claro y oscuro. Por defecto sigue el del sistema; se cambia en
+# el menu de arriba a la derecha (tres puntos) > Settings.
+[theme.light]
 primaryColor = "#2563eb"
+
+[theme.dark]
+primaryColor = "#3b82f6"

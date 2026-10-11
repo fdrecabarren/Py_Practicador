@@ -1,0 +1,1001 @@
+customer_id;first_name;last_name;email;active;address;district;postal_code;city;country;rental_date;return_date; amount ;payment_date;rental_duration
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;25/5/2005 11:30;3/6/2005 12:00; 2.99 ;25/5/2005 11:30;9
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;28/5/2005 10:35;3/6/2005 06:32; 0.99 ;28/5/2005 10:35;6
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;15/6/2005 00:54;23/6/2005 02:42; 5.99 ;15/6/2005 00:54;8
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;15/6/2005 18:02;19/6/2005 15:54; 0.99 ;15/6/2005 18:02;4
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;15/6/2005 21:08;25/6/2005 02:26; 9.99 ;15/6/2005 21:08;10
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;16/6/2005 15:18;17/6/2005 21:05; 4.99 ;16/6/2005 15:18;1
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;18/6/2005 08:41;22/6/2005 03:36; 4.99 ;18/6/2005 08:41;4
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;18/6/2005 13:33;19/6/2005 17:40; 0.99 ;18/6/2005 13:33;1
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;21/6/2005 06:24;28/6/2005 03:28; 3.99 ;21/6/2005 06:24;7
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;8/7/2005 03:17;14/7/2005 01:19; 5.99 ;8/7/2005 03:17;6
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;8/7/2005 07:33;12/7/2005 13:25; 5.99 ;8/7/2005 07:33;4
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;9/7/2005 13:24;14/7/2005 14:01; 4.99 ;9/7/2005 13:24;5
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;9/7/2005 16:38;13/7/2005 18:02; 4.99 ;9/7/2005 16:38;4
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;11/7/2005 10:13;19/7/2005 13:15; 7.99 ;11/7/2005 10:13;8
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;27/7/2005 11:31;31/7/2005 06:50; 2.99 ;27/7/2005 11:31;4
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;28/7/2005 09:04;30/7/2005 12:37; 4.99 ;28/7/2005 09:04;2
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;28/7/2005 16:18;30/7/2005 17:56; 4.99 ;28/7/2005 16:18;2
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;28/7/2005 17:33;29/7/2005 20:17; 0.99 ;28/7/2005 17:33;1
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;28/7/2005 19:20;29/7/2005 22:54; 0.99 ;28/7/2005 19:20;1
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;29/7/2005 03:58;1/8/2005 05:16; 2.99 ;29/7/2005 03:58;3
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;31/7/2005 02:42;2/8/2005 23:26; 2.99 ;31/7/2005 02:42;2
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;1/8/2005 08:51;10/8/2005 12:12; 4.99 ;1/8/2005 08:51;9
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;2/8/2005 15:36;10/8/2005 16:40; 3.99 ;2/8/2005 15:36;8
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;2/8/2005 18:01;4/8/2005 13:19; 0.99 ;2/8/2005 18:01;2
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;17/8/2005 12:37;19/8/2005 10:11; 4.99 ;17/8/2005 12:37;2
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;18/8/2005 03:57;22/8/2005 23:05; 0.99 ;18/8/2005 03:57;4
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;19/8/2005 09:55;20/8/2005 14:44; 0.99 ;19/8/2005 09:55;1
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;19/8/2005 13:56;23/8/2005 08:50; 2.99 ;19/8/2005 13:56;4
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;21/8/2005 23:33;23/8/2005 01:30; 0.99 ;21/8/2005 23:33;2
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;22/8/2005 01:27;27/8/2005 07:01; 1.99 ;22/8/2005 01:27;5
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;22/8/2005 19:41;28/8/2005 22:49; 2.99 ;22/8/2005 19:41;6
+1;mary;smith;mary.smith@sakilacustomer.org;1;1913 hanoi way;nagasaki;35200;sasebo;japan;22/8/2005 20:03;30/8/2005 01:51; 5.99 ;22/8/2005 20:03;8
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;27/5/2005 00:09;28/5/2005 04:30; 4.99 ;27/5/2005 00:09;1
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;17/6/2005 20:54;24/6/2005 00:41; 2.99 ;17/6/2005 20:54;7
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;10/7/2005 06:31;13/7/2005 02:36; 2.99 ;10/7/2005 06:31;3
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;10/7/2005 12:38;19/7/2005 17:02; 6.99 ;10/7/2005 12:38;9
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;27/7/2005 14:30;2/8/2005 16:48; 4.99 ;27/7/2005 14:30;6
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;27/7/2005 15:23;4/8/2005 10:35; 5.99 ;27/7/2005 15:23;8
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;27/7/2005 18:40;2/8/2005 21:07; 5.99 ;27/7/2005 18:40;6
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;29/7/2005 00:12;6/8/2005 19:52; 5.99 ;29/7/2005 00:12;8
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;29/7/2005 12:56;1/8/2005 08:39; 2.99 ;29/7/2005 12:56;3
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;29/7/2005 17:14;2/8/2005 16:01; 5.99 ;29/7/2005 17:14;4
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;30/7/2005 06:06;4/8/2005 10:45; 4.99 ;30/7/2005 06:06;5
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;30/7/2005 13:47;8/8/2005 18:52; 10.99 ;30/7/2005 13:47;9
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;30/7/2005 14:14;5/8/2005 11:19; 0.99 ;30/7/2005 14:14;6
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;30/7/2005 16:21;8/8/2005 11:57; 6.99 ;30/7/2005 16:21;9
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;30/7/2005 22:39;6/8/2005 16:43; 6.99 ;30/7/2005 22:39;7
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;31/7/2005 21:58;3/8/2005 19:44; 2.99 ;31/7/2005 21:58;3
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;1/8/2005 09:45;6/8/2005 06:28; 0.99 ;1/8/2005 09:45;5
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;2/8/2005 02:10;2/8/2005 21:23; 0.99 ;2/8/2005 02:10;0
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;2/8/2005 07:41;10/8/2005 10:37; 5.99 ;2/8/2005 07:41;8
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;2/8/2005 10:43;10/8/2005 10:55; 6.99 ;2/8/2005 10:43;8
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;2/8/2005 13:44;4/8/2005 16:39; 2.99 ;2/8/2005 13:44;2
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;17/8/2005 03:52;20/8/2005 07:04; 2.99 ;17/8/2005 03:52;3
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;19/8/2005 06:26;23/8/2005 11:37; 2.99 ;19/8/2005 06:26;4
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;21/8/2005 13:24;27/8/2005 08:59; 4.99 ;21/8/2005 13:24;6
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;21/8/2005 22:41;29/8/2005 00:18; 5.99 ;21/8/2005 22:41;8
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;22/8/2005 13:53;31/8/2005 15:51; 4.99 ;22/8/2005 13:53;9
+2;patricia;johnson;patricia.johnson@sakilacustomer.org;1;1121 loja avenue;california;17886;san bernardino;united states;23/8/2005 17:39;25/8/2005 23:23; 4.99 ;23/8/2005 17:39;2
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;27/5/2005 17:17;2/6/2005 11:20; 1.99 ;27/5/2005 17:17;6
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;29/5/2005 22:43;1/6/2005 17:43; 2.99 ;29/5/2005 22:43;3
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;16/6/2005 01:34;24/6/2005 04:27; 8.99 ;16/6/2005 01:34;8
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;16/6/2005 15:19;25/6/2005 11:39; 6.99 ;16/6/2005 15:19;9
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;17/6/2005 05:15;24/6/2005 11:05; 6.99 ;17/6/2005 05:15;7
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;19/6/2005 08:34;28/6/2005 04:19; 2.99 ;19/6/2005 08:34;9
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;7/7/2005 10:23;10/7/2005 13:18; 4.99 ;7/7/2005 10:23;3
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;8/7/2005 12:47;15/7/2005 09:08; 4.99 ;8/7/2005 12:47;7
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;27/7/2005 04:54;3/8/2005 01:42; 5.99 ;27/7/2005 04:54;7
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;27/7/2005 20:23;5/8/2005 18:46; 10.99 ;27/7/2005 20:23;9
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;28/7/2005 03:59;5/8/2005 08:52; 7.99 ;28/7/2005 03:59;8
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;28/7/2005 04:46;4/8/2005 08:41; 6.99 ;28/7/2005 04:46;7
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;28/7/2005 11:46;29/7/2005 07:19; 4.99 ;28/7/2005 11:46;1
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;28/7/2005 18:17;30/7/2005 18:22; 4.99 ;28/7/2005 18:17;2
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;29/7/2005 11:07;6/8/2005 13:30; 2.99 ;29/7/2005 11:07;8
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;30/7/2005 13:31;6/8/2005 16:42; 1.99 ;30/7/2005 13:31;7
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;30/7/2005 21:45;5/8/2005 21:22; 3.99 ;30/7/2005 21:45;6
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;31/7/2005 03:27;3/8/2005 05:58; 2.99 ;31/7/2005 03:27;3
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;31/7/2005 11:32;4/8/2005 17:12; 4.99 ;31/7/2005 11:32;4
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;1/8/2005 14:19;8/8/2005 20:01; 5.99 ;1/8/2005 14:19;7
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;18/8/2005 14:49;24/8/2005 15:20; 4.99 ;18/8/2005 14:49;6
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;19/8/2005 22:18;27/8/2005 19:23; 8.99 ;19/8/2005 22:18;8
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;20/8/2005 06:14;26/8/2005 00:44; 2.99 ;20/8/2005 06:14;6
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;21/8/2005 20:50;29/8/2005 18:08; 8.99 ;21/8/2005 20:50;8
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;22/8/2005 09:37;23/8/2005 14:39; 0.99 ;22/8/2005 09:37;1
+3;linda;williams;linda.williams@sakilacustomer.org;1;692 joliet street;attika;83579;athenai;greece;23/8/2005 07:10;26/8/2005 07:21; 2.99 ;23/8/2005 07:10;3
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;15/6/2005 09:31;19/6/2005 04:33; 4.99 ;15/6/2005 09:31;4
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;16/6/2005 08:08;17/6/2005 11:12; 0.99 ;16/6/2005 08:08;1
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;16/6/2005 14:01;18/6/2005 09:35; 2.99 ;16/6/2005 14:01;2
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;16/6/2005 15:51;20/6/2005 13:27; 0.99 ;16/6/2005 15:51;4
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;17/6/2005 14:31;19/6/2005 11:04; 0.99 ;17/6/2005 14:31;2
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;19/6/2005 09:39;25/6/2005 08:33; 5.99 ;19/6/2005 09:39;6
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;28/7/2005 02:10;30/7/2005 04:29; 2.99 ;28/7/2005 02:10;2
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;28/7/2005 04:37;29/7/2005 09:20; 2.99 ;28/7/2005 04:37;1
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;29/7/2005 18:44;3/8/2005 18:25; 3.99 ;29/7/2005 18:44;5
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;30/7/2005 08:46;5/8/2005 10:34; 5.99 ;30/7/2005 08:46;6
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;30/7/2005 18:58;3/8/2005 15:14; 5.99 ;30/7/2005 18:58;4
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;2/8/2005 07:09;8/8/2005 08:39; 0.99 ;2/8/2005 07:09;6
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;2/8/2005 08:20;4/8/2005 05:06; 2.99 ;2/8/2005 08:20;2
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;17/8/2005 00:28;19/8/2005 04:47; 4.99 ;17/8/2005 00:28;2
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;18/8/2005 00:14;18/8/2005 23:52; 2.99 ;18/8/2005 00:14;0
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;18/8/2005 05:14;27/8/2005 01:32; 8.99 ;18/8/2005 05:14;9
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;19/8/2005 02:19;23/8/2005 07:49; 1.99 ;19/8/2005 02:19;4
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;20/8/2005 09:32;23/8/2005 14:29; 2.99 ;20/8/2005 09:32;3
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;20/8/2005 12:55;28/8/2005 09:06; 6.99 ;20/8/2005 12:55;8
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;21/8/2005 04:53;25/8/2005 23:39; 4.99 ;21/8/2005 04:53;4
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;22/8/2005 13:58;28/8/2005 14:33; 2.99 ;22/8/2005 13:58;6
+4;barbara;jones;barbara.jones@sakilacustomer.org;1;1566 inegl manor;mandalay;53561;myingyan;myanmar;23/8/2005 07:43;27/8/2005 10:47; 1.99 ;23/8/2005 07:43;4
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;29/5/2005 07:25;30/5/2005 05:21; 0.99 ;29/5/2005 07:25;1
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;31/5/2005 11:15;7/6/2005 12:02; 6.99 ;31/5/2005 11:15;7
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;31/5/2005 19:46;5/6/2005 14:03; 1.99 ;31/5/2005 19:46;5
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;15/6/2005 22:03;23/6/2005 18:42; 3.99 ;15/6/2005 22:03;8
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;16/6/2005 08:01;19/6/2005 09:04; 2.99 ;16/6/2005 08:01;3
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;17/6/2005 15:56;21/6/2005 14:19; 4.99 ;17/6/2005 15:56;4
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;19/6/2005 04:20;25/6/2005 07:00; 2.99 ;19/6/2005 04:20;6
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;20/6/2005 18:38;26/6/2005 00:00; 4.99 ;20/6/2005 18:38;6
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;6/7/2005 09:11;8/7/2005 10:50; 4.99 ;6/7/2005 09:11;2
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;8/7/2005 20:04;13/7/2005 17:57; 2.99 ;8/7/2005 20:04;5
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;9/7/2005 01:57;9/7/2005 22:07; 4.99 ;9/7/2005 01:57;0
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;9/7/2005 07:13;18/7/2005 05:18; 5.99 ;9/7/2005 07:13;9
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;9/7/2005 08:51;15/7/2005 03:59; 1.99 ;9/7/2005 08:51;6
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;10/7/2005 11:09;17/7/2005 16:41; 0.99 ;10/7/2005 11:09;7
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;11/7/2005 03:17;19/7/2005 07:08; 8.99 ;11/7/2005 03:17;8
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;12/7/2005 11:27;21/7/2005 16:35; 3.99 ;12/7/2005 11:27;9
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;12/7/2005 12:16;19/7/2005 17:03; 4.99 ;12/7/2005 12:16;7
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;27/7/2005 12:37;30/7/2005 15:12; 0.99 ;27/7/2005 12:37;3
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;28/7/2005 01:50;30/7/2005 22:23; 0.99 ;28/7/2005 01:50;2
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;28/7/2005 08:43;4/8/2005 14:33; 3.99 ;28/7/2005 08:43;7
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;29/7/2005 01:11;31/7/2005 01:53; 2.99 ;29/7/2005 01:11;2
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;30/7/2005 04:14;6/8/2005 09:08; 1.99 ;30/7/2005 04:14;7
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;30/7/2005 23:52;8/8/2005 05:22; 4.99 ;30/7/2005 23:52;9
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;31/7/2005 14:00;8/8/2005 18:51; 3.99 ;31/7/2005 14:00;8
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;1/8/2005 14:48;4/8/2005 13:41; 4.99 ;1/8/2005 14:48;3
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;1/8/2005 15:27;2/8/2005 13:16; 0.99 ;1/8/2005 15:27;1
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;2/8/2005 04:56;11/8/2005 08:04; 4.99 ;2/8/2005 04:56;9
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;2/8/2005 10:50;4/8/2005 05:24; 4.99 ;2/8/2005 10:50;2
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;17/8/2005 16:28;25/8/2005 10:31; 3.99 ;17/8/2005 16:28;8
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;18/8/2005 00:10;26/8/2005 00:51; 9.99 ;18/8/2005 00:10;8
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;19/8/2005 00:24;21/8/2005 22:53; 2.99 ;19/8/2005 00:24;2
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;19/8/2005 09:45;24/8/2005 09:11; 1.99 ;19/8/2005 09:45;5
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;20/8/2005 15:16;22/8/2005 18:20; 0.99 ;20/8/2005 15:16;2
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;20/8/2005 22:13;26/8/2005 20:50; 6.99 ;20/8/2005 22:13;6
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;21/8/2005 11:31;26/8/2005 06:29; 6.99 ;21/8/2005 11:31;5
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;21/8/2005 14:02;22/8/2005 16:45; 2.99 ;21/8/2005 14:02;1
+5;elizabeth;brown;elizabeth.brown@sakilacustomer.org;1;53 idfu parkway;nantou;42399;nantou;taiwan;22/8/2005 17:37;25/8/2005 18:45; 0.99 ;22/8/2005 17:37;3
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;25/5/2005 08:43;29/5/2005 06:42; 4.99 ;25/5/2005 08:43;4
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;28/5/2005 11:09;1/6/2005 13:27; 2.99 ;28/5/2005 11:09;4
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;30/5/2005 11:25;31/5/2005 09:06; 0.99 ;30/5/2005 11:25;1
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;16/6/2005 03:41;22/6/2005 03:01; 3.99 ;16/6/2005 03:41;6
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;16/6/2005 23:44;22/6/2005 04:09; 2.99 ;16/6/2005 23:44;6
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;17/6/2005 09:19;20/6/2005 11:19; 0.99 ;17/6/2005 09:19;3
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;18/6/2005 12:03;22/6/2005 14:25; 0.99 ;18/6/2005 12:03;4
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;6/7/2005 23:14;12/7/2005 17:55; 0.99 ;6/7/2005 23:14;6
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;7/7/2005 14:53;13/7/2005 14:21; 2.99 ;7/7/2005 14:53;6
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;10/7/2005 03:03;14/7/2005 07:49; 0.99 ;10/7/2005 03:03;4
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;11/7/2005 12:39;20/7/2005 15:59; 5.99 ;11/7/2005 12:39;9
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;11/7/2005 15:01;19/7/2005 16:58; 7.99 ;11/7/2005 15:01;8
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;12/7/2005 12:18;13/7/2005 17:56; 0.99 ;12/7/2005 12:18;1
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;27/7/2005 05:03;29/7/2005 00:12; 2.99 ;27/7/2005 05:03;2
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;27/7/2005 06:38;3/8/2005 05:13; 2.99 ;27/7/2005 06:38;7
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;28/7/2005 18:47;31/7/2005 16:23; 0.99 ;28/7/2005 18:47;3
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;1/8/2005 03:13;7/8/2005 23:40; 2.99 ;1/8/2005 03:13;6
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;2/8/2005 05:36;10/8/2005 05:39; 2.99 ;2/8/2005 05:36;8
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;2/8/2005 18:55;10/8/2005 19:50; 3.99 ;2/8/2005 18:55;8
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;17/8/2005 02:29;23/8/2005 20:47; 6.99 ;17/8/2005 02:29;6
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;17/8/2005 08:12;19/8/2005 12:45; 0.99 ;17/8/2005 08:12;2
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;17/8/2005 13:39;23/8/2005 18:44; 0.99 ;17/8/2005 13:39;6
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;18/8/2005 04:05;23/8/2005 04:17; 2.99 ;18/8/2005 04:05;5
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;20/8/2005 00:18;29/8/2005 01:08; 6.99 ;20/8/2005 00:18;9
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;21/8/2005 08:22;28/8/2005 02:22; 7.99 ;21/8/2005 08:22;7
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;21/8/2005 09:49;29/8/2005 13:34; 4.99 ;21/8/2005 09:49;8
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;23/8/2005 02:51;31/8/2005 06:21; 5.99 ;23/8/2005 02:51;8
+6;jennifer;davis;jennifer.davis@sakilacustomer.org;1;1795 santiago de compostela way;texas;18743;laredo;united states;23/8/2005 06:41;28/8/2005 08:51; 0.99 ;23/8/2005 06:41;5
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;25/5/2005 06:04;2/6/2005 08:18; 5.99 ;25/5/2005 06:04;8
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;25/5/2005 19:30;31/5/2005 23:59; 0.99 ;25/5/2005 19:30;6
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;29/5/2005 09:27;3/6/2005 04:25; 2.99 ;29/5/2005 09:27;5
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;30/5/2005 21:07;3/6/2005 01:48; 4.99 ;30/5/2005 21:07;4
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;31/5/2005 08:44;9/6/2005 08:00; 5.99 ;31/5/2005 08:44;9
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;16/6/2005 21:06;21/6/2005 21:24; 0.99 ;16/6/2005 21:06;5
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;18/6/2005 05:03;22/6/2005 02:25; 2.99 ;18/6/2005 05:03;4
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;19/6/2005 14:00;23/6/2005 14:56; 0.99 ;19/6/2005 14:00;4
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;20/6/2005 01:50;22/6/2005 05:05; 4.99 ;20/6/2005 01:50;2
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;20/6/2005 10:11;25/6/2005 04:51; 0.99 ;20/6/2005 10:11;5
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;6/7/2005 07:09;15/7/2005 05:12; 5.99 ;6/7/2005 07:09;9
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;7/7/2005 13:22;10/7/2005 07:44; 2.99 ;7/7/2005 13:22;3
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;8/7/2005 16:16;14/7/2005 18:02; 5.99 ;8/7/2005 16:16;6
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;8/7/2005 18:47;13/7/2005 15:02; 4.99 ;8/7/2005 18:47;5
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;9/7/2005 21:52;17/7/2005 02:54; 8.99 ;9/7/2005 21:52;8
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;10/7/2005 21:35;18/7/2005 19:59; 7.99 ;10/7/2005 21:35;8
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;11/7/2005 10:36;18/7/2005 16:19; 1.99 ;11/7/2005 10:36;7
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;11/7/2005 17:30;15/7/2005 15:50; 2.99 ;11/7/2005 17:30;4
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;12/7/2005 15:17;18/7/2005 17:59; 3.99 ;12/7/2005 15:17;6
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;29/7/2005 07:02;3/8/2005 12:35; 5.99 ;29/7/2005 07:02;5
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;31/7/2005 04:30;6/8/2005 09:13; 7.99 ;31/7/2005 04:30;6
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;1/8/2005 04:57;7/8/2005 23:00; 6.99 ;1/8/2005 04:57;6
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;1/8/2005 08:19;8/8/2005 10:25; 5.99 ;1/8/2005 08:19;7
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;1/8/2005 11:39;3/8/2005 07:53; 4.99 ;1/8/2005 11:39;2
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;1/8/2005 15:52;8/8/2005 16:08; 4.99 ;1/8/2005 15:52;7
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;2/8/2005 04:40;9/8/2005 03:39; 3.99 ;2/8/2005 04:40;7
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;17/8/2005 00:51;24/8/2005 20:29; 7.99 ;17/8/2005 00:51;7
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;18/8/2005 07:57;27/8/2005 07:07; 8.99 ;18/8/2005 07:57;9
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;18/8/2005 21:55;22/8/2005 01:23; 2.99 ;18/8/2005 21:55;4
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;19/8/2005 21:23;25/8/2005 22:38; 2.99 ;19/8/2005 21:23;6
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;20/8/2005 01:06;24/8/2005 23:56; 2.99 ;20/8/2005 01:06;4
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;20/8/2005 05:53;23/8/2005 09:01; 0.99 ;20/8/2005 05:53;3
+7;maria;miller;maria.miller@sakilacustomer.org;1;900 santiago de compostela parkway;central serbia;93896;kragujevac;yugoslavia;21/8/2005 04:49;25/8/2005 05:34; 5.99 ;21/8/2005 04:49;4
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;30/5/2005 03:43;8/6/2005 04:28; 6.99 ;30/5/2005 03:43;9
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;15/6/2005 09:59;19/6/2005 09:48; 2.99 ;15/6/2005 09:59;4
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;17/6/2005 18:21;23/6/2005 23:49; 5.99 ;17/6/2005 18:21;6
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;20/6/2005 17:57;21/6/2005 19:18; 4.99 ;20/6/2005 17:57;1
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;5/7/2005 23:01;13/7/2005 23:07; 5.99 ;5/7/2005 23:01;8
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;7/7/2005 00:09;8/7/2005 04:27; 0.99 ;7/7/2005 00:09;1
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;7/7/2005 10:02;10/7/2005 06:09; 2.99 ;7/7/2005 10:02;3
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;7/7/2005 21:47;11/7/2005 20:14; 3.99 ;7/7/2005 21:47;4
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;8/7/2005 02:17;13/7/2005 08:12; 3.99 ;8/7/2005 02:17;5
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;9/7/2005 15:40;15/7/2005 13:46; 2.99 ;9/7/2005 15:40;6
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;9/7/2005 17:13;14/7/2005 18:11; 2.99 ;9/7/2005 17:13;5
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;11/7/2005 21:39;18/7/2005 02:12; 4.99 ;11/7/2005 21:39;7
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;12/7/2005 10:43;14/7/2005 05:37; 0.99 ;12/7/2005 10:43;2
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;29/7/2005 21:42;4/8/2005 01:13; 1.99 ;29/7/2005 21:42;6
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;31/7/2005 04:54;2/8/2005 08:36; 2.99 ;31/7/2005 04:54;2
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;31/7/2005 22:08;6/8/2005 16:59; 0.99 ;31/7/2005 22:08;6
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;1/8/2005 13:05;4/8/2005 08:34; 2.99 ;1/8/2005 13:05;3
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;2/8/2005 13:04;10/8/2005 15:39; 9.99 ;2/8/2005 13:04;8
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;2/8/2005 14:42;4/8/2005 11:55; 2.99 ;2/8/2005 14:42;2
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;18/8/2005 17:16;23/8/2005 18:40; 2.99 ;18/8/2005 17:16;5
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;21/8/2005 01:07;24/8/2005 20:33; 0.99 ;21/8/2005 01:07;3
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;22/8/2005 22:09;31/8/2005 01:10; 7.99 ;22/8/2005 22:09;9
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;23/8/2005 13:05;25/8/2005 16:15; 2.99 ;23/8/2005 13:05;2
+8;susan;wilson;susan.wilson@sakilacustomer.org;1;478 joliet way;hamilton;77948;hamilton;new zealand;23/8/2005 14:31;25/8/2005 19:01; 4.99 ;23/8/2005 14:31;2
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;27/5/2005 05:01;4/6/2005 05:01; 4.99 ;27/5/2005 05:01;8
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;30/5/2005 05:48;2/6/2005 09:30; 0.99 ;30/5/2005 05:48;3
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;31/5/2005 10:13;9/6/2005 08:11; 4.99 ;31/5/2005 10:13;9
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;20/6/2005 19:59;28/6/2005 19:51; 7.99 ;20/6/2005 19:59;8
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;21/6/2005 04:08;28/6/2005 02:55; 4.99 ;21/6/2005 04:08;7
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;7/7/2005 23:37;11/7/2005 02:30; 2.99 ;7/7/2005 23:37;4
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;8/7/2005 13:59;15/7/2005 16:51; 0.99 ;8/7/2005 13:59;7
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;8/7/2005 16:35;13/7/2005 11:08; 1.99 ;8/7/2005 16:35;5
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;10/7/2005 07:45;15/7/2005 05:20; 2.99 ;10/7/2005 07:45;5
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;11/7/2005 02:08;13/7/2005 02:19; 4.99 ;11/7/2005 02:08;2
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;11/7/2005 10:17;17/7/2005 07:27; 5.99 ;11/7/2005 10:17;6
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;28/7/2005 00:15;30/7/2005 21:52; 0.99 ;28/7/2005 00:15;2
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;28/7/2005 07:51;30/7/2005 12:18; 2.99 ;28/7/2005 07:51;2
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;30/7/2005 06:34;2/8/2005 01:16; 4.99 ;30/7/2005 06:34;3
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;1/8/2005 09:11;3/8/2005 12:37; 0.99 ;1/8/2005 09:11;2
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;1/8/2005 09:14;4/8/2005 04:52; 4.99 ;1/8/2005 09:14;3
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;2/8/2005 19:00;9/8/2005 19:45; 5.99 ;2/8/2005 19:00;7
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;17/8/2005 01:11;18/8/2005 23:41; 0.99 ;17/8/2005 01:11;1
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;18/8/2005 03:08;20/8/2005 02:48; 2.99 ;18/8/2005 03:08;2
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;18/8/2005 05:58;20/8/2005 02:20; 2.99 ;18/8/2005 05:58;2
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;18/8/2005 18:48;21/8/2005 14:15; 4.99 ;18/8/2005 18:48;3
+9;margaret;moore;margaret.moore@sakilacustomer.org;1;613 korolev drive;masqat;45844;masqat;oman;21/8/2005 13:53;30/8/2005 15:45; 7.99 ;21/8/2005 13:53;9
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;31/5/2005 19:36;7/6/2005 18:33; 4.99 ;31/5/2005 19:36;7
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;16/6/2005 20:21;18/6/2005 23:18; 4.99 ;16/6/2005 20:21;2
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;17/6/2005 11:11;26/6/2005 16:37; 4.99 ;17/6/2005 11:11;9
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;18/6/2005 03:26;26/6/2005 08:50; 3.99 ;18/6/2005 03:26;8
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;19/6/2005 20:01;26/6/2005 01:28; 0.99 ;19/6/2005 20:01;7
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;20/6/2005 00:00;21/6/2005 02:20; 0.99 ;20/6/2005 00:00;1
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;6/7/2005 14:13;14/7/2005 13:35; 3.99 ;6/7/2005 14:13;8
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;7/7/2005 03:06;10/7/2005 02:37; 4.99 ;7/7/2005 03:06;3
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;7/7/2005 14:14;12/7/2005 18:32; 1.99 ;7/7/2005 14:14;5
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;9/7/2005 03:12;17/7/2005 22:27; 7.99 ;9/7/2005 03:12;8
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;9/7/2005 04:53;13/7/2005 09:21; 2.99 ;9/7/2005 04:53;4
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;9/7/2005 21:58;11/7/2005 03:09; 0.99 ;9/7/2005 21:58;2
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;10/7/2005 20:41;19/7/2005 14:49; 2.99 ;10/7/2005 20:41;9
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;28/7/2005 05:21;3/8/2005 09:46; 2.99 ;28/7/2005 05:21;6
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;28/7/2005 15:10;5/8/2005 18:23; 6.99 ;28/7/2005 15:10;8
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;28/7/2005 22:34;1/8/2005 02:32; 4.99 ;28/7/2005 22:34;4
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;31/7/2005 15:27;5/8/2005 11:23; 4.99 ;31/7/2005 15:27;5
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;1/8/2005 17:09;9/8/2005 21:36; 8.99 ;1/8/2005 17:09;8
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;2/8/2005 14:55;11/8/2005 13:57; 2.99 ;2/8/2005 14:55;9
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;2/8/2005 19:13;7/8/2005 19:19; 0.99 ;2/8/2005 19:13;5
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;17/8/2005 20:11;24/8/2005 23:48; 2.99 ;17/8/2005 20:11;7
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;18/8/2005 09:19;26/8/2005 06:52; 2.99 ;18/8/2005 09:19;8
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;19/8/2005 19:23;22/8/2005 23:37; 4.99 ;19/8/2005 19:23;3
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;20/8/2005 16:43;29/8/2005 16:44; 2.99 ;20/8/2005 16:43;9
+10;dorothy;taylor;dorothy.taylor@sakilacustomer.org;1;1531 sal drive;esfahan;53628;esfahan;iran;22/8/2005 21:59;27/8/2005 16:32; 5.99 ;22/8/2005 21:59;5
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;30/5/2005 22:59;7/6/2005 20:56; 6.99 ;30/5/2005 22:59;8
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;15/6/2005 20:53;25/6/2005 02:12; 6.99 ;15/6/2005 20:53;10
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;17/6/2005 07:26;25/6/2005 13:06; 7.99 ;17/6/2005 07:26;8
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;20/6/2005 23:49;24/6/2005 03:00; 0.99 ;20/6/2005 23:49;4
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;8/7/2005 07:19;11/7/2005 01:37; 2.99 ;8/7/2005 07:19;3
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;8/7/2005 22:43;15/7/2005 18:17; 4.99 ;8/7/2005 22:43;7
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;10/7/2005 16:44;17/7/2005 16:03; 5.99 ;10/7/2005 16:44;7
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;11/7/2005 09:09;20/7/2005 11:42; 6.99 ;11/7/2005 09:09;9
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;27/7/2005 13:13;3/8/2005 09:24; 4.99 ;27/7/2005 13:13;7
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;28/7/2005 15:32;31/7/2005 20:52; 4.99 ;28/7/2005 15:32;3
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;28/7/2005 18:43;2/8/2005 15:56; 2.99 ;28/7/2005 18:43;5
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;29/7/2005 07:38;5/8/2005 02:27; 1.99 ;29/7/2005 07:38;7
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;29/7/2005 17:33;1/8/2005 17:30; 0.99 ;29/7/2005 17:33;3
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;30/7/2005 03:17;7/8/2005 00:20; 9.99 ;30/7/2005 03:17;8
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;30/7/2005 16:08;7/8/2005 10:38; 6.99 ;30/7/2005 16:08;8
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;1/8/2005 22:41;7/8/2005 00:50; 4.99 ;1/8/2005 22:41;6
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;2/8/2005 10:14;11/8/2005 11:43; 6.99 ;2/8/2005 10:14;9
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;16/8/2005 23:06;19/8/2005 03:49; 0.99 ;16/8/2005 23:06;3
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;17/8/2005 19:32;23/8/2005 13:36; 5.99 ;17/8/2005 19:32;6
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;20/8/2005 05:07;23/8/2005 23:33; 0.99 ;20/8/2005 05:07;3
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;20/8/2005 12:17;25/8/2005 12:20; 4.99 ;20/8/2005 12:17;5
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;22/8/2005 12:42;23/8/2005 14:21; 0.99 ;22/8/2005 12:42;1
+11;lisa;anderson;lisa.anderson@sakilacustomer.org;1;1542 tarlac parkway;kanagawa;1027;sagamihara;japan;22/8/2005 17:46;23/8/2005 15:08; 2.99 ;22/8/2005 17:46;1
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;30/5/2005 23:08;7/6/2005 00:22; 4.99 ;30/5/2005 23:08;8
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;31/5/2005 11:10;1/6/2005 11:15; 4.99 ;31/5/2005 11:10;1
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;16/6/2005 17:02;23/6/2005 19:09; 5.99 ;16/6/2005 17:02;7
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;18/6/2005 18:11;23/6/2005 12:52; 5.99 ;18/6/2005 18:11;5
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;18/6/2005 23:07;26/6/2005 17:27; 5.99 ;18/6/2005 23:07;8
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;19/6/2005 08:11;26/6/2005 12:28; 4.99 ;19/6/2005 08:11;7
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;20/6/2005 19:33;29/6/2005 18:20; 2.99 ;20/6/2005 19:33;9
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;21/6/2005 16:31;28/6/2005 12:27; 0.99 ;21/6/2005 16:31;7
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;6/7/2005 17:57;13/7/2005 12:30; 3.99 ;6/7/2005 17:57;7
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;9/7/2005 05:00;9/7/2005 23:08; 0.99 ;9/7/2005 05:00;0
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;9/7/2005 05:06;12/7/2005 04:37; 0.99 ;9/7/2005 05:06;3
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;9/7/2005 07:02;10/7/2005 06:27; 0.99 ;9/7/2005 07:02;1
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;9/7/2005 13:20;18/7/2005 07:38; 3.99 ;9/7/2005 13:20;9
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;12/7/2005 15:55;18/7/2005 17:52; 2.99 ;12/7/2005 15:55;6
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;27/7/2005 01:44;28/7/2005 21:19; 0.99 ;27/7/2005 01:44;1
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;27/7/2005 11:50;30/7/2005 11:19; 0.99 ;27/7/2005 11:50;3
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;30/7/2005 04:34;6/8/2005 00:45; 0.99 ;30/7/2005 04:34;7
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;30/7/2005 11:26;4/8/2005 12:32; 4.99 ;30/7/2005 11:26;5
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;30/7/2005 13:49;8/8/2005 08:25; 5.99 ;30/7/2005 13:49;9
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;31/7/2005 04:42;8/8/2005 00:42; 5.99 ;31/7/2005 04:42;8
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;31/7/2005 07:45;8/8/2005 08:56; 5.99 ;31/7/2005 07:45;8
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;1/8/2005 06:50;10/8/2005 10:52; 10.99 ;1/8/2005 06:50;9
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;16/8/2005 22:52;21/8/2005 19:52; 0.99 ;16/8/2005 22:52;5
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;18/8/2005 16:58;19/8/2005 19:36; 4.99 ;18/8/2005 16:58;1
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;20/8/2005 02:37;23/8/2005 01:26; 0.99 ;20/8/2005 02:37;3
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;20/8/2005 15:58;26/8/2005 15:07; 2.99 ;20/8/2005 15:58;6
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;21/8/2005 05:19;22/8/2005 23:25; 4.99 ;21/8/2005 05:19;1
+12;nancy;thomas;nancy.thomas@sakilacustomer.org;1;808 bhopal manor;haryana;10672;yamuna nagar;india;23/8/2005 20:28;27/8/2005 16:23; 0.99 ;23/8/2005 20:28;4
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;17/6/2005 06:54;26/6/2005 02:00; 2.99 ;17/6/2005 06:54;9
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;18/6/2005 02:24;22/6/2005 04:13; 4.99 ;18/6/2005 02:24;4
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;20/6/2005 06:26;22/6/2005 11:51; 2.99 ;20/6/2005 06:26;2
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;20/6/2005 12:45;29/6/2005 13:09; 8.99 ;20/6/2005 12:45;9
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;6/7/2005 21:39;11/7/2005 16:10; 2.99 ;6/7/2005 21:39;5
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;11/7/2005 07:43;20/7/2005 03:17; 8.99 ;11/7/2005 07:43;9
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;12/7/2005 05:45;15/7/2005 05:18; 2.99 ;12/7/2005 05:45;3
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;12/7/2005 20:13;16/7/2005 22:09; 0.99 ;12/7/2005 20:13;4
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;12/7/2005 21:30;15/7/2005 03:19; 2.99 ;12/7/2005 21:30;3
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;28/7/2005 11:49;29/7/2005 15:01; 2.99 ;28/7/2005 11:49;1
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;29/7/2005 01:38;4/8/2005 07:09; 2.99 ;29/7/2005 01:38;6
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;29/7/2005 22:37;8/8/2005 04:28; 11.99 ;29/7/2005 22:37;10
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;30/7/2005 14:38;7/8/2005 18:47; 9.99 ;30/7/2005 14:38;8
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;30/7/2005 21:29;1/8/2005 16:30; 0.99 ;30/7/2005 21:29;2
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;31/7/2005 06:12;4/8/2005 02:19; 0.99 ;31/7/2005 06:12;4
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;31/7/2005 08:58;9/8/2005 08:34; 7.99 ;31/7/2005 08:58;9
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;31/7/2005 17:48;2/8/2005 14:23; 4.99 ;31/7/2005 17:48;2
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;2/8/2005 14:58;6/8/2005 14:38; 4.99 ;2/8/2005 14:58;4
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;2/8/2005 16:05;5/8/2005 16:33; 0.99 ;2/8/2005 16:05;3
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;17/8/2005 09:44;25/8/2005 07:46; 5.99 ;17/8/2005 09:44;8
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;19/8/2005 04:31;25/8/2005 05:50; 7.99 ;19/8/2005 04:31;6
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;19/8/2005 10:49;21/8/2005 05:33; 4.99 ;19/8/2005 10:49;2
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;19/8/2005 15:25;22/8/2005 09:32; 0.99 ;19/8/2005 15:25;3
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;20/8/2005 00:33;22/8/2005 01:47; 0.99 ;20/8/2005 00:33;2
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;21/8/2005 05:44;29/8/2005 08:53; 9.99 ;21/8/2005 05:44;8
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;21/8/2005 15:44;29/8/2005 20:09; 7.99 ;21/8/2005 15:44;8
+13;karen;jackson;karen.jackson@sakilacustomer.org;1;270 amroha parkway;osmaniye;29610;osmaniye;turkey;22/8/2005 20:51;24/8/2005 23:41; 4.99 ;22/8/2005 20:51;2
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;26/5/2005 00:37;30/5/2005 06:28; 0.99 ;26/5/2005 00:37;4
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;27/5/2005 04:34;5/6/2005 04:24; 9.99 ;27/5/2005 04:34;9
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;28/5/2005 04:25;6/6/2005 04:18; 5.99 ;28/5/2005 04:25;9
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;28/5/2005 22:04;3/6/2005 01:21; 2.99 ;28/5/2005 22:04;6
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;29/5/2005 20:24;3/6/2005 15:32; 0.99 ;29/5/2005 20:24;5
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;15/6/2005 13:32;18/6/2005 10:59; 4.99 ;15/6/2005 13:32;3
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;6/7/2005 10:21;12/7/2005 05:14; 2.99 ;6/7/2005 10:21;6
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;8/7/2005 23:00;9/7/2005 21:47; 0.99 ;8/7/2005 23:00;1
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;9/7/2005 06:37;14/7/2005 12:32; 0.99 ;9/7/2005 06:37;5
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;9/7/2005 16:10;18/7/2005 17:10; 7.99 ;9/7/2005 16:10;9
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;9/7/2005 19:14;11/7/2005 19:57; 4.99 ;9/7/2005 19:14;2
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;10/7/2005 03:29;17/7/2005 04:43; 7.99 ;10/7/2005 03:29;7
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;28/7/2005 16:23;5/8/2005 10:52; 6.99 ;28/7/2005 16:23;8
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;28/7/2005 16:45;4/8/2005 17:16; 0.99 ;28/7/2005 16:45;7
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;29/7/2005 11:11;4/8/2005 11:52; 3.99 ;29/7/2005 11:11;6
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;29/7/2005 22:46;2/8/2005 19:53; 4.99 ;29/7/2005 22:46;4
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;30/7/2005 21:36;7/8/2005 16:54; 4.99 ;30/7/2005 21:36;8
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;31/7/2005 03:21;5/8/2005 08:32; 2.99 ;31/7/2005 03:21;5
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;1/8/2005 05:23;4/8/2005 01:12; 2.99 ;1/8/2005 05:23;3
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;1/8/2005 11:55;8/8/2005 16:42; 6.99 ;1/8/2005 11:55;7
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;2/8/2005 22:18;4/8/2005 21:22; 4.99 ;2/8/2005 22:18;2
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;17/8/2005 00:27;22/8/2005 06:12; 3.99 ;17/8/2005 00:27;5
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;18/8/2005 19:16;19/8/2005 16:31; 2.99 ;18/8/2005 19:16;1
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;20/8/2005 11:20;23/8/2005 10:14; 4.99 ;20/8/2005 11:20;3
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;22/8/2005 08:43;31/8/2005 06:53; 6.99 ;22/8/2005 08:43;9
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;22/8/2005 22:08;24/8/2005 01:05; 0.99 ;22/8/2005 22:08;2
+14;betty;white;betty.white@sakilacustomer.org;1;770 bydgoszcz avenue;california;16266;citrus heights;united states;23/8/2005 22:25;25/8/2005 23:54; 0.99 ;23/8/2005 22:25;2
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;18/6/2005 21:26;22/6/2005 23:42; 2.99 ;18/6/2005 21:26;4
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;20/6/2005 05:15;27/6/2005 02:45; 5.99 ;20/6/2005 05:15;7
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;20/6/2005 22:52;21/6/2005 21:00; 0.99 ;20/6/2005 22:52;1
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;6/7/2005 02:29;13/7/2005 05:26; 7.99 ;6/7/2005 02:29;7
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;7/7/2005 07:26;14/7/2005 07:50; 5.99 ;7/7/2005 07:26;7
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;10/7/2005 11:02;13/7/2005 13:00; 2.99 ;10/7/2005 11:02;3
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;11/7/2005 00:14;16/7/2005 04:21; 2.99 ;11/7/2005 00:14;5
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;27/7/2005 05:15;28/7/2005 05:49; 4.99 ;27/7/2005 05:15;1
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;28/7/2005 22:50;1/8/2005 04:14; 0.99 ;28/7/2005 22:50;4
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;29/7/2005 13:36;3/8/2005 13:15; 6.99 ;29/7/2005 13:36;5
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;30/7/2005 02:13;1/8/2005 01:34; 4.99 ;30/7/2005 02:13;2
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;31/7/2005 17:22;1/8/2005 21:19; 2.99 ;31/7/2005 17:22;1
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;2/8/2005 08:44;5/8/2005 08:08; 2.99 ;2/8/2005 08:44;3
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;2/8/2005 09:29;4/8/2005 07:50; 2.99 ;2/8/2005 09:29;2
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;2/8/2005 15:48;6/8/2005 20:33; 2.99 ;2/8/2005 15:48;4
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;2/8/2005 17:09;9/8/2005 19:48; 2.99 ;2/8/2005 17:09;7
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;17/8/2005 16:20;26/8/2005 16:53; 7.99 ;17/8/2005 16:20;9
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;18/8/2005 04:39;24/8/2005 09:41; 2.99 ;18/8/2005 04:39;6
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;18/8/2005 14:46;19/8/2005 16:59; 2.99 ;18/8/2005 14:46;1
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;18/8/2005 18:00;23/8/2005 16:40; 2.99 ;18/8/2005 18:00;5
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;19/8/2005 20:18;28/8/2005 21:34; 8.99 ;19/8/2005 20:18;9
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;19/8/2005 22:03;28/8/2005 19:19; 5.99 ;19/8/2005 22:03;9
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;20/8/2005 02:00;28/8/2005 21:03; 5.99 ;20/8/2005 02:00;8
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;20/8/2005 03:41;24/8/2005 23:14; 4.99 ;20/8/2005 03:41;4
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;20/8/2005 08:34;26/8/2005 11:51; 3.99 ;20/8/2005 08:34;6
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;21/8/2005 16:31;25/8/2005 21:27; 0.99 ;21/8/2005 16:31;4
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;21/8/2005 23:53;24/8/2005 02:00; 4.99 ;21/8/2005 23:53;3
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;22/8/2005 03:23;29/8/2005 23:25; 8.99 ;22/8/2005 03:23;7
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;22/8/2005 15:36;26/8/2005 21:00; 0.99 ;22/8/2005 15:36;4
+15;helen;harris;helen.harris@sakilacustomer.org;1;419 iligan lane;madhya pradesh;72878;bhopal;india;23/8/2005 17:12;30/8/2005 17:22; 4.99 ;23/8/2005 17:12;7
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;27/5/2005 03:07;5/6/2005 00:15; 3.99 ;27/5/2005 03:07;9
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;28/5/2005 13:33;30/5/2005 17:10; 2.99 ;28/5/2005 13:33;2
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;30/5/2005 07:10;1/6/2005 06:48; 0.99 ;30/5/2005 07:10;2
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;31/5/2005 02:53;3/6/2005 05:04; 2.99 ;31/5/2005 02:53;3
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;17/6/2005 07:04;25/6/2005 12:21; 6.99 ;17/6/2005 07:04;8
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;17/6/2005 07:50;23/6/2005 02:52; 7.99 ;17/6/2005 07:50;6
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;20/6/2005 07:10;26/6/2005 08:14; 7.99 ;20/6/2005 07:10;6
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;21/6/2005 11:16;27/6/2005 13:50; 0.99 ;21/6/2005 11:16;6
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;6/7/2005 02:23;8/7/2005 07:53; 0.99 ;6/7/2005 02:23;2
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;7/7/2005 12:11;11/7/2005 11:05; 2.99 ;7/7/2005 12:11;4
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;7/7/2005 14:24;13/7/2005 18:22; 3.99 ;7/7/2005 14:24;6
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;8/7/2005 02:45;12/7/2005 03:04; 4.99 ;8/7/2005 02:45;4
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;11/7/2005 06:40;14/7/2005 10:59; 4.99 ;11/7/2005 06:40;3
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;27/7/2005 19:39;30/7/2005 23:10; 0.99 ;27/7/2005 19:39;3
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;27/7/2005 22:03;28/7/2005 22:24; 2.99 ;27/7/2005 22:03;1
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;29/7/2005 07:45;5/8/2005 09:46; 5.99 ;29/7/2005 07:45;7
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;30/7/2005 11:12;2/8/2005 05:55; 0.99 ;30/7/2005 11:12;3
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;31/7/2005 03:54;6/8/2005 23:11; 5.99 ;31/7/2005 03:54;6
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;1/8/2005 17:53;5/8/2005 19:16; 2.99 ;1/8/2005 17:53;4
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;1/8/2005 19:15;3/8/2005 13:52; 2.99 ;1/8/2005 19:15;2
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;2/8/2005 15:50;5/8/2005 11:38; 0.99 ;2/8/2005 15:50;3
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;17/8/2005 22:53;23/8/2005 19:49; 2.99 ;17/8/2005 22:53;6
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;18/8/2005 07:41;20/8/2005 03:46; 4.99 ;18/8/2005 07:41;2
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;18/8/2005 15:39;25/8/2005 18:05; 7.99 ;18/8/2005 15:39;7
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;19/8/2005 13:08;20/8/2005 12:38; 4.99 ;19/8/2005 13:08;1
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;19/8/2005 22:01;24/8/2005 22:20; 4.99 ;19/8/2005 22:01;5
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;20/8/2005 01:10;27/8/2005 22:18; 6.99 ;20/8/2005 01:10;7
+16;sandra;martin;sandra.martin@sakilacustomer.org;0;360 toulouse parkway;england;54308;southend-on-sea;united kingdom;21/8/2005 14:45;28/8/2005 10:36; 8.99 ;21/8/2005 14:45;7
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;26/5/2005 19:44;2/6/2005 01:10; 2.99 ;26/5/2005 19:44;7
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;28/5/2005 11:19;1/6/2005 10:44; 2.99 ;28/5/2005 11:19;4
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;30/5/2005 06:41;31/5/2005 07:39; 4.99 ;30/5/2005 06:41;1
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;18/6/2005 00:17;22/6/2005 23:18; 5.99 ;18/6/2005 00:17;4
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;19/6/2005 12:29;28/6/2005 08:50; 8.99 ;19/6/2005 12:29;9
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;21/6/2005 05:06;27/6/2005 09:26; 5.99 ;21/6/2005 05:06;6
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;10/7/2005 10:46;18/7/2005 14:07; 3.99 ;10/7/2005 10:46;8
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;10/7/2005 19:25;16/7/2005 20:50; 3.99 ;10/7/2005 19:25;6
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;12/7/2005 20:52;20/7/2005 23:13; 1.99 ;12/7/2005 20:52;8
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;28/7/2005 17:45;4/8/2005 18:07; 8.99 ;28/7/2005 17:45;7
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;28/7/2005 23:37;31/7/2005 00:32; 2.99 ;28/7/2005 23:37;3
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;30/7/2005 08:30;6/8/2005 08:09; 8.99 ;30/7/2005 08:30;7
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;30/7/2005 10:11;31/7/2005 07:05; 2.99 ;30/7/2005 10:11;1
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;30/7/2005 19:23;6/8/2005 16:20; 8.99 ;30/7/2005 19:23;7
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;30/7/2005 23:43;31/7/2005 20:45; 0.99 ;30/7/2005 23:43;1
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;17/8/2005 18:26;19/8/2005 14:34; 4.99 ;17/8/2005 18:26;2
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;20/8/2005 10:24;22/8/2005 04:44; 2.99 ;20/8/2005 10:24;2
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;20/8/2005 21:43;25/8/2005 16:30; 2.99 ;20/8/2005 21:43;5
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;21/8/2005 08:15;27/8/2005 05:22; 2.99 ;21/8/2005 08:15;6
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;21/8/2005 08:42;23/8/2005 09:18; 2.99 ;21/8/2005 08:42;2
+17;donna;thompson;donna.thompson@sakilacustomer.org;1;270 toulon boulevard;kalmykia;81766;elista;russian federation;23/8/2005 12:41;1/9/2005 14:06; 5.99 ;23/8/2005 12:41;9
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;25/5/2005 06:44;28/5/2005 11:28; 2.99 ;25/5/2005 06:44;3
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;25/5/2005 19:27;26/5/2005 16:23; 4.99 ;25/5/2005 19:27;1
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;29/5/2005 01:32;2/6/2005 03:54; 4.99 ;29/5/2005 01:32;4
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;15/6/2005 19:30;19/6/2005 19:22; 5.99 ;15/6/2005 19:30;4
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;16/6/2005 19:23;18/6/2005 00:57; 4.99 ;16/6/2005 19:23;2
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;17/6/2005 19:52;25/6/2005 00:00; 5.99 ;17/6/2005 19:52;8
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;20/6/2005 09:02;29/6/2005 13:19; 8.99 ;20/6/2005 09:02;9
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;8/7/2005 10:15;16/7/2005 05:06; 3.99 ;8/7/2005 10:15;8
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;8/7/2005 12:46;14/7/2005 12:39; 3.99 ;8/7/2005 12:46;6
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;8/7/2005 21:44;17/7/2005 15:50; 3.99 ;8/7/2005 21:44;9
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;11/7/2005 08:15;13/7/2005 03:36; 2.99 ;11/7/2005 08:15;2
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;12/7/2005 19:20;17/7/2005 00:06; 0.99 ;12/7/2005 19:20;5
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;28/7/2005 19:27;29/7/2005 19:48; 2.99 ;28/7/2005 19:27;1
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;29/7/2005 11:18;30/7/2005 10:47; 4.99 ;29/7/2005 11:18;1
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;30/7/2005 06:18;31/7/2005 01:22; 4.99 ;30/7/2005 06:18;1
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;30/7/2005 09:13;5/8/2005 06:00; 4.99 ;30/7/2005 09:13;6
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;1/8/2005 17:32;6/8/2005 15:49; 4.99 ;1/8/2005 17:32;5
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;1/8/2005 19:05;9/8/2005 20:45; 1.99 ;1/8/2005 19:05;8
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;2/8/2005 08:03;3/8/2005 11:34; 4.99 ;2/8/2005 08:03;1
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;2/8/2005 20:22;4/8/2005 18:30; 4.99 ;2/8/2005 20:22;2
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;18/8/2005 06:51;21/8/2005 01:44; 0.99 ;18/8/2005 06:51;3
+18;carol;garcia;carol.garcia@sakilacustomer.org;1;320 brest avenue;kaduna;43331;kaduna;nigeria;20/8/2005 01:29;21/8/2005 22:36; 0.99 ;20/8/2005 01:29;1
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;25/5/2005 01:10;31/5/2005 06:35; 0.99 ;25/5/2005 01:10;6
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;25/5/2005 18:43;3/6/2005 18:13; 9.99 ;25/5/2005 18:43;9
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;26/5/2005 04:26;3/6/2005 10:06; 6.99 ;26/5/2005 04:26;8
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;27/5/2005 03:22;2/6/2005 03:27; 2.99 ;27/5/2005 03:22;6
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;28/5/2005 13:11;29/5/2005 17:20; 2.99 ;28/5/2005 13:11;1
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;29/5/2005 01:59;1/6/2005 02:45; 2.99 ;29/5/2005 01:59;3
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;19/6/2005 10:42;28/6/2005 12:37; 2.99 ;19/6/2005 10:42;9
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;19/6/2005 22:55;25/6/2005 23:10; 2.99 ;19/6/2005 22:55;6
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;21/6/2005 17:38;23/6/2005 19:47; 2.99 ;21/6/2005 17:38;2
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;6/7/2005 02:24;6/7/2005 21:40; 4.99 ;6/7/2005 02:24;0
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;12/7/2005 02:57;14/7/2005 08:35; 4.99 ;12/7/2005 02:57;2
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;30/7/2005 11:06;5/8/2005 05:29; 5.99 ;30/7/2005 11:06;6
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;30/7/2005 14:29;5/8/2005 16:59; 0.99 ;30/7/2005 14:29;6
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;31/7/2005 20:01;9/8/2005 16:07; 9.99 ;31/7/2005 20:01;9
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;31/7/2005 23:40;9/8/2005 00:46; 7.99 ;31/7/2005 23:40;9
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;16/8/2005 23:27;25/8/2005 01:34; 8.99 ;16/8/2005 23:27;9
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;17/8/2005 14:10;24/8/2005 18:39; 5.99 ;17/8/2005 14:10;7
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;18/8/2005 02:31;26/8/2005 02:36; 9.99 ;18/8/2005 02:31;8
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;18/8/2005 07:40;22/8/2005 02:51; 2.99 ;18/8/2005 07:40;4
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;20/8/2005 09:53;29/8/2005 13:46; 8.99 ;20/8/2005 09:53;9
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;20/8/2005 12:46;29/8/2005 14:04; 8.99 ;20/8/2005 12:46;9
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;21/8/2005 00:33;24/8/2005 01:59; 4.99 ;21/8/2005 00:33;3
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;22/8/2005 09:57;23/8/2005 11:39; 2.99 ;22/8/2005 09:57;1
+19;ruth;martinez;ruth.martinez@sakilacustomer.org;1;1417 lancaster avenue;northern cape;72192;kimberley;south africa;23/8/2005 03:46;24/8/2005 00:59; 0.99 ;23/8/2005 03:46;1
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;26/5/2005 07:27;2/6/2005 03:52; 2.99 ;26/5/2005 07:27;7
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;28/5/2005 00:54;3/6/2005 20:47; 6.99 ;28/5/2005 00:54;6
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;28/5/2005 07:16;1/6/2005 08:36; 1.99 ;28/5/2005 07:16;4
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;16/6/2005 02:33;19/6/2005 20:50; 0.99 ;16/6/2005 02:33;3
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;17/6/2005 21:16;24/6/2005 22:42; 3.99 ;17/6/2005 21:16;7
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;18/6/2005 11:46;22/6/2005 11:37; 4.99 ;18/6/2005 11:46;4
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;21/6/2005 11:21;28/6/2005 15:37; 4.99 ;21/6/2005 11:21;7
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;7/7/2005 00:48;13/7/2005 06:30; 3.99 ;7/7/2005 00:48;6
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;7/7/2005 21:39;11/7/2005 23:40; 2.99 ;7/7/2005 21:39;4
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;10/7/2005 11:03;19/7/2005 15:38; 2.99 ;10/7/2005 11:03;9
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;11/7/2005 15:10;17/7/2005 14:20; 2.99 ;11/7/2005 15:10;6
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;11/7/2005 15:53;17/7/2005 18:09; 6.99 ;11/7/2005 15:53;6
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;27/7/2005 09:31;29/7/2005 10:48; 4.99 ;27/7/2005 09:31;2
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;28/7/2005 10:06;4/8/2005 08:38; 5.99 ;28/7/2005 10:06;7
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;28/7/2005 19:45;31/7/2005 22:07; 2.99 ;28/7/2005 19:45;3
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;30/7/2005 07:55;2/8/2005 13:49; 4.99 ;30/7/2005 07:55;3
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;30/7/2005 22:53;7/8/2005 00:22; 3.99 ;30/7/2005 22:53;8
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;1/8/2005 03:33;9/8/2005 07:58; 4.99 ;1/8/2005 03:33;8
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;1/8/2005 14:59;7/8/2005 11:38; 7.99 ;1/8/2005 14:59;6
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;2/8/2005 03:30;8/8/2005 05:52; 1.99 ;2/8/2005 03:30;6
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;17/8/2005 12:27;18/8/2005 07:07; 0.99 ;17/8/2005 12:27;1
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;18/8/2005 01:28;20/8/2005 20:52; 0.99 ;18/8/2005 01:28;2
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;19/8/2005 08:48;22/8/2005 04:13; 4.99 ;19/8/2005 08:48;3
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;19/8/2005 12:26;22/8/2005 13:26; 4.99 ;19/8/2005 12:26;3
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;19/8/2005 19:25;20/8/2005 20:57; 2.99 ;19/8/2005 19:25;1
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;21/8/2005 18:03;26/8/2005 19:46; 2.99 ;21/8/2005 18:03;5
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;22/8/2005 10:19;28/8/2005 05:12; 6.99 ;22/8/2005 10:19;6
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;22/8/2005 14:37;27/8/2005 17:40; 1.99 ;22/8/2005 14:37;5
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;22/8/2005 17:53;25/8/2005 18:43; 0.99 ;22/8/2005 17:53;3
+20;sharon;robinson;sharon.robinson@sakilacustomer.org;1;1688 okara way;nothwest border prov;21954;mardan;pakistan;23/8/2005 01:10;28/8/2005 20:49; 2.99 ;23/8/2005 01:10;5
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;26/5/2005 15:42;31/5/2005 13:21; 3.99 ;26/5/2005 15:42;5
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;27/5/2005 20:11;4/6/2005 21:18; 3.99 ;27/5/2005 20:11;8
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;28/5/2005 10:15;30/5/2005 08:32; 0.99 ;28/5/2005 10:15;2
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;18/6/2005 04:08;27/6/2005 07:58; 7.99 ;18/6/2005 04:08;9
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;18/6/2005 06:13;22/6/2005 08:53; 4.99 ;18/6/2005 06:13;4
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;18/6/2005 15:37;25/6/2005 17:11; 2.99 ;18/6/2005 15:37;7
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;19/6/2005 21:14;21/6/2005 17:46; 4.99 ;19/6/2005 21:14;2
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;21/6/2005 01:04;30/6/2005 00:10; 10.99 ;21/6/2005 01:04;9
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;9/7/2005 06:42;10/7/2005 08:21; 4.99 ;9/7/2005 06:42;1
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;10/7/2005 13:27;17/7/2005 08:24; 3.99 ;10/7/2005 13:27;7
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;10/7/2005 23:43;15/7/2005 05:21; 2.99 ;10/7/2005 23:43;5
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;26/7/2005 23:28;30/7/2005 02:22; 1.99 ;26/7/2005 23:28;4
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;28/7/2005 14:56;30/7/2005 09:56; 0.99 ;28/7/2005 14:56;2
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;28/7/2005 22:56;6/8/2005 04:53; 6.99 ;28/7/2005 22:56;9
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;29/7/2005 23:49;4/8/2005 20:11; 2.99 ;29/7/2005 23:49;6
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;30/7/2005 10:45;1/8/2005 09:40; 0.99 ;30/7/2005 10:45;2
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;31/7/2005 07:29;6/8/2005 01:35; 5.99 ;31/7/2005 07:29;6
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;1/8/2005 13:23;5/8/2005 15:30; 4.99 ;1/8/2005 13:23;4
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;1/8/2005 19:28;3/8/2005 00:41; 0.99 ;1/8/2005 19:28;2
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;2/8/2005 07:10;4/8/2005 07:42; 0.99 ;2/8/2005 07:10;2
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;17/8/2005 17:53;24/8/2005 14:41; 0.99 ;17/8/2005 17:53;7
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;17/8/2005 23:34;26/8/2005 01:18; 2.99 ;17/8/2005 23:34;9
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;18/8/2005 19:07;27/8/2005 17:20; 4.99 ;18/8/2005 19:07;9
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;18/8/2005 23:34;28/8/2005 05:00; 6.99 ;18/8/2005 23:34;10
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;19/8/2005 21:37;21/8/2005 18:07; 2.99 ;19/8/2005 21:37;2
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;19/8/2005 22:09;25/8/2005 20:25; 4.99 ;19/8/2005 22:09;6
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;19/8/2005 22:43;26/8/2005 18:29; 4.99 ;19/8/2005 22:43;7
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;20/8/2005 00:50;28/8/2005 23:00; 8.99 ;20/8/2005 00:50;8
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;20/8/2005 09:26;29/8/2005 08:16; 9.99 ;20/8/2005 09:26;9
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;20/8/2005 10:48;29/8/2005 15:30; 4.99 ;20/8/2005 10:48;9
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;20/8/2005 23:24;29/8/2005 02:53; 8.99 ;20/8/2005 23:24;9
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;21/8/2005 02:51;28/8/2005 21:38; 2.99 ;21/8/2005 02:51;7
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;21/8/2005 12:10;26/8/2005 14:42; 2.99 ;21/8/2005 12:10;5
+21;michelle;clark;michelle.clark@sakilacustomer.org;1;262 a corua (la corua) parkway;dhaka;34418;tangail;bangladesh;22/8/2005 03:20;23/8/2005 05:25; 4.99 ;22/8/2005 03:20;1
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;27/5/2005 07:49;5/6/2005 06:39; 4.99 ;27/5/2005 07:49;9
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;28/5/2005 08:31;6/6/2005 07:29; 4.99 ;28/5/2005 08:31;9
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;29/5/2005 21:07;7/6/2005 00:22; 8.99 ;29/5/2005 21:07;9
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;21/6/2005 17:18;22/6/2005 15:08; 2.99 ;21/6/2005 17:18;1
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;7/7/2005 12:00;11/7/2005 15:14; 2.99 ;7/7/2005 12:00;4
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;9/7/2005 15:23;15/7/2005 15:28; 6.99 ;9/7/2005 15:23;6
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;10/7/2005 15:48;13/7/2005 12:09; 2.99 ;10/7/2005 15:48;3
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;27/7/2005 04:42;2/8/2005 00:53; 4.99 ;27/7/2005 04:42;6
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;28/7/2005 04:02;5/8/2005 01:19; 7.99 ;28/7/2005 04:02;8
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;30/7/2005 20:38;31/7/2005 19:57; 0.99 ;30/7/2005 20:38;1
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;31/7/2005 03:01;5/8/2005 06:01; 4.99 ;31/7/2005 03:01;5
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;17/8/2005 19:54;26/8/2005 23:03; 5.99 ;17/8/2005 19:54;9
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;17/8/2005 23:22;21/8/2005 01:40; 2.99 ;17/8/2005 23:22;4
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;19/8/2005 00:42;23/8/2005 06:06; 0.99 ;19/8/2005 00:42;4
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;19/8/2005 09:43;28/8/2005 15:22; 9.99 ;19/8/2005 09:43;9
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;20/8/2005 22:18;27/8/2005 01:05; 2.99 ;20/8/2005 22:18;7
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;21/8/2005 16:24;26/8/2005 16:58; 6.99 ;21/8/2005 16:24;5
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;22/8/2005 13:18;29/8/2005 18:03; 7.99 ;22/8/2005 13:18;7
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;23/8/2005 06:03;30/8/2005 07:44; 6.99 ;23/8/2005 06:03;7
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;23/8/2005 08:48;25/8/2005 05:38; 4.99 ;23/8/2005 08:48;2
+22;laura;rodriguez;laura.rodriguez@sakilacustomer.org;1;28 charlotte amalie street;rabat-sal-zammour-z;37551;salé;morocco;23/8/2005 14:06;24/8/2005 19:59; 4.99 ;23/8/2005 14:06;1
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;25/5/2005 21:20;4/6/2005 01:25; 8.99 ;25/5/2005 21:20;10
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;28/5/2005 20:15;30/5/2005 22:02; 2.99 ;28/5/2005 20:15;2
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;31/5/2005 12:03;2/6/2005 15:54; 0.99 ;31/5/2005 12:03;2
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;19/6/2005 16:44;24/6/2005 13:45; 1.99 ;19/6/2005 16:44;5
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;19/6/2005 20:50;20/6/2005 18:54; 0.99 ;19/6/2005 20:50;1
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;20/6/2005 10:48;26/6/2005 11:30; 5.99 ;20/6/2005 10:48;6
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;20/6/2005 13:19;27/6/2005 14:54; 4.99 ;20/6/2005 13:19;7
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;21/6/2005 21:49;26/6/2005 19:51; 2.99 ;21/6/2005 21:49;5
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;6/7/2005 11:43;13/7/2005 07:55; 3.99 ;6/7/2005 11:43;7
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;6/7/2005 13:53;15/7/2005 10:03; 2.99 ;6/7/2005 13:53;9
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;8/7/2005 18:43;12/7/2005 14:28; 2.99 ;8/7/2005 18:43;4
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;11/7/2005 12:43;16/7/2005 07:23; 2.99 ;11/7/2005 12:43;5
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;11/7/2005 14:20;14/7/2005 18:34; 2.99 ;11/7/2005 14:20;3
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;12/7/2005 22:30;20/7/2005 03:20; 5.99 ;12/7/2005 22:30;8
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;27/7/2005 07:18;4/8/2005 10:28; 7.99 ;27/7/2005 07:18;8
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;28/7/2005 15:33;30/7/2005 15:32; 2.99 ;28/7/2005 15:33;2
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;29/7/2005 17:41;1/8/2005 18:22; 0.99 ;29/7/2005 17:41;3
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;30/7/2005 12:55;3/8/2005 11:31; 5.99 ;30/7/2005 12:55;4
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;30/7/2005 14:26;7/8/2005 18:16; 9.99 ;30/7/2005 14:26;8
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;31/7/2005 08:25;8/8/2005 04:16; 3.99 ;31/7/2005 08:25;8
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;31/7/2005 21:50;7/8/2005 23:37; 6.99 ;31/7/2005 21:50;7
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;2/8/2005 01:29;6/8/2005 00:07; 2.99 ;2/8/2005 01:29;4
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;16/8/2005 23:04;19/8/2005 20:57; 2.99 ;16/8/2005 23:04;3
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;19/8/2005 18:31;25/8/2005 15:49; 2.99 ;19/8/2005 18:31;6
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;19/8/2005 20:00;21/8/2005 17:03; 4.99 ;19/8/2005 20:00;2
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;19/8/2005 23:25;28/8/2005 01:04; 6.99 ;19/8/2005 23:25;9
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;20/8/2005 02:21;21/8/2005 03:26; 0.99 ;20/8/2005 02:21;1
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;20/8/2005 04:12;21/8/2005 02:33; 0.99 ;20/8/2005 04:12;1
+23;sarah;lewis;sarah.lewis@sakilacustomer.org;1;1780 hino boulevard;liepaja;7716;liepaja;latvia;21/8/2005 13:42;27/8/2005 11:55; 2.99 ;21/8/2005 13:42;6
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;31/5/2005 01:02;7/6/2005 01:36; 6.99 ;31/5/2005 01:02;7
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;31/5/2005 10:22;2/6/2005 12:21; 2.99 ;31/5/2005 10:22;2
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;16/6/2005 14:39;19/6/2005 15:37; 2.99 ;16/6/2005 14:39;3
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;17/6/2005 16:27;20/6/2005 20:46; 2.99 ;17/6/2005 16:27;3
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;17/6/2005 20:16;18/6/2005 17:03; 4.99 ;17/6/2005 20:16;1
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;18/6/2005 19:28;23/6/2005 16:41; 5.99 ;18/6/2005 19:28;5
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;20/6/2005 07:33;28/6/2005 09:23; 7.99 ;20/6/2005 07:33;8
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;6/7/2005 07:32;12/7/2005 09:37; 7.99 ;6/7/2005 07:32;6
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;7/7/2005 20:29;12/7/2005 19:17; 2.99 ;7/7/2005 20:29;5
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;9/7/2005 16:00;12/7/2005 12:45; 0.99 ;9/7/2005 16:00;3
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;10/7/2005 07:09;16/7/2005 07:23; 0.99 ;10/7/2005 07:09;6
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;12/7/2005 19:46;15/7/2005 16:56; 4.99 ;12/7/2005 19:46;3
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;27/7/2005 11:22;4/8/2005 05:45; 1.99 ;27/7/2005 11:22;8
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;30/7/2005 03:15;4/8/2005 07:10; 4.99 ;30/7/2005 03:15;5
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;31/7/2005 08:31;3/8/2005 10:25; 0.99 ;31/7/2005 08:31;3
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;31/7/2005 15:08;2/8/2005 20:27; 0.99 ;31/7/2005 15:08;2
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;1/8/2005 10:38;4/8/2005 04:55; 2.99 ;1/8/2005 10:38;3
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;2/8/2005 12:09;7/8/2005 08:52; 2.99 ;2/8/2005 12:09;5
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;17/8/2005 00:57;18/8/2005 23:16; 2.99 ;17/8/2005 00:57;1
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;18/8/2005 00:53;27/8/2005 00:09; 8.99 ;18/8/2005 00:53;9
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;18/8/2005 22:22;20/8/2005 01:44; 2.99 ;18/8/2005 22:22;2
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;19/8/2005 07:34;26/8/2005 03:57; 1.99 ;19/8/2005 07:34;7
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;19/8/2005 09:40;26/8/2005 05:48; 4.99 ;19/8/2005 09:40;7
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;19/8/2005 16:45;25/8/2005 15:25; 0.99 ;19/8/2005 16:45;6
+24;kimberly;lee;kimberly.lee@sakilacustomer.org;1;96 tafuna way;córdoba;99865;córdoba;argentina;22/8/2005 21:28;25/8/2005 17:15; 4.99 ;22/8/2005 21:28;3
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;25/5/2005 14:31;1/6/2005 10:07; 7.99 ;25/5/2005 14:31;7
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;31/5/2005 04:50;2/6/2005 01:53; 2.99 ;31/5/2005 04:50;2
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;15/6/2005 12:17;19/6/2005 07:40; 4.99 ;15/6/2005 12:17;4
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;15/6/2005 14:09;19/6/2005 18:11; 2.99 ;15/6/2005 14:09;4
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;16/6/2005 17:13;22/6/2005 20:46; 6.99 ;16/6/2005 17:13;6
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;19/6/2005 08:23;26/6/2005 09:52; 8.99 ;19/6/2005 08:23;7
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;20/6/2005 02:41;23/6/2005 04:43; 4.99 ;20/6/2005 02:41;3
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;21/6/2005 20:53;24/6/2005 02:20; 4.99 ;21/6/2005 20:53;3
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;7/7/2005 15:26;11/7/2005 14:27; 2.99 ;7/7/2005 15:26;4
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;7/7/2005 17:50;10/7/2005 13:53; 0.99 ;7/7/2005 17:50;3
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;7/7/2005 21:31;13/7/2005 19:00; 2.99 ;7/7/2005 21:31;6
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;10/7/2005 19:19;12/7/2005 20:11; 2.99 ;10/7/2005 19:19;2
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;12/7/2005 11:06;19/7/2005 16:52; 4.99 ;12/7/2005 11:06;7
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;12/7/2005 22:02;18/7/2005 23:30; 2.99 ;12/7/2005 22:02;6
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;29/7/2005 15:40;31/7/2005 20:59; 2.99 ;29/7/2005 15:40;2
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;30/7/2005 00:15;1/8/2005 00:22; 0.99 ;30/7/2005 00:15;2
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;30/7/2005 10:12;6/8/2005 09:16; 8.99 ;30/7/2005 10:12;7
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;30/7/2005 17:56;3/8/2005 21:27; 2.99 ;30/7/2005 17:56;4
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;31/7/2005 14:59;6/8/2005 14:05; 2.99 ;31/7/2005 14:59;6
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;31/7/2005 20:49;5/8/2005 15:55; 2.99 ;31/7/2005 20:49;5
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;1/8/2005 04:49;9/8/2005 08:04; 5.99 ;1/8/2005 04:49;8
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;2/8/2005 00:12;4/8/2005 03:50; 2.99 ;2/8/2005 00:12;2
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;2/8/2005 02:05;6/8/2005 03:46; 2.99 ;2/8/2005 02:05;4
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;17/8/2005 04:48;18/8/2005 01:53; 0.99 ;17/8/2005 04:48;1
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;19/8/2005 04:48;23/8/2005 23:32; 0.99 ;19/8/2005 04:48;4
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;21/8/2005 03:38;28/8/2005 09:16; 4.99 ;21/8/2005 03:38;7
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;21/8/2005 05:13;26/8/2005 04:03; 4.99 ;21/8/2005 05:13;5
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;23/8/2005 02:57;25/8/2005 01:47; 0.99 ;23/8/2005 02:57;2
+25;deborah;walker;deborah.walker@sakilacustomer.org;1;934 san felipe de puerto plata street;sind;99780;shikarpur;pakistan;23/8/2005 20:00;30/8/2005 00:25; 5.99 ;23/8/2005 20:00;7
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);29/5/2005 16:59;3/6/2005 16:22; 2.99 ;29/5/2005 16:59;5
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);31/5/2005 14:33;7/6/2005 11:30; 2.99 ;31/5/2005 14:33;7
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);15/6/2005 18:53;24/6/2005 15:28; 5.99 ;15/6/2005 18:53;9
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);16/6/2005 14:01;25/6/2005 19:29; 4.99 ;16/6/2005 14:01;9
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);17/6/2005 18:14;26/6/2005 18:10; 9.99 ;17/6/2005 18:14;9
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);18/6/2005 17:07;24/6/2005 19:16; 3.99 ;18/6/2005 17:07;6
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);18/6/2005 17:25;23/6/2005 21:09; 6.99 ;18/6/2005 17:25;5
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);19/6/2005 01:27;20/6/2005 02:15; 4.99 ;19/6/2005 01:27;1
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);19/6/2005 16:21;21/6/2005 22:07; 4.99 ;19/6/2005 16:21;2
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);7/7/2005 04:32;12/7/2005 08:30; 2.99 ;7/7/2005 04:32;5
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);7/7/2005 14:42;13/7/2005 20:23; 4.99 ;7/7/2005 14:42;6
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);7/7/2005 20:41;14/7/2005 15:15; 4.99 ;7/7/2005 20:41;7
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);7/7/2005 21:28;8/7/2005 17:04; 0.99 ;7/7/2005 21:28;1
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);7/7/2005 22:39;16/7/2005 19:24; 6.99 ;7/7/2005 22:39;9
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);8/7/2005 03:43;15/7/2005 08:44; 3.99 ;8/7/2005 03:43;7
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);8/7/2005 09:09;17/7/2005 03:54; 6.99 ;8/7/2005 09:09;9
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);9/7/2005 21:32;15/7/2005 00:27; 2.99 ;9/7/2005 21:32;6
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);11/7/2005 09:19;17/7/2005 14:45; 1.99 ;11/7/2005 09:19;6
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);11/7/2005 14:53;15/7/2005 09:26; 2.99 ;11/7/2005 14:53;4
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);27/7/2005 13:55;1/8/2005 19:52; 0.99 ;27/7/2005 13:55;5
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);29/7/2005 00:33;3/8/2005 01:31; 4.99 ;29/7/2005 00:33;5
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);30/7/2005 23:31;2/8/2005 18:25; 0.99 ;30/7/2005 23:31;3
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);1/8/2005 06:42;7/8/2005 06:12; 3.99 ;1/8/2005 06:42;6
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);2/8/2005 04:48;6/8/2005 08:00; 3.99 ;2/8/2005 04:48;4
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);2/8/2005 16:04;4/8/2005 18:47; 2.99 ;2/8/2005 16:04;2
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);2/8/2005 17:00;3/8/2005 18:54; 0.99 ;2/8/2005 17:00;1
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);17/8/2005 08:54;25/8/2005 03:28; 5.99 ;17/8/2005 08:54;8
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);19/8/2005 11:25;21/8/2005 05:52; 4.99 ;19/8/2005 11:25;2
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);21/8/2005 03:24;22/8/2005 07:25; 4.99 ;21/8/2005 03:24;1
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);21/8/2005 03:37;28/8/2005 05:31; 8.99 ;21/8/2005 03:37;7
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);21/8/2005 17:51;28/8/2005 15:36; 1.99 ;21/8/2005 17:51;7
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);21/8/2005 20:12;28/8/2005 15:11; 7.99 ;21/8/2005 20:12;7
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);22/8/2005 22:34;23/8/2005 23:25; 2.99 ;22/8/2005 22:34;1
+26;jessica;hall;jessica.hall@sakilacustomer.org;1;18 duisburg boulevard;;58327;città del vaticano;holy see (vatican city state);23/8/2005 11:16;1/9/2005 13:24; 7.99 ;23/8/2005 11:16;9
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;29/5/2005 16:03;7/6/2005 11:07; 2.99 ;29/5/2005 16:03;9
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;15/6/2005 10:11;16/6/2005 15:00; 4.99 ;15/6/2005 10:11;1
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;15/6/2005 21:17;23/6/2005 22:01; 4.99 ;15/6/2005 21:17;8
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;16/6/2005 13:05;17/6/2005 09:53; 2.99 ;16/6/2005 13:05;1
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;17/6/2005 08:59;23/6/2005 14:38; 3.99 ;17/6/2005 08:59;6
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;18/6/2005 23:48;21/6/2005 04:58; 2.99 ;18/6/2005 23:48;3
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;19/6/2005 20:03;25/6/2005 22:50; 4.99 ;19/6/2005 20:03;6
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;20/6/2005 12:28;25/6/2005 07:48; 1.99 ;20/6/2005 12:28;5
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;21/6/2005 17:22;28/6/2005 12:34; 3.99 ;21/6/2005 17:22;7
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;7/7/2005 02:52;11/7/2005 22:32; 0.99 ;7/7/2005 02:52;4
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;8/7/2005 02:34;17/7/2005 06:03; 5.99 ;8/7/2005 02:34;9
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;10/7/2005 03:01;13/7/2005 06:53; 0.99 ;10/7/2005 03:01;3
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;10/7/2005 11:45;13/7/2005 16:40; 4.99 ;10/7/2005 11:45;3
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;11/7/2005 07:36;13/7/2005 11:30; 0.99 ;11/7/2005 07:36;2
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;12/7/2005 05:26;16/7/2005 05:10; 5.99 ;12/7/2005 05:26;4
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;12/7/2005 11:13;17/7/2005 09:10; 4.99 ;12/7/2005 11:13;5
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;28/7/2005 12:13;5/8/2005 12:02; 1.99 ;28/7/2005 12:13;8
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;30/7/2005 14:06;3/8/2005 19:46; 0.99 ;30/7/2005 14:06;4
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;31/7/2005 05:12;9/8/2005 07:31; 5.99 ;31/7/2005 05:12;9
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;31/7/2005 06:34;9/8/2005 09:15; 7.99 ;31/7/2005 06:34;9
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;31/7/2005 14:39;9/8/2005 09:46; 4.99 ;31/7/2005 14:39;9
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;1/8/2005 21:51;10/8/2005 18:51; 7.99 ;1/8/2005 21:51;9
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;2/8/2005 00:00;3/8/2005 23:09; 4.99 ;2/8/2005 00:00;1
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;2/8/2005 13:12;5/8/2005 17:37; 0.99 ;2/8/2005 13:12;3
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;17/8/2005 05:25;25/8/2005 04:37; 8.99 ;17/8/2005 05:25;8
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;17/8/2005 08:48;24/8/2005 07:47; 6.99 ;17/8/2005 08:48;7
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;17/8/2005 19:52;23/8/2005 21:49; 5.99 ;17/8/2005 19:52;6
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;18/8/2005 11:28;21/8/2005 09:47; 0.99 ;18/8/2005 11:28;3
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;18/8/2005 13:57;22/8/2005 09:46; 2.99 ;18/8/2005 13:57;4
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;20/8/2005 13:13;25/8/2005 09:46; 4.99 ;20/8/2005 13:13;5
+27;shirley;allen;shirley.allen@sakilacustomer.org;1;217 botshabelo place;southern mindanao;49521;davao;philippines;22/8/2005 10:00;26/8/2005 08:26; 0.99 ;22/8/2005 10:00;4
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;27/5/2005 10:37;30/5/2005 05:45; 2.99 ;27/5/2005 10:37;3
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;30/5/2005 04:19;31/5/2005 02:28; 2.99 ;30/5/2005 04:19;1
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;15/6/2005 04:58;17/6/2005 23:56; 2.99 ;15/6/2005 04:58;2
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;16/6/2005 01:24;18/6/2005 06:24; 4.99 ;16/6/2005 01:24;2
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;18/6/2005 08:18;26/6/2005 11:48; 3.99 ;18/6/2005 08:18;8
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;19/6/2005 06:30;25/6/2005 11:16; 0.99 ;19/6/2005 06:30;6
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;21/6/2005 02:25;23/6/2005 05:46; 0.99 ;21/6/2005 02:25;2
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;6/7/2005 16:38;9/7/2005 14:59; 0.99 ;6/7/2005 16:38;3
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;8/7/2005 11:45;10/7/2005 09:46; 0.99 ;8/7/2005 11:45;2
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;8/7/2005 22:58;16/7/2005 18:58; 4.99 ;8/7/2005 22:58;8
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;10/7/2005 07:21;16/7/2005 01:58; 2.99 ;10/7/2005 07:21;6
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;10/7/2005 15:49;18/7/2005 19:30; 5.99 ;10/7/2005 15:49;8
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;11/7/2005 02:49;18/7/2005 05:05; 0.99 ;11/7/2005 02:49;7
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;12/7/2005 01:37;12/7/2005 20:21; 0.99 ;12/7/2005 01:37;0
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;27/7/2005 23:07;5/8/2005 02:17; 9.99 ;27/7/2005 23:07;9
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;29/7/2005 08:18;3/8/2005 04:50; 4.99 ;29/7/2005 08:18;5
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;30/7/2005 01:07;2/8/2005 06:34; 2.99 ;30/7/2005 01:07;3
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;31/7/2005 01:44;5/8/2005 05:25; 2.99 ;31/7/2005 01:44;5
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;31/7/2005 03:22;5/8/2005 08:23; 4.99 ;31/7/2005 03:22;5
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;31/7/2005 07:40;1/8/2005 03:50; 4.99 ;31/7/2005 07:40;1
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;31/7/2005 21:14;3/8/2005 01:48; 2.99 ;31/7/2005 21:14;3
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;1/8/2005 03:48;9/8/2005 01:19; 6.99 ;1/8/2005 03:48;8
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;2/8/2005 20:32;8/8/2005 23:21; 2.99 ;2/8/2005 20:32;6
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;17/8/2005 13:44;21/8/2005 17:20; 3.99 ;17/8/2005 13:44;4
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;18/8/2005 01:54;27/8/2005 04:32; 2.99 ;18/8/2005 01:54;9
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;18/8/2005 07:44;19/8/2005 02:26; 0.99 ;18/8/2005 07:44;1
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;18/8/2005 20:59;24/8/2005 22:40; 2.99 ;18/8/2005 20:59;6
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;20/8/2005 12:11;21/8/2005 15:53; 4.99 ;20/8/2005 12:11;1
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;21/8/2005 15:34;27/8/2005 11:51; 2.99 ;21/8/2005 15:34;6
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;23/8/2005 00:48;28/8/2005 00:33; 4.99 ;23/8/2005 00:48;5
+28;cynthia;young;cynthia.young@sakilacustomer.org;1;1425 shikarpur manor;bihar;65599;munger (monghyr);india;23/8/2005 02:08;23/8/2005 20:23; 2.99 ;23/8/2005 02:08;0
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;26/5/2005 06:52;30/5/2005 04:08; 1.99 ;26/5/2005 06:52;4
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;19/6/2005 10:38;23/6/2005 14:20; 0.99 ;19/6/2005 10:38;4
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;19/6/2005 11:42;23/6/2005 07:16; 0.99 ;19/6/2005 11:42;4
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;19/6/2005 13:33;28/6/2005 15:11; 7.99 ;19/6/2005 13:33;9
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;19/6/2005 15:42;22/6/2005 17:28; 2.99 ;19/6/2005 15:42;3
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;19/6/2005 19:18;20/6/2005 20:11; 2.99 ;19/6/2005 19:18;1
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;20/6/2005 04:16;21/6/2005 05:04; 2.99 ;20/6/2005 04:16;1
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;21/6/2005 08:49;22/6/2005 12:31; 2.99 ;21/6/2005 08:49;1
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;7/7/2005 14:24;14/7/2005 13:12; 6.99 ;7/7/2005 14:24;7
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;7/7/2005 17:36;13/7/2005 12:00; 0.99 ;7/7/2005 17:36;6
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;8/7/2005 03:40;13/7/2005 06:53; 0.99 ;8/7/2005 03:40;5
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;9/7/2005 21:55;19/7/2005 01:18; 10.99 ;9/7/2005 21:55;10
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;10/7/2005 17:59;18/7/2005 18:13; 1.99 ;10/7/2005 17:59;8
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;27/7/2005 10:12;31/7/2005 08:40; 3.99 ;27/7/2005 10:12;4
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;27/7/2005 18:18;3/8/2005 13:55; 6.99 ;27/7/2005 18:18;7
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;27/7/2005 18:27;29/7/2005 23:52; 0.99 ;27/7/2005 18:27;2
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;29/7/2005 15:50;3/8/2005 18:30; 2.99 ;29/7/2005 15:50;5
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;30/7/2005 19:50;3/8/2005 22:38; 4.99 ;30/7/2005 19:50;4
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;31/7/2005 15:48;3/8/2005 12:42; 4.99 ;31/7/2005 15:48;3
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;1/8/2005 12:36;7/8/2005 07:42; 5.99 ;1/8/2005 12:36;6
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;2/8/2005 01:30;6/8/2005 05:01; 1.99 ;2/8/2005 01:30;4
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;2/8/2005 07:29;7/8/2005 01:59; 4.99 ;2/8/2005 07:29;5
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;17/8/2005 17:34;21/8/2005 12:59; 2.99 ;17/8/2005 17:34;4
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;18/8/2005 12:48;19/8/2005 16:19; 4.99 ;18/8/2005 12:48;1
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;18/8/2005 13:20;22/8/2005 12:55; 2.99 ;18/8/2005 13:20;4
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;18/8/2005 15:20;24/8/2005 12:38; 6.99 ;18/8/2005 15:20;6
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;18/8/2005 17:16;27/8/2005 12:57; 6.99 ;18/8/2005 17:16;9
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;19/8/2005 13:50;26/8/2005 12:34; 2.99 ;19/8/2005 13:50;7
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;19/8/2005 23:36;23/8/2005 18:38; 0.99 ;19/8/2005 23:36;4
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;20/8/2005 12:03;27/8/2005 10:13; 2.99 ;20/8/2005 12:03;7
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;20/8/2005 14:00;28/8/2005 10:11; 3.99 ;20/8/2005 14:00;8
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;21/8/2005 03:01;22/8/2005 07:19; 0.99 ;21/8/2005 03:01;1
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;21/8/2005 21:01;22/8/2005 15:13; 4.99 ;21/8/2005 21:01;1
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;22/8/2005 07:35;29/8/2005 13:17; 7.99 ;22/8/2005 07:35;7
+29;angela;hernandez;angela.hernandez@sakilacustomer.org;1;786 aurora avenue;yamaguchi;65750;shimonoseki;japan;22/8/2005 07:53;28/8/2005 03:47; 5.99 ;22/8/2005 07:53;6
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;17/6/2005 02:39;24/6/2005 04:41; 1.99 ;17/6/2005 02:39;7
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;17/6/2005 04:25;26/6/2005 08:44; 2.99 ;17/6/2005 04:25;9
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;17/6/2005 22:59;24/6/2005 04:11; 4.99 ;17/6/2005 22:59;7
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;19/6/2005 15:10;28/6/2005 13:05; 2.99 ;19/6/2005 15:10;9
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;6/7/2005 22:23;7/7/2005 22:21; 4.99 ;6/7/2005 22:23;1
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;8/7/2005 00:21;11/7/2005 18:48; 2.99 ;8/7/2005 00:21;3
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;8/7/2005 09:13;10/7/2005 06:17; 2.99 ;8/7/2005 09:13;2
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;9/7/2005 02:34;14/7/2005 20:45; 5.99 ;9/7/2005 02:34;5
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;9/7/2005 06:44;17/7/2005 04:24; 9.99 ;9/7/2005 06:44;8
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;9/7/2005 15:14;12/7/2005 12:51; 0.99 ;9/7/2005 15:14;3
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;11/7/2005 00:08;17/7/2005 21:01; 7.99 ;11/7/2005 00:08;6
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;11/7/2005 15:02;14/7/2005 11:37; 0.99 ;11/7/2005 15:02;3
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;11/7/2005 21:06;16/7/2005 02:51; 2.99 ;11/7/2005 21:06;5
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;27/7/2005 16:03;4/8/2005 11:27; 2.99 ;27/7/2005 16:03;8
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;28/7/2005 06:45;30/7/2005 12:18; 4.99 ;28/7/2005 06:45;2
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;28/7/2005 16:12;31/7/2005 17:15; 4.99 ;28/7/2005 16:12;3
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;28/7/2005 16:32;30/7/2005 21:08; 4.99 ;28/7/2005 16:32;2
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;28/7/2005 18:09;4/8/2005 21:47; 4.99 ;28/7/2005 18:09;7
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;29/7/2005 14:37;2/8/2005 19:32; 2.99 ;29/7/2005 14:37;4
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;30/7/2005 16:55;7/8/2005 11:23; 2.99 ;30/7/2005 16:55;8
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;31/7/2005 02:04;6/8/2005 04:07; 0.99 ;31/7/2005 02:04;6
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;31/7/2005 05:33;4/8/2005 07:43; 0.99 ;31/7/2005 05:33;4
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;31/7/2005 17:40;4/8/2005 18:15; 2.99 ;31/7/2005 17:40;4
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;1/8/2005 01:57;10/8/2005 07:38; 6.99 ;1/8/2005 01:57;9
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;18/8/2005 03:27;26/8/2005 04:34; 2.99 ;18/8/2005 03:27;8
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;18/8/2005 14:29;26/8/2005 09:47; 2.99 ;18/8/2005 14:29;8
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;18/8/2005 22:58;22/8/2005 23:33; 0.99 ;18/8/2005 22:58;4
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;19/8/2005 23:35;24/8/2005 18:14; 0.99 ;19/8/2005 23:35;5
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;20/8/2005 08:50;21/8/2005 09:05; 4.99 ;20/8/2005 08:50;1
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;21/8/2005 08:37;26/8/2005 03:37; 0.99 ;21/8/2005 08:37;5
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;21/8/2005 17:18;26/8/2005 11:36; 2.99 ;21/8/2005 17:18;5
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;22/8/2005 10:39;25/8/2005 16:03; 4.99 ;22/8/2005 10:39;3
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;23/8/2005 04:17;1/9/2005 00:43; 4.99 ;23/8/2005 04:17;9
+30;melissa;king;melissa.king@sakilacustomer.org;1;1668 anpolis street;taipei;50199;lungtan;taiwan;23/8/2005 15:17;27/8/2005 13:04; 2.99 ;23/8/2005 15:17;4
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;16/6/2005 10:05;22/6/2005 06:26; 4.99 ;16/6/2005 10:05;6
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;16/6/2005 23:20;20/6/2005 02:34; 1.99 ;16/6/2005 23:20;4
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;18/6/2005 03:57;21/6/2005 09:42; 0.99 ;18/6/2005 03:57;3
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;18/6/2005 11:35;27/6/2005 11:56; 6.99 ;18/6/2005 11:35;9
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;18/6/2005 15:49;27/6/2005 20:31; 7.99 ;18/6/2005 15:49;9
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;18/6/2005 18:34;19/6/2005 16:50; 0.99 ;18/6/2005 18:34;1
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;19/6/2005 01:20;23/6/2005 04:10; 0.99 ;19/6/2005 01:20;4
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;19/6/2005 10:06;21/6/2005 04:30; 4.99 ;19/6/2005 10:06;2
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;20/6/2005 18:05;26/6/2005 17:28; 2.99 ;20/6/2005 18:05;6
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;20/6/2005 22:19;24/6/2005 17:18; 1.99 ;20/6/2005 22:19;4
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;21/6/2005 00:38;21/6/2005 22:49; 0.99 ;21/6/2005 00:38;0
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;6/7/2005 10:12;9/7/2005 08:52; 4.99 ;6/7/2005 10:12;3
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;6/7/2005 22:45;9/7/2005 23:54; 4.99 ;6/7/2005 22:45;3
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;7/7/2005 07:15;14/7/2005 12:10; 6.99 ;7/7/2005 07:15;7
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;8/7/2005 13:24;17/7/2005 17:44; 9.99 ;8/7/2005 13:24;9
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;11/7/2005 12:34;19/7/2005 15:17; 3.99 ;11/7/2005 12:34;8
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;12/7/2005 06:26;13/7/2005 06:44; 4.99 ;12/7/2005 06:26;1
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;27/7/2005 01:23;3/8/2005 02:10; 1.99 ;27/7/2005 01:23;7
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;27/7/2005 06:47;3/8/2005 01:12; 3.99 ;27/7/2005 06:47;7
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;27/7/2005 08:09;29/7/2005 13:00; 2.99 ;27/7/2005 08:09;2
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;27/7/2005 18:49;28/7/2005 20:45; 2.99 ;27/7/2005 18:49;1
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;30/7/2005 04:53;3/8/2005 07:10; 0.99 ;30/7/2005 04:53;4
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;17/8/2005 22:17;21/8/2005 01:45; 4.99 ;17/8/2005 22:17;4
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;18/8/2005 08:26;23/8/2005 02:51; 0.99 ;18/8/2005 08:26;5
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;23/8/2005 09:37;31/8/2005 06:01; 6.99 ;23/8/2005 09:37;8
+31;brenda;wright;brenda.wright@sakilacustomer.org;1;33 gorontalo way;west bengali;30348;kamarhati;india;23/8/2005 14:58;28/8/2005 13:30; 6.99 ;23/8/2005 14:58;5
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;27/5/2005 23:00;28/5/2005 21:30; 4.99 ;27/5/2005 23:00;1
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;29/5/2005 17:52;30/5/2005 14:35; 4.99 ;29/5/2005 17:52;1
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;31/5/2005 09:12;1/6/2005 06:15; 4.99 ;31/5/2005 09:12;1
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;17/6/2005 03:53;25/6/2005 07:37; 6.99 ;17/6/2005 03:53;8
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;17/6/2005 23:39;22/6/2005 20:04; 0.99 ;17/6/2005 23:39;5
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;19/6/2005 08:22;27/6/2005 11:13; 5.99 ;19/6/2005 08:22;8
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;20/6/2005 02:02;25/6/2005 02:45; 1.99 ;20/6/2005 02:02;5
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;6/7/2005 00:11;13/7/2005 19:01; 2.99 ;6/7/2005 00:11;7
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;7/7/2005 22:48;9/7/2005 18:55; 2.99 ;7/7/2005 22:48;2
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;8/7/2005 15:33;10/7/2005 12:38; 2.99 ;8/7/2005 15:33;2
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;8/7/2005 20:37;10/7/2005 21:53; 0.99 ;8/7/2005 20:37;2
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;9/7/2005 15:57;17/7/2005 13:42; 9.99 ;9/7/2005 15:57;8
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;10/7/2005 13:13;17/7/2005 14:41; 0.99 ;10/7/2005 13:13;7
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;10/7/2005 23:22;14/7/2005 04:42; 2.99 ;10/7/2005 23:22;4
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;11/7/2005 07:58;16/7/2005 09:52; 3.99 ;11/7/2005 07:58;5
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;12/7/2005 00:49;13/7/2005 01:54; 2.99 ;12/7/2005 00:49;1
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;27/7/2005 04:34;5/8/2005 00:21; 6.99 ;27/7/2005 04:34;9
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;27/7/2005 23:23;4/8/2005 00:16; 5.99 ;27/7/2005 23:23;8
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;28/7/2005 07:26;3/8/2005 07:45; 2.99 ;28/7/2005 07:26;6
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;29/7/2005 05:52;4/8/2005 08:12; 5.99 ;29/7/2005 05:52;6
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;29/7/2005 07:46;30/7/2005 07:07; 2.99 ;29/7/2005 07:46;1
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;30/7/2005 01:42;4/8/2005 03:53; 2.99 ;30/7/2005 01:42;5
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;2/8/2005 09:22;4/8/2005 14:30; 4.99 ;2/8/2005 09:22;2
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;17/8/2005 12:54;21/8/2005 11:21; 4.99 ;17/8/2005 12:54;4
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;18/8/2005 09:50;26/8/2005 06:45; 9.99 ;18/8/2005 09:50;8
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;20/8/2005 10:31;28/8/2005 06:51; 8.99 ;20/8/2005 10:31;8
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;20/8/2005 17:16;27/8/2005 12:03; 1.99 ;20/8/2005 17:16;7
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;20/8/2005 23:18;26/8/2005 21:59; 0.99 ;20/8/2005 23:18;6
+32;amy;lopez;amy.lopez@sakilacustomer.org;1;176 mandaluyong place;uttar pradesh;65213;jhansi;india;21/8/2005 16:32;30/8/2005 12:03; 5.99 ;21/8/2005 16:32;9
+33;anna;hill;anna.hill@sakilacustomer.org;1;127 purnea (purnia) manor;piemonte;79388;alessandria;italy;26/5/2005 02:28;2/6/2005 03:21; 2.99 ;26/5/2005 02:28;7
+33;anna;hill;anna.hill@sakilacustomer.org;1;127 purnea (purnia) manor;piemonte;79388;alessandria;italy;15/6/2005 09:46;24/6/2005 08:56; 10.99 ;15/6/2005 09:46;9
+33;anna;hill;anna.hill@sakilacustomer.org;1;127 purnea (purnia) manor;piemonte;79388;alessandria;italy;20/6/2005 22:21;27/6/2005 19:41; 8.99 ;20/6/2005 22:21;7
+33;anna;hill;anna.hill@sakilacustomer.org;1;127 purnea (purnia) manor;piemonte;79388;alessandria;italy;7/7/2005 06:01;15/7/2005 02:52; 5.99 ;7/7/2005 06:01;8
+33;anna;hill;anna.hill@sakilacustomer.org;1;127 purnea (purnia) manor;piemonte;79388;alessandria;italy;9/7/2005 20:49;10/7/2005 16:30; 0.99 ;9/7/2005 20:49;1
+33;anna;hill;anna.hill@sakilacustomer.org;1;127 purnea (purnia) manor;piemonte;79388;alessandria;italy;10/7/2005 11:14;11/7/2005 15:46; 4.99 ;10/7/2005 11:14;1
+33;anna;hill;anna.hill@sakilacustomer.org;1;127 purnea (purnia) manor;piemonte;79388;alessandria;italy;11/7/2005 16:36;13/7/2005 14:04; 0.99 ;11/7/2005 16:36;2
+33;anna;hill;anna.hill@sakilacustomer.org;1;127 purnea (purnia) manor;piemonte;79388;alessandria;italy;28/7/2005 14:53;29/7/2005 18:17; 4.99 ;28/7/2005 14:53;1
+33;anna;hill;anna.hill@sakilacustomer.org;1;127 purnea (purnia) manor;piemonte;79388;alessandria;italy;30/7/2005 06:31;3/8/2005 12:20; 4.99 ;30/7/2005 06:31;4
+33;anna;hill;anna.hill@sakilacustomer.org;1;127 purnea (purnia) manor;piemonte;79388;alessandria;italy;30/7/2005 08:17;3/8/2005 09:35; 4.99 ;30/7/2005 08:17;4
+33;anna;hill;anna.hill@sakilacustomer.org;1;127 purnea (purnia) manor;piemonte;79388;alessandria;italy;30/7/2005 14:26;4/8/2005 16:12; 1.99 ;30/7/2005 14:26;5
+33;anna;hill;anna.hill@sakilacustomer.org;1;127 purnea (purnia) manor;piemonte;79388;alessandria;italy;1/8/2005 04:59;5/8/2005 02:26; 2.99 ;1/8/2005 04:59;4
+33;anna;hill;anna.hill@sakilacustomer.org;1;127 purnea (purnia) manor;piemonte;79388;alessandria;italy;2/8/2005 00:27;2/8/2005 20:00; 4.99 ;2/8/2005 00:27;0
+33;anna;hill;anna.hill@sakilacustomer.org;1;127 purnea (purnia) manor;piemonte;79388;alessandria;italy;19/8/2005 16:25;26/8/2005 12:27; 7.99 ;19/8/2005 16:25;7
+33;anna;hill;anna.hill@sakilacustomer.org;1;127 purnea (purnia) manor;piemonte;79388;alessandria;italy;20/8/2005 14:50;23/8/2005 12:10; 2.99 ;20/8/2005 14:50;3
+33;anna;hill;anna.hill@sakilacustomer.org;1;127 purnea (purnia) manor;piemonte;79388;alessandria;italy;20/8/2005 18:11;28/8/2005 14:59; 7.99 ;20/8/2005 18:11;8
+33;anna;hill;anna.hill@sakilacustomer.org;1;127 purnea (purnia) manor;piemonte;79388;alessandria;italy;20/8/2005 20:12;23/8/2005 00:23; 0.99 ;20/8/2005 20:12;3
+33;anna;hill;anna.hill@sakilacustomer.org;1;127 purnea (purnia) manor;piemonte;79388;alessandria;italy;21/8/2005 18:29;26/8/2005 20:48; 0.99 ;21/8/2005 18:29;5
+33;anna;hill;anna.hill@sakilacustomer.org;1;127 purnea (purnia) manor;piemonte;79388;alessandria;italy;22/8/2005 11:43;29/8/2005 12:16; 5.99 ;22/8/2005 11:43;7
+33;anna;hill;anna.hill@sakilacustomer.org;1;127 purnea (purnia) manor;piemonte;79388;alessandria;italy;22/8/2005 12:28;26/8/2005 16:12; 2.99 ;22/8/2005 12:28;4
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;17/6/2005 04:29;21/6/2005 05:58; 4.99 ;17/6/2005 04:29;4
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;18/6/2005 05:29;22/6/2005 00:19; 5.99 ;18/6/2005 05:29;4
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;20/6/2005 20:35;26/6/2005 01:01; 0.99 ;20/6/2005 20:35;6
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;6/7/2005 00:24;10/7/2005 05:38; 3.99 ;6/7/2005 00:24;4
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;6/7/2005 20:09;8/7/2005 23:53; 2.99 ;6/7/2005 20:09;2
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;9/7/2005 10:22;13/7/2005 04:41; 4.99 ;9/7/2005 10:22;4
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;10/7/2005 06:49;14/7/2005 01:53; 4.99 ;10/7/2005 06:49;4
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;10/7/2005 21:32;19/7/2005 21:35; 5.99 ;10/7/2005 21:32;9
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;27/7/2005 02:15;28/7/2005 07:46; 2.99 ;27/7/2005 02:15;1
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;27/7/2005 06:09;2/8/2005 09:31; 2.99 ;27/7/2005 06:09;6
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;27/7/2005 21:20;30/7/2005 21:38; 0.99 ;27/7/2005 21:20;3
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;30/7/2005 11:17;6/8/2005 15:16; 3.99 ;30/7/2005 11:17;7
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;1/8/2005 11:52;2/8/2005 10:47; 0.99 ;1/8/2005 11:52;1
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;1/8/2005 14:58;2/8/2005 13:38; 4.99 ;1/8/2005 14:58;1
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;2/8/2005 08:05;4/8/2005 07:28; 0.99 ;2/8/2005 08:05;2
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;16/8/2005 23:18;23/8/2005 19:52; 2.99 ;16/8/2005 23:18;7
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;17/8/2005 07:15;19/8/2005 01:44; 4.99 ;17/8/2005 07:15;2
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;18/8/2005 04:57;18/8/2005 23:20; 2.99 ;18/8/2005 04:57;0
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;18/8/2005 16:42;23/8/2005 18:27; 2.99 ;18/8/2005 16:42;5
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;18/8/2005 18:36;22/8/2005 22:01; 0.99 ;18/8/2005 18:36;4
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;19/8/2005 21:21;26/8/2005 16:17; 4.99 ;19/8/2005 21:21;7
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;20/8/2005 17:55;22/8/2005 20:49; 2.99 ;20/8/2005 17:55;2
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;21/8/2005 20:32;26/8/2005 18:07; 5.99 ;21/8/2005 20:32;5
+34;rebecca;scott;rebecca.scott@sakilacustomer.org;1;61 tama street;okayama;94065;kurashiki;japan;21/8/2005 20:54;30/8/2005 16:46; 7.99 ;21/8/2005 20:54;9
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;25/5/2005 06:05;30/5/2005 03:04; 3.99 ;25/5/2005 06:05;5
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;27/5/2005 15:34;5/6/2005 09:44; 6.99 ;27/5/2005 15:34;9
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;16/6/2005 04:09;21/6/2005 05:21; 0.99 ;16/6/2005 04:09;5
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;17/6/2005 10:47;19/6/2005 05:12; 2.99 ;17/6/2005 10:47;2
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;18/6/2005 03:50;26/6/2005 07:16; 4.99 ;18/6/2005 03:50;8
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;18/6/2005 03:52;23/6/2005 06:52; 0.99 ;18/6/2005 03:52;5
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;19/6/2005 16:15;23/6/2005 12:30; 2.99 ;19/6/2005 16:15;4
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;20/6/2005 17:53;26/6/2005 16:03; 4.99 ;20/6/2005 17:53;6
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;6/7/2005 05:03;13/7/2005 06:49; 2.99 ;6/7/2005 05:03;7
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;7/7/2005 06:14;14/7/2005 06:51; 4.99 ;7/7/2005 06:14;7
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;9/7/2005 00:48;10/7/2005 06:36; 0.99 ;9/7/2005 00:48;1
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;9/7/2005 01:46;16/7/2005 06:57; 2.99 ;9/7/2005 01:46;7
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;9/7/2005 16:34;13/7/2005 21:37; 0.99 ;9/7/2005 16:34;4
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;10/7/2005 21:26;19/7/2005 20:23; 5.99 ;10/7/2005 21:26;9
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;10/7/2005 23:47;12/7/2005 04:27; 0.99 ;10/7/2005 23:47;2
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;11/7/2005 09:13;17/7/2005 03:48; 5.99 ;11/7/2005 09:13;6
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;11/7/2005 22:44;12/7/2005 22:18; 4.99 ;11/7/2005 22:44;1
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;12/7/2005 05:39;13/7/2005 01:07; 4.99 ;12/7/2005 05:39;1
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;12/7/2005 05:56;16/7/2005 10:41; 4.99 ;12/7/2005 05:56;4
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;27/7/2005 06:54;3/8/2005 10:36; 4.99 ;27/7/2005 06:54;7
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;29/7/2005 22:20;6/8/2005 03:00; 6.99 ;29/7/2005 22:20;8
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;30/7/2005 04:03;8/8/2005 04:16; 5.99 ;30/7/2005 04:03;9
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;30/7/2005 06:07;5/8/2005 01:18; 2.99 ;30/7/2005 06:07;6
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;31/7/2005 02:59;6/8/2005 03:52; 6.99 ;31/7/2005 02:59;6
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;2/8/2005 15:32;6/8/2005 20:22; 1.99 ;2/8/2005 15:32;4
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;2/8/2005 20:59;12/8/2005 01:16; 7.99 ;2/8/2005 20:59;10
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;17/8/2005 04:50;25/8/2005 23:03; 4.99 ;17/8/2005 04:50;8
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;17/8/2005 21:02;18/8/2005 15:24; 4.99 ;17/8/2005 21:02;1
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;20/8/2005 10:31;26/8/2005 05:00; 2.99 ;20/8/2005 10:31;6
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;21/8/2005 00:53;24/8/2005 05:33; 0.99 ;21/8/2005 00:53;3
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;21/8/2005 01:31;24/8/2005 22:20; 2.99 ;21/8/2005 01:31;3
+35;virginia;green;virginia.green@sakilacustomer.org;1;391 callao drive;midi-pyrnes;34021;toulouse;france;21/8/2005 22:25;23/8/2005 21:16; 4.99 ;21/8/2005 22:25;2
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;27/5/2005 04:53;28/5/2005 06:33; 0.99 ;27/5/2005 04:53;1
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;29/5/2005 04:35;1/6/2005 07:42; 0.99 ;29/5/2005 04:35;3
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;19/6/2005 16:05;20/6/2005 20:48; 0.99 ;19/6/2005 16:05;1
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;7/7/2005 08:15;11/7/2005 10:56; 0.99 ;7/7/2005 08:15;4
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;8/7/2005 04:58;10/7/2005 04:27; 4.99 ;8/7/2005 04:58;2
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;8/7/2005 14:54;12/7/2005 18:08; 4.99 ;8/7/2005 14:54;4
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;9/7/2005 20:07;12/7/2005 18:33; 0.99 ;9/7/2005 20:07;3
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;11/7/2005 02:37;16/7/2005 22:34; 0.99 ;11/7/2005 02:37;5
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;27/7/2005 09:06;5/8/2005 07:11; 6.99 ;27/7/2005 09:06;9
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;28/7/2005 01:35;1/8/2005 00:14; 0.99 ;28/7/2005 01:35;4
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;28/7/2005 11:59;6/8/2005 11:19; 6.99 ;28/7/2005 11:59;9
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;28/7/2005 18:35;30/7/2005 15:44; 0.99 ;28/7/2005 18:35;2
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;29/7/2005 05:52;3/8/2005 04:45; 2.99 ;29/7/2005 05:52;5
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;30/7/2005 03:20;2/8/2005 02:54; 4.99 ;30/7/2005 03:20;3
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;30/7/2005 18:52;1/8/2005 12:53; 2.99 ;30/7/2005 18:52;2
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;31/7/2005 11:11;3/8/2005 07:36; 0.99 ;31/7/2005 11:11;3
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;1/8/2005 11:53;7/8/2005 07:24; 2.99 ;1/8/2005 11:53;6
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;1/8/2005 20:25;8/8/2005 15:20; 2.99 ;1/8/2005 20:25;7
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;2/8/2005 03:48;2/8/2005 22:15; 0.99 ;2/8/2005 03:48;0
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;2/8/2005 03:56;9/8/2005 23:11; 6.99 ;2/8/2005 03:56;7
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;17/8/2005 04:00;20/8/2005 23:03; 4.99 ;17/8/2005 04:00;3
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;17/8/2005 12:06;21/8/2005 17:52; 4.99 ;17/8/2005 12:06;4
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;20/8/2005 04:31;25/8/2005 09:59; 2.99 ;20/8/2005 04:31;5
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;20/8/2005 04:34;28/8/2005 23:18; 1.99 ;20/8/2005 04:34;8
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;20/8/2005 08:30;22/8/2005 02:59; 4.99 ;20/8/2005 08:30;2
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;21/8/2005 19:15;30/8/2005 18:58; 9.99 ;21/8/2005 19:15;9
+36;kathleen;adams;kathleen.adams@sakilacustomer.org;1;334 munger (monghyr) lane;markazi;38145;arak;iran;23/8/2005 08:42;1/9/2005 13:08; 4.99 ;23/8/2005 08:42;9
+37;pamela;baker;pamela.baker@sakilacustomer.org;1;1440 fukuyama loop;henan;47929;nanyang;china;25/5/2005 03:21;27/5/2005 21:25; 0.99 ;25/5/2005 03:21;2
+37;pamela;baker;pamela.baker@sakilacustomer.org;1;1440 fukuyama loop;henan;47929;nanyang;china;30/5/2005 11:58;5/6/2005 09:57; 2.99 ;30/5/2005 11:58;6
+37;pamela;baker;pamela.baker@sakilacustomer.org;1;1440 fukuyama loop;henan;47929;nanyang;china;16/6/2005 04:44;18/6/2005 03:44; 4.99 ;16/6/2005 04:44;2

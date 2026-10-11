@@ -30,7 +30,9 @@ motor/
   excel.py                 genera el .xlsx de partida y corrige el que sube el alumno (openpyxl)
   terminal.py              sandbox por ejercicio, scripts de bash, comprobaciones de solo lectura de git
   niveles.py               regla del 70 %, bloqueo de niveles, siguiente ejercicio
-  progreso.py              SQLite: intentos, ejercicios aprendidos, racha
+  progreso.py              SQLite: intentos, ejercicios aprendidos, racha, cola de repaso (tabla `repasos`, esquema v2)
+  repaso.py                calendario del repaso espaciado (1, 3 y 7 días) y textos de fechas; lógica pura
+  sesion.py                arma la "Sesión de hoy" (repasos vencidos + 1-2 nuevos, ~20 min) y la recorre; lógica pura
 ejercicios/                _temas.yaml + un YAML por tema (+ preguntas_test.yaml)
 scripts/                   preparar_datos.py, validar_banco.py, probar_conexion.py, usuario_mysql.sql
 tests/                     pytest del motor, del banco y de la interfaz (AppTest)
@@ -57,7 +59,7 @@ Cada archivo `ejercicios/<nombre>.yaml` es una **lista** de ejercicios. Los tema
 | `id` | Único en todo el banco. Prefijos: `pb-` python_basico, `pd-` pandas, `sq-` sql, `xl-` excel_pq, `tg-` terminal_git, `pq-` preguntas test. Siguiente número libre. |
 | `tipo` | `python`, `sql`, `excel`, `terminal_git` o `test`. |
 | `tema` | Id de un tema de `_temas.yaml`. |
-| `concepto` | Concepto concreto y corto (`fillna`, `LEFT JOIN con IS NULL`). Las estadísticas y el repaso espaciado agrupan por este texto: **reutiliza exactamente los conceptos ya existentes** cuando sea el mismo. |
+| `concepto` | Concepto concreto y corto (`fillna`, `LEFT JOIN con IS NULL`). Las estadísticas por concepto agrupan por este texto (el repaso espaciado se programa por ejercicio): **reutiliza exactamente los conceptos ya existentes** cuando sea el mismo. |
 | `nivel` | `basico`, `intermedio` o `junior`. |
 | `titulo` | Corto, como lo verá el alumno. |
 | `enunciado` | Markdown. Debe decir exactamente qué dejar en `resultado` / qué columnas devolver y en qué orden. |
@@ -231,4 +233,8 @@ No llevan `pistas`, `codigo_inicial` ni `solucion`. No cuentan para superar nive
 ## Pendiente por fases
 
 - Fases 1 y 2 hechas. Pendiente de la fase 2: probar los ejercicios de Excel con un archivo guardado por el Excel real del alumno (nunca se han abierto en Excel), sobre todo `power_query`, `grafico` y las fórmulas con cache.
-- Fase 3: repaso espaciado (1, 3 y 7 días por concepto fallado), panel de progreso ampliado y "Sesión de hoy" (unos 20 minutos).
+- Fase 3 hecha: repaso espaciado, panel de progreso ampliado y "Sesión de hoy".
+  - Reglas del repaso (`motor/repaso.py`, aplicadas en `Progreso.registrar_intento` y `registrar_solucion_vista`): entra al ver la solución o al fallar 3 Comprobar seguidos; etapas a 1, 3 y 7 días; fallar o ver la solución EN un repaso que ya toca lo reinicia; practicar antes de que toque no mueve la fecha. Se programa por ejercicio (hoy cada concepto tiene un solo ejercicio); si un concepto llega a tener varios, `sesion.py` es el sitio donde elegir otro ejercicio del mismo concepto.
+  - La sesión en curso vive en `st.session_state["sesion"]` (`{"items": [ItemSesion], "hechos": set}`) y su resumen en `st.session_state["sesion_resumen"]`; no se guarda en la base de datos.
+  - Los tiempos de `sesion.py` (`MINUTOS_BASE`, `MINUTOS_NIVEL`) son estimaciones fijas: ajústalos si los ejercicios nuevos son mucho más largos o cortos.
+  - Pendiente: probar con uso real durante varios días que el calendario y la duración de la sesión resultan cómodos.

@@ -5,7 +5,7 @@ import re
 
 import streamlit as st
 
-from motor import config, sql
+from motor import config, sesion, sql
 from motor.banco import ErrorBanco, cargar_banco
 from motor.progreso import Progreso
 
@@ -113,3 +113,31 @@ def abrir_ejercicio(ej_id: str | None, tema: str | None = None) -> None:
     st.session_state["ejercicio_abierto"] = ej_id
     if tema:
         st.session_state["tema_actual"] = tema
+
+
+# ------------------------------------------------------------- sesion de hoy
+# La sesion en curso vive en la memoria de la app: {"items": [ItemSesion], "hechos": {ids resueltos}}.
+def sesion_activa() -> dict | None:
+    return st.session_state.get("sesion")
+
+
+def iniciar_sesion(items: list) -> None:
+    st.session_state["sesion"] = {"items": items, "hechos": set()}
+    st.session_state.pop("sesion_resumen", None)
+
+
+def abrir_primera_pendiente(banco) -> None:
+    """Abre el primer ejercicio de la sesion sin resolver (o el ultimo si ya estan todos)."""
+    s = sesion_activa()
+    if not s:
+        return
+    pendiente = sesion.primer_pendiente(s["items"], s["hechos"]) or s["items"][-1].ejercicio_id
+    abrir_ejercicio(pendiente, banco.ejercicios[pendiente].tema)
+
+
+def terminar_sesion() -> None:
+    """Cierra la sesion y deja guardado su resumen para mostrarlo en Practicar."""
+    s = st.session_state.pop("sesion", None)
+    if s:
+        st.session_state["sesion_resumen"] = sesion.resumen(s["items"], s["hechos"])
+    st.session_state["ejercicio_abierto"] = None

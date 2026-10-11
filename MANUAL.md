@@ -124,6 +124,12 @@ flowchart TD
 - Cada nivel (básico, intermedio, junior) se supera con un **70 %** de ejercicios aprendidos y hace falta tener superado el anterior.
 - Si ves un mensaje de error, es el error **real** de Python o de MySQL: aprender a leerlo también es práctica.
 
+### Repasos y "Sesión de hoy"
+
+- Si ves la solución de un ejercicio, o fallas **Comprobar 3 veces seguidas**, ese ejercicio entra en tu cola de **repaso**: te lo pide otra vez a **1 día**, luego a **3 días** y luego a **7 días**. Si lo resuelves sin ver la solución, avanza; si fallas, vuelve a empezar.
+- En **Inicio**, el botón **Empezar sesión de 20 minutos** te prepara una tanda con tus repasos de hoy y 1 o 2 ejercicios nuevos. Encima de cada ejercicio ves cómo vas y puedes **Saltar** uno o **Terminar sesión**.
+- En **Mi progreso** ves cuándo toca cada repaso, un gráfico de tus últimos 30 días y cuánto llevas aprendido por tema.
+
 ### Excel y Power Query
 
 1. La app te da un `.xlsx` de práctica con tus datos: lo descargas.

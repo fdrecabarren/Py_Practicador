@@ -61,12 +61,14 @@ def esta_bloqueado(banco: Banco, ejercicio_id: str, aprendidos: set[str]) -> boo
     return False
 
 
-def siguiente_ejercicio(banco: Banco, tema: str, aprendidos: set[str], *, excluir: str | None = None):
+def siguiente_ejercicio(banco: Banco, tema: str, aprendidos: set[str], *, excluir: str | set[str] | None = None):
     """Primer ejercicio no aprendido y desbloqueado del tema (por nivel y por id).
-    Si todos estan aprendidos devuelve None."""
+    `excluir` es un id o un conjunto de ids que no se deben devolver.
+    Si todos estan aprendidos (o excluidos) devuelve None."""
+    excluidos = {excluir} if isinstance(excluir, str) else set(excluir or ())
     for nivel in config.NIVELES:
         for ej in sorted(banco.por_tema_y_nivel(tema, nivel), key=lambda e: e.id):
-            if ej.id == excluir or ej.id in aprendidos:
+            if ej.id in excluidos or ej.id in aprendidos:
                 continue
             if not esta_bloqueado(banco, ej.id, aprendidos):
                 return ej

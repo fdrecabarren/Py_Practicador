@@ -124,3 +124,95 @@ def test_ejercicio_de_terminal_pide_preparar_y_luego_comprueba(tmp_path, monkeyp
     at.run()
     assert any("Correcto" in s.value for s in at.success), [e.value for e in at.error]
     assert "tg-001" in Progreso(config.DB_PROGRESO).aprendidos()
+
+
+# ------------------------------------------------------------------ fase 3
+def _sesion_de(*pares):
+    from motor.sesion import ItemSesion
+    return {"items": [ItemSesion(i, m) for i, m in pares], "hechos": set()}
+
+
+def test_inicio_ofrece_la_sesion_de_hoy_y_la_inicia():
+    at = _app("paginas/inicio.py")
+    assert not at.exception, [e.value for e in at.exception]
+    boton = _boton(at, "Empezar sesión de 20 minutos")
+    assert boton.disabled is False
+    assert any(c.value.startswith("Hoy:") for c in at.caption)
+    boton.click()
+    at.run()
+    assert at.session_state["sesion"]["items"] and at.session_state["sesion"]["hechos"] == set()
+    primero = at.session_state["sesion"]["items"][0].ejercicio_id
+    assert at.session_state["ejercicio_abierto"] == primero
+
+
+def test_inicio_avisa_de_los_repasos_que_tocan_hoy():
+    import sqlite3
+    from datetime import date, timedelta
+    banco = cargar_banco()
+    Progreso(config.DB_PROGRESO).registrar_solucion_vista(banco.ejercicios["pd-001"])
+    con = sqlite3.connect(config.DB_PROGRESO)
+    con.execute("UPDATE repasos SET proxima=? WHERE ejercicio_id='pd-001'", ((date.today() - timedelta(days=1)).isoformat(),))
+    con.commit()
+    con.close()
+    at = _app("paginas/inicio.py")
+    assert not at.exception, [e.value for e in at.exception]
+    assert any("Hoy toca repasar" in w.value for w in at.warning)
+    assert any("repaso(s)" in c.value for c in at.caption if c.value.startswith("Hoy:"))
+
+
+def test_el_progreso_lista_los_repasos_programados():
+    banco = cargar_banco()
+    Progreso(config.DB_PROGRESO).registrar_solucion_vista(banco.ejercicios["pd-002"])
+    at = _app("paginas/progreso.py")
+    assert not at.exception, [e.value for e in at.exception]
+    assert any(s.value == "Repasos programados" for s in at.subheader)
+    assert any(banco.ejercicios["pd-002"].titulo in m.value for m in at.markdown)
+    assert any("repaso 1 de 3" in m.value for m in at.markdown)
+
+
+def test_un_ejercicio_de_la_sesion_muestra_la_barra_y_permite_saltar_y_terminar():
+    at = _app("paginas/practicar.py", ejercicio_abierto="pb-001",
+              sesion=_sesion_de(("pb-001", "repaso"), ("pb-002", "nuevo")))
+    assert not at.exception, [e.value for e in at.exception]
+    assert any("ejercicio 1 de 2" in m.value and "repaso" in m.value for m in at.markdown)
+    _boton(at, "Saltar").click()
+    at.run()
+    assert at.session_state["ejercicio_abierto"] == "pb-002"
+    assert any("ejercicio 2 de 2" in m.value for m in at.markdown)
+    assert not [b for b in at.button if b.label == "Saltar"]       # es el ultimo: ya no hay a donde saltar
+    _boton(at, "Terminar sesión").click()
+    at.run()
+    assert not at.exception, [e.value for e in at.exception]
+    assert "sesion" not in at.session_state and at.session_state["sesion_resumen"]["total"] == 2
+    assert any(t.value == "Sesión terminada" for t in at.title)
+
+
+def test_resolver_un_ejercicio_de_la_sesion_lo_marca_y_ofrece_el_siguiente():
+    banco = cargar_banco()
+    at = _app("paginas/practicar.py", ejercicio_abierto="pb-004", **{"codigo:pb-004": banco.ejercicios["pb-004"].solucion},
+              sesion=_sesion_de(("pb-004", "nuevo"), ("pb-001", "repaso")))
+    _boton(at, "Comprobar").click()
+    at.run()
+    assert not at.exception, [e.value for e in at.exception]
+    assert "pb-004" in at.session_state["sesion"]["hechos"]
+    siguiente = banco.ejercicios["pb-001"].titulo
+    assert any(b.label == f"Siguiente: {siguiente}" for b in at.button)
+
+
+def test_el_resumen_de_la_sesion_se_muestra_y_se_cierra():
+    resumen = {"total": 3, "hechos": 2, "repasos_hechos": 1, "nuevos_hechos": 1, "sin_hacer": ["pb-003"]}
+    at = _app("paginas/practicar.py", sesion_resumen=resumen)
+    assert not at.exception, [e.value for e in at.exception]
+    assert any(t.value == "Sesión terminada" for t in at.title)
+    assert any("2 de 3" in m.value for m in at.metric)
+    _boton(at, "Volver a la lista").click()
+    at.run()
+    assert any(t.value == "Practicar" for t in at.title)
+
+
+def test_con_una_sesion_en_curso_la_lista_ofrece_continuar():
+    at = _app("paginas/practicar.py", sesion=_sesion_de(("pb-001", "repaso"), ("pb-002", "nuevo")))
+    assert not at.exception, [e.value for e in at.exception]
+    _boton(at, "Continuar").click()
+    at.run()
+    assert at.session_state["ejercicio_abierto"] in ("pb-001", "pb-002")

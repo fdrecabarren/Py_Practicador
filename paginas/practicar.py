@@ -2,7 +2,7 @@
 import pandas as pd
 import streamlit as st
 
-from motor import niveles, sql
+from motor import niveles, repaso, sesion, sql
 from motor.ejecutor_python import ejecutar_python
 from paginas import comun, vistas_fase2
 
@@ -37,6 +37,9 @@ def _registrar(ej, correcto: bool) -> dict:
     antes = _niveles_superados(ej.tema)
     pista_max = st.session_state.get(f"pistas:{ej.id}", 0) + (1 if st.session_state.get(f"sol:{ej.id}") else 0)
     resultado = prog.registrar_intento(ej, correcto, pista_max)
+    en_sesion = comun.sesion_activa()
+    if en_sesion and correcto and resultado["aviso"] is None:
+        en_sesion["hechos"].add(ej.id)
     despues = _niveles_superados(ej.tema)
     for nivel, ok in despues.items():
         if ok and not antes.get(nivel):
@@ -45,6 +48,10 @@ def _registrar(ej, correcto: bool) -> dict:
 
 
 def _siguiente(ej):
+    en_sesion = comun.sesion_activa()
+    if en_sesion and sesion.posicion(en_sesion["items"], ej.id) is not None:
+        sig_id = sesion.siguiente_en_sesion(en_sesion["items"], ej.id)
+        return banco.ejercicios[sig_id] if sig_id else None
     if ej.tipo == "test":
         pendientes = [e for e in sorted(banco.por_tema(ej.tema), key=lambda x: x.id)
                       if e.tipo == "test" and e.id != ej.id and e.id not in prog.aprendidos()]
@@ -52,9 +59,78 @@ def _siguiente(ej):
     return niveles.siguiente_ejercicio(banco, ej.tema, prog.aprendidos(), excluir=ej.id)
 
 
+# ============================================================ sesion de hoy
+def _hechos_de_la_sesion(s: dict) -> int:
+    return len(s["hechos"] & {i.ejercicio_id for i in s["items"]})
+
+
+def _banner_sesion_en_lista() -> None:
+    s = comun.sesion_activa()
+    if not s:
+        return
+    with st.container(border=True):
+        c1, c2, c3 = st.columns([3, 1.3, 1.3], vertical_alignment="center")
+        c1.markdown(f"**Sesión de hoy en curso** · {_hechos_de_la_sesion(s)} de {len(s['items'])} resueltos")
+        c2.button("Continuar", type="primary", key="ses_continuar", on_click=comun.abrir_primera_pendiente, args=(banco,))
+        c3.button("Terminar", key="ses_terminar_lista", on_click=comun.terminar_sesion)
+
+
+def _banner_sesion(ej) -> None:
+    """Barra de la sesion de hoy encima de un ejercicio (solo si el ejercicio forma parte de ella)."""
+    s = comun.sesion_activa()
+    n = sesion.posicion(s["items"], ej.id) if s else None
+    if n is None:
+        return
+    items = s["items"]
+    sig = sesion.siguiente_en_sesion(items, ej.id)
+    with st.container(border=True):
+        c1, c2, c3 = st.columns([3, 1.1, 1.6], vertical_alignment="center")
+        motivo = "repaso" if items[n].motivo == "repaso" else "nuevo"
+        c1.markdown(f"**Sesión de hoy** · ejercicio {n + 1} de {len(items)} · {motivo}")
+        c1.progress(_hechos_de_la_sesion(s) / len(items), text=f"{_hechos_de_la_sesion(s)} de {len(items)} resueltos")
+        if sig:
+            c2.button("Saltar", key="ses_saltar", on_click=comun.abrir_ejercicio, args=(sig, banco.ejercicios[sig].tema),
+                      help="Pasa al siguiente sin resolver este.")
+        c3.button("Terminar sesión", key="ses_terminar", on_click=comun.terminar_sesion,
+                  type="primary" if sig is None else "secondary")
+
+
+def _cerrar_resumen() -> None:
+    st.session_state.pop("sesion_resumen", None)
+
+
+def vista_resumen() -> None:
+    r = st.session_state["sesion_resumen"]
+    st.title("Sesión terminada")
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Resueltos", f"{r['hechos']} de {r['total']}")
+    c2.metric("Repasos", r["repasos_hechos"])
+    c3.metric("Nuevos", r["nuevos_hechos"])
+    if r["total"] and r["hechos"] == r["total"]:
+        st.success("Sesión completa. Hoy has cumplido.", icon=":material/emoji_events:")
+    elif r["hechos"]:
+        st.info("Buen trabajo. Lo que no resolviste sigue pendiente en tu lista y en tus repasos.", icon=":material/thumb_up:")
+    else:
+        st.info("Hoy no has resuelto ninguno. No pasa nada: los repasos siguen en la cola.", icon=":material/info:")
+    if r["sin_hacer"]:
+        st.markdown("**Sin resolver en esta sesión**")
+        for ej_id in r["sin_hacer"]:
+            if ej_id in banco.ejercicios:
+                ej = banco.ejercicios[ej_id]
+                st.markdown(f"- {ej.titulo} :gray[({banco.temas[ej.tema].nombre} · {ej.concepto})]")
+    vencidos = len([x for x in prog.repasos_vencidos() if x["ejercicio_id"] in banco.ejercicios])
+    racha = prog.racha()["actual"]
+    st.markdown(
+        f"Racha: **{racha} día(s)**. "
+        + (f"Te quedan **{vencidos}** repaso(s) que tocan hoy." if vencidos else "No te quedan repasos para hoy.")
+    )
+    st.button("Volver a la lista", type="primary", on_click=_cerrar_resumen)
+
+
 # ================================================================ lista
 def vista_lista() -> None:
     st.title("Practicar")
+    _banner_sesion_en_lista()
     temas = banco.temas_ordenados()
     ids = [t.id for t in temas]
     actual = st.session_state.get("tema_actual")
@@ -343,6 +419,7 @@ def panel_codigo(ej) -> None:
 
 # ------------------------------------------------------------ vista principal
 def vista_ejercicio(ej) -> None:
+    _banner_sesion(ej)
     st.button("Volver a la lista", on_click=_cerrar, icon=":material/arrow_back:")
     st.title(ej.titulo if ej.tipo != "test" else f"Pregunta rápida: {ej.titulo}")
     estado_db = prog.estado_ejercicio(ej.id)
@@ -351,6 +428,9 @@ def vista_ejercicio(ej) -> None:
         marca = " · :green[aprendido]"
     elif estado_db and estado_db["solucion_vista_dia"]:
         marca = " · :orange[para repetir (viste la solución)]"
+    en_cola = prog.en_cola(ej.id)
+    if en_cola:
+        marca += f" · :blue[repaso: {repaso.texto_proximo(en_cola['proxima'], prog.hoy())}]"
     st.caption(f"{banco.temas[ej.tema].nombre} · {ej.concepto} · nivel {comun.nombre_nivel(ej.nivel)}{marca}")
     st.caption(comun.texto_md(f"Sale de: {ej.origen}"))
 
@@ -389,5 +469,7 @@ if abierto and abierto in banco.ejercicios:
         vista_lista()
     else:
         vista_ejercicio(ej_abierto)
+elif st.session_state.get("sesion_resumen"):
+    vista_resumen()
 else:
     vista_lista()

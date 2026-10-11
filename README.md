@@ -4,7 +4,7 @@ App local para practicar lo que se ve en el bootcamp de Data Analytics (Factorí
 
 **¿Eres compañero/a del bootcamp?** Empieza por el [manual de instalación y uso](MANUAL.md).
 
-**Estado:** Fases 1 y 2 hechas (Python básico, pandas, SQL, Excel/Power Query y Terminal/Git). La fase 3 (repaso espaciado, "Sesión de hoy") está por hacer.
+**Estado:** Las 3 fases están hechas: Python básico, pandas, SQL, Excel/Power Query y Terminal/Git, más el repaso espaciado, la "Sesión de hoy" y el panel de progreso.
 
 ## Cómo funciona
 
@@ -14,6 +14,13 @@ App local para practicar lo que se ve en el bootcamp de Data Analytics (Factorí
 4. Tienes 3 pistas: idea general, pista concreta y solución explicada. La solución solo se desbloquea después de un intento.
 5. Un ejercicio está **aprendido** si lo resuelves sin ver la solución. Si la ves, vuelve más adelante y solo cuenta si lo resuelves otro día.
 6. Cada nivel (básico, intermedio, junior) se supera con un 70 % de ejercicios aprendidos y requiere el anterior superado.
+
+## Repaso espaciado y "Sesión de hoy"
+
+- **Qué se repasa:** un ejercicio entra en la cola de repaso cuando ves su solución o fallas **Comprobar 3 veces seguidas** sin acertar. Un fallo suelto no cuenta.
+- **Calendario:** toca a **1 día**; si lo resuelves sin ver la solución, a **3 días**; luego a **7 días**; y a la tercera sale de la cola. Si fallas o ves la solución en un repaso, vuelve a empezar (toca al día siguiente). Practicar antes de que toque no mueve el calendario.
+- **Sesión de hoy:** en Inicio, un botón arma una tanda de unos **20 minutos** con tus repasos vencidos (los más atrasados primero) y 1 o 2 ejercicios nuevos de tu nivel, mezclados. El tiempo de cada ejercicio es una estimación fija por tipo y nivel. Una barra encima de cada ejercicio muestra cómo vas; puedes saltar uno o terminar la sesión y ver un resumen. La sesión en curso vive en la memoria de la app (se pierde si cierras la ventana), pero cada intento ya se guardó.
+- **Mi progreso:** repasos programados (cuándo toca cada uno y en qué paso va), gráfico de los últimos 30 días, aprendidos por tema, niveles y aciertos por concepto.
 
 ## Primera vez
 
@@ -114,7 +121,8 @@ La forma más cómoda: abre Claude Code en esta carpeta y pide **"añade ejercic
 ```
 app.py            navegación de Streamlit
 paginas/          pantallas: inicio, practicar (+ vistas_fase2: paneles de Excel y Terminal), progreso, ajustes
-motor/            lógica sin Streamlit: banco, comparador, ejecutor Python, SQL, Excel, Terminal/Git, niveles, progreso
+motor/            lógica sin Streamlit: banco, comparador, ejecutor Python, SQL, Excel, Terminal/Git, niveles,
+                  progreso, repaso (calendario 1-3-7 días) y sesion (arma la sesión de hoy)
 ejercicios/       banco en YAML (un archivo por tema + preguntas tipo test)
 scripts/          preparar_datos, validar_banco, probar_conexion, usuario_mysql.sql
 tests/            pytest

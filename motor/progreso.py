@@ -6,6 +6,8 @@ Reglas:
   correctamente en un dia posterior al que viste la solucion.
 - La solucion solo se puede ver despues de al menos un intento.
 - Cada dia con al menos un intento cuenta para la racha.
+- Repaso espaciado (calendario en motor/repaso.py): ver la solucion, o fallar 3 veces seguidas, mete el
+  ejercicio en la cola de repaso (a 1, 3 y 7 dias).
 """
 from __future__ import annotations
 
@@ -14,7 +16,7 @@ from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Callable
 
-from . import config
+from . import config, repaso
 
 ESQUEMA_V1 = """
 CREATE TABLE intentos (
@@ -47,6 +49,20 @@ CREATE TABLE ejercicios_estado (
 CREATE TABLE dias_practica (dia TEXT PRIMARY KEY);
 """
 
+# Cola de repaso espaciado (ver motor/repaso.py): un ejercicio por fila.
+# etapa = repaso pendiente (0: a 1 dia, 1: a 3 dias, 2: a 7 dias); proxima = dia en que toca.
+ESQUEMA_V2 = """
+CREATE TABLE repasos (
+    ejercicio_id  TEXT PRIMARY KEY,
+    tema          TEXT NOT NULL,
+    concepto      TEXT NOT NULL,
+    etapa         INTEGER NOT NULL DEFAULT 0,
+    proxima       TEXT NOT NULL,
+    desde         TEXT NOT NULL
+);
+CREATE INDEX idx_repasos_proxima ON repasos(proxima);
+"""
+
 
 class Progreso:
     def __init__(self, ruta: Path | str | None = None, reloj: Callable[[], datetime] | None = None):
@@ -63,6 +79,17 @@ class Progreso:
         if version < 1:
             self.con.executescript(ESQUEMA_V1)
             self.con.execute("PRAGMA user_version = 1")
+        if version < 2:
+            self.con.executescript(ESQUEMA_V2)
+            # Lo que ya estaba "para repetir" (solucion vista y sin volver a resolver) entra en la cola
+            pendientes = self.con.execute(
+                "SELECT ejercicio_id, tema, concepto, solucion_vista_dia FROM ejercicios_estado "
+                "WHERE aprendido=0 AND solucion_vista_dia IS NOT NULL"
+            ).fetchall()
+            for f in pendientes:
+                vista = date.fromisoformat(f["solucion_vista_dia"])
+                self._poner_en_cola(f["ejercicio_id"], f["tema"], f["concepto"], 0, vista)
+            self.con.execute("PRAGMA user_version = 2")
         self.con.commit()
 
     def cerrar(self) -> None:
@@ -103,6 +130,7 @@ class Progreso:
             "WHERE ejercicio_id=?",
             (int(correcto), int(aprendido), dia, ej.id),
         )
+        self._actualizar_repaso(ej, correcto)
         self.con.commit()
         return {"aprendido": aprendido, "aviso": aviso}
 
@@ -117,7 +145,65 @@ class Progreso:
             "UPDATE ejercicios_estado SET aprendido=0, solucion_vista_dia=?, ultimo_dia=? WHERE ejercicio_id=?",
             (dia, dia, ej.id),
         )
+        self._poner_en_cola(ej.id, ej.tema, ej.concepto, 0, self.hoy())
         self.con.commit()
+
+    # --------------------------------------------------------------- repaso
+    def _poner_en_cola(self, ejercicio_id: str, tema: str, concepto: str, etapa: int, desde: date) -> None:
+        """Mete el ejercicio en la cola de repaso (o lo reinicia) con la fecha de la etapa dada."""
+        self.con.execute(
+            "INSERT OR REPLACE INTO repasos(ejercicio_id, tema, concepto, etapa, proxima, desde) VALUES (?,?,?,?,?,?)",
+            (ejercicio_id, tema, concepto, etapa, repaso.fecha_repaso(desde, etapa).isoformat(), desde.isoformat()),
+        )
+
+    def _fallos_seguidos(self, ejercicio_id: str) -> int:
+        n = 0
+        for (correcto,) in self.con.execute(
+                "SELECT correcto FROM intentos WHERE ejercicio_id=? ORDER BY id DESC", (ejercicio_id,)):
+            if correcto:
+                break
+            n += 1
+        return n
+
+    def _actualizar_repaso(self, ej, correcto: bool) -> None:
+        """Aplica el intento recien guardado a la cola de repaso."""
+        hoy = self.hoy()
+        fila = self.con.execute("SELECT etapa, proxima FROM repasos WHERE ejercicio_id=?", (ej.id,)).fetchone()
+        if fila is None:
+            if not correcto and self._fallos_seguidos(ej.id) >= repaso.FALLOS_PARA_REPASO:
+                self._poner_en_cola(ej.id, ej.tema, ej.concepto, 0, hoy)
+            return
+        if date.fromisoformat(fila["proxima"]) > hoy:   # aun no toca: practicar antes no mueve el calendario
+            return
+        if not correcto:
+            self._poner_en_cola(ej.id, ej.tema, ej.concepto, 0, hoy)
+            return
+        siguiente = repaso.etapa_tras_acierto(fila["etapa"])
+        if siguiente is None:
+            self.con.execute("DELETE FROM repasos WHERE ejercicio_id=?", (ej.id,))
+        else:
+            self._poner_en_cola(ej.id, ej.tema, ej.concepto, siguiente, hoy)
+
+    @staticmethod
+    def _fila_repaso(fila: sqlite3.Row) -> dict:
+        d = dict(fila)
+        d["proxima"] = date.fromisoformat(d["proxima"])
+        d["desde"] = date.fromisoformat(d["desde"])
+        return d
+
+    def en_cola(self, ejercicio_id: str) -> dict | None:
+        fila = self.con.execute("SELECT * FROM repasos WHERE ejercicio_id=?", (ejercicio_id,)).fetchone()
+        return self._fila_repaso(fila) if fila else None
+
+    def repasos_programados(self) -> list[dict]:
+        """Toda la cola, por fecha: ejercicio_id, tema, concepto, etapa, proxima (date), desde (date)."""
+        return [self._fila_repaso(f) for f in
+                self.con.execute("SELECT * FROM repasos ORDER BY proxima, ejercicio_id")]
+
+    def repasos_vencidos(self) -> list[dict]:
+        """Los que tocan hoy o antes, los mas atrasados primero."""
+        return [self._fila_repaso(f) for f in self.con.execute(
+            "SELECT * FROM repasos WHERE proxima <= ? ORDER BY proxima, ejercicio_id", (self.hoy().isoformat(),))]
 
     # ------------------------------------------------------------ consultas
     def num_intentos(self, ejercicio_id: str) -> int:
@@ -165,6 +251,20 @@ class Progreso:
     def intentos_de_hoy(self) -> int:
         return self.con.execute("SELECT COUNT(*) FROM intentos WHERE dia=?", (self.hoy().isoformat(),)).fetchone()[0]
 
+    def intentos_por_dia(self, dias: int = 30) -> list[dict]:
+        """Intentos y aciertos de los ultimos `dias` dias (el ultimo es hoy), con ceros en los dias sin practicar."""
+        hoy = self.hoy()
+        inicio = hoy - timedelta(days=dias - 1)
+        por_dia = {r["dia"]: r for r in self.con.execute(
+            "SELECT dia, COUNT(*) AS intentos, SUM(correcto) AS aciertos FROM intentos WHERE dia >= ? GROUP BY dia",
+            (inicio.isoformat(),))}
+        serie = []
+        for i in range(dias):
+            d = inicio + timedelta(days=i)
+            f = por_dia.get(d.isoformat())
+            serie.append({"dia": d, "intentos": f["intentos"] if f else 0, "aciertos": f["aciertos"] if f else 0})
+        return serie
+
     def dias_practicados(self) -> list[date]:
         return sorted(date.fromisoformat(r[0]) for r in self.con.execute("SELECT dia FROM dias_practica"))
 
@@ -189,6 +289,6 @@ class Progreso:
 
     def reiniciar(self) -> None:
         """Borra TODO el progreso (la app pide confirmacion antes)."""
-        for tabla in ("intentos", "ejercicios_estado", "dias_practica"):
+        for tabla in ("intentos", "ejercicios_estado", "dias_practica", "repasos"):
             self.con.execute(f"DELETE FROM {tabla}")
         self.con.commit()

@@ -1,6 +1,6 @@
 import streamlit as st
 
-from motor import niveles
+from motor import niveles, sesion
 from paginas import comun
 
 banco = comun.get_banco()
@@ -18,6 +18,10 @@ c2.metric("Mejor racha", f"{racha['mejor']} día(s)")
 c3.metric("Ejercicios aprendidos", f"{len(aprendidos & ids_con_nivel)} / {len(ids_con_nivel)}")
 c4.metric("Intentos hoy", prog.intentos_de_hoy())
 
+vencidos = [r for r in prog.repasos_vencidos() if r["ejercicio_id"] in banco.ejercicios]
+if vencidos:
+    st.warning(f"Hoy toca repasar {len(vencidos)} ejercicio(s). Los encuentras en la sesión de hoy y en Mi progreso.",
+               icon=":material/replay:")
 if not racha["hoy_practicado"]:
     st.info("Hoy todavía no has practicado. Con un solo ejercicio mantienes la racha.", icon=":material/local_fire_department:")
 
@@ -46,8 +50,32 @@ with izq:
         st.success("Has aprendido todos los ejercicios disponibles. Pide más al ampliar el banco.", icon=":material/emoji_events:")
 with der:
     st.subheader("Sesión de hoy")
-    st.button("Empezar sesión de 20 minutos", disabled=True, help="Llega en la Fase 3 (repaso espaciado).")
-    st.caption("Mezclará repasos de lo que falles con ejercicios nuevos de tu nivel. Disponible en la Fase 3.")
+    en_curso = comun.sesion_activa()
+    if en_curso:
+        total = len(en_curso["items"])
+        hechos = len(en_curso["hechos"] & {i.ejercicio_id for i in en_curso["items"]})
+        st.caption(f"Sesión en curso: {hechos} de {total} resueltos.")
+        if st.button("Continuar sesión", type="primary", icon=":material/play_arrow:"):
+            comun.abrir_primera_pendiente(banco)
+            st.switch_page("paginas/practicar.py")
+    else:
+        previa = sesion.armar_sesion(banco, prog)
+        if previa:
+            n_rep = sum(1 for i in previa if i.motivo == "repaso")
+            partes = []
+            if n_rep:
+                partes.append(f"{n_rep} repaso(s)")
+            if len(previa) - n_rep:
+                partes.append(f"{len(previa) - n_rep} nuevo(s)")
+            st.caption(f"Hoy: {' y '.join(partes)}, unos {sesion.minutos_totales(banco, previa)} minutos.")
+            if st.button("Empezar sesión de 20 minutos", type="primary", icon=":material/timer:"):
+                comun.iniciar_sesion(previa)
+                comun.abrir_primera_pendiente(banco)
+                st.switch_page("paginas/practicar.py")
+        else:
+            st.button("Empezar sesión de 20 minutos", disabled=True)
+            st.caption("No hay nada pendiente: lo has aprendido todo y no tienes repasos.")
+    st.caption("Mezcla repasos de lo que fallaste (a 1, 3 y 7 días) con 1 o 2 ejercicios nuevos de tu nivel.")
 
 # --- Estado por tema
 st.divider()

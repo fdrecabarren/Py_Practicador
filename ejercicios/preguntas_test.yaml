@@ -1,0 +1,273 @@
+# Preguntas cortas tipo test para calentar. Ver CLAUDE.md.
+# `correcta` es el índice (desde 0) de la opción correcta. No cuentan para superar niveles.
+
+# ------------------------------------------------------------ Python básico
+- id: pq-001
+  tipo: test
+  tema: python_basico
+  concepto: input devuelve texto
+  nivel: basico
+  titulo: Multiplicar un texto por un número
+  origen: "Clases/python/Practicas/practica/Pregunta16.py"
+  enunciado: |
+    Se ejecuta este programa y el usuario escribe `ab` y después `3`:
+
+    ```python
+    x = input()
+    y = int(input())
+    print(x * y)
+    ```
+
+    ¿Qué se imprime?
+  opciones: ["ababab", "ab3", "Da un error (TypeError)", "ab ab ab"]
+  correcta: 0
+  explicacion: |
+    `input()` devuelve texto, así que `x` vale `"ab"`. `int(input())` convierte el segundo valor en el número `3`. Multiplicar un texto por un entero lo **repite**: `"ab" * 3` es `"ababab"`.
+
+- id: pq-002
+  tipo: test
+  tema: python_basico
+  concepto: print con sep
+  nivel: basico
+  titulo: Asignación encadenada y separador
+  origen: "Clases/python/Practicas/practica/Pregunta17.py"
+  enunciado: |
+    ¿Qué imprime este código?
+
+    ```python
+    z = y = x = 1
+    print(x, y, z, sep='x')
+    ```
+  opciones: ["1 1 1", "1x1x1", "111", "xxx"]
+  correcta: 1
+  explicacion: |
+    La asignación encadenada da el valor `1` a las tres variables. `sep='x'` cambia el separador de `print`, que normalmente es un espacio, por la letra `x`: `1x1x1`.
+
+- id: pq-003
+  tipo: test
+  tema: python_basico
+  concepto: operadores // y %
+  nivel: basico
+  titulo: División entera y resto
+  origen: "Clases/python/Practicas/practica/pregunta13.py y Pregunta15.py"
+  enunciado: |
+    ¿Qué imprime `print(7 // 2, 7 % 2)`?
+  opciones: ["3.5 1", "3 1", "3 3", "4 1"]
+  correcta: 1
+  explicacion: |
+    `7 // 2` es la división entera (descarta los decimales): `3`. `7 % 2` es el resto de dividir 7 entre 2: `1`. Con `/` obtendrías `3.5`.
+
+- id: pq-004
+  tipo: test
+  tema: python_basico
+  concepto: precedencia de operadores
+  nivel: basico
+  titulo: Precedencia con un float
+  origen: "Clases/python/Practicas/practica/Pregunta18.py"
+  enunciado: |
+    ¿Qué valor imprime `print(2 + 3 * 5.)`?
+  opciones: ["25", "25.0", "17", "17.0"]
+  correcta: 3
+  explicacion: |
+    La multiplicación se hace antes que la suma: `3 * 5.` da `15.0` y después `2 + 15.0` da `17.0`. El punto detrás del 5 convierte el número en `float`, y mezclar `int` con `float` da `float`.
+
+- id: pq-005
+  tipo: test
+  tema: python_basico
+  concepto: ValueError al convertir
+  nivel: basico
+  titulo: Convertir un texto que no es un número
+  origen: "Clases/python/Practicas/py4e/ex_02_02/ex_04.py"
+  enunciado: |
+    ¿Qué ocurre al ejecutar `float("5 degress")`?
+  opciones: ["Devuelve 5.0", "Devuelve 0.0", "Lanza un ValueError", "Lanza un NameError"]
+  correcta: 2
+  explicacion: |
+    `float()` solo acepta textos que representen un número completo. `"5 degress"` no lo es, y Python lanza `ValueError: could not convert string to float`. Se puede controlar con `try/except ValueError`.
+
+# ------------------------------------------------------------------ pandas
+- id: pq-006
+  tipo: test
+  tema: pandas
+  concepto: read_csv y shape
+  nivel: basico
+  titulo: Qué devuelve shape
+  origen: "Proyetos/Proyecto-2-Python-Ray-Franco/notebooks/kiva_loans.ipynb"
+  enunciado: |
+    Un DataFrame `df` tiene 3008 filas y 20 columnas. ¿Qué devuelve `df.shape`?
+  opciones: ["(20, 3008)", "(3008, 20)", "3008", "Un DataFrame con dos columnas"]
+  correcta: 1
+  explicacion: |
+    `shape` es una tupla `(filas, columnas)`. Es un atributo, no un método: se escribe sin paréntesis.
+
+- id: pq-007
+  tipo: test
+  tema: pandas
+  concepto: isnull().sum()
+  nivel: basico
+  titulo: Contar nulos de todas las columnas
+  origen: "Proyetos/Proyecto-2-Python-Ray-Franco/notebooks/kiva_loans.ipynb (celda 20)"
+  enunciado: |
+    ¿Qué devuelve `df.isnull().sum()`?
+  opciones: [
+    "El número de valores nulos de cada columna",
+    "True si hay algún nulo en el DataFrame",
+    "Las filas que contienen algún nulo",
+    "El porcentaje de nulos de cada columna",
+  ]
+  correcta: 0
+  explicacion: |
+    `isnull()` da una tabla de True/False; `sum()` suma por columna (True vale 1). Para obtener el **porcentaje** habría que usar `.mean()` en lugar de `.sum()`.
+
+- id: pq-008
+  tipo: test
+  tema: pandas
+  concepto: fillna devuelve una copia
+  nivel: intermedio
+  titulo: fillna sin asignar
+  origen: "Proyetos/Proyecto-2-Python-Ray-Franco/notebooks/kiva_loans.ipynb (celdas 23 y 27: fillna ejecutado dos veces)"
+  enunciado: |
+    Ejecutas esta línea sola y después miras `df["region"].isnull().sum()`:
+
+    ```python
+    df["region"].fillna("No especificado")
+    ```
+
+    ¿Qué verás?
+  opciones: [
+    "0 nulos: fillna modifica df",
+    "Los mismos nulos que antes: fillna devuelve una copia y no se ha guardado",
+    "Un error porque falta inplace=True",
+    "Se habrán borrado las filas con nulos",
+  ]
+  correcta: 1
+  explicacion: |
+    `fillna` devuelve una columna nueva y no toca el DataFrame original. Para conservarla hay que asignarla: `df["region"] = df["region"].fillna("No especificado")`. Muchos errores de pandas vienen de olvidar guardar el resultado.
+
+- id: pq-009
+  tipo: test
+  tema: pandas
+  concepto: dropna con subset
+  nivel: intermedio
+  titulo: dropna sin argumentos
+  origen: "Proyetos/Proyecto-2-Python-Ray-Franco/notebooks/kiva_loans.ipynb (celdas 38-42)"
+  enunciado: |
+    ¿Qué hace `df.dropna()` sin ningún argumento?
+  opciones: [
+    "Elimina las columnas que tienen algún nulo",
+    "Elimina las filas que tienen un nulo en cualquier columna",
+    "Elimina solo las filas donde todas las columnas son nulas",
+    "Rellena los nulos con 0",
+  ]
+  correcta: 1
+  explicacion: |
+    Por defecto `dropna()` borra **toda fila con al menos un nulo**. Con datasets como Kiva, donde `tags` o `region` tienen muchos vacíos, perderías muchísimas filas válidas. Con `subset=["columna"]` limitas qué columnas se miran.
+
+- id: pq-010
+  tipo: test
+  tema: pandas
+  concepto: combinar condiciones con &
+  nivel: intermedio
+  titulo: Por qué los paréntesis en los filtros
+  origen: "Proyetos/Proyecto-2-Python-Ray-Franco/notebooks/kiva_loans.ipynb (celdas 14-15: filtros con &)"
+  enunciado: |
+    Quieres filtrar préstamos de Kenya de más de 1000 USD. ¿Por qué se escribe así?
+
+    ```python
+    df[(df["country"] == "Kenya") & (df["loan_amount"] > 1000)]
+    ```
+  opciones: [
+    "Los paréntesis son opcionales, solo mejoran la lectura",
+    "Porque & se evalúa antes que == y >, y sin paréntesis mezclaría los valores en lugar de las comparaciones",
+    "Porque pandas no admite más de una condición sin paréntesis",
+    "Porque en pandas & significa 'o'",
+  ]
+  correcta: 1
+  explicacion: |
+    En Python `&` tiene **más precedencia** que `==` y `>`. Sin paréntesis, `df["country"] == "Kenya" & df["loan_amount"] > 1000` se interpreta de forma errónea y da un `ValueError` o un resultado sin sentido. Cada condición debe ir entre paréntesis.
+
+# --------------------------------------------------------------------- SQL
+- id: pq-011
+  tipo: test
+  tema: sql
+  concepto: WHERE frente a HAVING
+  nivel: basico
+  titulo: Filtrar grupos
+  origen: "Proyetos/.../queries/df3_vendedores.sql (GROUP BY) y SQL/.../practice-1/queries.sql"
+  enunciado: |
+    Quieres quedarte solo con los vendedores que tienen más de 100 artículos (`COUNT(*) > 100`) después de `GROUP BY seller_id`. ¿Qué cláusula usas?
+  opciones: ["WHERE", "HAVING", "ORDER BY", "LIMIT"]
+  correcta: 1
+  explicacion: |
+    `WHERE` filtra filas **antes** de agrupar y no puede usar agregados. `HAVING` filtra los grupos ya calculados, por eso admite `COUNT(*) > 100`.
+
+- id: pq-012
+  tipo: test
+  tema: sql
+  concepto: COUNT(*) frente a COUNT(columna)
+  nivel: basico
+  titulo: Contar con nulos
+  origen: "SQL/.../practice-1/queries.sql (COUNT) y worktrees df2_catalogo_productos.sql (COUNT(col) ignora NULL)"
+  enunciado: |
+    En una tabla de 100 filas, la columna `product_category_name` es NULL en 10 de ellas. ¿Qué devuelve `SELECT COUNT(product_category_name) FROM products`?
+  opciones: ["100", "90", "10", "NULL"]
+  correcta: 1
+  explicacion: |
+    `COUNT(columna)` cuenta solo las filas donde esa columna **no es NULL**: 90. `COUNT(*)` cuenta todas las filas: 100.
+
+- id: pq-013
+  tipo: test
+  tema: sql
+  concepto: LEFT JOIN
+  nivel: intermedio
+  titulo: Qué conserva un LEFT JOIN
+  origen: "Proyetos/.../queries/df1_actividad_clientes.sql (LEFT JOIN a payments_agg y reviews_agg)"
+  enunciado: |
+    En `orders LEFT JOIN order_reviews`, ¿qué ocurre con un pedido que no tiene ninguna reseña?
+  opciones: [
+    "Desaparece del resultado",
+    "Aparece una vez, con las columnas de la reseña a NULL",
+    "Da un error",
+    "Aparece una vez por cada reseña de la tabla",
+  ]
+  correcta: 1
+  explicacion: |
+    `LEFT JOIN` conserva **todas** las filas de la tabla de la izquierda. Si no hay pareja, las columnas de la derecha salen a `NULL`. Con `INNER JOIN` ese pedido desaparecería.
+
+- id: pq-014
+  tipo: test
+  tema: sql
+  concepto: grano y trampa del JOIN
+  nivel: intermedio
+  titulo: Por qué se inflan los totales
+  origen: "Proyetos/Manual_Proyecto_IV.pdf p.5 (la trampa del JOIN)"
+  enunciado: |
+    Unes `orders` con `order_payments` y sumas el `price` de los artículos. El total sale mucho mayor que el real. ¿Cuál es la causa más probable?
+  opciones: [
+    "Faltaba un ORDER BY",
+    "Un pedido puede tener varias filas de pago y el JOIN repite el pedido (y su precio) en cada una",
+    "SUM suma dos veces por defecto",
+    "orders y order_payments no tienen columnas en común",
+  ]
+  correcta: 1
+  explicacion: |
+    Es un problema de **grano**: `orders` tiene una fila por pedido, pero `order_payments` puede tener varias. El JOIN multiplica las filas del lado "uno". La solución es agregar `order_payments` por pedido antes de unir.
+
+- id: pq-015
+  tipo: test
+  tema: sql
+  concepto: IS NULL
+  nivel: intermedio
+  titulo: Comparar con NULL
+  origen: "Proyetos/.../queries/df1_actividad_clientes.sql (IS NOT NULL)"
+  enunciado: |
+    ¿Qué devuelve `SELECT * FROM orders WHERE order_delivered_customer_date = NULL`?
+  opciones: [
+    "Los pedidos sin fecha de entrega",
+    "Todos los pedidos",
+    "Ninguna fila, porque comparar con NULL con = nunca es verdadero",
+    "Un error de sintaxis",
+  ]
+  correcta: 2
+  explicacion: |
+    En SQL, `NULL` significa "valor desconocido" y cualquier comparación con `=` da `NULL` (no verdadero). Para buscar nulos se usa `IS NULL`; para excluirlos, `IS NOT NULL`.

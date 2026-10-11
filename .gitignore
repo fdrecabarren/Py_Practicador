@@ -1,0 +1,25 @@
+# Entorno y credenciales
+.venv/
+venv/
+.env
+
+# Datasets y progreso del alumno (no se suben)
+datos/
+progreso/
+sandbox/
+*.csv
+*.parquet
+*.xlsx
+*.db
+*.sqlite
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Editor / SO
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

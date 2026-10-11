@@ -1,0 +1,486 @@
+# SQL sobre la base olist de tu MySQL local. Ver CLAUDE.md para el formato.
+# Tablas usadas (las mismas que en tu proyecto): orders, customers, order_items, order_payments,
+# order_reviews, products, sellers, geolocation, categoria_traduccion.
+# La respuesta correcta es lo que devuelve la consulta de referencia sobre TUS datos.
+
+# ---------------------------------------------------------------- BÁSICO
+- id: sq-001
+  tipo: sql
+  tema: sql
+  concepto: SELECT y WHERE
+  nivel: basico
+  titulo: Pedidos cancelados
+  origen: "SQL/DA-intro-Denormalization-automatizacion-practice-main/practice-1/queries.sql (SELECT, WHERE) y queries/df1_actividad_clientes.sql (order_status)"
+  enunciado: |
+    Obtén los pedidos cuyo estado (`order_status`) es `'canceled'`.
+
+    Devuelve dos columnas, en este orden: `order_id` y `order_purchase_timestamp`.
+  codigo_inicial: |
+    SELECT order_id, order_purchase_timestamp
+    FROM orders
+  solucion: |
+    SELECT order_id, order_purchase_timestamp
+    FROM orders
+    WHERE order_status = 'canceled'
+  pistas:
+    - "La consulta ya trae las columnas correctas, pero devuelve TODOS los pedidos. Falta decirle a SQL cuáles te interesan."
+    - "La cláusula WHERE filtra filas y va después de FROM. Compara la columna con un texto entre comillas simples."
+    - "Añade WHERE order_status = 'canceled' al final. El texto va entre comillas simples y se escribe tal cual está en la columna."
+  explicacion: |
+    El orden de escritura es `SELECT ... FROM ... WHERE ...`. `WHERE` se aplica fila a fila **antes** de devolver las columnas.
+
+    Los textos van con comillas simples (`'canceled'`); las comillas dobles en MySQL también funcionan, pero en SQL estándar son para nombres de columnas.
+
+- id: sq-002
+  tipo: sql
+  tema: sql
+  concepto: COUNT(*)
+  nivel: basico
+  titulo: Cuántos pedidos se han entregado
+  origen: "SQL/.../practice-1/queries.sql (COUNT(*)) y Proyetos/Manual_Proyecto_IV.pdf p.8"
+  enunciado: |
+    Cuenta cuántos pedidos tienen estado `'delivered'`.
+
+    Devuelve **una sola fila con una sola columna**.
+  codigo_inicial: |
+    SELECT *
+    FROM orders
+    WHERE order_status = 'delivered'
+  solucion: |
+    SELECT COUNT(*)
+    FROM orders
+    WHERE order_status = 'delivered'
+  pistas:
+    - "No quieres ver los pedidos, quieres un número. Existe una función de agregado que cuenta filas."
+    - "COUNT(*) cuenta filas. Se escribe en el SELECT, en lugar de las columnas."
+    - "SELECT COUNT(*) FROM orders WHERE order_status = 'delivered'. El WHERE filtra primero y COUNT cuenta lo que queda."
+  explicacion: |
+    Las funciones de agregado (`COUNT`, `SUM`, `AVG`, `MIN`, `MAX`) colapsan muchas filas en una. `COUNT(*)` cuenta filas; `COUNT(columna)` cuenta solo las filas donde esa columna **no es NULL**. Es una diferencia importante cuando hay nulos.
+
+- id: sq-003
+  tipo: sql
+  tema: sql
+  concepto: ORDER BY y LIMIT
+  nivel: basico
+  titulo: Los 10 precios más altos
+  origen: "SQL/.../practice-1/queries.sql (ORDER BY ... DESC) y queries/df3_vendedores.sql"
+  enunciado: |
+    De la tabla `order_items`, obtén los **10 valores más altos de `price`**, del mayor al menor.
+
+    Devuelve una sola columna (`price`).
+  codigo_inicial: |
+    SELECT price
+    FROM order_items
+  solucion: |
+    SELECT price
+    FROM order_items
+    ORDER BY price DESC
+    LIMIT 10
+  comparar:
+    ordenado: true
+  pistas:
+    - "Hacen falta dos cosas: ordenar las filas y quedarse solo con las primeras."
+    - "ORDER BY columna DESC ordena de mayor a menor (sin DESC es de menor a mayor). LIMIT n corta el resultado a n filas; va al final."
+    - "ORDER BY price DESC LIMIT 10, en ese orden, al final de la consulta."
+  explicacion: |
+    `ORDER BY` ordena de menor a mayor por defecto (`ASC`); con `DESC` va de mayor a menor. `LIMIT` se aplica **después** de ordenar, así que `ORDER BY ... LIMIT 10` da el "top 10".
+
+    Sin `ORDER BY`, `LIMIT` devuelve filas en un orden no garantizado. Si hubiera empates en el décimo valor, el resultado de `price` sería el mismo igualmente.
+
+- id: sq-004
+  tipo: sql
+  tema: sql
+  concepto: GROUP BY con COUNT
+  nivel: basico
+  titulo: Pedidos por estado
+  origen: "SQL/.../practice-1/queries.sql (GROUP BY) y queries/df1_actividad_clientes.sql (GROUP BY)"
+  enunciado: |
+    Cuenta cuántos pedidos hay en cada `order_status`.
+
+    Devuelve dos columnas, en este orden: `order_status` y `pedidos` (el conteo, **con ese nombre** usando `AS`).
+  codigo_inicial: |
+    SELECT order_status, COUNT(*)
+    FROM orders
+  solucion: |
+    SELECT order_status, COUNT(*) AS pedidos
+    FROM orders
+    GROUP BY order_status
+  comparar:
+    alias: true
+  pistas:
+    - "Quieres un conteo POR cada estado, no un conteo total. Hay una cláusula que agrupa filas antes de agregar."
+    - "GROUP BY columna va después de FROM/WHERE. Toda columna del SELECT que no sea un agregado debe estar en el GROUP BY. Para renombrar usa AS."
+    - "SELECT order_status, COUNT(*) AS pedidos FROM orders GROUP BY order_status."
+  explicacion: |
+    `GROUP BY` crea un grupo por cada valor distinto y calcula los agregados dentro de cada grupo. Sin él, MySQL (con `ONLY_FULL_GROUP_BY`, el modo por defecto) da error si mezclas una columna normal con un agregado.
+
+    `AS` da un nombre a la columna del resultado (un *alias*). Es lo que hace Pandas con `.rename()` y lo que verás como cabecera en tus CSV del proyecto.
+
+- id: sq-005
+  tipo: sql
+  tema: sql
+  concepto: COUNT(DISTINCT)
+  nivel: basico
+  titulo: Cuántos clientes reales hay
+  origen: "SQL/.../practice-1/queries.sql (COUNT(DISTINCT)) y queries/df3_vendedores.sql (COUNT(DISTINCT))"
+  enunciado: |
+    En `customers`, cada pedido genera un `customer_id` nuevo, pero la misma persona conserva su `customer_unique_id`.
+
+    Cuenta cuántas **personas distintas** hay (valores distintos de `customer_unique_id`). Devuelve una fila y una columna.
+  codigo_inicial: |
+    SELECT COUNT(customer_id)
+    FROM customers
+  solucion: |
+    SELECT COUNT(DISTINCT customer_unique_id)
+    FROM customers
+  pistas:
+    - "El código inicial cuenta filas, y una persona puede aparecer en varias. Necesitas contar valores sin repetir."
+    - "COUNT(DISTINCT columna) cuenta los valores distintos de una columna."
+    - "SELECT COUNT(DISTINCT customer_unique_id) FROM customers. Como es otra columna, sale un número menor que el total de filas."
+  explicacion: |
+    `DISTINCT` dentro de `COUNT` descarta repetidos antes de contar. La diferencia entre `customer_id` (uno por pedido) y `customer_unique_id` (uno por persona) es un caso de *grano*: ¿qué representa exactamente una fila?
+
+# ------------------------------------------------------------ INTERMEDIO
+- id: sq-006
+  tipo: sql
+  tema: sql
+  concepto: INNER JOIN con GROUP BY
+  nivel: intermedio
+  titulo: Pedidos por estado del cliente
+  origen: "SQL/.../practice-1/queries.sql (JOIN) y queries/df1_actividad_clientes.sql (orders JOIN customers)"
+  enunciado: |
+    Cada pedido (`orders`) tiene un `customer_id` que apunta a `customers`, donde está el estado del cliente (`customer_state`).
+
+    Cuenta los pedidos por `customer_state`. Devuelve dos columnas, en este orden: `customer_state` y `pedidos`.
+  codigo_inicial: |
+    SELECT c.customer_state, COUNT(*) AS pedidos
+    FROM orders o
+  solucion: |
+    SELECT c.customer_state, COUNT(*) AS pedidos
+    FROM orders o
+    INNER JOIN customers c ON c.customer_id = o.customer_id
+    GROUP BY c.customer_state
+  pistas:
+    - "La información está repartida en dos tablas. Hay que unirlas por la columna que tienen en común."
+    - "FROM orders o JOIN customers c ON c.customer_id = o.customer_id. Los alias o y c abrevian los nombres de tabla. Luego GROUP BY."
+    - "INNER JOIN customers c ON c.customer_id = o.customer_id y al final GROUP BY c.customer_state."
+  explicacion: |
+    `JOIN ... ON` une cada fila de `orders` con la fila de `customers` que tiene el mismo `customer_id`. Como `customer_id` es único en `customers`, la unión **no multiplica filas**: cada pedido sigue siendo una fila.
+
+    Siempre que unas tablas, pregúntate si la clave de unión es única en el lado "uno"; si no lo es, los conteos se inflan (ver sq-012).
+
+- id: sq-007
+  tipo: sql
+  tema: sql
+  concepto: LEFT JOIN con IS NULL
+  nivel: intermedio
+  titulo: Pedidos sin ninguna reseña
+  origen: "Proyetos/Flujo_de_Datos_de_SQL_a_Python_tania_lena_eddy_franco/queries/df1_actividad_clientes.sql (LEFT JOIN a reviews_agg) y Manual_Proyecto_IV.pdf p.10"
+  enunciado: |
+    Cuenta cuántos pedidos de `orders` **no tienen ninguna fila** en `order_reviews`.
+
+    Devuelve una fila y una columna.
+  codigo_inicial: |
+    SELECT COUNT(*)
+    FROM orders o
+    LEFT JOIN order_reviews r ON r.order_id = o.order_id
+  solucion: |
+    SELECT COUNT(*)
+    FROM orders o
+    LEFT JOIN order_reviews r ON r.order_id = o.order_id
+    WHERE r.order_id IS NULL
+  pistas:
+    - "Un LEFT JOIN conserva todos los pedidos; cuando no hay reseña, las columnas de la reseña salen vacías."
+    - "Tras el LEFT JOIN, filtra con WHERE por una columna de order_reviews que sea NULL. Para nulos se usa IS NULL, no = NULL."
+    - "WHERE r.order_id IS NULL. Esas son las filas del lado izquierdo sin pareja en el derecho."
+  explicacion: |
+    El patrón **LEFT JOIN + IS NULL** encuentra "los que no tienen pareja" (huérfanos). Con `INNER JOIN` esas filas desaparecerían.
+
+    `= NULL` nunca es verdadero en SQL (comparar con NULL da NULL), por eso hay que usar `IS NULL` / `IS NOT NULL`.
+
+- id: sq-008
+  tipo: sql
+  tema: sql
+  concepto: HAVING
+  nivel: intermedio
+  titulo: Vendedores con más de 100 artículos vendidos
+  origen: "Proyetos/.../queries/df3_vendedores.sql (venta_por_vendedor: COUNT(*) GROUP BY seller_id). HAVING aún no se ha visto en clase."
+  enunciado: |
+    En `order_items`, cada fila es un artículo vendido. Obtén los vendedores que han vendido **más de 100 artículos**.
+
+    Devuelve dos columnas, en este orden: `seller_id` y el número de artículos.
+  codigo_inicial: |
+    SELECT seller_id, COUNT(*)
+    FROM order_items
+    GROUP BY seller_id
+  solucion: |
+    SELECT seller_id, COUNT(*)
+    FROM order_items
+    GROUP BY seller_id
+    HAVING COUNT(*) > 100
+  pistas:
+    - "Quieres filtrar, pero por un resultado que se calcula DESPUÉS de agrupar. WHERE no puede hacerlo."
+    - "HAVING filtra grupos ya agregados. Va después del GROUP BY y puede usar funciones como COUNT."
+    - "HAVING COUNT(*) > 100, justo después de GROUP BY seller_id."
+  explicacion: |
+    `WHERE` filtra **filas** antes de agrupar; `HAVING` filtra **grupos** después de agregar. Por eso `WHERE COUNT(*) > 100` da error.
+
+    Orden lógico de ejecución: `FROM` y `JOIN`, `WHERE`, `GROUP BY`, `HAVING`, `SELECT`, `ORDER BY`, `LIMIT`.
+
+- id: sq-009
+  tipo: sql
+  tema: sql
+  concepto: CASE WHEN
+  nivel: intermedio
+  titulo: Artículos por rango de precio
+  origen: "queries/df1_actividad_clientes.sql (CASE WHEN is_late) y queries/df2_catalogo_productos.sql (CASE WHEN is_heavy)"
+  enunciado: |
+    Clasifica cada artículo de `order_items` según su `price`:
+
+    - `'caro'` si `price >= 200`
+    - `'medio'` si `price >= 50` (y menos de 200)
+    - `'barato'` en el resto
+
+    Devuelve cuántos artículos hay en cada rango. Dos columnas, en este orden: el rango y el conteo.
+  codigo_inicial: |
+    SELECT price, COUNT(*)
+    FROM order_items
+    GROUP BY price
+  solucion: |
+    SELECT
+        CASE
+            WHEN price >= 200 THEN 'caro'
+            WHEN price >= 50 THEN 'medio'
+            ELSE 'barato'
+        END AS rango,
+        COUNT(*) AS articulos
+    FROM order_items
+    GROUP BY rango
+  pistas:
+    - "Necesitas crear una columna nueva con la etiqueta de cada fila y agrupar por ella."
+    - "CASE WHEN condicion THEN valor ... ELSE valor END crea la etiqueta. Las condiciones se evalúan en orden. Después se agrupa por esa expresión."
+    - "CASE WHEN price >= 200 THEN 'caro' WHEN price >= 50 THEN 'medio' ELSE 'barato' END AS rango, y GROUP BY rango."
+  explicacion: |
+    `CASE WHEN` es el `SI` anidado de Excel y el `if/elif/else` de Python (pb-006) dentro de SQL. Se evalúan los `WHEN` en orden y gana el primero verdadero, así que el `>= 50` ya sabe que no es `>= 200`.
+
+    En MySQL se puede agrupar por el alias (`GROUP BY rango`); en otros motores hay que repetir la expresión completa.
+
+- id: sq-010
+  tipo: sql
+  tema: sql
+  concepto: COALESCE
+  nivel: intermedio
+  titulo: Productos por categoría, con las vacías agrupadas
+  origen: "queries/df2_catalogo_productos.sql (COALESCE(NULLIF(...), 'unknown')) y df3_vendedores.sql (COALESCE(..., 'sin_categoria'))"
+  enunciado: |
+    Cuenta los productos (`products`) por `product_category_name`. Los productos **sin categoría** (NULL) deben aparecer juntos como `'sin_categoria'`.
+
+    Devuelve dos columnas, en este orden: la categoría y el número de productos.
+  codigo_inicial: |
+    SELECT product_category_name, COUNT(*)
+    FROM products
+    GROUP BY product_category_name
+  solucion: |
+    SELECT
+        COALESCE(product_category_name, 'sin_categoria') AS categoria,
+        COUNT(*) AS productos
+    FROM products
+    GROUP BY categoria
+  pistas:
+    - "Con nulos, SQL agrupa los NULL en una fila con valor vacío. Necesitas una función que sustituya NULL por un texto."
+    - "COALESCE(columna, 'texto') devuelve la columna y, si es NULL, devuelve el texto."
+    - "SELECT COALESCE(product_category_name, 'sin_categoria') AS categoria, COUNT(*) ... GROUP BY categoria."
+  explicacion: |
+    `COALESCE(a, b, c...)` devuelve el primer valor que no es NULL. Es el `fillna` de SQL: el mismo criterio de "rellenar con un texto" que aplicaste en pandas (pd-006).
+
+    Su pariente `NULLIF(a, b)` hace lo contrario: devuelve NULL si `a = b`. Se usa para convertir `''` en NULL o evitar divisiones entre cero (`x / NULLIF(y, 0)`).
+
+# ---------------------------------------------------------------- JUNIOR
+- id: sq-011
+  tipo: sql
+  tema: sql
+  concepto: CTE (WITH) y agregar antes de unir
+  nivel: junior
+  titulo: Los 10 vendedores con más ingresos
+  origen: "Proyetos/.../queries/df3_vendedores.sql (WITH venta_por_vendedor ... JOIN sellers) y Manual_Proyecto_IV.pdf p.5 (agregar antes de unir)"
+  enunciado: |
+    Usa una **CTE** (`WITH`) para calcular, por `seller_id`, los ingresos (`ROUND(SUM(price), 2)`) de `order_items`. Después únela con `sellers`.
+
+    Devuelve los **10 vendedores con más ingresos**, con tres columnas en este orden: `seller_id`, `seller_city` (en minúsculas y sin espacios sobrantes) e `ingresos`.
+
+    Ordena por `ingresos` descendente y, en caso de empate, por `seller_id`.
+  codigo_inicial: |
+    WITH venta_por_vendedor AS (
+        SELECT seller_id, ROUND(SUM(price), 2) AS ingresos
+        FROM order_items
+        GROUP BY seller_id
+    )
+    SELECT *
+    FROM venta_por_vendedor
+  solucion: |
+    WITH venta_por_vendedor AS (
+        SELECT seller_id, ROUND(SUM(price), 2) AS ingresos
+        FROM order_items
+        GROUP BY seller_id
+    )
+    SELECT
+        s.seller_id,
+        LOWER(TRIM(s.seller_city)) AS seller_city,
+        v.ingresos
+    FROM venta_por_vendedor v
+    JOIN sellers s ON s.seller_id = v.seller_id
+    ORDER BY v.ingresos DESC, s.seller_id
+    LIMIT 10
+  comparar:
+    ordenado: true
+  pistas:
+    - "La CTE ya agrega por vendedor (una fila por vendedor). Falta traer la ciudad de la tabla sellers, limpiarla, ordenar y recortar."
+    - "JOIN sellers s ON s.seller_id = v.seller_id. Para la ciudad: LOWER(TRIM(columna)). Termina con ORDER BY ... DESC, ... y LIMIT 10."
+    - "SELECT s.seller_id, LOWER(TRIM(s.seller_city)) AS seller_city, v.ingresos FROM venta_por_vendedor v JOIN sellers s ON s.seller_id = v.seller_id ORDER BY v.ingresos DESC, s.seller_id LIMIT 10."
+  explicacion: |
+    Una CTE da nombre a una consulta intermedia para reutilizarla como si fuera una tabla. **Agregar antes de unir** evita que el JOIN multiplique filas: aquí cada vendedor tiene una sola fila en la CTE y una en `sellers`.
+
+    El desempate `s.seller_id` hace el orden **determinista**: sin él, dos vendedores con los mismos ingresos podrían salir en cualquier orden.
+
+- id: sq-012
+  tipo: sql
+  tema: sql
+  concepto: subconsulta en FROM y grano
+  nivel: junior
+  titulo: Pedidos con más de una forma de pago
+  origen: "Proyetos/Manual_Proyecto_IV.pdf p.5 (la trampa del JOIN: +26 %) y queries/df1_actividad_clientes.sql (payments_agg)"
+  enunciado: |
+    En `order_payments` un pedido puede tener **varias filas** (por ejemplo, tarjeta + voucher). Por eso unir `orders` con `order_payments` multiplica las filas.
+
+    Averigua **cuántos pedidos** (`order_id` distintos) tienen más de una fila en `order_payments`.
+
+    Devuelve una fila y una columna, con el nombre `pedidos_con_varios_pagos`.
+  codigo_inicial: |
+    SELECT order_id, COUNT(*) AS filas_de_pago
+    FROM order_payments
+    GROUP BY order_id
+  solucion: |
+    SELECT COUNT(*) AS pedidos_con_varios_pagos
+    FROM (
+        SELECT order_id
+        FROM order_payments
+        GROUP BY order_id
+        HAVING COUNT(*) > 1
+    ) AS t
+  comparar:
+    alias: true
+  pistas:
+    - "Primero necesitas la lista de pedidos con más de una fila de pago; después, contar esa lista."
+    - "La consulta de dentro agrupa por order_id y filtra con HAVING COUNT(*) > 1. La de fuera cuenta sus filas con FROM ( ...consulta... ) AS t."
+    - "SELECT COUNT(*) AS pedidos_con_varios_pagos FROM (SELECT order_id FROM order_payments GROUP BY order_id HAVING COUNT(*) > 1) AS t. En MySQL toda subconsulta en FROM necesita alias."
+  explicacion: |
+    Una subconsulta en `FROM` (tabla derivada) se ejecuta primero y la consulta de fuera la trata como una tabla. MySQL exige que tenga alias (`AS t`); si lo olvidas, `Every derived table must have its own alias`.
+
+    Este es el motivo del **+26 %** del Manual del Proyecto IV: al hacer `orders JOIN order_payments`, los pedidos con varios pagos aparecen varias veces y los totales se inflan. La solución es agregar `order_payments` por pedido **antes** de unir.
+
+- id: sq-013
+  tipo: sql
+  tema: sql
+  concepto: DATEDIFF y fechas
+  nivel: junior
+  titulo: Días medios de entrega
+  origen: "queries/df1_actividad_clientes.sql (DATEDIFF(entrega, compra) AS delivery_days)"
+  nota_dialecto: "DATEDIFF(fin, inicio) es de MySQL. En SQLite sería julianday(fin) - julianday(inicio)."
+  enunciado: |
+    Calcula los **días medios entre la compra y la entrega al cliente** de los pedidos entregados.
+
+    - Usa `DATEDIFF(order_delivered_customer_date, order_purchase_timestamp)`.
+    - Solo pedidos con `order_status = 'delivered'` **y** con fecha de entrega informada.
+    - Redondea a 2 decimales y devuelve una fila y una columna.
+  codigo_inicial: |
+    SELECT AVG(DATEDIFF(order_delivered_customer_date, order_purchase_timestamp))
+    FROM orders
+  solucion: |
+    SELECT ROUND(AVG(DATEDIFF(order_delivered_customer_date, order_purchase_timestamp)), 2) AS dias_medios
+    FROM orders
+    WHERE order_status = 'delivered'
+      AND order_delivered_customer_date IS NOT NULL
+  pistas:
+    - "Hay dos cosas que mejorar en el código inicial: qué pedidos entran en el cálculo y cómo se redondea."
+    - "WHERE order_status = 'delivered' AND order_delivered_customer_date IS NOT NULL para filtrar, y ROUND(valor, 2) alrededor del AVG."
+    - "ROUND(AVG(DATEDIFF(...)), 2) con el WHERE de los dos filtros. Los pedidos sin fecha de entrega darían NULL y AVG los ignora, pero los cancelados no deberían contar."
+  explicacion: |
+    `DATEDIFF(a, b)` devuelve los días de diferencia `a - b` (solo cuenta días, no horas). `AVG` ignora los NULL, pero filtrar por estado evita mezclar pedidos que nunca llegaron.
+
+    Esta misma expresión es la columna `delivery_days` de tu `df1_actividad_clientes.csv`. En pandas sería `(fecha_entrega - fecha_compra).dt.days.mean()`.
+
+- id: sq-014
+  tipo: sql
+  tema: sql
+  concepto: varios JOIN y LEFT JOIN a una traducción
+  nivel: junior
+  titulo: Ingresos por categoría en inglés
+  origen: "queries/df2_catalogo_productos.sql (LEFT JOIN categoria_traduccion + COALESCE 'unknown')"
+  enunciado: |
+    Calcula los **ingresos** (`ROUND(SUM(price), 2)`) de `order_items` por **categoría en inglés** (`product_category_name_english`), uniendo `order_items` con `products` y luego con `categoria_traduccion`.
+
+    - Las categorías sin traducción (o productos sin categoría) deben aparecer como `'unknown'`.
+    - Devuelve las **10 con más ingresos**, en dos columnas: `categoria_en` e `ingresos`.
+    - Ordena por `ingresos` descendente y, en caso de empate, por `categoria_en`.
+  codigo_inicial: |
+    SELECT p.product_category_name AS categoria_en, ROUND(SUM(oi.price), 2) AS ingresos
+    FROM order_items oi
+    JOIN products p ON p.product_id = oi.product_id
+    GROUP BY p.product_category_name
+  solucion: |
+    SELECT
+        COALESCE(t.product_category_name_english, 'unknown') AS categoria_en,
+        ROUND(SUM(oi.price), 2) AS ingresos
+    FROM order_items oi
+    JOIN products p ON p.product_id = oi.product_id
+    LEFT JOIN categoria_traduccion t ON t.product_category_name = p.product_category_name
+    GROUP BY categoria_en
+    ORDER BY ingresos DESC, categoria_en
+    LIMIT 10
+  comparar:
+    ordenado: true
+  pistas:
+    - "Necesitas una tercera tabla (la traducción) y tiene que ser un join que NO elimine las categorías sin traducción."
+    - "LEFT JOIN categoria_traduccion t ON t.product_category_name = p.product_category_name, y COALESCE(t.product_category_name_english, 'unknown') para los NULL."
+    - "Agrupa por la categoría traducida (el alias categoria_en), ordena con ORDER BY ingresos DESC, categoria_en y corta con LIMIT 10."
+  explicacion: |
+    Se usa `LEFT JOIN` a la tabla de traducción porque algunas categorías no tienen traducción: con `INNER JOIN` esos ingresos desaparecerían del total sin avisar. `COALESCE` pone la etiqueta `'unknown'`.
+
+    Si `categoria_traduccion` tuviera dos filas para la misma categoría, la unión **duplicaría** ingresos; conviene comprobar que la clave es única (grano).
+
+- id: sq-015
+  tipo: sql
+  tema: sql
+  concepto: GROUP_CONCAT
+  nivel: junior
+  titulo: Pedidos pagados con varios métodos distintos
+  origen: "queries/df1_actividad_clientes.sql (GROUP_CONCAT(DISTINCT payment_type SEPARATOR ', ') AS payment_types_used)"
+  solo_mysql: true
+  nota_dialecto: "GROUP_CONCAT(... SEPARATOR ...) es específico de MySQL. En SQLite se escribe group_concat(x, ', ') y no admite DISTINCT con separador."
+  enunciado: |
+    En `order_payments`, un pedido puede pagarse con varios métodos (`payment_type`).
+
+    Para los pedidos pagados con **más de un método distinto** (ignora las filas con `payment_type = 'not_defined'`), devuelve:
+
+    1. `order_id`
+    2. `metodos`: los métodos distintos **ordenados alfabéticamente** y unidos con `', '` (por ejemplo `credit_card, voucher`).
+  codigo_inicial: |
+    SELECT order_id, GROUP_CONCAT(payment_type) AS metodos
+    FROM order_payments
+    GROUP BY order_id
+  solucion: |
+    SELECT
+        order_id,
+        GROUP_CONCAT(DISTINCT payment_type ORDER BY payment_type SEPARATOR ', ') AS metodos
+    FROM order_payments
+    WHERE payment_type != 'not_defined'
+    GROUP BY order_id
+    HAVING COUNT(DISTINCT payment_type) > 1
+  pistas:
+    - "Hay que filtrar filas antes de agrupar, agrupar por pedido y filtrar los grupos con más de un método distinto."
+    - "GROUP_CONCAT(DISTINCT columna ORDER BY columna SEPARATOR ', ') une los valores en un texto. El filtro de grupos va en HAVING COUNT(DISTINCT payment_type) > 1."
+    - "WHERE payment_type != 'not_defined' antes del GROUP BY, y HAVING COUNT(DISTINCT payment_type) > 1 después. El ORDER BY dentro de GROUP_CONCAT hace el texto determinista."
+  explicacion: |
+    `GROUP_CONCAT` convierte los valores de un grupo en una sola cadena: es la forma de MySQL de "aplanar" una relación 1 a N en una columna, como hacía `payment_types_used` en `df1_actividad_clientes`.
+
+    Sin `ORDER BY` dentro, el orden de los métodos no está garantizado y dos ejecuciones podrían dar textos distintos para el mismo pedido.

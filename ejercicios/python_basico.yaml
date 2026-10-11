@@ -1,0 +1,563 @@
+# Python básico. Ver CLAUDE.md para el formato de cada campo.
+
+# ---------------------------------------------------------------- BÁSICO
+- id: pb-001
+  tipo: python
+  tema: python_basico
+  concepto: print con sep
+  nivel: basico
+  titulo: Unir tres códigos de país con un guion
+  origen: "Clases/python/Practicas/practica/Pregunta17.py (print con sep)"
+  enunciado: |
+    En el dataset de Kiva cada país tiene un código de dos letras. Tienes tres códigos en tres variables.
+
+    Haz que el programa imprima **una sola línea** con los tres códigos separados por un guion, sin espacios:
+
+    `KE-PH-PE`
+
+    Usa solo `print` con sus parámetros, sin construir el texto a mano con `+`.
+  codigo_inicial: |
+    pais1 = "KE"
+    pais2 = "PH"
+    pais3 = "PE"
+
+    print(pais1, pais2, pais3)
+  solucion: |
+    pais1 = "KE"
+    pais2 = "PH"
+    pais3 = "PE"
+
+    print(pais1, pais2, pais3, sep="-")
+  tests:
+    - tipo: salida
+      esperado: "KE-PH-PE"
+  pistas:
+    - "print separa por defecto sus argumentos con un espacio. Piensa si se puede cambiar ese separador."
+    - "print tiene un parámetro con nombre llamado sep. Se escribe al final: print(a, b, sep=...)."
+    - "Añade sep=\"-\" al final del print. Así print une los tres valores con un guion en lugar de un espacio. Es el mismo parámetro que aparece en tu Pregunta17 (sep='x')."
+  explicacion: |
+    `print(a, b, c)` escribe los valores separados por un espacio. El parámetro `sep` cambia ese separador, y existe también `end` para cambiar lo que se escribe al final (por defecto un salto de línea).
+
+    Error típico: escribir `print(pais1 + "-" + pais2 + "-" + pais3)`. Funciona con textos, pero falla en cuanto algún valor es un número (`TypeError`) y no usa lo que `print` ya sabe hacer.
+
+- id: pb-002
+  tipo: python
+  tema: python_basico
+  concepto: operadores // y %
+  nivel: basico
+  titulo: Cuotas completas y resto de un préstamo
+  origen: "Clases/python/Practicas/practica/pregunta13.py y Pregunta15.py (// y %)"
+  enunciado: |
+    Un préstamo de Kiva de **875 USD** se va a devolver en cuotas de **200 USD**.
+
+    Guarda en la variable `resultado` una tupla con dos números:
+
+    1. cuántas cuotas completas de 200 USD caben,
+    2. cuántos dólares sobran después de esas cuotas.
+
+    Hazlo con operadores, no a mano.
+  codigo_inicial: |
+    prestamo = 875
+    cuota = 200
+
+    resultado = None
+  solucion: |
+    prestamo = 875
+    cuota = 200
+
+    resultado = (prestamo // cuota, prestamo % cuota)
+  tests:
+    - tipo: resultado
+  pistas:
+    - "Necesitas dos operaciones distintas con los mismos números: una que dé solo la parte entera de la división y otra que dé lo que sobra."
+    - "La división entera se escribe // y el resto de una división se escribe %. Una tupla se escribe entre paréntesis y separada por comas: (a, b)."
+    - "resultado = (prestamo // cuota, prestamo % cuota). 875 // 200 da 4 (cuatro cuotas completas) y 875 % 200 da 75 (lo que sobra). Son los mismos operadores de tus Preguntas 13 y 15."
+  explicacion: |
+    `//` descarta los decimales de la división (`875 / 200` daría `4.375`, pero `875 // 200` da `4`) y `%` devuelve el resto. Juntos cumplen siempre `a == (a // b) * b + (a % b)`.
+
+    Cuidado: `/` devuelve siempre un `float`, incluso si la división es exacta (`8 / 2` es `4.0`).
+
+- id: pb-003
+  tipo: python
+  tema: python_basico
+  concepto: precedencia de operadores
+  nivel: basico
+  titulo: Importe total con comisión porcentual
+  origen: "Clases/python/Practicas/practica/Pregunta18.py y Pregunta19.py (precedencia)"
+  enunciado: |
+    Un préstamo de **1000 USD** lleva una comisión del **2,5 %** del principal más **15 USD** fijos.
+
+    El importe total a devolver es: principal + comisión porcentual + fijo.
+
+    El código inicial da un resultado incorrecto. Corrígelo para que `resultado` valga el importe total correcto.
+  codigo_inicial: |
+    principal = 1000
+    comision = 2.5    # porcentaje
+    fijo = 15
+
+    resultado = principal + comision / 100 + fijo
+  solucion: |
+    principal = 1000
+    comision = 2.5    # porcentaje
+    fijo = 15
+
+    resultado = principal + principal * comision / 100 + fijo
+  tests:
+    - tipo: resultado
+  pistas:
+    - "Fíjate en qué se está dividiendo entre 100: ¿es la comisión en dólares o solo el porcentaje?"
+    - "El 2,5 % hay que aplicarlo sobre el principal: primero multiplicas el principal por el porcentaje y luego divides entre 100."
+    - "principal * comision / 100 da 25.0 dólares de comisión. El código inicial sumaba 0.025, que es solo el porcentaje convertido en fracción sin aplicarlo al principal. Resultado correcto: 1040.0."
+  explicacion: |
+    Python respeta la precedencia matemática: `**` primero, luego `* / // %` (de izquierda a derecha) y por último `+ -`. Por eso `2 + 3 * 5.` de tu Pregunta18 da `17.0` y no `25.0`.
+
+    Si dudas, usa paréntesis: `principal + (principal * comision / 100) + fijo` hace lo mismo y se lee mejor.
+
+- id: pb-004
+  tipo: python
+  tema: python_basico
+  concepto: potencia **
+  nivel: basico
+  titulo: Interés compuesto a 3 años
+  origen: "Clases/python/Practicas/practica/Pregunta19.py (4 ** 2)"
+  enunciado: |
+    Un capital de **1000 USD** crece un **5 % anual** durante **3 años** con interés compuesto.
+
+    Cada año el capital se multiplica por `1.05`. Guarda en `resultado` el capital final.
+
+    El código inicial no lo calcula bien. Corrígelo.
+  codigo_inicial: |
+    capital = 1000
+    tasa = 0.05
+    anios = 3
+
+    resultado = capital * 1 + tasa * anios
+  solucion: |
+    capital = 1000
+    tasa = 0.05
+    anios = 3
+
+    resultado = capital * (1 + tasa) ** anios
+  tests:
+    - tipo: resultado
+  pistas:
+    - "Multiplicar por 1.05 tres veces seguidas es lo mismo que multiplicar una vez por una potencia."
+    - "La potencia en Python es **. El factor anual es (1 + tasa) y hay que elevarlo al número de años."
+    - "capital * (1 + tasa) ** anios. Como ** tiene más precedencia que *, primero se calcula 1.05 ** 3 = 1.157625 y luego se multiplica por el capital: 1157.625."
+  explicacion: |
+    `**` es el operador de potencia y tiene la precedencia más alta, por eso no necesitas paréntesis alrededor de `(1 + tasa) ** anios`. Los paréntesis de `(1 + tasa)` sí son imprescindibles: sin ellos solo se elevaría `tasa`.
+
+- id: pb-005
+  tipo: python
+  tema: python_basico
+  concepto: input y conversión de tipos
+  nivel: basico
+  titulo: Calcular el pago por horas
+  origen: "Clases/python/Practicas/py4e/ex_03_01/ex_03_01.py"
+  enunciado: |
+    Completa el programa para que pida las horas trabajadas y el precio por hora, y muestre:
+
+    `Pagar: <total>`
+
+    Por ejemplo, con 40 horas y 10.5 de precio por hora debe imprimir `Pagar: 420.0`.
+
+    Pulsa **Ejecutar** para ver el error que da el código inicial y léelo con calma: te dice qué falla.
+  codigo_inicial: |
+    horas = input("Colocar Horas: ")
+    precio = input("Colocar Precio: ")
+
+    print("Pagar:", horas * precio)
+  solucion: |
+    horas = input("Colocar Horas: ")
+    precio = input("Colocar Precio: ")
+
+    pago = float(horas) * float(precio)
+    print("Pagar:", pago)
+  tests:
+    - tipo: salida
+      entrada: "40\n10.5\n"
+      esperado: "Pagar: 420.0"
+    - tipo: salida
+      entrada: "35\n8\n"
+      esperado: "Pagar: 280.0"
+  pistas:
+    - "input() siempre devuelve texto (str), aunque el usuario escriba un número. Piensa qué significa multiplicar dos textos."
+    - "Antes de multiplicar tienes que convertir cada texto en número con float(...) (o int(...) si no hay decimales)."
+    - "pago = float(horas) * float(precio) y luego print('Pagar:', pago). El error del código inicial (TypeError: can't multiply sequence by non-int of type 'str') aparece porque Python intenta repetir un texto en lugar de multiplicar números."
+  explicacion: |
+    `input()` devuelve siempre un `str`. Para operar hay que convertir: `float("40")` da `40.0`. Fíjate en la Pregunta16 de tu práctica: `"ab" * 3` repite el texto (`ababab`), por eso mezclar tipos no siempre da error, a veces da un resultado distinto del esperado.
+
+    Si el usuario escribe algo que no es un número (`"cuarenta"`), `float()` lanza `ValueError`. Eso se maneja con `try/except` (ejercicio pb-012).
+
+# ------------------------------------------------------------ INTERMEDIO
+- id: pb-006
+  tipo: python
+  tema: python_basico
+  concepto: if / elif / else
+  nivel: intermedio
+  titulo: Clasificar un préstamo en Alto, Medio o Bajo
+  origen: "Proyetos/Analisis Descriptivo con Excel/README.md (SI anidado: >4375 Alto, >1000 Medio, resto Bajo)"
+  enunciado: |
+    En tu proyecto de Excel clasificaste cada préstamo de Kiva con un `SI` anidado:
+
+    - más de **4375** USD: `"Alto"`
+    - más de **1000** USD (y hasta 4375): `"Medio"`
+    - 1000 USD o menos: `"Bajo"`
+
+    Escribe la función `clasificar_prestamo(monto)` que **devuelva** (con `return`) esa etiqueta. Fíjate en los límites: 4375 exacto es `"Medio"` y 1000 exacto es `"Bajo"`.
+  codigo_inicial: |
+    def clasificar_prestamo(monto):
+        pass
+  solucion: |
+    def clasificar_prestamo(monto):
+        if monto > 4375:
+            return "Alto"
+        elif monto > 1000:
+            return "Medio"
+        else:
+            return "Bajo"
+  tests:
+    - tipo: funcion
+      nombre: clasificar_prestamo
+      casos:
+        - {args: [525], esperado: "Bajo"}
+        - {args: [1000], esperado: "Bajo"}
+        - {args: [1001], esperado: "Medio"}
+        - {args: [4375], esperado: "Medio"}
+        - {args: [4376], esperado: "Alto"}
+        - {args: [10000], esperado: "Alto"}
+  pistas:
+    - "Es la misma lógica que el SI anidado de Excel: se evalúan las condiciones de mayor a menor y la primera que se cumple decide."
+    - "if monto > 4375: ... elif monto > 1000: ... else: ... Usa > (estrictamente mayor) para respetar los límites. Recuerda return en cada rama."
+    - "Primero if monto > 4375 devuelve 'Alto'; si no, elif monto > 1000 devuelve 'Medio'; en cualquier otro caso else devuelve 'Bajo'. Al evaluar de mayor a menor, el elif ya sabe que monto <= 4375."
+  explicacion: |
+    `if / elif / else` se evalúa de arriba abajo y se detiene en la primera condición verdadera. El orden importa: si empezaras por `monto > 1000`, un préstamo de 5000 sería `"Medio"` y nunca llegarías al `"Alto"`.
+
+    Diferencia con Excel: en Python se usa `>` con `monto`, y el texto va entre comillas; el `SI(D2>4375;"Alto";...)` se convierte en `if monto > 4375: return "Alto"`.
+
+- id: pb-007
+  tipo: python
+  tema: python_basico
+  concepto: while con break y acumuladores
+  nivel: intermedio
+  titulo: Sumar números hasta escribir "fin"
+  origen: "Clases/python/Practicas/py4e/ex_05_01/ex_05_01.py (while True sin salida)"
+  enunciado: |
+    Tu `ex_05_01.py` pide números en un `while True` que **nunca termina**. Arréglalo:
+
+    - El programa pide números con `input` hasta que se escribe `fin`.
+    - Al terminar imprime, en una sola línea y separados por espacios: el **total**, la **cantidad** de números y la **media**.
+
+    Ejemplo: con `10`, `20`, `30`, `fin` imprime `60.0 3 20.0`.
+
+    Pulsa **Ejecutar** con el código inicial para ver qué error aparece cuando se escribe `fin`.
+  codigo_inicial: |
+    num = 0
+    tot = 0.0
+    while True:
+        sval = input("Introducir numero: ")
+        fval = float(sval)
+        print(fval)
+        num = num + 1
+        tot = tot + fval
+  solucion: |
+    num = 0
+    tot = 0.0
+    while True:
+        sval = input("Introducir numero: ")
+        if sval == "fin":
+            break
+        tot = tot + float(sval)
+        num = num + 1
+    print(tot, num, tot / num)
+  tests:
+    - tipo: salida
+      entrada: "10\n20\n30\nfin\n"
+      esperado: "60.0 3 20.0"
+    - tipo: salida
+      entrada: "5\nfin\n"
+      esperado: "5.0 1 5.0"
+  pistas:
+    - "Un while True solo termina con break. Hace falta una condición que lo active cuando el usuario escriba la palabra de salida."
+    - "Comprueba el texto ANTES de convertirlo con float(): if sval == 'fin': break. Después del bucle imprime tot, num y tot / num."
+    - "Dentro del while: lee sval, si es 'fin' haz break; si no, suma float(sval) a tot y suma 1 a num. Fuera del bucle: print(tot, num, tot / num). El ValueError del código inicial aparece porque float('fin') no se puede convertir."
+  explicacion: |
+    El patrón *centinela* (un valor especial que indica el final) es la forma clásica de leer datos con `while True` + `break`. Los acumuladores `num` y `tot` se inicializan fuera del bucle.
+
+    Caso límite que este ejercicio no prueba: si el usuario escribe `fin` sin ningún número, `tot / num` divide entre cero (`ZeroDivisionError`). Un programa real lo comprobaría antes.
+
+- id: pb-008
+  tipo: python
+  tema: python_basico
+  concepto: for con lista y acumulador
+  nivel: intermedio
+  titulo: Sumar los préstamos de más de 300 USD
+  origen: "Clases/Excel/Practica/Ejecicio 1/kiva_loans.csv (primeros 5 loan_amount) y README de franco_phyton_set_up (bucle for)"
+  enunciado: |
+    Tienes los importes de los cinco primeros préstamos del CSV de Kiva.
+
+    Con un bucle `for`, guarda en `resultado` la **suma de los préstamos que superan 300 USD** (los de 300 o menos no cuentan).
+  codigo_inicial: |
+    montos = [525.0, 350.0, 225.0, 325.0, 500.0]
+
+    resultado = 0
+  solucion: |
+    montos = [525.0, 350.0, 225.0, 325.0, 500.0]
+
+    resultado = 0
+    for monto in montos:
+        if monto > 300:
+            resultado = resultado + monto
+  tests:
+    - tipo: resultado
+  pistas:
+    - "Recorre la lista elemento a elemento y decide, para cada uno, si lo sumas o no."
+    - "for monto in montos: y dentro un if monto > 300: que sume a resultado. resultado debe empezar en 0 antes del bucle."
+    - "resultado = 0; for monto in montos: if monto > 300: resultado = resultado + monto. Se suman 525 + 350 + 325 + 500 = 1700.0; el 225 se ignora."
+  explicacion: |
+    Un acumulador es una variable que se inicializa antes del bucle (`resultado = 0`) y se actualiza en cada vuelta. Lo mismo hace `SUMAR.SI` en Excel y `df[df["loan_amount"] > 300]["loan_amount"].sum()` en pandas; aquí lo ves "por dentro".
+
+    Error típico: poner `resultado = 0` dentro del bucle, que lo reinicia en cada vuelta y deja solo el último valor.
+
+- id: pb-009
+  tipo: python
+  tema: python_basico
+  concepto: métodos de str (strip, lower)
+  nivel: intermedio
+  titulo: Limpiar el campo use de Kiva
+  origen: "Proyetos/Proyecto-2-Python-Ray-Franco/notebooks/kiva_loans.ipynb (str.strip().str.lower())"
+  enunciado: |
+    En Kiva, el texto libre `use` llega con espacios sobrantes y mayúsculas mezcladas.
+
+    Guarda en `resultado` ese texto **sin espacios al principio ni al final** y **todo en minúsculas**.
+  codigo_inicial: |
+    uso = "  To Buy A Refrigerator For His Butcher Shop "
+
+    resultado = uso
+  solucion: |
+    uso = "  To Buy A Refrigerator For His Butcher Shop "
+
+    resultado = uso.strip().lower()
+  tests:
+    - tipo: resultado
+  pistas:
+    - "Los textos tienen métodos propios: se escriben con un punto después de la variable."
+    - "uso.strip() quita los espacios de los extremos y uso.lower() pasa a minúsculas. Se pueden encadenar."
+    - "uso.strip().lower(). Es el equivalente en texto simple de df['use'].str.strip().str.lower() que usaste en pandas."
+  explicacion: |
+    Los `str` son inmutables: `uso.strip()` **devuelve** un texto nuevo y no cambia `uso`. Por eso hay que asignar el resultado (o encadenar los métodos, como aquí).
+
+    Más adelante verás que en pandas se escribe igual pero con `.str` delante: `df["use"].str.strip().str.lower()`.
+
+- id: pb-010
+  tipo: python
+  tema: python_basico
+  concepto: diccionario como contador
+  nivel: intermedio
+  titulo: Contar préstamos por sector a mano
+  origen: "Proyetos/Proyecto-2-Python-Ray-Franco/notebooks/kiva_loans.ipynb (value_counts de sector)"
+  enunciado: |
+    Tienes la lista de sectores de siete préstamos. Construye en `resultado` un **diccionario** que diga cuántas veces aparece cada sector, por ejemplo `{"Health": 1, ...}`.
+
+    Hazlo con un bucle `for` (sin `collections.Counter`): así entenderás qué hace `value_counts()` por dentro.
+  codigo_inicial: |
+    sectores = ["Health", "Food", "Food", "Agriculture", "Agriculture", "Agriculture", "Retail"]
+
+    resultado = {}
+  solucion: |
+    sectores = ["Health", "Food", "Food", "Agriculture", "Agriculture", "Agriculture", "Retail"]
+
+    resultado = {}
+    for sector in sectores:
+        resultado[sector] = resultado.get(sector, 0) + 1
+  tests:
+    - tipo: resultado
+  pistas:
+    - "Un diccionario guarda pares clave: valor. Aquí la clave es el sector y el valor es el número de veces que lo has visto."
+    - "Para cada sector: si ya está en el diccionario suma 1; si no está, empieza en 1. dict.get(clave, 0) devuelve 0 cuando la clave no existe."
+    - "for sector in sectores: resultado[sector] = resultado.get(sector, 0) + 1. Resultado: {'Health': 1, 'Food': 2, 'Agriculture': 3, 'Retail': 1}."
+  explicacion: |
+    `resultado.get(sector, 0)` evita el `KeyError` que daría `resultado[sector]` la primera vez que aparece un sector. Este patrón (contar con un diccionario) es exactamente lo que automatiza `df["sector"].value_counts()` en pandas.
+
+# ---------------------------------------------------------------- JUNIOR
+- id: pb-011
+  tipo: python
+  tema: python_basico
+  concepto: funciones con return y división segura
+  nivel: junior
+  titulo: Porcentaje financiado sin dividir entre cero
+  origen: "Clases/Excel/Practica/Ejecicio 1/PowerQuery_Kiva.pdf p.11 (Pct_Financiado) y PowerPivot_Kiva.pdf p.10 (DIVIDE)"
+  enunciado: |
+    En Power Query creaste la columna `Pct_Financiado` y en DAX usaste `DIVIDE` para evitar el error de dividir entre cero.
+
+    Escribe la función `porcentaje_financiado(financiado, solicitado)` que **devuelva** el porcentaje financiado **redondeado a 2 decimales**.
+
+    - Si `solicitado` es 0, devuelve `0.0` en lugar de fallar.
+    - Ejemplos: `(300, 400)` devuelve `75.0`; `(1, 3)` devuelve `33.33`.
+  codigo_inicial: |
+    def porcentaje_financiado(financiado, solicitado):
+        return financiado / solicitado * 100
+  solucion: |
+    def porcentaje_financiado(financiado, solicitado):
+        if solicitado == 0:
+            return 0.0
+        return round(financiado / solicitado * 100, 2)
+  tests:
+    - tipo: funcion
+      nombre: porcentaje_financiado
+      casos:
+        - {args: [525, 525], esperado: 100.0}
+        - {args: [300, 400], esperado: 75.0}
+        - {args: [1, 3], esperado: 33.33}
+        - {args: [0, 500], esperado: 0.0}
+        - {args: [0, 0], esperado: 0.0}
+  pistas:
+    - "Hay dos casos distintos: cuando se puede dividir y cuando no. Una función puede salir antes con un return."
+    - "Comprueba primero if solicitado == 0: return 0.0. Después calcula el porcentaje y redondea con round(valor, 2)."
+    - "if solicitado == 0: return 0.0 y, a continuación, return round(financiado / solicitado * 100, 2). El código inicial lanza ZeroDivisionError con (0, 0) y no redondea."
+  explicacion: |
+    Un `return` termina la función al instante: por eso el caso especial va **antes** del cálculo y no hace falta un `else`. `round(x, 2)` redondea a dos decimales.
+
+    Es la misma idea que `DIVIDE(a; b)` en DAX o `SI.ERROR` en Excel, pero comprobando el caso problemático antes de que ocurra el error.
+
+- id: pb-012
+  tipo: python
+  tema: python_basico
+  concepto: try / except
+  nivel: junior
+  titulo: Convertir a Celsius sin que el programa se rompa
+  origen: "Clases/python/Practicas/py4e/ex_02_02/ex_04.py (ValueError con '5 degress')"
+  enunciado: |
+    En tu `ex_04.py` el texto `"5 degress"` hacía fallar `float(temp)` con un `ValueError`.
+
+    Escribe la función `a_celsius(texto)` que reciba una temperatura en Fahrenheit **como texto** y devuelva los grados Celsius (`(F - 32) * 5 / 9`).
+
+    Si el texto **no se puede convertir a número**, devuelve `None` en lugar de lanzar el error.
+  codigo_inicial: |
+    def a_celsius(texto):
+        fahr = float(texto)
+        return (fahr - 32.0) * 5.0 / 9.0
+  solucion: |
+    def a_celsius(texto):
+        try:
+            fahr = float(texto)
+        except ValueError:
+            return None
+        return (fahr - 32.0) * 5.0 / 9.0
+  tests:
+    - tipo: funcion
+      nombre: a_celsius
+      casos:
+        - {args: ["212"], esperado: 100.0}
+        - {args: ["32"], esperado: 0.0}
+        - {args: ["-40"], esperado: -40.0}
+        - {args: ["5 degress"], esperado: null}
+        - {args: [""], esperado: null}
+  pistas:
+    - "El error ocurre en una línea concreta (float(texto)). Python permite 'intentar' una línea y decidir qué hacer si falla."
+    - "Rodea la conversión con try: ... except ValueError: ... y devuelve None dentro del except."
+    - "try: fahr = float(texto) / except ValueError: return None. Si no salta el error, el código sigue y calcula (fahr - 32.0) * 5.0 / 9.0."
+  explicacion: |
+    `try/except` captura un tipo de error concreto. Capturar solo `ValueError` (y no un `except:` genérico) es importante: así no escondes otros fallos (por ejemplo un `NameError` por un nombre mal escrito).
+
+    Para texto vacío (`""`) `float("")` también lanza `ValueError`, por eso el último caso devuelve `None`.
+
+- id: pb-013
+  tipo: python
+  tema: python_basico
+  concepto: list comprehension y split
+  nivel: junior
+  titulo: Separar y limpiar los tags de un préstamo
+  origen: "Clases/Excel/Practica/Ejecicio 1/kiva_loans.csv (columna tags) y PowerQuery_Kiva.pdf p.8-9 (dividir en filas)"
+  enunciado: |
+    La columna `tags` de Kiva guarda varios valores en un solo texto, separados por coma, con espacios y con `#` delante.
+
+    Guarda en `resultado` la **lista de tags limpios**: sin espacios sobrantes y sin el `#` inicial. El orden se mantiene.
+
+    Hazlo en una sola línea con una *list comprehension*.
+  codigo_inicial: |
+    tags = "#Elderly, #First Loan, #Health and Sanitation, #Biz Durable Asset"
+
+    resultado = []
+  solucion: |
+    tags = "#Elderly, #First Loan, #Health and Sanitation, #Biz Durable Asset"
+
+    resultado = [t.strip().lstrip("#") for t in tags.split(",")]
+  tests:
+    - tipo: resultado
+  pistas:
+    - "Dos pasos: trocear el texto en una lista y limpiar cada trozo. Una list comprehension hace el segundo paso."
+    - "tags.split(',') da la lista de trozos. Para cada trozo t, t.strip() quita espacios y .lstrip('#') quita almohadillas por la izquierda."
+    - "[t.strip().lstrip('#') for t in tags.split(',')]. Resultado: ['Elderly', 'First Loan', 'Health and Sanitation', 'Biz Durable Asset']."
+  explicacion: |
+    `[expresion for x in lista]` construye una lista nueva aplicando la expresión a cada elemento. Es el equivalente de Python a "dividir columna por delimitador" de Power Query, y de `df["tags"].str.split(",")` en pandas.
+
+    Ojo: `lstrip("#")` quita **todos** los caracteres `#` del principio; `strip()` solo espacios. Hace falta aplicar `.strip()` primero porque tras la coma queda un espacio delante de `#`.
+
+- id: pb-014
+  tipo: python
+  tema: python_basico
+  concepto: eliminar duplicados manteniendo el orden
+  nivel: junior
+  titulo: Deduplicar tags dentro de una celda
+  origen: "Clases/Excel/Practica/Ejecicio 1/PowerQuery_Kiva.pdf p.8 (Text.Combine(List.Distinct(Text.Split)))"
+  enunciado: |
+    En 6.849 préstamos de Kiva los `tags` vienen repetidos dentro de la misma celda. En Power Query lo resolviste con `List.Distinct`.
+
+    Guarda en `resultado` la lista de tags **sin repetidos**, manteniendo el **orden de primera aparición**.
+  codigo_inicial: |
+    tags = "user_favorite, volunteer_like, user_favorite, #Woman Owned Biz, volunteer_like"
+
+    resultado = tags.split(", ")
+  solucion: |
+    tags = "user_favorite, volunteer_like, user_favorite, #Woman Owned Biz, volunteer_like"
+
+    resultado = list(dict.fromkeys(tags.split(", ")))
+  tests:
+    - tipo: resultado
+  pistas:
+    - "Un set elimina duplicados pero no garantiza el orden. Necesitas algo que elimine duplicados y recuerde el orden."
+    - "Los diccionarios de Python conservan el orden de inserción y no admiten claves repetidas. dict.fromkeys(lista) crea un diccionario con esas claves."
+    - "list(dict.fromkeys(tags.split(', '))). Resultado: ['user_favorite', 'volunteer_like', '#Woman Owned Biz']. Alternativa más larga: un bucle for con un if x not in vistos."
+  explicacion: |
+    `dict.fromkeys(["a", "b", "a"])` da `{"a": None, "b": None}`: la segunda `"a"` no crea clave nueva. Al convertir a `list` quedan solo las claves, en orden de primera aparición.
+
+    `list(set(lista))` también quita duplicados, pero el orden resultante es impredecible. En pandas el equivalente es `drop_duplicates()` y `Series.unique()`.
+
+- id: pb-015
+  tipo: python
+  tema: python_basico
+  concepto: leer un CSV con el módulo csv
+  nivel: junior
+  titulo: Sumar los préstamos de Kenya leyendo el CSV a mano
+  origen: "Clases/GIT/Teoria/Terminal.pdf (la terminal se queda corta con CSV con comillas) y Clases/Excel/Practica/Ejecicio 1/kiva_loans.csv"
+  datos: [kiva_muestra.csv]
+  enunciado: |
+    El archivo `kiva_muestra.csv` (muestra de Kiva) está en la carpeta de trabajo.
+
+    Usa el módulo `csv` de Python (`csv.DictReader`) para guardar en `resultado` la **suma de `loan_amount` de los préstamos cuyo `country` es `"Kenya"`**.
+
+    Recuerda que al leer un CSV todo llega como texto: tendrás que convertir `loan_amount` a número.
+  codigo_inicial: |
+    import csv
+
+    resultado = 0
+  solucion: |
+    import csv
+
+    total = 0.0
+    with open("kiva_muestra.csv", newline="", encoding="utf-8") as f:
+        for fila in csv.DictReader(f):
+            if fila["country"] == "Kenya":
+                total += float(fila["loan_amount"])
+    resultado = total
+  tests:
+    - tipo: resultado
+  pistas:
+    - "Abre el archivo con open(...) dentro de un with, y recórrelo fila a fila. csv.DictReader convierte cada fila en un diccionario columna: valor."
+    - "with open('kiva_muestra.csv', newline='', encoding='utf-8') as f: for fila in csv.DictReader(f): ... Dentro, filtra con fila['country'] == 'Kenya' y suma float(fila['loan_amount'])."
+    - "Inicializa total = 0.0, recorre las filas con DictReader, y por cada fila de Kenya haz total += float(fila['loan_amount']). Al final resultado = total."
+  explicacion: |
+    `csv.DictReader` entiende las comillas del CSV (los campos `use` y `tags` llevan comas dentro), algo que `cut -d,` en la terminal no sabe hacer. Cada fila es un diccionario con **todos los valores como texto**.
+
+    Este es el trabajo que `pd.read_csv` hace por ti en una línea (y además infiere tipos). Haberlo hecho una vez a mano ayuda a entender qué ahorra pandas.

@@ -1,0 +1,19 @@
+# Temas de la app. El orden de aparicion lo marca `orden`.
+# `fase`: fase de entrega en la que se activa el tema.
+- id: python_basico
+  nombre: Python básico
+  descripcion: print, input, operadores, condicionales, bucles, listas, diccionarios y funciones.
+  fase: 1
+  orden: 1
+
+- id: pandas
+  nombre: pandas (limpieza de datos)
+  descripcion: Cargar, inspeccionar, limpiar y agrupar los datos de Kiva y Olist con pandas.
+  fase: 1
+  orden: 2
+
+- id: sql
+  nombre: SQL (base Olist)
+  descripcion: Consultas sobre tu base olist en MySQL, de SELECT a CTE y JOIN.
+  fase: 1
+  orden: 3

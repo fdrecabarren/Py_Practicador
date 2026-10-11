@@ -1,0 +1,542 @@
+# pandas (limpieza de datos). Ver CLAUDE.md para el formato.
+# Datasets en datos/ (los crea scripts/preparar_datos.py):
+#   kiva_muestra.csv, olist_pedidos.csv, olist_ventas.csv, olist_vendedores.csv, customer_activity.csv
+
+# ---------------------------------------------------------------- BÁSICO
+- id: pd-001
+  tipo: python
+  tema: pandas
+  concepto: read_csv y shape
+  nivel: basico
+  titulo: Cargar Kiva y ver su tamaño
+  origen: "Proyetos/Proyecto-2-Python-Ray-Franco/notebooks/kiva_loans.ipynb (celdas 1-4: read_csv y shape)"
+  datos: [kiva_muestra.csv]
+  enunciado: |
+    El archivo `kiva_muestra.csv` es una muestra del dataset de préstamos de Kiva.
+
+    1. Cárgalo en un DataFrame llamado `df`.
+    2. Guarda en `resultado` su **forma** (número de filas y número de columnas).
+  codigo_inicial: |
+    import pandas as pd
+
+    df = None
+    resultado = None
+  solucion: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+    resultado = df.shape
+  tests:
+    - tipo: resultado
+  pistas:
+    - "pandas tiene una función para leer un CSV y devolver un DataFrame. Y un DataFrame sabe decir cuántas filas y columnas tiene."
+    - "pd.read_csv('nombre_del_archivo.csv') carga el archivo. El atributo .shape (sin paréntesis) da una tupla (filas, columnas)."
+    - "df = pd.read_csv('kiva_muestra.csv') y resultado = df.shape. Sale (3008, 20): 3008 préstamos y 20 columnas, las mismas que tu proyecto."
+  explicacion: |
+    `shape` es un **atributo** (no lleva paréntesis) y devuelve `(filas, columnas)`. Es lo primero que se mira al cargar datos y lo que usaste en el Proyecto 2 para comprobar cuántas filas perdías al limpiar.
+
+    Si escribes `df.shape()` obtendrás `TypeError: 'tuple' object is not callable`: ya es una tupla.
+
+- id: pd-002
+  tipo: python
+  tema: pandas
+  concepto: isnull().sum()
+  nivel: basico
+  titulo: Contar los préstamos sin fecha de financiación
+  origen: "Proyetos/Proyecto-2-Python-Ray-Franco/notebooks/kiva_loans.ipynb (celdas 20-21: conteo de nulos)"
+  datos: [kiva_muestra.csv]
+  enunciado: |
+    En Kiva, `funded_time` está vacío cuando el préstamo no llegó a financiarse del todo.
+
+    Guarda en `resultado` **cuántos préstamos tienen `funded_time` nulo**.
+  codigo_inicial: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+
+    resultado = None
+  solucion: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+
+    resultado = df["funded_time"].isnull().sum()
+  tests:
+    - tipo: resultado
+  pistas:
+    - "Primero necesitas una columna de True/False que marque qué celdas están vacías. Después, contar cuántos True hay."
+    - "isnull() (o isna()) devuelve True donde hay un nulo. sum() suma los True como unos."
+    - "df['funded_time'].isnull().sum(). Es la misma idea que df.isnull().sum() de tu notebook, pero aplicada a una sola columna."
+  explicacion: |
+    `isnull()` y `isna()` son equivalentes. Al sumar un booleano, `True` vale 1 y `False` vale 0, así que `.sum()` cuenta los nulos. Con `.mean()` en lugar de `.sum()` obtienes la **proporción** de nulos.
+
+    `df.isnull().sum()` (sin elegir columna) da el conteo de todas las columnas a la vez; con `.sort_values(ascending=False)` ves primero las más sucias.
+
+- id: pd-003
+  tipo: python
+  tema: pandas
+  concepto: value_counts
+  nivel: basico
+  titulo: Los tres sectores con más préstamos
+  origen: "Proyetos/Proyecto-2-Python-Ray-Franco/notebooks/kiva_loans.ipynb (celdas 32-33 y 47-50: value_counts)"
+  datos: [kiva_muestra.csv]
+  enunciado: |
+    Guarda en `resultado` una **Series** con los **3 sectores** (`sector`) que tienen más préstamos, con el número de préstamos de cada uno.
+  codigo_inicial: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+
+    resultado = None
+  solucion: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+
+    resultado = df["sector"].value_counts().head(3)
+  tests:
+    - tipo: resultado
+  pistas:
+    - "Hay un método que cuenta cuántas veces aparece cada valor de una columna y los ordena de más a menos."
+    - "value_counts() ya viene ordenado de mayor a menor. Para quedarte con los primeros, usa head(n)."
+    - "df['sector'].value_counts().head(3). Obtienes una Series cuyo índice son los sectores y cuyos valores son los conteos."
+  explicacion: |
+    `value_counts()` devuelve una Series ordenada de mayor a menor. Por defecto **ignora los nulos**; añade `dropna=False` para contarlos también. Con `normalize=True` devuelve proporciones en lugar de conteos.
+
+    Es la versión en pandas del ejercicio pb-010 (contar con un diccionario) y de una tabla dinámica de Excel con "Cuenta de id" por sector.
+
+- id: pd-004
+  tipo: python
+  tema: pandas
+  concepto: filtro booleano
+  nivel: basico
+  titulo: Préstamos de más de 1000 USD
+  origen: "Proyetos/Proyecto-2-Python-Ray-Franco/notebooks/kiva_loans.ipynb (celdas 14-15: filtros booleanos)"
+  datos: [kiva_muestra.csv]
+  enunciado: |
+    Guarda en `resultado` **cuántos préstamos tienen un `loan_amount` mayor que 1000** (estrictamente mayor).
+  codigo_inicial: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+
+    resultado = None
+  solucion: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+
+    resultado = (df["loan_amount"] > 1000).sum()
+  tests:
+    - tipo: resultado
+  pistas:
+    - "Comparar una columna con un número da, para cada fila, True o False. Ya sabes contar Trues."
+    - "df['loan_amount'] > 1000 es una máscara booleana. Puedes sumarla directamente, o usarla para filtrar el DataFrame y contar filas con len(...)."
+    - "(df['loan_amount'] > 1000).sum(). Alternativa equivalente: len(df[df['loan_amount'] > 1000])."
+  explicacion: |
+    Una comparación sobre una columna se aplica a **todas las filas a la vez** (vectorizado). Con `df[mascara]` te quedas solo con las filas donde la máscara es `True`.
+
+    Para combinar condiciones usa `&` (y), `|` (o) y **paréntesis**: `(df["sector"] == "Food") & (df["loan_amount"] > 1000)`. Escribir `and` en su lugar da un `ValueError`.
+
+- id: pd-005
+  tipo: python
+  tema: pandas
+  concepto: sort_values
+  nivel: basico
+  titulo: Los cinco préstamos más grandes
+  origen: "Proyetos/Proyecto-2-Python-Ray-Franco/notebooks/kiva_loans.ipynb (celdas 12-13: sort_values para ver extremos)"
+  datos: [kiva_muestra.csv]
+  enunciado: |
+    Guarda en `resultado` una Series con los **5 valores más altos de `loan_amount`**, del mayor al menor.
+  codigo_inicial: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+
+    resultado = df["loan_amount"].sort_values().head(5)
+  solucion: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+
+    resultado = df["loan_amount"].sort_values(ascending=False).head(5)
+  comparar:
+    ignorar_indice: true
+    ignorar_orden_filas: false
+  tests:
+    - tipo: resultado
+  pistas:
+    - "El código inicial da los 5 más pequeños. Mira qué orden usa sort_values por defecto."
+    - "sort_values ordena de menor a mayor salvo que le pidas lo contrario con el parámetro ascending."
+    - "sort_values(ascending=False).head(5). Otra opción: df['loan_amount'].nlargest(5)."
+  explicacion: |
+    `sort_values()` ordena de menor a mayor por defecto (`ascending=True`). Para ver los extremos de una columna numérica es lo primero que hiciste en el Proyecto 2 (y después pintaste un boxplot).
+
+    En este ejercicio el **orden importa** y el índice no: el comprobador compara los valores en el orden en que los devuelves.
+
+# ------------------------------------------------------------ INTERMEDIO
+- id: pd-006
+  tipo: python
+  tema: pandas
+  concepto: fillna
+  nivel: intermedio
+  titulo: Rellenar la región vacía
+  origen: "Proyetos/Proyecto-2-Python-Ray-Franco/notebooks/kiva_loans.ipynb (celdas 23, 27-31: fillna con texto) y README (Resumen de decisiones de limpieza)"
+  datos: [kiva_muestra.csv]
+  enunciado: |
+    En el Proyecto 2 decidiste sustituir los nulos de `region` por el texto `"No especificado"`.
+
+    Guarda en `resultado` la **columna `region` ya rellenada** (una Series con la misma longitud que el DataFrame).
+  codigo_inicial: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+
+    resultado = df["region"]
+  solucion: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+
+    resultado = df["region"].fillna("No especificado")
+  tests:
+    - tipo: resultado
+  pistas:
+    - "Hay un método específico para sustituir nulos por un valor que tú eliges."
+    - "fillna(valor) devuelve una copia con los nulos reemplazados. Recuerda que no modifica la columna original si no la reasignas."
+    - "df['region'].fillna('No especificado'). Como solo pides la columna rellenada, no hace falta reasignarla a df."
+  explicacion: |
+    `fillna` **no modifica el DataFrame original**: devuelve un resultado nuevo. Para guardarlo en el DataFrame tendrías que asignarlo: `df["region"] = df["region"].fillna("No especificado")`.
+
+    Rellenar con un texto solo tiene sentido en columnas de texto. En columnas numéricas o de fecha, tu notebook conserva el nulo (`NaN`/`NaT`) a propósito porque un valor inventado falsearía medias y fechas. Recuerda la regla de oro de tu checklist: marcar, no borrar.
+
+- id: pd-007
+  tipo: python
+  tema: pandas
+  concepto: dropna con subset
+  nivel: intermedio
+  titulo: Quedarse solo con los préstamos financiados
+  origen: "Proyetos/Proyecto-2-Python-Ray-Franco/notebooks/kiva_loans.ipynb (celdas 38-42: dropna(subset=...))"
+  datos: [kiva_muestra.csv]
+  enunciado: |
+    Guarda en `resultado` un DataFrame con **solo las filas que tienen `funded_time` informado**, conservando todas las columnas.
+
+    No borres filas por nulos en otras columnas.
+  codigo_inicial: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+
+    resultado = df.dropna()
+  solucion: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+
+    resultado = df.dropna(subset=["funded_time"])
+  tests:
+    - tipo: resultado
+  pistas:
+    - "El código inicial borra una fila si CUALQUIER columna está vacía. Mira cuántas filas pierdes comparando con 3008."
+    - "dropna acepta un parámetro subset con la lista de columnas que debe mirar."
+    - "df.dropna(subset=['funded_time']). El parámetro es una lista, aunque solo pongas una columna."
+  explicacion: |
+    `dropna()` sin argumentos elimina cualquier fila con algún nulo: en Kiva casi todas tienen alguno (`tags`, `region`...), así que perderías un montón de datos válidos. Con `subset=[...]` solo se mira lo que te interesa.
+
+    Esto es lo que hiciste en el Proyecto 2 con `country_code`: ¡y ese `dropna(subset=...)` borró los 8 préstamos de Namibia! Mira el ejercicio pd-012 para ver cómo evitarlo.
+
+- id: pd-008
+  tipo: python
+  tema: pandas
+  concepto: to_datetime y .dt
+  nivel: intermedio
+  titulo: Préstamos publicados por año
+  origen: "Proyetos/Proyecto-2-Python-Ray-Franco/notebooks/kiva_loans.ipynb (celdas 43-46: pd.to_datetime)"
+  datos: [kiva_muestra.csv]
+  enunciado: |
+    La columna `posted_time` llega como **texto** (`2016-10-27 04:54:27+00:00`).
+
+    Guarda en `resultado` una Series con el **número de préstamos publicados por año** (el índice son los años).
+  codigo_inicial: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+
+    resultado = None
+  solucion: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+
+    fechas = pd.to_datetime(df["posted_time"])
+    resultado = fechas.dt.year.value_counts()
+  tests:
+    - tipo: resultado
+  pistas:
+    - "Mientras sea texto no puedes pedirle el año. Primero conviértelo a un tipo de fecha."
+    - "pd.to_datetime(columna) convierte a fecha. Sobre una columna de fechas, el accesor .dt da el año con .dt.year."
+    - "fechas = pd.to_datetime(df['posted_time']); luego fechas.dt.year.value_counts() cuenta los préstamos por año."
+  explicacion: |
+    `pd.to_datetime` entiende el formato ISO con zona horaria (`+00:00`) de Kiva. Una vez es `datetime64`, el accesor `.dt` ofrece `year`, `month`, `day`, `dayofweek`, etc.
+
+    Sin convertir, `df["posted_time"].str[:4]` también daría el año, pero como **texto**: no podrías restar fechas ni agrupar por mes de forma fiable. Es el mismo motivo por el que en Excel conviene que las fechas sean fechas de verdad.
+
+- id: pd-009
+  tipo: python
+  tema: pandas
+  concepto: groupby y suma
+  nivel: intermedio
+  titulo: Unidades vendidas por estado de vendedor
+  origen: "Proyetos/Flujo_de_Datos_de_SQL_a_Python_tania_lena_eddy_franco/notebooks/exploracion.ipynb (groupby sobre df3_vendedores)"
+  datos: [olist_vendedores.csv]
+  enunciado: |
+    El archivo `olist_vendedores.csv` tiene una fila por vendedor de Olist (`seller_state`, `unidades_vendidas`, `ingresos`...).
+
+    Guarda en `resultado` una Series con el **total de `unidades_vendidas` por `seller_state`**.
+  codigo_inicial: |
+    import pandas as pd
+
+    df = pd.read_csv("olist_vendedores.csv")
+
+    resultado = None
+  solucion: |
+    import pandas as pd
+
+    df = pd.read_csv("olist_vendedores.csv")
+
+    resultado = df.groupby("seller_state")["unidades_vendidas"].sum()
+  tests:
+    - tipo: resultado
+  pistas:
+    - "Es la versión pandas de GROUP BY en SQL: agrupar por una columna y resumir otra."
+    - "groupby('columna_para_agrupar')['columna_a_resumir'].sum()."
+    - "df.groupby('seller_state')['unidades_vendidas'].sum(). Devuelve una Series con un total por estado."
+  explicacion: |
+    `groupby` + una función de resumen (`sum`, `mean`, `count`, `max`...) equivale a `SELECT seller_state, SUM(unidades_vendidas) ... GROUP BY seller_state` en SQL y a una tabla dinámica en Excel.
+
+    Si eliges solo una columna con `[...]` obtienes una Series; si sumas sin elegir columna, pandas intenta sumar todas las columnas numéricas y devuelve un DataFrame.
+
+- id: pd-010
+  tipo: python
+  tema: pandas
+  concepto: columna derivada
+  nivel: intermedio
+  titulo: Cuántos préstamos no están financiados al 100 %
+  origen: "Clases/Excel/Practica/Ejecicio 1/PowerQuery_Kiva.pdf p.11 (Pct_Financiado) y notebooks/kiva_loans.ipynb (celda 60: columna derivada)"
+  datos: [kiva_muestra.csv]
+  enunciado: |
+    En Power Query creaste `Pct_Financiado`. Hazlo ahora en pandas:
+
+    1. Añade a `df` la columna `pct_financiado` = `funded_amount / loan_amount * 100`.
+    2. Guarda en `resultado` **cuántos préstamos tienen `pct_financiado` por debajo de 100**.
+  codigo_inicial: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+
+    resultado = None
+  solucion: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+
+    df["pct_financiado"] = df["funded_amount"] / df["loan_amount"] * 100
+    resultado = (df["pct_financiado"] < 100).sum()
+  tests:
+    - tipo: resultado
+  pistas:
+    - "Una columna nueva se crea asignando a df['nombre_nuevo'] una operación entre columnas existentes."
+    - "Las operaciones aritméticas entre columnas se hacen fila a fila, sin bucles. Después, cuenta con una comparación y sum() como en pd-004."
+    - "df['pct_financiado'] = df['funded_amount'] / df['loan_amount'] * 100 y luego (df['pct_financiado'] < 100).sum()."
+  explicacion: |
+    Las operaciones entre columnas están **vectorizadas**: pandas las aplica a todas las filas a la vez, mucho más rápido y más corto que un `for`. Es lo mismo que una columna personalizada de Power Query o una columna calculada de Excel.
+
+    Si `loan_amount` pudiera ser 0 la división daría `inf`; en Kiva no ocurre, pero comprobarlo es parte de una buena limpieza.
+
+# ---------------------------------------------------------------- JUNIOR
+- id: pd-011
+  tipo: python
+  tema: pandas
+  concepto: read_csv con sep y fechas día/mes
+  nivel: junior
+  titulo: Alquileres por mes en Customer_Activity
+  origen: "Clases/Excel/Practica/Customer_Activity.csv (separador ';' y fechas d/m/aaaa)"
+  datos: [customer_activity.csv]
+  enunciado: |
+    `customer_activity.csv` (la base de ejemplo del curso de Excel) usa **`;` como separador** y fechas en formato **día/mes/año** (`25/5/2005 11:30`).
+
+    Guarda en `resultado` una Series con el **número de alquileres por mes** (el índice es el número de mes: 5, 6, 7...). Usa la columna `rental_date`.
+
+    Con la lectura por defecto, `df` solo tiene una columna: pulsa **Ejecutar** y compruébalo.
+  codigo_inicial: |
+    import pandas as pd
+
+    df = pd.read_csv("customer_activity.csv")
+
+    resultado = None
+  solucion: |
+    import pandas as pd
+
+    df = pd.read_csv("customer_activity.csv", sep=";")
+
+    fechas = pd.to_datetime(df["rental_date"], dayfirst=True)
+    resultado = fechas.dt.month.value_counts()
+  tests:
+    - tipo: resultado
+  pistas:
+    - "read_csv separa por comas salvo que le digas otra cosa, y to_datetime tiene que saber si el primer número es el día o el mes."
+    - "read_csv(..., sep=';') y pd.to_datetime(columna, dayfirst=True). Después .dt.month.value_counts()."
+    - "df = pd.read_csv('customer_activity.csv', sep=';'); fechas = pd.to_datetime(df['rental_date'], dayfirst=True); fechas.dt.month.value_counts()."
+  explicacion: |
+    El separador `;` es el que usa Excel en español; por eso este CSV no se lee bien con la configuración por defecto de pandas. Con `sep=";"` cada columna queda separada.
+
+    Una fecha como `3/6/2005` es ambigua (¿3 de junio o 6 de marzo?). `dayfirst=True` lo deja explícito. Es el mismo problema regional que viste en Power Query con los importes (x10) y en la Píldora de limpieza con `31/02`.
+
+    Detalle extra: la cabecera de esta columna de importes es `" amount "`, con espacios. Se arregla con `df.columns = df.columns.str.strip()`.
+
+- id: pd-012
+  tipo: python
+  tema: pandas
+  concepto: comprobar antes de borrar nulos
+  nivel: junior
+  titulo: Qué país desaparece si borro country_code nulo
+  origen: "Proyetos/Proyecto-2-Python-Ray-Franco/notebooks/kiva_loans.ipynb (celdas 38-42: dropna borra los 8 préstamos de Namibia)"
+  datos: [kiva_muestra.csv]
+  enunciado: |
+    En el Proyecto 2 borraste con `dropna(subset=["country_code"])` los préstamos sin `country_code`... y sin darte cuenta perdiste un país entero.
+
+    **Antes de borrar**, averigua qué países se verían afectados. Guarda en `resultado` la **lista** (usa `.tolist()`) de los **valores distintos de `country`** en las filas donde `country_code` es nulo.
+  codigo_inicial: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+
+    resultado = []
+  solucion: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+
+    sin_codigo = df[df["country_code"].isnull()]
+    resultado = sin_codigo["country"].unique().tolist()
+  tests:
+    - tipo: resultado
+  pistas:
+    - "Primero aísla las filas con el nulo; después mira qué valores distintos tiene otra columna en esas filas."
+    - "df[df['country_code'].isnull()] te da esas filas. unique() da los valores distintos de una columna y tolist() lo convierte en lista."
+    - "df[df['country_code'].isnull()]['country'].unique().tolist(). Verás que es un único país: Namibia, cuyo código ISO es NA."
+  explicacion: |
+    Antes de aplicar cualquier `dropna`, mira **qué filas** se van a perder y si tienen algo en común. Aquí los 8 nulos son todos de Namibia. Su código ISO es `NA`, y es habitual que ese texto se confunda con "dato ausente" y se pierda por el camino.
+
+    Una limpieza correcta habría **rellenado** esos 8 códigos con `"NA"` (`df.loc[df["country"] == "Namibia", "country_code"] = "NA"`) en lugar de borrar las filas. Es la regla de tu checklist: marcar o corregir, no borrar sin mirar.
+
+- id: pd-013
+  tipo: python
+  tema: pandas
+  concepto: split y explode
+  nivel: junior
+  titulo: Contar mujeres y hombres en los préstamos grupales
+  origen: "Clases/Excel/Practica/Ejecicio 1/PowerQuery_Kiva.pdf p.9 (dividir borrower_genders en filas)"
+  datos: [kiva_muestra.csv]
+  enunciado: |
+    En Kiva, un préstamo grupal guarda todos los prestatarios en un solo texto: `"female, female, male"`.
+
+    En Power Query lo resolviste con *Dividir columna en filas*. Hazlo en pandas: guarda en `resultado` una Series con el **número de `female` y de `male`**, contando a **cada persona** (no cada préstamo).
+  codigo_inicial: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+
+    resultado = df["borrower_genders"].value_counts()
+  solucion: |
+    import pandas as pd
+
+    df = pd.read_csv("kiva_muestra.csv")
+
+    resultado = df["borrower_genders"].str.split(", ").explode().value_counts()
+  tests:
+    - tipo: resultado
+  pistas:
+    - "El código inicial cuenta combinaciones enteras ('female, female'). Necesitas una fila por persona antes de contar."
+    - "str.split(', ') convierte cada texto en una lista; explode() reparte cada elemento de la lista en una fila propia."
+    - "df['borrower_genders'].str.split(', ').explode().value_counts(). Los nulos se ignoran en el conteo."
+  explicacion: |
+    `explode()` es el "Dividir columna por delimitador en filas" de Power Query. Ojo: tras explotar, la tabla tiene **más filas que préstamos**; contar préstamos con la tabla explotada duplicaría los préstamos grupales (la trampa del *fan-out* de tu PowerPivot_Kiva.pdf).
+
+    Por eso aquí se explota **solo la columna** (una Series), no el DataFrame entero.
+
+- id: pd-014
+  tipo: python
+  tema: pandas
+  concepto: merge
+  nivel: junior
+  titulo: Ventas por estado uniendo dos tablas
+  origen: "Proyetos/Flujo_de_Datos_de_SQL_a_Python_tania_lena_eddy_franco/queries/ventas_detalle.sql y df3_vendedores.sql (JOIN por seller_id)"
+  datos: [olist_ventas.csv, olist_vendedores.csv]
+  enunciado: |
+    `olist_ventas.csv` tiene una fila por línea de pedido (con `seller_id` e `importe_linea`), pero no sabe en qué estado está el vendedor. Eso está en `olist_vendedores.csv` (`seller_state`).
+
+    Une las dos tablas por `seller_id` y guarda en `resultado` una Series con el **total de `importe_linea` por `seller_state`**.
+  codigo_inicial: |
+    import pandas as pd
+
+    ventas = pd.read_csv("olist_ventas.csv")
+    vendedores = pd.read_csv("olist_vendedores.csv")
+
+    resultado = None
+  solucion: |
+    import pandas as pd
+
+    ventas = pd.read_csv("olist_ventas.csv")
+    vendedores = pd.read_csv("olist_vendedores.csv")
+
+    union = ventas.merge(vendedores[["seller_id", "seller_state"]], on="seller_id", how="left")
+    resultado = union.groupby("seller_state")["importe_linea"].sum()
+  tests:
+    - tipo: resultado
+  pistas:
+    - "Es el JOIN de SQL en pandas: un método del DataFrame que une dos tablas por una columna común. Después, un groupby."
+    - "ventas.merge(otra_tabla, on='columna_comun', how='left'). Del DataFrame de vendedores solo necesitas seller_id y seller_state."
+    - "union = ventas.merge(vendedores[['seller_id', 'seller_state']], on='seller_id', how='left') y luego union.groupby('seller_state')['importe_linea'].sum()."
+  explicacion: |
+    `merge` es el `JOIN` de SQL: `how="left"` conserva todas las filas de la tabla de la izquierda (LEFT JOIN), `"inner"` solo las que coinciden.
+
+    Por qué seleccionar solo `["seller_id", "seller_state"]`: si `vendedores` tuviera varias filas por vendedor, el merge **multiplicaría** líneas de venta y los totales saldrían inflados (el mismo problema de grano del +26 % del Manual del Proyecto IV). Comprobar que `seller_id` es único en `vendedores` antes de unir es una buena costumbre.
+
+- id: pd-015
+  tipo: python
+  tema: pandas
+  concepto: outliers por IQR
+  nivel: junior
+  titulo: Vendedores atípicos por ingresos
+  origen: "Proyetos/Flujo_de_Datos_de_SQL_a_Python_tania_lena_eddy_franco/notebooks/exploracion.ipynb (celda 17: outliers por IQR, marcar sin borrar)"
+  datos: [olist_vendedores.csv]
+  enunciado: |
+    Un valor es atípico por arriba si supera **Q3 + 1,5 x IQR**, donde Q1 y Q3 son los cuartiles 25 % y 75 % e `IQR = Q3 - Q1`.
+
+    Guarda en `resultado` **cuántos vendedores** de `olist_vendedores.csv` tienen `ingresos` por encima de ese límite. Solo cuenta los atípicos por arriba.
+  codigo_inicial: |
+    import pandas as pd
+
+    df = pd.read_csv("olist_vendedores.csv")
+
+    resultado = None
+  solucion: |
+    import pandas as pd
+
+    df = pd.read_csv("olist_vendedores.csv")
+
+    q1 = df["ingresos"].quantile(0.25)
+    q3 = df["ingresos"].quantile(0.75)
+    limite = q3 + 1.5 * (q3 - q1)
+    resultado = int((df["ingresos"] > limite).sum())
+  tests:
+    - tipo: resultado
+  pistas:
+    - "Sigue la fórmula paso a paso: dos cuartiles, su diferencia, el límite y por último una comparación que cuente."
+    - "df['ingresos'].quantile(0.25) y quantile(0.75) dan Q1 y Q3. Con ellos calculas el límite y comparas la columna con él."
+    - "q1 y q3 con quantile; limite = q3 + 1.5 * (q3 - q1); resultado = int((df['ingresos'] > limite).sum())."
+  explicacion: |
+    La regla del IQR es un criterio estándar para *marcar* valores extremos. En tu notebook la usaste para crear una columna `vendedor_atipico` en lugar de borrar filas: un vendedor muy grande no es un error, es un dato real que conviene tratar aparte.
+
+    Con distribuciones muy sesgadas como la de ingresos (mediana baja, máximo enorme) la regla marca muchos valores; es normal. Conviene mirar el boxplot antes de decidir qué hacer con ellos.

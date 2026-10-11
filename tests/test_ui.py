@@ -1,0 +1,88 @@
+"""Pruebas de humo de la interfaz con AppTest de Streamlit (sin navegador)."""
+import pytest
+
+pytest.importorskip("streamlit")
+from streamlit.testing.v1 import AppTest
+
+from motor import config
+from motor.banco import cargar_banco
+from motor.progreso import Progreso
+
+PAGINAS = ["paginas/inicio.py", "paginas/practicar.py", "paginas/progreso.py", "paginas/ajustes.py"]
+
+
+def _app(pagina, **estado):
+    at = AppTest.from_file(str(config.RAIZ / pagina), default_timeout=60)
+    for k, v in estado.items():
+        at.session_state[k] = v
+    return at.run()
+
+
+def _boton(at, etiqueta):
+    return next(b for b in at.button if b.label == etiqueta)
+
+
+@pytest.mark.parametrize("pagina", PAGINAS)
+def test_las_paginas_cargan_sin_excepciones(pagina):
+    at = _app(pagina)
+    assert not at.exception, [e.value for e in at.exception]
+
+
+def test_lista_de_practicar_muestra_los_tres_temas():
+    at = _app("paginas/practicar.py")
+    assert not at.exception
+    assert [r.label for r in at.radio][0] == "Tema"
+    assert len(at.radio[0].options) == 3
+
+
+def test_comprobar_una_solucion_correcta_registra_el_acierto():
+    banco = cargar_banco()
+    ej = banco.ejercicios["pb-002"]
+    at = _app("paginas/practicar.py", ejercicio_abierto="pb-002", **{"codigo:pb-002": ej.solucion})
+    assert not at.exception
+    _boton(at, "Comprobar").click()
+    at.run()
+    assert not at.exception, [e.value for e in at.exception]
+    assert any("Correcto" in s.value for s in at.success)
+    assert "pb-002" in Progreso(config.DB_PROGRESO).aprendidos()
+
+
+def test_comprobar_un_resultado_incorrecto_no_aprende_y_desbloquea_la_solucion():
+    at = _app("paginas/practicar.py", ejercicio_abierto="pb-003")
+    assert _boton(at, "Ver solución explicada").disabled is True
+    _boton(at, "Comprobar").click()
+    at.run()
+    assert any("Todavía no" in e.value for e in at.error)
+    assert "pb-003" not in Progreso(config.DB_PROGRESO).aprendidos()
+    assert _boton(at, "Ver solución explicada").disabled is False
+
+
+def test_error_de_python_muestra_el_traceback_real():
+    at = _app("paginas/practicar.py", ejercicio_abierto="pb-005")
+    _boton(at, "Comprobar").click()
+    at.run()
+    codigos = " ".join(c.value for c in at.code)
+    assert "TypeError" in codigos and "<tu_codigo>" in codigos
+
+
+def test_sql_sin_conexion_avisa_y_deshabilita_los_botones():
+    at = _app("paginas/practicar.py", ejercicio_abierto="sq-001")
+    assert not at.exception
+    assert any(".env" in w.value for w in at.warning)
+    assert _boton(at, "Comprobar").disabled is True
+
+
+def test_pregunta_tipo_test():
+    at = _app("paginas/practicar.py", ejercicio_abierto="pq-001")
+    assert not at.exception
+    at.radio[0].set_value(0).run()
+    _boton(at, "Responder").click()
+    at.run()
+    assert any("Correcto" in s.value for s in at.success)
+    assert "pq-001" in Progreso(config.DB_PROGRESO).aprendidos()
+
+
+def test_un_ejercicio_bloqueado_no_se_abre():
+    at = _app("paginas/practicar.py", ejercicio_abierto="pb-010")  # intermedio, con basico sin superar
+    assert not at.exception
+    assert any("bloqueado" in w.value.lower() for w in at.warning)

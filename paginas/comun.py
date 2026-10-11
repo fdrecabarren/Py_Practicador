@@ -1,0 +1,102 @@
+"""Piezas compartidas por las paginas de la app (cache, editor, textos)."""
+from __future__ import annotations
+
+import streamlit as st
+
+from motor import config, sql
+from motor.banco import ErrorBanco, cargar_banco
+from motor.progreso import Progreso
+
+
+# --------------------------------------------------------------- recursos
+@st.cache_resource(show_spinner=False)
+def _banco_cacheado():
+    return cargar_banco()
+
+
+def get_banco():
+    try:
+        return _banco_cacheado()
+    except ErrorBanco as exc:
+        st.error("El banco de ejercicios tiene errores. Corrígelos y pulsa **Recargar banco** en Ajustes.")
+        st.code("\n".join(exc.problemas), language="text")
+        st.stop()
+
+
+@st.cache_resource(show_spinner=False)
+def get_progreso() -> Progreso:
+    return Progreso()
+
+
+@st.cache_resource(show_spinner=False)
+def get_engine():
+    """Engine de MySQL (solo lectura) o None si .env no tiene credenciales."""
+    if sql.url_mysql() is None:
+        return None
+    return sql.crear_engine()
+
+
+@st.cache_data(show_spinner=False, ttl=600)
+def get_esquema() -> dict[str, list[str]]:
+    engine = get_engine()
+    return sql.listar_esquema(engine) if engine is not None else {}
+
+
+def recargar_todo() -> None:
+    _banco_cacheado.clear()
+    get_engine.clear()
+    get_esquema.clear()
+
+
+# ------------------------------------------------------------------ editor
+def _tema_editor() -> str:
+    try:
+        return "tomorrow_night" if st.context.theme.type == "dark" else "tomorrow"
+    except Exception:  # noqa: BLE001 - versiones sin st.context.theme
+        return "tomorrow"
+
+
+def editor(valor: str, clave: str, *, lenguaje: str = "python", altura: int = 340) -> str:
+    """Editor de codigo con tabulador y resaltado (streamlit-ace). Si no esta
+    disponible, cae a un cuadro de texto normal."""
+    try:
+        from streamlit_ace import st_ace
+    except ImportError:
+        return st.text_area("Tu código", valor, key=clave, height=altura)
+    texto = st_ace(
+        value=valor, language=lenguaje, theme=_tema_editor(), keybinding="vscode",
+        font_size=14, tab_size=4, wrap=True, show_gutter=True, auto_update=True,
+        height=altura, key=clave,
+    )
+    return valor if texto is None else texto
+
+
+# ----------------------------------------------------------------- textos
+ICONO_ESTADO = {
+    "aprendido": (":green[:material/check_circle:]", "Aprendido"),
+    "repetir": (":orange[:material/replay:]", "Para repetir"),
+    "en_curso": (":blue[:material/edit:]", "En curso"),
+    "nuevo": (":gray[:material/radio_button_unchecked:]", "Nuevo"),
+    "bloqueado": (":gray[:material/lock:]", "Bloqueado"),
+}
+
+
+def estado_de(ej_id: str, prog: Progreso, aprendidos: set[str], bloqueado: bool) -> str:
+    if ej_id in aprendidos:
+        return "aprendido"
+    if bloqueado:
+        return "bloqueado"
+    est = prog.estado_ejercicio(ej_id)
+    if est is None:
+        return "nuevo"
+    return "repetir" if est["solucion_vista_dia"] else "en_curso"
+
+
+def nombre_nivel(nivel: str) -> str:
+    return config.NOMBRE_NIVEL.get(nivel, nivel)
+
+
+def abrir_ejercicio(ej_id: str | None, tema: str | None = None) -> None:
+    st.session_state["ejercicio_abierto"] = ej_id
+    if tema:
+        st.session_state["tema_actual"] = tema

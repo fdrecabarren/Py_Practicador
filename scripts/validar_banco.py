@@ -12,6 +12,10 @@ Comprueba para cada ejercicio:
            existen los datasets; la pista 1 no contiene la solucion literal.
   sql    : la solucion es una consulta valida y de solo lectura, se ejecuta sin error
            y devuelve filas; el SQL inicial no resuelve el ejercicio.
+  excel  : el libro de partida NO pasa las comprobaciones; el libro resuelto (generado con lo que
+           piden las comprobaciones) SI las pasa; la pista 1 no nombra la funcion que hay que usar.
+  terminal_git : tras `preparar` las comprobaciones NO pasan; tras ejecutar la `solucion` SI las pasan
+           (se ejecuta en una carpeta temporal con Git Bash real).
   test   : la opcion correcta existe y las opciones no estan repetidas.
 Sale con codigo 1 si hay algun fallo (util antes de hacer commit).
 """
@@ -26,7 +30,9 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RAIZ))
 
+from motor import excel as motor_excel  # noqa: E402
 from motor import sql as motor_sql  # noqa: E402
+from motor import terminal as motor_terminal  # noqa: E402
 from motor.banco import ErrorBanco, cargar_banco  # noqa: E402
 from motor.ejecutor_python import ejecutar_python  # noqa: E402
 
@@ -95,6 +101,71 @@ def validar_sql(ej, engine, modo):
     return fallos, avisos
 
 
+def _nombres_exigidos(ej) -> list[str]:
+    """Funciones o referencias que las comprobaciones exigen en las formulas."""
+    res = []
+    for c in ej.comprobaciones:
+        if isinstance(c.get("formula"), str):
+            res.append(c["formula"])
+        res += [str(x) for x in c.get("formula_contiene", [])]
+    return res
+
+
+def validar_excel(ej):
+    fallos, avisos = [], []
+    try:
+        partida = motor_excel.generar_libro(ej)
+        r0 = motor_excel.corregir_excel(ej, partida)
+        if r0["estado"] == "error_banco":
+            return [f"el ejercicio esta mal definido: {' | '.join(r0['mensajes'])}"], avisos
+        if r0["estado"] == "ok":
+            fallos.append("el libro de partida YA pasa las comprobaciones (no hay nada que resolver)")
+        resuelto = motor_excel.libro_resuelto(ej)
+        r1 = motor_excel.corregir_excel(ej, resuelto)
+        if r1["estado"] != "ok":
+            fallos.append(f"el libro resuelto NO pasa ({r1['estado']}): {' | '.join(r1['mensajes'])}")
+        for c in r1["comprobaciones"]:
+            if not c["ok"] and c["blando"]:
+                avisos.append(f"comprobacion blanda no cumplida con el libro sintetico: {c['titulo']}")
+    except motor_excel.ErrorExcel as exc:
+        return [str(exc)], avisos
+    pista1 = ej.pistas[0].casefold() if ej.pistas else ""
+    for nombre in _nombres_exigidos(ej):
+        if len(nombre) >= 3 and nombre.casefold() in pista1:
+            avisos.append(f"la pista 1 nombra lo que hay que usar: {nombre!r}")
+    return fallos, avisos
+
+
+def validar_terminal(ej):
+    fallos, avisos = [], []
+    if motor_terminal.encontrar_bash() is None or motor_terminal.encontrar_git() is None:
+        return fallos, ["saltado: hace falta Git for Windows (git y bash)"]
+    with tempfile.TemporaryDirectory(prefix="practicador_val_") as tmp:
+        sandbox = Path(tmp) / "sandbox"
+        try:
+            prep = motor_terminal.preparar(ej, sandbox)
+            if not prep["ok"]:
+                return [prep["error"]], avisos
+            r0 = motor_terminal.comprobar(ej, sandbox)
+            if r0["estado"] == "error_banco":
+                return [f"comprobaciones mal definidas: {' | '.join(r0['mensajes'])}"], avisos
+            if r0["estado"] == "ok":
+                fallos.append("tras preparar, las comprobaciones YA pasan (no hay nada que resolver)")
+            ok, salida = motor_terminal.resolver(ej, sandbox)
+            if not ok:
+                return fallos + [f"la solucion falla al ejecutarse: {salida}"], avisos
+            r1 = motor_terminal.comprobar(ej, sandbox)
+            if r1["estado"] != "ok":
+                fallos.append(f"tras la solucion las comprobaciones NO pasan: {' | '.join(r1['mensajes'])}")
+        except motor_terminal.ErrorTerminal as exc:
+            fallos.append(str(exc))
+    pista1 = ej.pistas[0] if ej.pistas else ""
+    for linea in (l.strip() for l in ej.solucion.splitlines()):
+        if len(linea) >= 12 and not linea.startswith("#") and linea in pista1:
+            avisos.append(f"la pista 1 contiene la linea de la solucion: {linea!r}")
+    return fallos, avisos
+
+
 def validar_test(ej):
     fallos = []
     if len(set(ej.opciones)) != len(ej.opciones):
@@ -149,9 +220,13 @@ def main():
             if modo == "saltar":
                 return ej, [], ["saltado (--sql saltar)"]
             return ej, *validar_sql(ej, engine, modo)
+        if ej.tipo == "excel":
+            return ej, *validar_excel(ej)
+        if ej.tipo == "terminal_git":
+            return ej, *validar_terminal(ej)
         if ej.tipo == "test":
             return ej, *validar_test(ej)
-        return ej, [], [f"tipo '{ej.tipo}' sin validador todavia"]
+        return ej, [], [f"tipo '{ej.tipo}' sin validador"]
 
     with ThreadPoolExecutor(max_workers=4) as pool:
         resultados = list(pool.map(validar, ejercicios))

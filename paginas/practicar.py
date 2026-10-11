@@ -4,12 +4,12 @@ import streamlit as st
 
 from motor import niveles, sql
 from motor.ejecutor_python import ejecutar_python
-from paginas import comun
+from paginas import comun, vistas_fase2
 
 banco = comun.get_banco()
 prog = comun.get_progreso()
 
-LENGUAJE = {"python": "python", "sql": "sql", "test": "text"}
+LENGUAJE = {"python": "python", "sql": "sql", "test": "text", "terminal_git": "bash", "excel": "text"}
 ETIQUETA_PISTA = {0: "idea general", 1: "pista concreta"}
 
 
@@ -125,15 +125,18 @@ def bloque_pistas(ej) -> None:
     nivel_p = st.session_state.get(pk, 0)
     st.markdown("##### Ayuda")
     for i in range(nivel_p):
-        st.info(f"**Pista {i + 1} ({ETIQUETA_PISTA[i]}).** {ej.pistas[i]}", icon=":material/lightbulb:")
+        st.info(comun.texto_md(f"**Pista {i + 1} ({ETIQUETA_PISTA[i]}).** {ej.pistas[i]}"), icon=":material/lightbulb:")
     if nivel_p < 2:
         st.button(f"Pedir pista {nivel_p + 1} ({ETIQUETA_PISTA[nivel_p]})", key=f"btn_pista_{ej.id}",
                   on_click=_pedir_pista, args=(pk, nivel_p + 1), icon=":material/lightbulb:")
 
     if st.session_state.get(sk):
         st.warning("Has visto la solución: este ejercicio cuenta como no aprendido y volverá más adelante.", icon=":material/visibility:")
-        st.markdown(f"**Solución explicada.** {ej.pistas[2]}")
-        st.code(ej.solucion, language=LENGUAJE[ej.tipo])
+        st.markdown(comun.texto_md(f"**Solución explicada.** {ej.pistas[2]}"))
+        if ej.tipo == "excel":
+            st.markdown(comun.texto_md(ej.solucion))
+        else:
+            st.code(ej.solucion, language=LENGUAJE[ej.tipo])
         return
 
     puede = prog.puede_ver_solucion(ej.id)
@@ -274,7 +277,7 @@ def vista_pregunta(ej) -> None:
         st.success("Correcto.", icon=":material/check_circle:")
     else:
         st.error(f"No es esa. La respuesta correcta es: **{ej.opciones[ej.correcta]}**", icon=":material/close:")
-    st.markdown(ej.explicacion)
+    st.markdown(comun.texto_md(ej.explicacion))
     c1, c2, _ = st.columns([1, 1, 3])
     if c1.button("Intentar otra vez"):
         st.session_state.pop(rk, None)
@@ -283,6 +286,59 @@ def vista_pregunta(ej) -> None:
     sig = _siguiente(ej)
     if sig:
         c2.button("Siguiente pregunta", type="primary", on_click=comun.abrir_ejercicio, args=(sig.id, ej.tema))
+
+
+# ------------------------------------------------------ panel de codigo (python / sql)
+def panel_codigo(ej) -> None:
+    """Columna derecha de un ejercicio de Python o SQL: editor, botones y resultados."""
+    engine = None
+    if ej.tipo == "sql":
+        engine = comun.get_engine()
+        if engine is None:
+            st.warning("Falta configurar la conexión a MySQL (archivo `.env`). Mira la página **Conexión y ajustes**.",
+                       icon=":material/database_off:")
+        else:
+            with st.expander("Tablas y columnas de Olist"):
+                for tabla, cols in comun.get_esquema().items():
+                    st.markdown(f"**{tabla}**: " + ", ".join(f"`{c}`" for c in cols))
+
+    ek = f"codigo:{ej.id}"
+    st.session_state.setdefault(ek, ej.codigo_inicial)
+    contador = st.session_state.get(f"reinicio:{ej.id}", 0)
+    codigo = comun.editor(st.session_state[ek], f"ace:{ej.id}:{contador}", lenguaje=LENGUAJE[ej.tipo])
+    st.session_state[ek] = codigo
+
+    deshabilitar = ej.tipo == "sql" and engine is None
+    b1, b2, b3 = st.columns([1.2, 1.4, 0.6])
+    ejecutar = b1.button("Ejecutar", disabled=deshabilitar, icon=":material/play_arrow:",
+                         help="Prueba tu código sin que cuente como intento.", use_container_width=True)
+    comprobar = b2.button("Comprobar", type="primary", disabled=deshabilitar, icon=":material/task_alt:",
+                          help="Corrige tu solución. Cuenta como intento.", use_container_width=True)
+    b3.button("", on_click=_reiniciar_codigo, args=(ej,), icon=":material/restart_alt:",
+              help="Restablecer el código inicial", use_container_width=True)
+
+    accion = "comprobar" if comprobar else ("ejecutar" if ejecutar else None)
+    if accion:
+        if ej.tipo == "python":
+            accion_python(ej, codigo, accion)
+        else:
+            accion_sql(ej, codigo, accion, engine)
+
+    res = st.session_state.get(f"res:{ej.id}")
+    if res:
+        if ej.tipo == "python":
+            mostrar_resultado_python(res, ej)
+            correcto = res["modo"] == "comprobar" and res["r"]["estado"] == "ok"
+        else:
+            mostrar_resultado_sql(res, ej)
+            correcto = res["modo"] == "comprobar" and res["v"]["estado"] == "ok"
+        if correcto:
+            with st.expander("Por qué funciona", expanded=True):
+                st.markdown(comun.texto_md(ej.explicacion))
+            sig = _siguiente(ej)
+            if sig:
+                st.button(f"Siguiente: {sig.titulo}", type="primary", on_click=comun.abrir_ejercicio, args=(sig.id, ej.tema),
+                          icon=":material/arrow_forward:")
 
 
 # ------------------------------------------------------------ vista principal
@@ -296,10 +352,10 @@ def vista_ejercicio(ej) -> None:
     elif estado_db and estado_db["solucion_vista_dia"]:
         marca = " · :orange[para repetir (viste la solución)]"
     st.caption(f"{banco.temas[ej.tema].nombre} · {ej.concepto} · nivel {comun.nombre_nivel(ej.nivel)}{marca}")
-    st.caption(f"Sale de: {ej.origen}")
+    st.caption(comun.texto_md(f"Sale de: {ej.origen}"))
 
     if ej.tipo == "test":
-        st.markdown(ej.enunciado)
+        st.markdown(comun.texto_md(ej.enunciado))
         vista_pregunta(ej)
         return
 
@@ -307,59 +363,17 @@ def vista_ejercicio(ej) -> None:
     # Se rellena primero la columna derecha (editor y botones) para que la ayuda de la izquierda
     # ya vea el intento recien registrado (por ejemplo, para desbloquear la solucion).
     with der:
-        engine = None
-        if ej.tipo == "sql":
-            engine = comun.get_engine()
-            if engine is None:
-                st.warning("Falta configurar la conexión a MySQL (archivo `.env`). Mira la página **Conexión y ajustes**.",
-                           icon=":material/database_off:")
-            else:
-                with st.expander("Tablas y columnas de Olist"):
-                    for tabla, cols in comun.get_esquema().items():
-                        st.markdown(f"**{tabla}**: " + ", ".join(f"`{c}`" for c in cols))
-
-        ek = f"codigo:{ej.id}"
-        st.session_state.setdefault(ek, ej.codigo_inicial)
-        contador = st.session_state.get(f"reinicio:{ej.id}", 0)
-        codigo = comun.editor(st.session_state[ek], f"ace:{ej.id}:{contador}", lenguaje=LENGUAJE[ej.tipo])
-        st.session_state[ek] = codigo
-
-        deshabilitar = ej.tipo == "sql" and engine is None
-        b1, b2, b3 = st.columns([1.2, 1.4, 0.6])
-        ejecutar = b1.button("Ejecutar", disabled=deshabilitar, icon=":material/play_arrow:",
-                             help="Prueba tu código sin que cuente como intento.", use_container_width=True)
-        comprobar = b2.button("Comprobar", type="primary", disabled=deshabilitar, icon=":material/task_alt:",
-                              help="Corrige tu solución. Cuenta como intento.", use_container_width=True)
-        b3.button("", on_click=_reiniciar_codigo, args=(ej,), icon=":material/restart_alt:",
-                  help="Restablecer el código inicial", use_container_width=True)
-
-        accion = "comprobar" if comprobar else ("ejecutar" if ejecutar else None)
-        if accion:
-            if ej.tipo == "python":
-                accion_python(ej, codigo, accion)
-            else:
-                accion_sql(ej, codigo, accion, engine)
-
-        res = st.session_state.get(f"res:{ej.id}")
-        if res:
-            if ej.tipo == "python":
-                mostrar_resultado_python(res, ej)
-                correcto = res["modo"] == "comprobar" and res["r"]["estado"] == "ok"
-            else:
-                mostrar_resultado_sql(res, ej)
-                correcto = res["modo"] == "comprobar" and res["v"]["estado"] == "ok"
-            if correcto:
-                with st.expander("Por qué funciona", expanded=True):
-                    st.markdown(ej.explicacion)
-                sig = _siguiente(ej)
-                if sig:
-                    st.button(f"Siguiente: {sig.titulo}", type="primary", on_click=comun.abrir_ejercicio, args=(sig.id, ej.tema),
-                              icon=":material/arrow_forward:")
+        if ej.tipo == "excel":
+            vistas_fase2.panel_excel(ej, _registrar, _siguiente)
+        elif ej.tipo == "terminal_git":
+            vistas_fase2.panel_terminal(ej, _registrar, _siguiente)
+        else:
+            panel_codigo(ej)
 
     with izq:
-        st.markdown(ej.enunciado)
+        st.markdown(comun.texto_md(ej.enunciado))
         if ej.nota_dialecto:
-            st.caption(f"Nota de dialecto: {ej.nota_dialecto}")
+            st.caption(comun.texto_md(f"Nota de dialecto: {ej.nota_dialecto}"))
         if ej.datos:
             st.caption("Archivos disponibles en la carpeta de trabajo: " + ", ".join(f"`{d}`" for d in ej.datos))
         bloque_pistas(ej)

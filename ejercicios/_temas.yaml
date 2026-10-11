@@ -17,3 +17,15 @@
   descripcion: Consultas sobre tu base olist en MySQL, de SELECT a CTE y JOIN.
   fase: 1
   orden: 3
+
+- id: excel_pq
+  nombre: Excel y Power Query
+  descripcion: Fórmulas, referencias, formato condicional y Power Query sobre datos de Kiva y Customer_Activity. Trabajas en tu Excel y subes el archivo.
+  fase: 2
+  orden: 4
+
+- id: terminal_git
+  nombre: Terminal y Git
+  descripcion: Comandos de terminal y flujo de Git en una carpeta de práctica aislada (nunca toca tus repositorios reales).
+  fase: 2
+  orden: 5

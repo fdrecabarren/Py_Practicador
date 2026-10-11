@@ -2,12 +2,12 @@
 
 App local para practicar lo que se ve en el bootcamp de Data Analytics (Factoría F5), con tus propios datos de Kiva y Olist. Python + Streamlit, todo en tu ordenador, sin APIs de pago.
 
-**Estado:** Fase 1 (Python básico, pandas y SQL). Las fases 2 (Excel/Power Query, Terminal y Git) y 3 (repaso espaciado, "Sesión de hoy") están por hacer.
+**Estado:** Fases 1 y 2 hechas (Python básico, pandas, SQL, Excel/Power Query y Terminal/Git). La fase 3 (repaso espaciado, "Sesión de hoy") está por hacer.
 
 ## Cómo funciona
 
 1. Eliges un ejercicio. Lees el enunciado y lo intentas tú.
-2. **Ejecutar** prueba tu código sin que cuente. **Comprobar** lo corrige y cuenta como intento.
+2. **Ejecutar** (o **Revisar sin contar**) prueba tu trabajo sin que cuente. **Comprobar** lo corrige y cuenta como intento.
 3. Si falla, ves por qué (o el error real de Python / MySQL) sin que se revele la respuesta.
 4. Tienes 3 pistas: idea general, pista concreta y solución explicada. La solución solo se desbloquea después de un intento.
 5. Un ejercicio está **aprendido** si lo resuelves sin ver la solución. Si la ves, vuelve más adelante y solo cuenta si lo resuelves otro día.
@@ -51,6 +51,26 @@ python scripts/probar_conexion.py
 
 La app solo acepta consultas `SELECT` / `WITH`, abre la sesión en modo solo lectura y limita el tiempo de ejecución.
 
+## Excel y Power Query
+
+Necesitas **Excel de escritorio** (Power Query no existe en la versión web). Cada ejercicio funciona así:
+
+1. Descargas un `.xlsx` de práctica (la app lo genera con tus datos de Kiva o Customer_Activity).
+2. Lo resuelves en Excel y lo guardas (**Ctrl+G**; los valores calculados solo se guardan si Excel guarda el archivo).
+3. Lo subes. La app lee los **valores** de las celdas (no compara el texto de tus fórmulas, salvo que el ejercicio pida usar cierta función o una referencia como `$F$1`) y te dice qué falta.
+
+Las fórmulas se guardan en inglés dentro del archivo (`SUMIFS`, `IF`...), aunque tu Excel las muestre en español. En los ejercicios de Power Query se comprueba el **resultado** cargado en la hoja que pide el enunciado. La presencia de la consulta (y trozos de su código M) solo se avisa, nunca suspende: ese detalle está sin probar con un archivo guardado por tu Excel.
+
+## Terminal y Git
+
+Necesitas **Git for Windows** (incluye Git Bash). Cada ejercicio tiene su propia carpeta en `sandbox/<id>/trabajo` (ignorada por Git):
+
+- **Preparar ejercicio** crea la carpeta con el punto de partida; **Reiniciar** la vuelve a crear desde cero.
+- **Abrir Git Bash aquí** abre la terminal dentro de esa carpeta. Tú escribes los comandos.
+- **Ver estado** muestra archivos, `git status` y el historial (solo lee). **Comprobar** corrige el estado final.
+
+Seguridad: la app nunca toca tus repositorios reales. El Git de la carpeta de práctica no puede subir hasta el repositorio del propio proyecto (`GIT_CEILING_DIRECTORIES`), las comprobaciones solo ejecutan comandos de lectura de Git, y los remotos que piden algunos ejercicios son carpetas locales (`remoto.git`), sin cuentas ni contraseñas. Si usas **tu propia** terminal en lugar del botón, copia antes el `export GIT_CEILING_DIRECTORIES=...` que muestra la app.
+
 ## Datos
 
 `python scripts/preparar_datos.py` crea en `datos/` muestras pequeñas y siempre iguales (semilla fija) a partir del material del curso, que solo se lee:
@@ -71,7 +91,7 @@ python scripts/validar_banco.py          # cada solución de referencia pasa sus
 python scripts/validar_banco.py --sql mysql   # SQL contra tu MySQL real
 ```
 
-`validar_banco.py` comprueba que no hay ejercicios rotos: la solución pasa sus tests, el código inicial **no** los pasa y la primera pista no contiene la solución. Sin credenciales de MySQL valida el SQL contra un mini-Olist sintético en SQLite; `sq-015` (`GROUP_CONCAT`) solo se puede validar con MySQL.
+`validar_banco.py` comprueba que no hay ejercicios rotos: la solución pasa sus tests, el código inicial **no** los pasa y la primera pista no contiene la solución. En Excel valida contra un libro "resuelto" sintético y en Terminal/Git ejecuta la solución con tu Git Bash real en una carpeta temporal. Sin credenciales de MySQL valida el SQL contra un mini-Olist sintético en SQLite; `sq-015` (`GROUP_CONCAT`) solo se puede validar con MySQL.
 
 ## Cómo añadir ejercicios
 
@@ -87,12 +107,12 @@ La forma más cómoda: abre Claude Code en esta carpeta y pide **"añade ejercic
 
 ```
 app.py            navegación de Streamlit
-paginas/          pantallas: inicio, practicar, progreso, ajustes
-motor/            lógica sin Streamlit: banco, comparador, ejecutor Python, SQL, niveles, progreso
+paginas/          pantallas: inicio, practicar (+ vistas_fase2: paneles de Excel y Terminal), progreso, ajustes
+motor/            lógica sin Streamlit: banco, comparador, ejecutor Python, SQL, Excel, Terminal/Git, niveles, progreso
 ejercicios/       banco en YAML (un archivo por tema + preguntas tipo test)
 scripts/          preparar_datos, validar_banco, probar_conexion, usuario_mysql.sql
 tests/            pytest
-datos/ progreso/  generados en local (no se suben a Git)
+datos/ progreso/ sandbox/  generados en local (no se suben a Git)
 ```
 
 Tu progreso vive en `progreso/progreso.db` (SQLite). Puedes borrarlo desde **Mi progreso > Borrar todo mi progreso**.

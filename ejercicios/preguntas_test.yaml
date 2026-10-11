@@ -271,3 +271,205 @@
   correcta: 2
   explicacion: |
     En SQL, `NULL` significa "valor desconocido" y cualquier comparación con `=` da `NULL` (no verdadero). Para buscar nulos se usa `IS NULL`; para excluirlos, `IS NOT NULL`.
+
+# ------------------------------------------------------------ Excel y Power Query
+- id: pq-016
+  tipo: test
+  tema: excel_pq
+  concepto: referencia mixta
+  nivel: intermedio
+  titulo: Copiar una referencia mixta
+  origen: "Clases/Excel/Teoria/Introduccion_Excel.pdf p.19-20 (=$B11*H$11)"
+  enunciado: |
+    En la celda `J11` tienes `=$B11*H$11`. La copias a la celda de **una columna a la derecha y una fila más abajo** (`K12`).
+
+    ¿Qué fórmula aparece en `K12`?
+  opciones: ["=$B12*I$12", "=$C12*I$11", "=$B12*I$11", "=$B11*H$11"]
+  correcta: 2
+  explicacion: |
+    El `$` bloquea lo que tiene delante. En `$B11` la **columna** B está bloqueada y la fila 11 es relativa, así que baja a 12: `$B12`.
+    En `H$11` la **fila** 11 está bloqueada y la columna H es relativa, así que avanza a I: `I$11`. Resultado: `=$B12*I$11`.
+
+- id: pq-017
+  tipo: test
+  tema: excel_pq
+  concepto: fechas como texto
+  nivel: basico
+  titulo: Una fecha pegada a la izquierda
+  origen: "Pildoras/Pildora N1 (tres disfraces de fecha; test de alineación y ESNUMERO)"
+  enunciado: |
+    Una celda muestra `15/03/2025` alineada a la **izquierda** y `=ESNUMERO(A2)` da `FALSO`.
+
+    ¿Qué es lo que hay realmente en la celda?
+  opciones: [
+    "Una fecha válida con un formato raro",
+    "Un texto con aspecto de fecha",
+    "Un número con decimales",
+    "Un error de Excel",
+  ]
+  correcta: 1
+  explicacion: |
+    Excel solo sabe de **texto** y **número**; una fecha real es un número (los días desde 1/1/1900) y se alinea a la derecha.
+    Si va a la izquierda y `ESNUMERO` da FALSO, es texto: hay que reconstruirla con `FECHA(año;mes;día)` antes de poder calcular con ella.
+
+- id: pq-018
+  tipo: test
+  tema: excel_pq
+  concepto: Power Query configuración regional
+  nivel: junior
+  titulo: Importes multiplicados por 10
+  origen: "Clases/Excel/Practica/Ejercicio 2/kiva (power pivvot).xlsx frente a kiva_loans_PowerPivot.xlsx (Table.TransformColumnTypes con en-US)"
+  enunciado: |
+    Importas `kiva_loans.csv` en un Excel en español. El campo `funded_amount` vale `525.0` en el CSV, pero tras cambiar el tipo en Power Query aparece `5250`.
+
+    ¿Cuál es la causa más probable?
+  opciones: [
+    "El CSV está corrupto",
+    "Power Query redondea siempre a la decena",
+    "Se cambió el tipo usando la configuración regional del Excel (español), donde el punto no es el separador decimal",
+    "La columna es de tipo texto y Excel multiplica el texto por 10",
+  ]
+  correcta: 2
+  explicacion: |
+    En español el punto es separador de **miles**, así que `525.0` se lee como `5250`. La solución es cambiar el tipo **con configuración regional**: Inglés (Estados Unidos), que en M queda como `"en-US"`.
+    Por eso, tras tipar, siempre se comprueba una suma conocida.
+
+- id: pq-019
+  tipo: test
+  tema: excel_pq
+  concepto: Power Query combinar frente a anexar
+  nivel: junior
+  titulo: Unir dos archivos con las mismas columnas
+  origen: "Clases/Excel/Practica/Ejecicio 1/PowerQuery_Kiva.pdf p.15 (Combinar = JOIN, Anexar = UNION)"
+  enunciado: |
+    Tienes `kiva_loans_Q1.csv` y `kiva_loans_Q2.csv`, con **las mismas columnas**, y quieres una sola tabla con los préstamos de los dos trimestres, uno debajo del otro.
+
+    ¿Qué operación de Power Query usas?
+  opciones: ["Combinar consultas (Merge)", "Anexar consultas (Append)", "Agrupar por", "Dividir columna"]
+  correcta: 1
+  explicacion: |
+    **Anexar** apila tablas con las mismas columnas (como `UNION ALL` en SQL). **Combinar** une tablas lado a lado por una columna común (como un `JOIN`), por ejemplo `kiva_loans` con una tabla país-continente.
+
+- id: pq-020
+  tipo: test
+  tema: excel_pq
+  concepto: SUMAR.SI.CONJUNTO orden de argumentos
+  nivel: intermedio
+  titulo: El primer argumento de SUMAR.SI.CONJUNTO
+  origen: "Proyetos/Analisis Descriptivo con Excel/kiva_loans_proyecto_1.xlsx hoja test H3 (SUMIFS)"
+  enunciado: |
+    En `SUMAR.SI.CONJUNTO(...)`, ¿qué va como **primer** argumento?
+  opciones: [
+    "El primer criterio",
+    "El rango que se quiere sumar",
+    "El rango del primer criterio",
+    "El valor de la suma que esperas",
+  ]
+  correcta: 1
+  explicacion: |
+    `SUMAR.SI.CONJUNTO(rango_suma; rango_criterio1; criterio1; ...)`. Es lo contrario de `SUMAR.SI`, donde el rango a sumar va al final. Confundir el orden es un error muy común.
+
+# ------------------------------------------------------------ Terminal y Git
+- id: pq-021
+  tipo: test
+  tema: terminal_git
+  concepto: rm y rmdir
+  nivel: basico
+  titulo: Borrar una carpeta con archivos
+  origen: "Clases/GIT/Teoria/Terminal.pdf p.5 (rm, rmdir)"
+  enunciado: |
+    La carpeta `proyecto` contiene dos archivos. Ejecutas `rmdir proyecto`.
+
+    ¿Qué ocurre?
+  opciones: [
+    "Se borra la carpeta y sus archivos",
+    "Da un error porque rmdir solo borra carpetas vacías",
+    "Se borra solo la carpeta y los archivos pasan al directorio superior",
+    "Pide confirmación y luego lo borra todo",
+  ]
+  correcta: 1
+  explicacion: |
+    `rmdir` solo borra carpetas **vacías**, por eso es el comando seguro. `rm -r proyecto` sí borra todo el contenido, sin papelera y sin preguntar.
+
+- id: pq-022
+  tipo: test
+  tema: terminal_git
+  concepto: área de preparación
+  nivel: basico
+  titulo: Entre git add y git commit
+  origen: "Clases/GIT/Teoria/manual-git-github-multicuenta.md sec 6C; Terminal.pdf p.9 (git add . / git commit -m)"
+  enunciado: |
+    Has modificado `a.txt` y ejecutas `git add a.txt`, pero todavía no has hecho `git commit`.
+
+    ¿Dónde están ahora los cambios de `a.txt`?
+  opciones: [
+    "Ya están guardados en el historial",
+    "Solo en tu carpeta de trabajo, Git no sabe nada de ellos",
+    "En el área de preparación, listos para entrar en el próximo commit",
+    "En el repositorio remoto",
+  ]
+  correcta: 2
+  explicacion: |
+    Git tiene tres zonas: la carpeta de trabajo, el **área de preparación** (lo que llena `git add`) y el historial (lo que guarda `git commit`).
+    `git status` te enseña en qué zona está cada cambio ("Changes to be committed" frente a "Changes not staged").
+
+- id: pq-023
+  tipo: test
+  tema: terminal_git
+  concepto: fetch frente a pull
+  nivel: intermedio
+  titulo: git fetch o git pull
+  origen: "Proyetos/hello_world_from_PR-v2/README.md (git fetch origin, git pull)"
+  enunciado: |
+    ¿Qué diferencia hay entre `git fetch origin` y `git pull`?
+  opciones: [
+    "Ninguna, son sinónimos",
+    "fetch sube tus commits y pull los baja",
+    "fetch solo descarga la información del remoto; pull además la integra en tu rama (fetch + merge)",
+    "pull solo funciona la primera vez que clonas",
+  ]
+  correcta: 2
+  explicacion: |
+    `git fetch` actualiza lo que sabes del remoto (`origin/main`) sin tocar tus archivos. `git pull` hace ese fetch y después un merge en tu rama actual.
+    Subir es `git push`.
+
+- id: pq-024
+  tipo: test
+  tema: terminal_git
+  concepto: push -u
+  nivel: intermedio
+  titulo: La opción -u de git push
+  origen: "Clases/GIT/Teoria/manual-git-github-multicuenta.md sec 6D (git push -u origin master|main)"
+  enunciado: |
+    ¿Qué consigue la opción `-u` en `git push -u origin main`?
+  opciones: [
+    "Sube también los archivos ignorados",
+    "Fuerza la subida aunque el remoto tenga cambios que no tienes",
+    "Vincula tu rama local con la remota, y después basta con `git push` a secas",
+    "Deshace el último commit",
+  ]
+  correcta: 2
+  explicacion: |
+    `-u` (`--set-upstream`) deja registrado a qué rama remota corresponde tu rama local. Forzar una subida es otra cosa (`--force`) y conviene evitarlo en ramas compartidas.
+
+- id: pq-025
+  tipo: test
+  tema: terminal_git
+  concepto: .gitignore y secretos
+  nivel: junior
+  titulo: Un secreto que ya se commiteó
+  origen: "Proyetos/*/.gitignore (.env); Clases/GIT/Practica (el archivo de token está fuera de los repos)"
+  enunciado: |
+    Commiteaste por error un `.env` con una contraseña. Después añades `.env` al `.gitignore` y haces otro commit.
+
+    ¿La contraseña queda protegida?
+  opciones: [
+    "Sí: .gitignore borra el archivo del historial",
+    "No: el archivo ya está en commits anteriores y sigue visible en el historial; hay que cambiar la contraseña",
+    "Sí, pero solo si haces git push después",
+    "No, pero se arregla con git status",
+  ]
+  correcta: 1
+  explicacion: |
+    `.gitignore` solo evita que se añadan archivos **nuevos**; no borra lo ya commiteado. El secreto sigue en el historial (y en el remoto, si ya lo subiste).
+    Lo prudente es considerarlo filtrado: cambiar la contraseña o el token y, solo si hace falta, limpiar el historial.

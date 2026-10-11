@@ -52,7 +52,8 @@ with der:
 # --- Estado por tema
 st.divider()
 st.subheader("Tus temas")
-cols = st.columns(len(temas)) if temas else []
+POR_FILA = 3
+cols = [c for i in range(0, len(temas), POR_FILA) for c in st.columns(POR_FILA)][:len(temas)]
 for col, tema in zip(cols, temas):
     estados = niveles.estado_niveles(banco, tema.id, aprendidos)
     actual = niveles.nivel_actual(estados)

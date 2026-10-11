@@ -28,11 +28,11 @@ def test_las_paginas_cargan_sin_excepciones(pagina):
     assert not at.exception, [e.value for e in at.exception]
 
 
-def test_lista_de_practicar_muestra_los_tres_temas():
+def test_lista_de_practicar_muestra_todos_los_temas():
     at = _app("paginas/practicar.py")
     assert not at.exception
     assert [r.label for r in at.radio][0] == "Tema"
-    assert len(at.radio[0].options) == 3
+    assert len(at.radio[0].options) == 5
 
 
 def test_comprobar_una_solucion_correcta_registra_el_acierto():
@@ -86,3 +86,41 @@ def test_un_ejercicio_bloqueado_no_se_abre():
     at = _app("paginas/practicar.py", ejercicio_abierto="pb-010")  # intermedio, con basico sin superar
     assert not at.exception
     assert any("bloqueado" in w.value.lower() for w in at.warning)
+
+
+# ------------------------------------------------------------------ fase 2
+def test_ejercicio_de_excel_se_abre_con_descarga_y_subida():
+    at = _app("paginas/practicar.py", ejercicio_abierto="xl-001")
+    assert not at.exception, [e.value for e in at.exception]
+    assert any(b.label == "Comprobar" and b.disabled for b in at.button)       # sin archivo no se puede comprobar
+    assert any("Tu archivo" in m.value for m in at.markdown)
+    assert any("Ver solución explicada" == b.label and b.disabled for b in at.button)
+
+
+def test_ejercicio_de_terminal_pide_preparar_y_luego_comprueba(tmp_path, monkeypatch):
+    from motor import terminal
+    if terminal.encontrar_bash() is None:
+        pytest.skip("hace falta Git for Windows")
+    monkeypatch.setattr(config, "DIR_SANDBOX", tmp_path / "sandbox")
+    at = _app("paginas/practicar.py", ejercicio_abierto="tg-001")
+    assert not at.exception, [e.value for e in at.exception]
+    _boton(at, "Preparar ejercicio").click()
+    at.run()
+    assert not at.exception, [e.value for e in at.exception]
+    assert terminal.esta_preparado("tg-001")
+    _boton(at, "Comprobar").click()
+    at.run()
+    assert any("Todavía no" in e.value for e in at.error)
+    assert "tg-001" not in Progreso(config.DB_PROGRESO).aprendidos()
+    _boton(at, "Ver estado").click()
+    at.run()
+    assert not at.exception, [e.value for e in at.exception]
+    assert any("ls -A" in c.value for c in at.code)
+    # el alumno hace lo que pide el enunciado y vuelve a comprobar
+    ej = cargar_banco().ejercicios["tg-001"]
+    ok, salida = terminal.resolver(ej)
+    assert ok, salida
+    _boton(at, "Comprobar").click()
+    at.run()
+    assert any("Correcto" in s.value for s in at.success), [e.value for e in at.error]
+    assert "tg-001" in Progreso(config.DB_PROGRESO).aprendidos()

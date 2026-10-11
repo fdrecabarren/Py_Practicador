@@ -1,6 +1,8 @@
 """Piezas compartidas por las paginas de la app (cache, editor, textos)."""
 from __future__ import annotations
 
+import re
+
 import streamlit as st
 
 from motor import config, sql
@@ -72,6 +74,17 @@ def editor(valor: str, clave: str, *, lenguaje: str = "python", altura: int = 34
 
 
 # ----------------------------------------------------------------- textos
+_CODIGO_MD = re.compile(r"(```.*?```|`[^`\n]*`)", re.S)
+_DOLAR_ESCAPADO = "\\$"
+
+
+def texto_md(texto: str) -> str:
+    """Escapa el signo $ fuera de los bloques de codigo: Streamlit lo toma por una formula (LaTeX)
+    y se comeria texto como $F$1 o $B11*H$11."""
+    partes = _CODIGO_MD.split(texto)
+    return "".join(p if i % 2 else p.replace("$", _DOLAR_ESCAPADO) for i, p in enumerate(partes))
+
+
 ICONO_ESTADO = {
     "aprendido": (":green[:material/check_circle:]", "Aprendido"),
     "repetir": (":orange[:material/replay:]", "Para repetir"),

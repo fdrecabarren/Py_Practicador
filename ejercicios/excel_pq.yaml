@@ -1,0 +1,904 @@
+# Ejercicios de Excel y Power Query (tipo: excel).
+# La app genera el libro de partida (hojas), tú lo resuelves en Excel y lo subes.
+# Las fórmulas se guardan en inglés dentro del archivo: la app busca SUM, IF, COUNTIFS, DATE...
+# aunque en tu Excel en español las escribas como SUMA, SI, CONTAR.SI.CONJUNTO, FECHA...
+
+# ============================================================== BÁSICO
+- id: xl-001
+  tipo: excel
+  tema: excel_pq
+  concepto: referencia absoluta
+  nivel: basico
+  titulo: Sueldos en euros con el tipo de cambio fijo
+  origen: "Clases/Excel/Teoria/Introduccion_Excel.pdf p.18 (=C12*$C$24, referencia absoluta con F4)"
+  nombre_archivo: sueldos_tipo_cambio.xlsx
+  hojas:
+    - nombre: Sueldos
+      columnas: [Empleado, Sueldo_USD, Sueldo_EUR]
+      filas:
+        - [Ana, 1200, null]
+        - [Luis, 1850, null]
+        - [Marta, 2100, null]
+        - [Pablo, 980, null]
+        - [Sofia, 1500, null]
+        - [Diego, 2400, null]
+        - [Lucia, 1750, null]
+        - [Hugo, 1320, null]
+        - [Irene, 2050, null]
+        - [Raul, 1600, null]
+      celdas:
+        E1: Tipo de cambio (EUR por USD)
+        F1: 0.92
+  enunciado: |
+    Tienes 10 sueldos en dólares y, en la celda **F1**, el tipo de cambio a euros.
+
+    Rellena la columna **Sueldo_EUR** con **una sola fórmula** escrita en la primera fila y arrastrada hasta la última.
+    La fórmula tiene que seguir apuntando al tipo de cambio de **F1** en todas las filas.
+
+    Descarga el archivo, resuélvelo en Excel, guárdalo y súbelo.
+  comprobaciones:
+    - tipo: columna
+      hoja: Sueldos
+      encabezado: Sueldo_EUR
+      calc: "(datos['Sueldos']['Sueldo_USD'] * 0.92).tolist()"
+      formula: true
+      formula_contiene: ["$F$1"]
+      titulo: "Sueldo_EUR calculado con una fórmula que fija el tipo de cambio"
+      mensaje: "El tipo de cambio está siempre en la misma celda: al arrastrar, esa referencia no se puede mover."
+  pistas:
+    - "Cada sueldo cambia de fila, pero el tipo de cambio es siempre el mismo. Una de las dos referencias debe moverse al arrastrar y la otra no."
+    - "La referencia que no debe moverse es absoluta: lleva $ delante de la columna y de la fila. Con F4 sobre la celda se añaden solos."
+    - "Escribe en la primera fila del euro la multiplicación del sueldo en dólares por la celda del tipo de cambio con $ en columna y fila, y arrastra el controlador de relleno hacia abajo."
+  solucion: |
+    En `C2` escribe `=B2*$F$1` y arrastra el controlador de relleno hasta `C11`.
+
+    - `B2` es relativa: al bajar pasa a `B3`, `B4`...
+    - `$F$1` es absoluta: no cambia al copiar.
+  explicacion: |
+    Sin los `$`, al arrastrar `F1` se convierte en `F2`, `F3`... que están vacías, y todo da 0. Con `$F$1` la referencia queda clavada.
+    Es el mismo patrón que `=C12*$C$24` de la clase, con el precio del dólar fijo.
+
+- id: xl-002
+  tipo: excel
+  tema: excel_pq
+  concepto: CONCAT y operador &
+  nivel: basico
+  titulo: Nombre completo y etiqueta de cliente
+  origen: "Clases/Excel/Teoria/Introduccion_Excel.pdf p.21; datos de Clases/Excel/Practica/Customer_Activity.csv"
+  nombre_archivo: clientes_etiquetas.xlsx
+  hojas:
+    - nombre: Clientes
+      csv: customer_activity.csv
+      sep: ";"
+      elegir: [customer_id, first_name, last_name, country]
+      n: 25
+      vacias: [nombre_completo, etiqueta]
+  enunciado: |
+    La hoja **Clientes** tiene nombre, apellido y país (todo en minúsculas, como en `Customer_Activity.csv`).
+
+    1. En **nombre_completo** junta nombre y apellido con un espacio en medio, usando el operador `&`. Ejemplo: `mary smith`.
+    2. En **etiqueta** usa la función `CONCAT` para construir `nombre (país)`. Ejemplo: `mary (japan)`.
+
+    Las dos columnas deben ser fórmulas, no texto escrito a mano.
+  comprobaciones:
+    - tipo: columna
+      hoja: Clientes
+      encabezado: nombre_completo
+      calc: "(datos['Clientes']['first_name'] + ' ' + datos['Clientes']['last_name']).tolist()"
+      formula: true
+      formula_contiene: ["&"]
+      titulo: "nombre_completo con el operador &"
+      mensaje: "Junta tres cosas: el nombre, un espacio entre comillas y el apellido."
+    - tipo: columna
+      hoja: Clientes
+      encabezado: etiqueta
+      calc: "(datos['Clientes']['first_name'] + ' (' + datos['Clientes']['country'] + ')').tolist()"
+      formula: CONCAT
+      titulo: "etiqueta con CONCAT"
+      mensaje: "Los textos fijos (el espacio y los paréntesis) van entre comillas dentro de la función."
+  pistas:
+    - "Hay dos formas de pegar textos: un operador entre los trozos o una función que los recibe como lista."
+    - "El operador es &. La función es CONCAT. Los textos que no vienen de una celda (un espacio, un paréntesis) se escriben entre comillas."
+    - "Primera columna: celda del nombre, & , un espacio entre comillas, & , celda del apellido. Segunda: CONCAT con el nombre, ' (' entre comillas, el país y ')' entre comillas."
+  solucion: |
+    - `nombre_completo` (E2): `=B2&" "&C2`
+    - `etiqueta` (F2): `=CONCAT(B2;" (";D2;")")`
+
+    Arrastra ambas hasta el final. (Con la coma como separador si tu Excel usa coma.)
+  explicacion: |
+    `&` y `CONCAT` hacen lo mismo; `&` es más corto y `CONCAT` es más cómodo cuando juntas muchos trozos.
+    El espacio hay que ponerlo tú: Excel no lo añade solo. Es la base de las columnas calculadas que usarás al limpiar datos.
+
+- id: xl-003
+  tipo: excel
+  tema: excel_pq
+  concepto: MES, AÑO, DIASEM y CONTAR.SI
+  nivel: basico
+  titulo: Desglose de fechas de alquiler
+  origen: "Clases/Excel/Teoria/Introduccion_Excel.pdf p.22-24 (DIASEM, MES, AÑO); datos de Customer_Activity.csv"
+  nombre_archivo: alquileres_fechas.xlsx
+  hojas:
+    - nombre: Alquileres
+      csv: customer_activity.csv
+      sep: ";"
+      elegir: [customer_id, rental_date]
+      n: 30
+      fechas: {rental_date: "%d/%m/%Y %H:%M"}
+      vacias: [mes, anio, dia_semana]
+      celdas:
+        G1: Alquileres de julio (mes = 7)
+  enunciado: |
+    La columna **rental_date** tiene la fecha y hora de cada alquiler. Calcula, con fórmulas:
+
+    - **mes**: el número del mes.
+    - **anio**: el año.
+    - **dia_semana**: el día de la semana con la semana empezando en **lunes = 1** (lunes 1 ... domingo 7).
+
+    Después, en **H1**, cuenta cuántos alquileres hay en julio usando la columna **mes** que acabas de crear.
+  comprobaciones:
+    - tipo: columna
+      hoja: Alquileres
+      encabezado: mes
+      calc: "datos['Alquileres']['rental_date'].dt.month.tolist()"
+      formula: MONTH
+      titulo: "mes con la función MES"
+    - tipo: columna
+      hoja: Alquileres
+      encabezado: anio
+      calc: "datos['Alquileres']['rental_date'].dt.year.tolist()"
+      formula: YEAR
+      titulo: "anio con la función AÑO"
+    - tipo: columna
+      hoja: Alquileres
+      encabezado: dia_semana
+      calc: "(datos['Alquileres']['rental_date'].dt.dayofweek + 1).tolist()"
+      formula: WEEKDAY
+      titulo: "dia_semana con DIASEM (lunes = 1)"
+      mensaje: "DIASEM tiene un segundo argumento que decide con qué día empieza la semana."
+    - tipo: celda
+      hoja: Alquileres
+      celda: H1
+      calc: "int((datos['Alquileres']['rental_date'].dt.month == 7).sum())"
+      formula: COUNTIF
+      titulo: "H1: alquileres de julio con CONTAR.SI.CONJUNTO"
+  pistas:
+    - "Tres funciones extraen una parte de la fecha: una da el mes, otra el año y otra el día de la semana."
+    - "MES(fecha), AÑO(fecha) y DIASEM(fecha; tipo). El tipo 2 hace que la semana empiece en lunes. Para contar: CONTAR.SI o CONTAR.SI.CONJUNTO con el rango de la columna mes y el criterio 7."
+    - "En C2 MES de B2, en D2 AÑO de B2, en E2 DIASEM de B2 con tipo 2, y arrastra. En H1 cuenta las celdas de C2:C31 que valen 7."
+  solucion: |
+    - `mes` (C2): `=MES(B2)`
+    - `anio` (D2): `=AÑO(B2)`
+    - `dia_semana` (E2): `=DIASEM(B2;2)`
+    - `H1`: `=CONTAR.SI.CONJUNTO(C2:C31;7)` (o `CONTAR.SI`)
+  explicacion: |
+    Una fecha es un número disfrazado (días desde 1900), por eso se puede descomponer con funciones.
+    Sin el tipo 2, `DIASEM` cuenta desde el domingo. Contar sobre una columna ya calculada es más simple que hacerlo con fechas directamente.
+
+- id: xl-004
+  tipo: excel
+  tema: excel_pq
+  concepto: texto que parece número
+  nivel: basico
+  titulo: Rescatar el importe guardado como texto
+  origen: "Clases/Excel/Practica/Ejercicio1.xlsx columna M (amount guardado como texto); Introduccion_Excel.pdf p.8-11"
+  nombre_archivo: pagos_importe_texto.xlsx
+  hojas:
+    - nombre: Pagos
+      csv: customer_activity.csv
+      sep: ";"
+      renombrar: {" amount ": amount}
+      elegir: [customer_id, country, amount]
+      n: 30
+      vacias: [importe]
+      celdas:
+        F1: Total
+        F2: Promedio
+  enunciado: |
+    La columna **amount** viene como **texto** (con espacios alrededor, como en el archivo original) y por eso no se puede sumar.
+
+    1. En la columna **importe** deja el mismo valor pero **como número**.
+    2. En **G1** calcula el total de `importe` y en **G2** su promedio, con fórmulas.
+
+    Pista de diagnóstico: un número se alinea a la derecha; el texto, a la izquierda.
+  comprobaciones:
+    - tipo: columna
+      hoja: Pagos
+      encabezado: importe
+      calc: "datos['Pagos']['amount'].str.strip().astype(float).tolist()"
+      solo_numeros: true
+      titulo: "importe es numérico y tiene el valor de amount"
+      mensaje: "Hay que quitar los espacios y comprobar el separador decimal antes de convertir."
+    - tipo: celda
+      hoja: Pagos
+      celda: G1
+      calc: "float(datos['Pagos']['amount'].str.strip().astype(float).sum())"
+      formula: true
+      titulo: "G1: total del importe"
+    - tipo: celda
+      hoja: Pagos
+      celda: G2
+      calc: "float(datos['Pagos']['amount'].str.strip().astype(float).mean())"
+      formula: true
+      titulo: "G2: promedio del importe"
+  pistas:
+    - "Antes de convertir a número hay que limpiar el texto. Mira qué caracteres sobran y cuál es el separador decimal que espera tu Excel."
+    - "Funciones útiles: ESPACIOS (quita espacios sobrantes), SUSTITUIR (cambia el punto por tu separador decimal) y VALOR (convierte texto en número)."
+    - "En D2 anida: VALOR de SUSTITUIR de ESPACIOS(C2), cambiando el punto por la coma. Arrastra y después suma y promedia la columna nueva."
+  solucion: |
+    En `D2`: `=VALOR(SUSTITUIR(ESPACIOS(C2);".";","))` (en Excel con coma decimal) y arrastra.
+
+    - `G1`: `=SUMA(D2:D31)`
+    - `G2`: `=PROMEDIO(D2:D31)`
+  explicacion: |
+    Es el problema real de `Customer_Activity.csv` en un Excel en español: el punto decimal de origen no se reconoce como decimal.
+    Antes de convertir hay que **diagnosticar** (alineación, `LARGO`, `ESNUMERO`) y luego **quitar** lo que sobra y **convertir**.
+    También se puede hacer con Texto en columnas o con Power Query y la configuración regional correcta.
+
+- id: xl-005
+  tipo: excel
+  tema: excel_pq
+  concepto: ESPACIOS, NOMPROPIO y MINUSC
+  nivel: basico
+  titulo: Limpiar nombres y correos
+  origen: "Pildoras/Pildora N1 (método QUITAR / UNIFICAR: ESPACIOS, NOMPROPIO, MINUSC)"
+  nombre_archivo: alumnos_limpieza.xlsx
+  hojas:
+    - nombre: Alumnos
+      columnas: [id, nombre, email, nombre_limpio, email_limpio]
+      filas:
+        - [1, "  juan  perez ", " Juan.Perez@Mail.com ", null, null]
+        - [2, "MARIA LOPEZ", "maria.lopez@mail.com", null, null]
+        - [3, "ana   garcia", "ANA.GARCIA@MAIL.COM ", null, null]
+        - [4, "luis martin ", " luis.martin@mail.com", null, null]
+        - [5, "  carla  ruiz", "Carla.Ruiz@Mail.com", null, null]
+        - [6, "PABLO     SANZ", "pablo.sanz@MAIL.com", null, null]
+        - [7, "laura gomez ", "laura.gomez@mail.com  ", null, null]
+        - [8, "  JORGE   DIAZ  ", "Jorge.Diaz@mail.com", null, null]
+  enunciado: |
+    Los nombres y los correos llegan sucios: espacios al principio, al final y repetidos, y mayúsculas mezcladas.
+
+    - **nombre_limpio**: sin espacios de más y con cada palabra en mayúscula inicial (`Juan Perez`).
+    - **email_limpio**: sin espacios y todo en minúsculas.
+
+    Usa fórmulas que apunten a la columna **cruda** (no escribas los resultados a mano). La columna original no se toca.
+  comprobaciones:
+    - tipo: columna
+      hoja: Alumnos
+      encabezado: nombre_limpio
+      calc: "[' '.join(x.split()).title() for x in datos['Alumnos']['nombre']]"
+      formula: PROPER
+      sin_espacios_extra: true
+      titulo: "nombre_limpio con NOMPROPIO"
+      mensaje: "Hay dos problemas distintos: los espacios y las mayúsculas. Se resuelven con dos funciones, una dentro de la otra."
+    - tipo: columna
+      hoja: Alumnos
+      encabezado: email_limpio
+      calc: "[' '.join(x.split()).lower() for x in datos['Alumnos']['email']]"
+      formula: LOWER
+      sin_espacios_extra: true
+      titulo: "email_limpio con MINUSC"
+  pistas:
+    - "Son dos problemas distintos. Un espacio de más hace que 'Ana' y 'Ana ' sean textos diferentes aunque se vean iguales."
+    - "ESPACIOS quita los espacios sobrantes. NOMPROPIO pone la inicial de cada palabra en mayúscula y MINUSC todo en minúsculas. Las funciones se pueden anidar."
+    - "En D2: NOMPROPIO de ESPACIOS(B2). En E2: MINUSC de ESPACIOS(C2). Arrastra las dos hasta la fila 9."
+  solucion: |
+    - `nombre_limpio` (D2): `=NOMPROPIO(ESPACIOS(B2))`
+    - `email_limpio` (E2): `=MINUSC(ESPACIOS(C2))`
+  explicacion: |
+    Regla de la píldora: **una columna, un problema** y se mide antes de arreglar: `=A1=A2` da FALSO entre 'Malaga' y 'Malaga ' porque `LARGO` es distinto.
+    `ESPACIOS` también reduce los espacios dobles internos a uno solo.
+
+# ============================================================ INTERMEDIO
+- id: xl-006
+  tipo: excel
+  tema: excel_pq
+  concepto: referencia mixta
+  nivel: intermedio
+  titulo: Tabla de comisiones con una sola fórmula
+  origen: "Clases/Excel/Teoria/Introduccion_Excel.pdf p.19-20 (=$B11*H$11, referencias mixtas)"
+  nombre_archivo: comisiones_mixtas.xlsx
+  hojas:
+    - nombre: Comisiones
+      fila_encabezado: 3
+      columnas: [Venta, Comision_Venta, Comision_Credito, IVA]
+      filas:
+        - [1200, null, null, null]
+        - [3400, null, null, null]
+        - [560, null, null, null]
+        - [8900, null, null, null]
+        - [2750, null, null, null]
+        - [4100, null, null, null]
+      celdas:
+        A1: Tasa
+        B1: 0.04
+        C1: 0.11
+        D1: 0.16
+  enunciado: |
+    En la fila 1 están las tasas de cada columna (4 %, 11 % y 16 %) y las ventas están en la columna **A**, desde la fila 4.
+
+    Rellena **Comision_Venta**, **Comision_Credito** e **IVA** con **una única fórmula** escrita en la primera celda de datos
+    y copiada a las 18 celdas (hacia abajo **y** hacia la derecha). Cada celda debe dar la venta multiplicada por su tasa.
+  comprobaciones:
+    - tipo: columna
+      hoja: Comisiones
+      fila_encabezado: 3
+      encabezado: Comision_Venta
+      calc: "(datos['Comisiones']['Venta'] * 0.04).tolist()"
+      formula: true
+      formula_contiene: ["$A", "$1"]
+      titulo: "Comision_Venta con referencia mixta"
+      mensaje: "Una fórmula que se copia en las dos direcciones necesita bloquear la columna de las ventas y la fila de las tasas."
+    - tipo: columna
+      hoja: Comisiones
+      fila_encabezado: 3
+      encabezado: Comision_Credito
+      calc: "(datos['Comisiones']['Venta'] * 0.11).tolist()"
+      formula: true
+      formula_contiene: ["$A", "$1"]
+      titulo: "Comision_Credito con referencia mixta"
+    - tipo: columna
+      hoja: Comisiones
+      fila_encabezado: 3
+      encabezado: IVA
+      calc: "(datos['Comisiones']['Venta'] * 0.16).tolist()"
+      formula: true
+      formula_contiene: ["$A", "$1"]
+      titulo: "IVA con referencia mixta"
+  pistas:
+    - "Al copiar a la derecha, la columna de las ventas no puede moverse; al copiar hacia abajo, la fila de las tasas no puede moverse. Cada referencia necesita bloquear solo una de las dos cosas."
+    - "Una referencia mixta lleva un $ solo: delante de la columna ($A4) para bloquear la columna, o delante de la fila (B$1) para bloquear la fila. F4 va alternando los tipos."
+    - "En B4 multiplica la venta con la columna bloqueada por la tasa con la fila bloqueada, y copia a todo el rango B4:D9."
+  solucion: |
+    En `B4`: `=$A4*B$1` y cópiala a `B4:D9`.
+
+    - `$A4`: la columna A no se mueve, la fila sí.
+    - `B$1`: la fila 1 no se mueve, la columna sí.
+  explicacion: |
+    Con `=A4*B1` al bajar la tasa se mueve a la fila 2 (vacía). Con `$A$4*$B$1` todas las celdas dan lo mismo.
+    La mixta es la que permite que **una sola fórmula** sirva para toda la matriz. Si ves `#¡VALOR!` al copiar a la derecha, una referencia salió del rango.
+
+- id: xl-007
+  tipo: excel
+  tema: excel_pq
+  concepto: SI anidado como columna calculada
+  nivel: intermedio
+  titulo: Clasificar préstamos en Alto, Medio y Bajo
+  origen: "Proyetos/Analisis Descriptivo con Excel/README.md (Categoria_Monto con SI anidado); umbrales adaptados a esta muestra"
+  nombre_archivo: prestamos_categoria.xlsx
+  hojas:
+    - nombre: Prestamos
+      csv: kiva_muestra.csv
+      elegir: [id, country, sector, funded_amount]
+      n: 40
+      numericas: [funded_amount]
+      vacias: [Categoria_Monto]
+      celdas:
+        G1: Alto
+        G2: Medio
+        G3: Bajo
+  enunciado: |
+    Clasifica cada préstamo en **Categoria_Monto** con estas reglas sobre **funded_amount**:
+
+    - más de **1000**: `Alto`
+    - más de **500** (y no más de 1000): `Medio`
+    - el resto: `Bajo`
+
+    Después, en **H1**, **H2** y **H3**, cuenta cuántos préstamos hay de cada categoría (las etiquetas están en G1:G3), usando la columna que acabas de crear.
+  comprobaciones:
+    - tipo: columna
+      hoja: Prestamos
+      encabezado: Categoria_Monto
+      calc: "['Alto' if x > 1000 else 'Medio' if x > 500 else 'Bajo' for x in datos['Prestamos']['funded_amount']]"
+      formula: IF
+      titulo: "Categoria_Monto con SI anidado"
+      mensaje: "Empieza por la condición más exigente: la primera que se cumple gana."
+    - tipo: celda
+      hoja: Prestamos
+      celda: H1
+      calc: "int((datos['Prestamos']['funded_amount'] > 1000).sum())"
+      formula: COUNTIF
+      titulo: "H1: cuántos Alto"
+    - tipo: celda
+      hoja: Prestamos
+      celda: H2
+      calc: "int(((datos['Prestamos']['funded_amount'] > 500) & (datos['Prestamos']['funded_amount'] <= 1000)).sum())"
+      formula: COUNTIF
+      titulo: "H2: cuántos Medio"
+    - tipo: celda
+      hoja: Prestamos
+      celda: H3
+      calc: "int((datos['Prestamos']['funded_amount'] <= 500).sum())"
+      formula: COUNTIF
+      titulo: "H3: cuántos Bajo"
+  pistas:
+    - "Hay tres resultados posibles y dos preguntas: primero decide si es Alto; si no lo es, decide si es Medio; si tampoco, es Bajo."
+    - "Una función SI dentro de otro SI: SI(condición; valor_si_cierto; SI(otra condición; valor; valor_si_no)). Para contar usa CONTAR.SI con la etiqueta de G."
+    - "En E2: SI(D2>1000; \"Alto\"; SI(D2>500; \"Medio\"; \"Bajo\")). En H1: CONTAR.SI de la columna E con el criterio G1, y lo mismo para G2 y G3."
+  solucion: |
+    - `Categoria_Monto` (E2): `=SI(D2>1000;"Alto";SI(D2>500;"Medio";"Bajo"))`
+    - `H1`: `=CONTAR.SI($E$2:$E$41;G1)` y lo mismo con G2 y G3.
+  explicacion: |
+    Es la columna `Categoria_Monto` del proyecto de Kiva (`SI(D2>4375;"Alto";SI(D2>1000;"Medio";"Bajo"))`), con umbrales más bajos para que esta muestra tenga las tres categorías.
+    Excel evalúa en orden y se queda con la primera condición verdadera; por eso el orden importa.
+
+- id: xl-008
+  tipo: excel
+  tema: excel_pq
+  concepto: SUMAR.SI.CONJUNTO con FECHA
+  nivel: intermedio
+  titulo: Total financiado por país y por fechas
+  origen: "Proyetos/Analisis Descriptivo con Excel/kiva_loans_proyecto_1.xlsx hoja test H3 (SUMIFS con DATE y &)"
+  nombre_archivo: prestamos_sumifs.xlsx
+  hojas:
+    - nombre: Prestamos
+      csv: kiva_muestra.csv
+      elegir: [country, sector, funded_amount, date]
+      n: 150
+      numericas: [funded_amount]
+      fechas: {date: "%Y-%m-%d"}
+      celdas:
+        F1: "Total de Philippines"
+        F2: "Total de Kenya del 05/01/2014 al 20/01/2014 (ambos incluidos)"
+        F3: "Nº de préstamos de Retail en Philippines"
+  enunciado: |
+    Con fórmulas en las celdas **G1**, **G2** y **G3** (las etiquetas están en F1:F3):
+
+    1. **G1**: suma de `funded_amount` de **Philippines**.
+    2. **G2**: suma de `funded_amount` de **Kenya** con fecha entre el **5 de enero de 2014** y el **20 de enero de 2014**, ambos incluidos.
+       Las fechas del criterio tienen que construirse con la función de fecha, no escribirse como texto.
+    3. **G3**: cuántos préstamos hay del sector **Retail** en **Philippines**.
+  comprobaciones:
+    - tipo: celda
+      hoja: Prestamos
+      celda: G1
+      calc: "float(datos['Prestamos'].query(\"country == 'Philippines'\")['funded_amount'].sum())"
+      formula: SUMIF
+      titulo: "G1: total de Philippines"
+    - tipo: celda
+      hoja: Prestamos
+      celda: G2
+      calc: "float(datos['Prestamos'].query(\"country == 'Kenya' and date >= '2014-01-05' and date <= '2014-01-20'\")['funded_amount'].sum())"
+      formula: SUMIFS
+      formula_contiene: ["DATE"]
+      titulo: "G2: Kenya entre dos fechas con SUMAR.SI.CONJUNTO y FECHA"
+      mensaje: "Los criterios de fecha se escriben como \">=\"&FECHA(...) y \"<=\"&FECHA(...), uniendo el operador (entre comillas) con la fecha."
+    - tipo: celda
+      hoja: Prestamos
+      celda: G3
+      calc: "len(datos['Prestamos'].query(\"country == 'Philippines' and sector == 'Retail'\"))"
+      formula: COUNTIFS
+      titulo: "G3: Retail en Philippines con CONTAR.SI.CONJUNTO"
+  pistas:
+    - "Es una suma con condiciones: solo se suman las filas que cumplen todas a la vez. Para contar con condiciones existe la función equivalente."
+    - "SUMAR.SI.CONJUNTO(rango_a_sumar; rango_criterio1; criterio1; ...). Para comparar fechas, el criterio junta un operador entre comillas con una fecha: \">=\"&FECHA(año;mes;día). Contar: CONTAR.SI.CONJUNTO."
+    - "G2: el rango de funded_amount, luego country = Kenya, luego date >= FECHA(2014;1;5) y date <= FECHA(2014;1;20). G3: CONTAR.SI.CONJUNTO con country y sector."
+  solucion: |
+    - `G1`: `=SUMAR.SI.CONJUNTO(C2:C151;A2:A151;"Philippines")`
+    - `G2`: `=SUMAR.SI.CONJUNTO(C2:C151;A2:A151;"Kenya";D2:D151;">="&FECHA(2014;1;5);D2:D151;"<="&FECHA(2014;1;20))`
+    - `G3`: `=CONTAR.SI.CONJUNTO(A2:A151;"Philippines";B2:B151;"Retail")`
+  explicacion: |
+    Es la fórmula de la hoja `test` del proyecto (Ecuador 2014) con otro país. `SUMAR.SI.CONJUNTO` pone **primero el rango a sumar** (al revés que `SUMAR.SI`).
+    Un criterio con comparación es un texto: `">="` unido con `&` a la fecha construida con `FECHA`.
+
+- id: xl-009
+  tipo: excel
+  tema: excel_pq
+  concepto: formato condicional
+  nivel: intermedio
+  titulo: Resaltar valores con formato condicional
+  origen: "Clases/Excel/Teoria/Excel_y_Visualizacion.pdf p.4-7; Clases/Excel/Practica/Ejercicio1.xlsx (formato condicional sobre amount)"
+  nombre_archivo: alquileres_formato_condicional.xlsx
+  hojas:
+    - nombre: Alquileres
+      csv: customer_activity.csv
+      sep: ";"
+      renombrar: {" amount ": amount}
+      elegir: [customer_id, country, amount, rental_duration]
+      n: 40
+      numericas: [amount, rental_duration]
+  enunciado: |
+    En la hoja **Alquileres** (datos en las filas 2 a 41) aplica tres reglas de **formato condicional**, cada una a su columna y con el formato que prefieras:
+
+    1. **amount** (C2:C41): resaltar las celdas con valor **mayor que 5**.
+    2. **country** (B2:B41): resaltar las celdas cuyo texto **contiene** `japan`.
+    3. **rental_duration** (D2:D41): una **escala de color**.
+  comprobaciones:
+    - tipo: formato_condicional
+      hoja: Alquileres
+      rango: "C2:C41"
+      regla: cellIs
+      operador: greaterThan
+      valor: 5
+      titulo: "amount: regla Mayor que 5 en C2:C41"
+    - tipo: formato_condicional
+      hoja: Alquileres
+      rango: "B2:B41"
+      regla: containsText
+      titulo: "country: regla Texto que contiene en B2:B41"
+    - tipo: formato_condicional
+      hoja: Alquileres
+      rango: "D2:D41"
+      regla: colorScale
+      titulo: "rental_duration: escala de color en D2:D41"
+  pistas:
+    - "Primero selecciona solo el rango de cada columna y luego aplica la regla; si seleccionas otra cosa, la regla se aplicará a otro rango."
+    - "Inicio > Formato condicional. Reglas para resaltar celdas tiene 'Es mayor que' y 'Texto que contiene'. Las escalas de color están en su propio submenú."
+    - "Selecciona C2:C41, Resaltar celdas > Es mayor que, escribe 5. Selecciona B2:B41, Texto que contiene, escribe japan. Selecciona D2:D41 y elige una escala de color."
+  solucion: |
+    1. Selecciona `C2:C41` > Inicio > Formato condicional > Reglas para resaltar celdas > **Es mayor que...** > `5`.
+    2. Selecciona `B2:B41` > Reglas para resaltar celdas > **Texto que contiene...** > `japan`.
+    3. Selecciona `D2:D41` > Formato condicional > **Escalas de color** > la que prefieras.
+  explicacion: |
+    El formato condicional no cambia los valores, solo cómo se ven; el archivo guarda cada regla con el rango al que se aplica.
+    Las reglas dependen del tipo de dato: 'mayor que' necesita números de verdad (si `amount` fuera texto, no funcionaría).
+
+- id: xl-010
+  tipo: excel
+  tema: excel_pq
+  concepto: tabla de Excel y celdas combinadas
+  nivel: intermedio
+  titulo: Convertir un rango "bonito" en una tabla de verdad
+  origen: "Clases/Excel/Teoria/Introduccion_Excel.pdf p.13-14 (no usar celdas combinadas); Excel_y_Visualizacion.pdf p.3 (Insertar > Tabla)"
+  nombre_archivo: gastos_tabla.xlsx
+  hojas:
+    - nombre: Gastos
+      columnas: [Tipo, Concepto, Monto]
+      filas:
+        - [Fijo, Alquiler, 650]
+        - [null, Internet, 40]
+        - [null, Seguro, 85]
+        - [Variable, Comida, 320]
+        - [null, Transporte, 95]
+        - [null, Ocio, 140]
+        - [null, Ropa, 80]
+      combinar: ["A2:A4", "A5:A8"]
+  enunciado: |
+    La hoja **Gastos** parece una tabla, pero la columna **Tipo** tiene celdas combinadas y Excel no la trata como datos.
+
+    1. Quita las celdas combinadas y deja el valor de **Tipo** repetido en cada fila (`Fijo` ×3, `Variable` ×4).
+    2. Convierte el rango en una **Tabla de Excel** (Insertar > Tabla).
+  comprobaciones:
+    - tipo: sin_combinadas
+      hoja: Gastos
+      titulo: "Sin celdas combinadas"
+      mensaje: "Al descombinar, solo la primera celda conserva el valor: hay que rellenar las demás."
+    - tipo: columna
+      hoja: Gastos
+      encabezado: Tipo
+      valores: [Fijo, Fijo, Fijo, Variable, Variable, Variable, Variable]
+      sin_vacios: true
+      titulo: "Tipo repetido en cada fila"
+    - tipo: tabla
+      hoja: Gastos
+      titulo: "Los datos son una Tabla de Excel"
+  pistas:
+    - "Una celda combinada deja vacías las demás: para filtrar y calcular, cada fila debe tener su propio valor."
+    - "Inicio > Combinar y centrar descombina. Después hay que rellenar los huecos (copiando, o con Ctrl+Enter sobre la selección). La tabla está en Insertar > Tabla."
+    - "Selecciona la columna Tipo, descombina, rellena cada hueco con el valor de arriba, y luego selecciona el rango A1:C8 con Insertar > Tabla marcando 'La tabla tiene encabezados'."
+  solucion: |
+    1. Selecciona `A2:A8` > Inicio > **Combinar y centrar** (para descombinar).
+    2. Rellena `A3`, `A4` con `Fijo` y `A6:A8` con `Variable` (arrastrando, o seleccionando los huecos y `Ctrl+Enter`).
+    3. Selecciona `A1:C8` > Insertar > **Tabla** > marca 'La tabla tiene encabezados'.
+  explicacion: |
+    "Porque parezca una tabla no lo es": las celdas combinadas rompen el filtrado, las tablas dinámicas y las fórmulas.
+    La regla es **repetir el valor en cada fila**. Una Tabla de Excel además crece sola y permite referencias por nombre de columna.
+
+# ================================================================ JUNIOR (Power Query)
+- id: xl-011
+  tipo: excel
+  tema: excel_pq
+  concepto: Power Query tipo con configuración regional
+  nivel: junior
+  titulo: Importes x10 al cambiar el tipo en Power Query
+  origen: "Clases/Excel/Practica/Ejercicio1_en_proceso.xlsx y Ejercicio 2 (Table.TransformColumnTypes con \"en-US\"); PowerQuery_Kiva.pdf p.7"
+  nombre_archivo: kiva_importes_pq.xlsx
+  hojas:
+    - nombre: Datos
+      csv: kiva_muestra.csv
+      elegir: [id, country, funded_amount, loan_amount]
+      n: 25
+  enunciado: |
+    En la hoja **Datos**, `funded_amount` y `loan_amount` están como **texto con punto decimal** (`525.0`), igual que en `kiva_loans.csv`.
+
+    Con **Power Query** (Datos > Obtener datos > Desde tabla o rango):
+
+    1. Cambia el tipo de `funded_amount` y `loan_amount` a **número decimal** de forma que los importes **no cambien de valor**
+       (en un Excel en español, un cambio de tipo normal los multiplica por 10).
+    2. **Cerrar y cargar** el resultado en una hoja nueva llamada **Limpio**.
+
+    Guarda el libro con la consulta y súbelo.
+  comprobaciones:
+    - tipo: hoja
+      hoja: Limpio
+      titulo: "Existe la hoja Limpio con el resultado"
+    - tipo: encabezados
+      hoja: Limpio
+      valores: [id, country, funded_amount, loan_amount]
+      titulo: "Limpio tiene las 4 columnas"
+    - tipo: columna
+      hoja: Limpio
+      encabezado: funded_amount
+      calc: "datos['Datos']['funded_amount'].astype(float).tolist()"
+      solo_numeros: true
+      titulo: "funded_amount es numérico y conserva su valor"
+      mensaje: "Si los importes salen multiplicados por 10, el tipo se cambió sin indicar la configuración regional de origen."
+    - tipo: columna
+      hoja: Limpio
+      encabezado: loan_amount
+      calc: "datos['Datos']['loan_amount'].astype(float).tolist()"
+      solo_numeros: true
+      titulo: "loan_amount es numérico y conserva su valor"
+    - tipo: power_query
+      blando: true
+      contiene_m: ["en-US"]
+      titulo: "La consulta usa configuración regional en-US (aviso, no suspende)"
+  pistas:
+    - "Excel en español interpreta '525.0' de otra forma que el CSV original, y el resultado es un importe diez veces mayor sin ningún error visible."
+    - "En el editor de Power Query: clic derecho en la columna > Cambiar tipo > Utilizando configuración regional... y elige tipo Número decimal con la configuración regional Inglés (Estados Unidos)."
+    - "Haz el cambio de tipo con configuración regional Inglés (EE. UU.) en las dos columnas, quita el paso automático de 'Tipo cambiado' si ya lo hizo mal, y Cerrar y cargar en una hoja nueva que renombres a Limpio."
+  solucion: |
+    1. Selecciona los datos > Datos > **Desde tabla o rango**.
+    2. En el editor, selecciona `funded_amount` y `loan_amount` > clic derecho > **Cambiar tipo > Utilizando configuración regional...** > Número decimal > **Inglés (Estados Unidos)**.
+    3. Si Power Query ya creó un paso 'Tipo cambiado' sin cultura, bórralo (o ponlo antes de este).
+    4. **Cerrar y cargar**; renombra la hoja resultante a `Limpio`.
+
+    En el lenguaje M, el paso queda como `Table.TransformColumnTypes(..., {{"funded_amount", type number}, ...}, "en-US")`.
+  explicacion: |
+    Es el error real de uno de tus archivos de Power Pivot: `525.0` se leía como `5250` y el Total Financiado de 2014 salía 86.139.250 en vez de 8.643.925.
+    El tipo depende de la **cultura** con la que se interpreta el texto. Por eso siempre se comprueba una suma conocida después de tipar.
+
+- id: xl-012
+  tipo: excel
+  tema: excel_pq
+  concepto: Power Query dividir en filas y recortar
+  nivel: junior
+  titulo: Un género por fila, sin espacios de más
+  origen: "Clases/Excel/Practica/Ejecicio 1/PowerQuery_Kiva.pdf p.9 (dividir en filas); PowerPivot_Kiva.pdf p.11 (' female' con espacio inicial)"
+  nombre_archivo: kiva_generos_pq.xlsx
+  hojas:
+    - nombre: Datos
+      csv: kiva_muestra.csv
+      elegir: [id, country, borrower_genders]
+      consulta: "borrower_genders.str.contains(',')"
+      n: 12
+  enunciado: |
+    En **borrower_genders** cada préstamo tiene varios valores separados por coma (`female, male, female`).
+
+    Con **Power Query**:
+
+    1. Divide **borrower_genders** por el delimitador coma, **en filas** (no en columnas).
+    2. **Recorta** los espacios de los valores resultantes.
+    3. Cargar el resultado en una hoja llamada **Limpio**, con las columnas `id`, `country` y `borrower_genders`.
+  comprobaciones:
+    - tipo: hoja
+      hoja: Limpio
+      titulo: "Existe la hoja Limpio"
+    - tipo: encabezados
+      hoja: Limpio
+      valores: [id, country, borrower_genders]
+      titulo: "Limpio tiene las columnas id, country y borrower_genders"
+    - tipo: filas
+      hoja: Limpio
+      calc: "int(datos['Datos']['borrower_genders'].str.split(',').explode().shape[0])"
+      titulo: "Una fila por cada género"
+      mensaje: "Si la cuenta no sale, mira si dividiste en filas y no en columnas."
+    - tipo: columna
+      hoja: Limpio
+      encabezado: borrower_genders
+      calc: "datos['Datos']['borrower_genders'].str.split(',').explode().str.strip().tolist()"
+      sin_espacios_extra: true
+      titulo: "Valores recortados (female / male sin espacio inicial)"
+      mensaje: "Dividir por ',' deja ' female' con un espacio delante: falta un paso de limpieza."
+    - tipo: power_query
+      blando: true
+      titulo: "El libro contiene una consulta de Power Query (aviso, no suspende)"
+  pistas:
+    - "Dividir en filas repite el resto de columnas de cada préstamo. Después de dividir, los valores arrastran el espacio que había tras la coma."
+    - "Transformar > Dividir columna > Por delimitador (coma), eligiendo 'Dividir en: Filas'. Luego Transformar > Formato > Recortar."
+    - "Divide borrower_genders por coma en filas, selecciona esa columna y aplica Formato > Recortar. Cierra y carga en una hoja nueva llamada Limpio."
+  solucion: |
+    1. Datos > **Desde tabla o rango**.
+    2. Selecciona `borrower_genders` > Transformar > **Dividir columna > Por delimitador** > Coma > Avanzadas > **Dividir en: Filas**.
+    3. Con la columna seleccionada: Transformar > **Formato > Recortar**.
+    4. **Cerrar y cargar** y renombra la hoja a `Limpio`.
+  explicacion: |
+    Es el paso que sube de 42.308 a 88.140 filas en el proyecto. Sin `Recortar`, el valor ` female` no es igual a `female`, y una medida `= "female"` no cuenta esas filas.
+    Ojo con la **granularidad**: ahora hay una fila por persona, no por préstamo, y sumar `funded_amount` repetiría el importe.
+
+- id: xl-013
+  tipo: excel
+  tema: excel_pq
+  concepto: Power Query columna personalizada con List.Distinct
+  nivel: junior
+  titulo: Quitar etiquetas repetidas dentro de una celda
+  origen: "Clases/Excel/Practica/Ejecicio 1/PowerQuery_Kiva.pdf p.8 (Text.Combine(List.Distinct(Text.Split())))"
+  nombre_archivo: kiva_tags_pq.xlsx
+  hojas:
+    - nombre: Datos
+      csv: kiva_muestra.csv
+      elegir: [id, country, tags]
+      consulta: "tags.str.count('user_favorite') > 1"
+      n: 15
+  enunciado: |
+    La columna **tags** repite etiquetas dentro de la misma celda (`#Single, user_favorite, user_favorite`).
+
+    Con **Power Query**, deja en cada celda las etiquetas **sin repetir** (en su orden original, separadas por `, `) y carga el resultado
+    en una hoja **Limpio** con las columnas `id`, `country` y `tags` (la columna `tags` ya limpia, con ese mismo nombre).
+    No se pueden perder ni añadir filas.
+  comprobaciones:
+    - tipo: hoja
+      hoja: Limpio
+      titulo: "Existe la hoja Limpio"
+    - tipo: encabezados
+      hoja: Limpio
+      valores: [id, country, tags]
+      titulo: "Limpio tiene id, country y tags"
+    - tipo: filas
+      hoja: Limpio
+      calc: "len(datos['Datos'])"
+      titulo: "Mismo número de filas que el original"
+    - tipo: columna
+      hoja: Limpio
+      encabezado: tags
+      calc: "[', '.join(dict.fromkeys(t.split(', '))) for t in datos['Datos']['tags']]"
+      titulo: "tags sin etiquetas repetidas"
+      mensaje: "Hay que separar el texto en una lista, quedarse con los elementos distintos y volver a juntarlos."
+    - tipo: power_query
+      blando: true
+      contiene_m: ["List.Distinct"]
+      titulo: "La consulta usa List.Distinct (aviso, no suspende)"
+  pistas:
+    - "El texto de una celda se puede convertir en una lista, quitar de la lista lo repetido y volver a unir en un texto."
+    - "En Agregar columna > Columna personalizada puedes encadenar tres funciones de M: Text.Split, List.Distinct y Text.Combine. Después, elimina la columna original y renombra la nueva."
+    - "Columna personalizada con Text.Combine de List.Distinct de Text.Split de tags (separador ', '), unida otra vez con ', '. Quita la columna tags original y renombra la nueva a tags."
+  solucion: |
+    1. Datos > **Desde tabla o rango**.
+    2. Agregar columna > **Columna personalizada**, nombre `tags_limpios`, fórmula:
+       `Text.Combine(List.Distinct(Text.Split([tags], ", ")), ", ")`
+    3. Elimina la columna `tags` original y renombra `tags_limpios` a `tags`.
+    4. **Cerrar y cargar** y renombra la hoja a `Limpio`.
+  explicacion: |
+    En el original hay 6.849 préstamos con etiquetas repetidas. `List.Distinct` conserva el orden de primera aparición.
+    Cada clic de Power Query escribe una línea de M: puedes verlas en la barra de fórmulas o en el Editor avanzado.
+
+- id: xl-014
+  tipo: excel
+  tema: excel_pq
+  concepto: Power Query agrupar por
+  nivel: junior
+  titulo: Préstamos y monto total por país y sector
+  origen: "Clases/Excel/Practica/Ejecicio 1/PowerQuery_Kiva.pdf p.12 (Agrupar por: Total_Prestamos y Monto_Total)"
+  nombre_archivo: kiva_agrupar_pq.xlsx
+  hojas:
+    - nombre: Datos
+      csv: kiva_muestra.csv
+      elegir: [country, sector, funded_amount]
+      n: 120
+      numericas: [funded_amount]
+  enunciado: |
+    Con **Power Query**, agrupa los préstamos por **country** y **sector** y calcula:
+
+    - **Total_Prestamos**: número de filas de cada grupo.
+    - **Monto_Total**: suma de `funded_amount` de cada grupo.
+
+    Carga el resultado (4 columnas, en este orden: `country`, `sector`, `Total_Prestamos`, `Monto_Total`) en una hoja llamada **Resumen**.
+    El orden de las filas da igual.
+  comprobaciones:
+    - tipo: hoja
+      hoja: Resumen
+      titulo: "Existe la hoja Resumen"
+    - tipo: encabezados
+      hoja: Resumen
+      valores: [country, sector, Total_Prestamos, Monto_Total]
+      titulo: "Resumen tiene las 4 columnas en orden"
+    - tipo: filas
+      hoja: Resumen
+      calc: "len(datos['Datos'].groupby(['country', 'sector']))"
+      titulo: "Una fila por cada combinación país y sector"
+    - tipo: columna
+      hoja: Resumen
+      encabezado: country
+      calc: "datos['Datos'].groupby(['country', 'sector']).size().reset_index()['country'].tolist()"
+      orden: false
+      titulo: "Países del resumen"
+    - tipo: columna
+      hoja: Resumen
+      encabezado: Total_Prestamos
+      calc: "datos['Datos'].groupby(['country', 'sector']).size().tolist()"
+      orden: false
+      solo_numeros: true
+      titulo: "Total_Prestamos de cada grupo"
+      mensaje: "Total_Prestamos se obtiene contando filas, no sumando un campo."
+    - tipo: columna
+      hoja: Resumen
+      encabezado: Monto_Total
+      calc: "datos['Datos'].groupby(['country', 'sector'])['funded_amount'].sum().tolist()"
+      orden: false
+      solo_numeros: true
+      titulo: "Monto_Total de cada grupo"
+    - tipo: power_query
+      blando: true
+      contiene_m: ["Table.Group"]
+      titulo: "La consulta usa Agrupar por (aviso, no suspende)"
+  pistas:
+    - "Agrupar por es como el GROUP BY de SQL: eliges las columnas que definen el grupo y para cada grupo calculas operaciones."
+    - "Selecciona country y sector con Ctrl+clic > Transformar > Agrupar por. Añade dos agregaciones: 'Contar filas' y 'Suma' sobre funded_amount."
+    - "Agrupa por country y sector, primera agregación Total_Prestamos = Contar filas, segunda Monto_Total = Suma de funded_amount. Cerrar y cargar en una hoja Resumen."
+  solucion: |
+    1. Datos > **Desde tabla o rango**.
+    2. Selecciona `country` y `sector` (Ctrl+clic) > Transformar > **Agrupar por**.
+    3. Pulsa **Avanzadas** > añade las dos operaciones: `Total_Prestamos` = **Contar filas** y `Monto_Total` = **Suma** de `funded_amount`.
+    4. **Cerrar y cargar** y renombra la hoja a `Resumen`.
+  explicacion: |
+    En el proyecto completo el resultado son 681 combinaciones. `Table.Group` hace el trabajo de `GROUP BY country, sector` con `COUNT(*)` y `SUM(funded_amount)`.
+    Comprueba siempre que la suma de `Total_Prestamos` da el número de filas de partida.
+
+- id: xl-015
+  tipo: excel
+  tema: excel_pq
+  concepto: Power Query filtrar y columna personalizada
+  nivel: junior
+  titulo: Filtrar préstamos inválidos y calcular el % financiado
+  origen: "Clases/Excel/Practica/Ejecicio 1/PowerQuery_Kiva.pdf p.10-11 (filtrar > 0 y Pct_Financiado); Proyecto kiva_loans_PowerPivot (ratio tipado como entero)"
+  nombre_archivo: kiva_pct_financiado_pq.xlsx
+  hojas:
+    - nombre: Datos
+      columnas: [id, country, funded_amount, loan_amount]
+      filas:
+        - [1, Kenya, 300, 600]
+        - [2, Peru, 500, 500]
+        - [3, Kenya, 250, null]
+        - [4, Mali, 0, 0]
+        - [5, Peru, 750, 1000]
+        - [6, Bolivia, 400, 800]
+        - [7, Mali, 100, null]
+        - [8, Kenya, 875, 875]
+        - [9, Peru, 600, 0]
+        - [10, Bolivia, 225, 450]
+        - [11, Mali, 350, 700]
+        - [12, Kenya, 1200, 1500]
+  enunciado: |
+    Algunos préstamos tienen `loan_amount` vacío o igual a 0 y dividir por ellos daría error.
+
+    Con **Power Query**:
+
+    1. Filtra para quedarte solo con las filas donde `loan_amount` **no es nulo y es mayor que 0**.
+    2. Añade una columna **Pct_Financiado** = `funded_amount / loan_amount`. Debe ser un decimal (por ejemplo 0,5), no un entero.
+    3. Carga el resultado en una hoja **Limpio** con las columnas `id`, `country`, `funded_amount`, `loan_amount`, `Pct_Financiado`.
+  comprobaciones:
+    - tipo: hoja
+      hoja: Limpio
+      titulo: "Existe la hoja Limpio"
+    - tipo: encabezados
+      hoja: Limpio
+      valores: [id, country, funded_amount, loan_amount, Pct_Financiado]
+      titulo: "Limpio tiene las 5 columnas"
+    - tipo: filas
+      hoja: Limpio
+      calc: "int((datos['Datos']['loan_amount'] > 0).sum())"
+      titulo: "Solo las filas con loan_amount válido"
+      mensaje: "Revisa el filtro: hay que quitar los nulos y también los ceros."
+    - tipo: columna
+      hoja: Limpio
+      encabezado: Pct_Financiado
+      calc: "(datos['Datos'].query('loan_amount > 0')['funded_amount'] / datos['Datos'].query('loan_amount > 0')['loan_amount']).tolist()"
+      tolerancia: 0.0005
+      solo_numeros: true
+      titulo: "Pct_Financiado = funded_amount / loan_amount"
+      mensaje: "Si todo sale 0 o 1, el ratio se guardó con tipo entero y se trunca: el tipo correcto es decimal o porcentaje."
+    - tipo: power_query
+      blando: true
+      titulo: "El libro contiene una consulta de Power Query (aviso, no suspende)"
+  pistas:
+    - "Hay dos pasos distintos: quitar las filas que harían fallar la división y crear la columna nueva. El orden importa."
+    - "Usa el filtro de la columna loan_amount: 'Filtros de número > Mayor que... 0' y desmarca (null). Después Agregar columna > Columna personalizada con la división; cuida el tipo del resultado."
+    - "Filtra loan_amount mayor que 0 y sin nulos; añade Pct_Financiado = [funded_amount] / [loan_amount]; cambia su tipo a Número decimal (o Porcentaje); Cerrar y cargar en una hoja Limpio."
+  solucion: |
+    1. Datos > **Desde tabla o rango**.
+    2. En `loan_amount`: desplegable > **Filtros de número > Mayor que...** > `0` (y desmarca `(null)`).
+    3. Agregar columna > **Columna personalizada**, nombre `Pct_Financiado`, fórmula `[funded_amount] / [loan_amount]`.
+    4. Cambia el tipo de `Pct_Financiado` a **Número decimal** o **Porcentaje** (nunca Número entero).
+    5. **Cerrar y cargar** y renombra la hoja a `Limpio`.
+  explicacion: |
+    Es el `Pct_Financiado` del proyecto. En uno de los archivos del curso el ratio se retipó como entero (`Int64.Type`) y el porcentaje quedó truncado a 0 o 1.
+    Filtrar **antes** de calcular evita errores de división por cero.

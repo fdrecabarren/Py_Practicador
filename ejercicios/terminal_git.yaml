@@ -1,0 +1,615 @@
+# Ejercicios de Terminal y Git (tipo: terminal_git).
+# Cada ejercicio se hace en su propia carpeta: sandbox/<id>/trabajo (se crea con "Preparar ejercicio").
+# `preparar` y `solucion` son scripts de bash (se ejecutan con Git Bash); `comprobaciones` solo LEEN el estado.
+# Dentro de `preparar` puedes usar $DATOS (carpeta datos/ del proyecto) y ../remoto.git si `remoto: true`.
+
+# ================================================================= BÁSICO
+- id: tg-001
+  tipo: terminal_git
+  tema: terminal_git
+  concepto: mkdir, touch, rmdir
+  nivel: basico
+  titulo: Montar la estructura de un proyecto de análisis
+  origen: "Clases/GIT/Teoria/Terminal.pdf p.5 (cd, ls, mkdir, touch, rmdir); idea de ejercicio: estructura del proyecto Kiva"
+  preparar: |
+    mkdir borrador
+  enunciado: |
+    Estás en una carpeta de trabajo vacía, salvo por una carpeta `borrador` que se creó por error.
+
+    Con la terminal, deja esta estructura:
+
+    ```
+    proyecto_kiva/
+      README.md
+      data/
+      notebooks/
+      output/
+    ```
+
+    y **borra la carpeta vacía `borrador`** (con el comando pensado para carpetas vacías).
+  comprobaciones:
+    - {archivo: proyecto_kiva/data, carpeta: true, titulo: "Existe proyecto_kiva/data", mensaje: "Crea las carpetas dentro de proyecto_kiva."}
+    - {archivo: proyecto_kiva/notebooks, carpeta: true, titulo: "Existe proyecto_kiva/notebooks", mensaje: "Falta la carpeta notebooks."}
+    - {archivo: proyecto_kiva/output, carpeta: true, titulo: "Existe proyecto_kiva/output", mensaje: "Falta la carpeta output."}
+    - {archivo: proyecto_kiva/README.md, existe: true, titulo: "Existe proyecto_kiva/README.md", mensaje: "Un archivo vacío se crea con un comando muy corto."}
+    - {archivo: borrador, existe: false, titulo: "Ya no existe la carpeta borrador", mensaje: "La carpeta borrador sigue ahí."}
+  pistas:
+    - "Hay un comando para crear carpetas, otro para crear archivos vacíos y otro para borrar carpetas vacías. Con ls ves lo que llevas hecho."
+    - "mkdir crea carpetas (acepta varios nombres a la vez), touch crea un archivo vacío, rmdir borra una carpeta vacía y cd entra en una carpeta."
+    - "Crea proyecto_kiva, entra con cd, crea con mkdir las tres carpetas, crea README.md con touch, sal con cd .. y borra borrador con rmdir."
+  solucion: |
+    mkdir proyecto_kiva
+    cd proyecto_kiva
+    mkdir data notebooks output
+    touch README.md
+    cd ..
+    rmdir borrador
+  explicacion: |
+    `rmdir` solo borra carpetas **vacías**, por eso es más seguro que `rm -r`, que borra todo lo que haya dentro sin preguntar.
+    Una estructura de carpetas ordenada (data, notebooks, output) es el primer hábito de un proyecto de datos.
+
+- id: tg-002
+  tipo: terminal_git
+  tema: terminal_git
+  concepto: cp, mv, rm
+  nivel: basico
+  titulo: Copiar, renombrar y borrar archivos
+  origen: "Clases/GIT/Teoria/Terminal.pdf p.5 (cp, mv, rm); idea de ejercicio con kiva_loans.csv"
+  preparar: |
+    printf 'id,country,sector\n1,Kenya,Retail\n2,Peru,Food\n3,Mali,Agriculture\n' > kiva_loans.csv
+    cp kiva_loans.csv kiva_loans_copia.csv
+    mkdir proyecto
+  enunciado: |
+    Tienes `kiva_loans.csv`, una copia sobrante `kiva_loans_copia.csv` y una carpeta `proyecto`.
+
+    1. Crea la carpeta `proyecto/data`.
+    2. **Copia** `kiva_loans.csv` dentro de `proyecto/data` (el original debe seguir donde está).
+    3. Dentro de `proyecto/data`, **renombra** esa copia a `kiva_raw.csv`.
+    4. **Borra** la copia sobrante `kiva_loans_copia.csv`.
+  comprobaciones:
+    - {archivo: proyecto/data/kiva_raw.csv, contiene: "Kenya", titulo: "proyecto/data/kiva_raw.csv existe con los datos", mensaje: "Falta kiva_raw.csv en proyecto/data, con el contenido del CSV."}
+    - {archivo: kiva_loans.csv, existe: true, titulo: "El original kiva_loans.csv sigue en su sitio", mensaje: "El original ha desaparecido: ¿moviste en vez de copiar?"}
+    - {archivo: proyecto/data/kiva_loans.csv, existe: false, titulo: "En data no queda la copia con el nombre antiguo", mensaje: "La copia se tenía que renombrar."}
+    - {archivo: kiva_loans_copia.csv, existe: false, titulo: "Borrada la copia sobrante", mensaje: "kiva_loans_copia.csv sigue existiendo."}
+  pistas:
+    - "Copiar deja el original; mover lo cambia de sitio. Renombrar y mover son la misma operación."
+    - "cp origen destino copia. mv origen destino mueve o renombra. rm borra un archivo (sin papelera: no hay vuelta atrás)."
+    - "mkdir proyecto/data; cp kiva_loans.csv a esa carpeta; mv la copia a kiva_raw.csv dentro de data; rm kiva_loans_copia.csv."
+  solucion: |
+    mkdir proyecto/data
+    cp kiva_loans.csv proyecto/data/
+    mv proyecto/data/kiva_loans.csv proyecto/data/kiva_raw.csv
+    rm kiva_loans_copia.csv
+  explicacion: |
+    Mantener un archivo "raw" intocable y trabajar sobre copias es la misma idea que la hoja `01_CRUDO` de la píldora de limpieza.
+    `rm` no tiene papelera: antes de borrar, comprueba con `ls` qué vas a borrar.
+
+- id: tg-003
+  tipo: terminal_git
+  tema: terminal_git
+  concepto: cat y mv
+  nivel: basico
+  titulo: Encontrar la nota con la clave
+  origen: "Clases/GIT/Teoria/Terminal.pdf p.5 (cat, mv, ls)"
+  preparar: |
+    mkdir notas
+    echo "Reunion del lunes: revisar el informe" > notas/nota1.txt
+    printf 'Recordatorio\nCLAVE: kiva2014\n' > notas/nota2.txt
+    echo "Comprar cafe para la oficina" > notas/nota3.txt
+  enunciado: |
+    La carpeta `notas` tiene tres archivos de texto. **Solo uno** contiene la palabra `CLAVE`.
+
+    Léelos con la terminal (sin abrir ningún editor), descubre cuál es y **muévelo** a una carpeta nueva llamada `revisadas`.
+    Los otros dos archivos se quedan donde están.
+  comprobaciones:
+    - {archivo: revisadas/nota2.txt, contiene: "CLAVE", titulo: "La nota correcta está en revisadas", mensaje: "Todavía no has movido la nota que contiene CLAVE a la carpeta revisadas."}
+    - {archivo: notas/nota2.txt, existe: false, titulo: "La nota ya no está en notas", mensaje: "La nota debía moverse, no copiarse."}
+    - {archivo: notas/nota1.txt, existe: true, titulo: "nota1.txt sigue en notas", mensaje: "Has movido una nota que no era."}
+    - {archivo: notas/nota3.txt, existe: true, titulo: "nota3.txt sigue en notas", mensaje: "Has movido una nota que no era."}
+  pistas:
+    - "Hay un comando que muestra el contenido de un archivo en pantalla. Pruébalo con cada nota."
+    - "cat archivo muestra el contenido. mkdir crea la carpeta y mv mueve el archivo ganador."
+    - "Haz cat de nota1, nota2 y nota3, fíjate en la que dice CLAVE, crea la carpeta revisadas y mueve ese archivo con mv."
+  solucion: |
+    cat notas/nota1.txt
+    cat notas/nota2.txt
+    cat notas/nota3.txt
+    mkdir revisadas
+    mv notas/nota2.txt revisadas/
+  explicacion: |
+    `cat` (concatenate) escribe el contenido de uno o varios archivos en la terminal; también es el origen de muchos pipelines (`cat archivo | ...`).
+    Inspeccionar antes de mover o borrar es un hábito básico en la terminal.
+
+- id: tg-004
+  tipo: terminal_git
+  tema: terminal_git
+  concepto: git init, add, commit, log
+  nivel: basico
+  titulo: Tu primer repositorio
+  origen: "Clases/GIT/Teoria/manual-git-github-multicuenta.md sec 6-7; historial de practica-git ('first commit')"
+  preparar: |
+    echo "# Practica Git" > README.md
+  enunciado: |
+    La carpeta tiene un `README.md` pero todavía no es un repositorio Git.
+
+    1. Conviértela en un repositorio.
+    2. Mira qué dice `git status` (ve el README como archivo sin seguimiento).
+    3. Prepara el archivo y haz tu **primer commit** con el mensaje exacto `first commit`.
+    4. Comprueba con `git log --oneline` que existe un único commit.
+
+    Al final no debe quedar nada pendiente en `git status`.
+  comprobaciones:
+    - {git: "rev-parse --is-inside-work-tree", igual: "true", titulo: "La carpeta es un repositorio Git", mensaje: "Todavía no has iniciado el repositorio."}
+    - {git: "rev-list --count HEAD", igual: "1", titulo: "Hay exactamente un commit", mensaje: "Debe haber un único commit."}
+    - {git: "log --format=%s", igual: "first commit", titulo: "El mensaje del commit es 'first commit'", mensaje: "Revisa el mensaje del commit, tiene que ser exactamente el pedido."}
+    - {git: "status --porcelain", igual: "", titulo: "No queda nada pendiente", mensaje: "Hay archivos sin añadir o sin commitear."}
+  pistas:
+    - "Un repositorio se crea una vez, un commit se hace en dos pasos: primero eliges qué entra y luego lo confirmas con un mensaje."
+    - "git init crea el repositorio. git add prepara archivos para el commit y git commit -m \"mensaje\" lo guarda."
+    - "git init, git status para ver el estado, git add . para preparar todo, git commit -m con el mensaje first commit, y git log --oneline."
+  solucion: |
+    git init
+    git status
+    git add .
+    git commit -m "first commit"
+    git log --oneline
+  explicacion: |
+    Git tiene tres zonas: el directorio de trabajo, el área de preparación (`git add`) y el historial (`git commit`).
+    Si al hacer `commit` te dice que no sabe quién eres, falta `git config user.name` y `user.email` (identidad). El prompt de Git Bash muestra `(master)` o `(main)` cuando ya estás en un repositorio.
+
+- id: tg-005
+  tipo: terminal_git
+  tema: terminal_git
+  concepto: git add selectivo
+  nivel: basico
+  titulo: Commitear solo un archivo
+  origen: "Clases/GIT/Teoria/manual-git-github-multicuenta.md sec 6C (git status antes del push); git add . del flujo de clase"
+  preparar: |
+    git init -q -b main
+    echo "# Proyecto" > README.md
+    echo "version 1" > a.txt
+    git add .
+    git commit -q -m "Primer commit"
+    echo "version 2" > a.txt
+    echo "borrador sin terminar" > b.txt
+  enunciado: |
+    Has modificado `a.txt` y has creado `b.txt`, que todavía es un borrador y **no quieres subir**.
+
+    Haz un commit que incluya **solo el cambio de `a.txt`**, con el mensaje exacto `Actualizar a.txt`.
+    `b.txt` debe seguir en la carpeta como archivo sin seguimiento.
+  comprobaciones:
+    - {git: "rev-list --count HEAD", igual: "2", titulo: "Hay dos commits", mensaje: "Debe haber exactamente un commit nuevo."}
+    - {git: "log -1 --format=%s", igual: "Actualizar a.txt", titulo: "El último commit se llama 'Actualizar a.txt'", mensaje: "Revisa el mensaje del commit."}
+    - {git: "ls-files", no_contiene: "b.txt", titulo: "b.txt no está en el repositorio", mensaje: "b.txt no debía entrar en el commit."}
+    - {git: "status --porcelain", igual: "?? b.txt", titulo: "b.txt sigue sin seguimiento y a.txt está limpio", mensaje: "Debe quedar solo b.txt sin seguimiento: a.txt tiene que estar ya commiteado."}
+  pistas:
+    - "git add . prepara todo lo que ha cambiado. Para preparar solo una parte, hay que decirle a git cuál."
+    - "git add seguido del nombre del archivo prepara solo ese archivo. Compruébalo con git status antes de hacer el commit."
+    - "git add a.txt, git status (a.txt preparado, b.txt sin seguimiento), git commit -m con el mensaje pedido."
+  solucion: |
+    git add a.txt
+    git status
+    git commit -m "Actualizar a.txt"
+  explicacion: |
+    `git add .` es cómodo, pero mete todo, incluidos borradores, datos grandes o archivos con secretos. Por eso conviene mirar `git status` antes de cada commit.
+    El área de preparación existe justo para poder elegir qué entra en cada commit.
+
+# ============================================================== INTERMEDIO
+- id: tg-006
+  tipo: terminal_git
+  tema: terminal_git
+  concepto: git branch y checkout
+  nivel: intermedio
+  titulo: Trabajar en una rama feature
+  origen: "Clases/GIT/Practica/practica-git (rama feature/pagina-principal, commits feat:); Proyetos/hello_world_from_PR-v2/README.md (nombres de rama)"
+  preparar: |
+    git init -q -b main
+    echo "# Web del bootcamp" > README.md
+    git add .
+    git commit -q -m "first commit"
+  enunciado: |
+    Siguiendo la convención del bootcamp (minúsculas, sin tildes ni espacios):
+
+    1. Crea la rama `feature/pagina-principal` y **cámbiate** a ella.
+    2. Crea un archivo `index.html` con cualquier contenido.
+    3. Haz un commit en esa rama cuyo mensaje empiece por `feat:` (commit convencional).
+
+    La rama `main` no debe cambiar.
+  comprobaciones:
+    - {git: "rev-parse --abbrev-ref HEAD", igual: "feature/pagina-principal", titulo: "Estás en la rama feature/pagina-principal", mensaje: "Crea la rama con ese nombre exacto y cámbiate a ella."}
+    - {git: "ls-files", contiene: "index.html", titulo: "index.html está commiteado", mensaje: "index.html tiene que estar añadido y commiteado."}
+    - {git: "log -1 --format=%s", regex: "^feat: .+", titulo: "El último commit empieza por 'feat:'", mensaje: "El mensaje del commit debe empezar por 'feat: ' seguido de una descripción."}
+    - {git: "rev-list --count main", igual: "1", titulo: "main sigue con su commit original", mensaje: "El commit nuevo debe estar solo en la rama feature, no en main."}
+  pistas:
+    - "Una rama es una línea de trabajo paralela. Primero hay que crearla y luego moverse a ella; el commit se queda en la rama en la que estás."
+    - "git branch nombre crea la rama; git checkout nombre te cambia a ella. git checkout -b nombre hace las dos cosas a la vez."
+    - "Crea y entra en feature/pagina-principal, crea index.html, git add index.html, y git commit -m con un mensaje que empiece por feat:."
+  solucion: |
+    git checkout -b feature/pagina-principal
+    echo "<h1>Pagina principal</h1>" > index.html
+    git add index.html
+    git commit -m "feat: crear la estructura inicial de la pagina principal"
+  explicacion: |
+    Si haces el commit en `main` por despiste, es el típico "push rechazado: estás en main, haz git checkout <tu-rama>".
+    Los prefijos `feat:` y `fix:` (commits convencionales) hacen el historial legible, como en `practica-git`.
+
+- id: tg-007
+  tipo: terminal_git
+  tema: terminal_git
+  concepto: git merge
+  nivel: intermedio
+  titulo: Unir una rama con git merge
+  origen: "Clases/GIT/Practica/practica-git (git merge entre ramas feature, commits merge:); Proyetos/hello_world_from_PR-v2/README.md"
+  preparar: |
+    git init -q -b main
+    echo "# Web" > README.md
+    git add .
+    git commit -q -m "first commit"
+    git checkout -q -b feature/nueva-seccion
+    echo "<div>Nueva Seccion</div>" > seccion.html
+    git add .
+    git commit -q -m "feat: anadir nueva seccion"
+    git checkout -q main
+    echo "body { margin: 0 }" > style.css
+    git add .
+    git commit -q -m "feat: anadir estilos"
+  enunciado: |
+    `main` y `feature/nueva-seccion` han avanzado cada una por su lado: `main` tiene `style.css` y la rama tiene `seccion.html`.
+
+    Desde `main`, **une** `feature/nueva-seccion` y deja el commit de merge con un mensaje que empiece por `merge:`
+    (por ejemplo `merge: unir la nueva seccion`). Al final `main` debe tener los dos archivos.
+  comprobaciones:
+    - {git: "rev-parse --abbrev-ref HEAD", igual: "main", titulo: "Estás en main", mensaje: "El merge se hace estando en la rama que recibe los cambios."}
+    - {git: "rev-list --merges --count HEAD", igual: "1", titulo: "Existe un commit de merge", mensaje: "Todavía no hay un commit de merge en main."}
+    - {git: "ls-files", contiene: ["seccion.html", "style.css"], titulo: "main tiene seccion.html y style.css", mensaje: "Faltan archivos: ¿se completó el merge?"}
+    - {git: "log -1 --format=%s", regex: "^merge:", titulo: "El mensaje del merge empieza por 'merge:'", mensaje: "git merge acepta un mensaje con la opción -m."}
+    - {git: "status --porcelain", igual: "", titulo: "No queda nada pendiente", mensaje: "Hay cambios sin commitear."}
+  pistas:
+    - "Fusionar significa: estando en la rama que recibe, decirle a git cuál es la rama que quieres traer."
+    - "git merge nombre_de_la_rama. Si no indicas el mensaje, git abre un editor con uno por defecto; la opción -m permite escribirlo directamente."
+    - "Comprueba con git branch que estás en main, ejecuta git merge con -m \"merge: ...\" y la rama feature/nueva-seccion, y revisa con git log --oneline --graph."
+  solucion: |
+    git checkout main
+    git merge -m "merge: unir la nueva seccion" feature/nueva-seccion
+    git log --oneline --graph
+  explicacion: |
+    Como las dos ramas tienen commits propios, git crea un **commit de merge** con dos padres (en `git log --graph` se ve el rombo).
+    Si solo una rama hubiera avanzado, git haría un *fast-forward* sin commit de merge.
+
+- id: tg-008
+  tipo: terminal_git
+  tema: terminal_git
+  concepto: conflicto de merge
+  nivel: intermedio
+  titulo: Resolver un conflicto de merge
+  origen: "Clases/GIT/Practica/practica-git (conflicto en index.html con marcadores <<<<<<< HEAD, =======, >>>>>>> feature/nueva-seccion)"
+  preparar: |
+    git init -q -b main
+    printf '<html>\n<body>\n<p>Bienvenidos a la pagina</p>\n</body>\n</html>\n' > index.html
+    git add .
+    git commit -q -m "first commit"
+    git checkout -q -b feature/nueva-seccion
+    printf '<html>\n<body>\n<p>Bienvenidos</p>\n<div>Nueva Seccion</div>\n</body>\n</html>\n' > index.html
+    git commit -q -am "feat: anadir nueva seccion"
+    git checkout -q main
+    printf '<html>\n<body>\n<p>Bienvenidos a mi portfolio de datos</p>\n</body>\n</html>\n' > index.html
+    git commit -q -am "fix: actualizar el parrafo"
+  enunciado: |
+    `main` y `feature/nueva-seccion` han cambiado **la misma línea** de `index.html`.
+
+    1. Estando en `main`, intenta unir `feature/nueva-seccion`. Git avisará de un conflicto.
+    2. Resuélvelo **quedándote con la versión de `feature/nueva-seccion`** (debe aparecer `Nueva Seccion` y no el texto de portfolio).
+       El archivo final **no puede contener los marcadores** `<<<<<<<`, `=======` ni `>>>>>>>`.
+    3. Termina el merge con un commit.
+  comprobaciones:
+    - {archivo: index.html, no_contiene: ["<<<<<<<", "=======", ">>>>>>>"], titulo: "index.html no tiene marcadores de conflicto", mensaje: "Quedan marcadores de conflicto: hay que borrarlos al resolver."}
+    - {archivo: index.html, contiene: "Nueva Seccion", titulo: "index.html tiene la versión de feature/nueva-seccion", mensaje: "La versión final debe incluir la sección de la rama feature."}
+    - {archivo: index.html, no_contiene: "portfolio", titulo: "No queda el texto de main", mensaje: "El enunciado pide quedarse con la versión de la rama feature."}
+    - {git: "rev-list --merges --count HEAD", igual: "1", titulo: "El merge está terminado (commit de merge)", mensaje: "Falta terminar el merge con git add y git commit."}
+    - {git: "status --porcelain", igual: "", titulo: "No queda nada pendiente", mensaje: "Hay cambios sin añadir o sin commitear."}
+  pistas:
+    - "Git no puede decidir por sí solo qué versión de la línea gana, así que deja las dos en el archivo, marcadas, para que lo decidas tú."
+    - "Los marcadores son <<<<<<< (tu rama), ======= (separador) y >>>>>>> (la otra rama). Edita el archivo con nano, deja solo lo que quieres, y luego git add y git commit."
+    - "Haz git merge feature/nueva-seccion, abre index.html con nano, borra los marcadores y el texto de main, guarda, git add index.html y git commit."
+  solucion: |
+    git merge feature/nueva-seccion || true
+    git checkout --theirs index.html
+    git add index.html
+    git commit -m "merge: resolver el conflicto entre las ramas"
+  explicacion: |
+    En esta solución `git checkout --theirs index.html` se queda con la versión de la rama que traes (feature) en un solo paso; editar a mano también vale.
+    En `practica-git` el merge se commiteó **con los marcadores dentro**: siempre conviene buscar `<<<<<<<` antes del `git add`.
+
+- id: tg-009
+  tipo: terminal_git
+  tema: terminal_git
+  concepto: .gitignore
+  nivel: intermedio
+  titulo: Que los datos y los secretos no se suban
+  origen: "Proyetos/Proyecto-2-Python-Ray-Franco/.gitignore y Proyetos/franco_phyton_set_up/.gitignore (venv/, .env, data/, *.csv, __pycache__/)"
+  preparar: |
+    git init -q -b main
+    echo "# Proyecto Kiva" > README.md
+    git add .
+    git commit -q -m "first commit"
+    mkdir data .venv __pycache__
+    echo "id,country" > data/kiva.csv
+    echo "TOKEN=valor_de_ejemplo" > .env
+    echo "home = ejemplo" > .venv/pyvenv.cfg
+    echo "bytecode" > __pycache__/main.cpython-313.pyc
+    echo "print('hola')" > main.py
+  enunciado: |
+    En el proyecto hay código (`main.py`), datos (`data/kiva.csv`), un entorno virtual (`.venv/`), bytecode (`__pycache__/`) y un archivo de secretos (`.env`).
+
+    1. Crea un `.gitignore` para que Git **ignore** los datos (`data/`), el entorno virtual, `__pycache__/` y `.env`.
+    2. Comprueba con `git status` que solo aparecen `.gitignore` y `main.py` como sin seguimiento.
+    3. Haz un commit con esos dos archivos (mensaje a tu elección).
+  comprobaciones:
+    - {git: "check-ignore .env data/kiva.csv .venv/pyvenv.cfg __pycache__/main.cpython-313.pyc", contiene: [".env", "data/kiva.csv", ".venv/pyvenv.cfg", "__pycache__/main.cpython-313.pyc"], permitir_error: true, titulo: "Se ignoran .env, data, .venv y __pycache__", mensaje: "Todavía hay rutas que git no ignora. Mira cada patrón del .gitignore."}
+    - {git: "ls-files", contiene: [".gitignore", "main.py"], titulo: ".gitignore y main.py están commiteados", mensaje: "Falta commitear .gitignore y main.py."}
+    - {git: "ls-files", no_contiene: [".env", "kiva.csv"], titulo: "Ni .env ni los datos están en el repositorio", mensaje: "Un archivo ignorado no debe aparecer entre los archivos seguidos."}
+    - {git: "status --porcelain", igual: "", titulo: "No queda nada pendiente", mensaje: "Debe quedar limpio: todo lo demás está ignorado."}
+  pistas:
+    - "Git lee un archivo especial, en la raíz del proyecto, con una lista de patrones de cosas que debe ignorar."
+    - "El archivo se llama .gitignore y tiene un patrón por línea (una carpeta termina en /). Crea el archivo con nano, o con echo y printf. git status te dice si funciona."
+    - "Escribe en .gitignore: data/, .venv/, __pycache__/ y .env (y *.csv si quieres), luego git add .gitignore main.py y git commit."
+  solucion: |
+    printf 'data/\n*.csv\n.venv/\n.env\n__pycache__/\n' > .gitignore
+    git status
+    git add .gitignore main.py
+    git commit -m "chore: anadir .gitignore y main.py"
+  explicacion: |
+    Los datos pesan mucho y los secretos no se pueden subir nunca: en el repo de Kiva el CSV de 195 MB y el `.env` no deben aparecer.
+    Ojo: `.gitignore` solo evita añadir archivos **nuevos**; si un secreto ya se commiteó, seguirá en el historial.
+
+- id: tg-010
+  tipo: terminal_git
+  tema: terminal_git
+  concepto: git log --graph
+  nivel: intermedio
+  titulo: Leer el historial de un repositorio
+  origen: "Clases/GIT/Practica/practica-git (git log --oneline --graph --all, git branch -a -vv); Proyetos/hello_world_from_PR-v2 (git log --merges)"
+  preparar: |
+    git init -q -b main
+    echo "# App" > README.md
+    git add .
+    git commit -q -m "first commit"
+    git checkout -q -b feature/login
+    echo "login" > login.py
+    git add .
+    git commit -q -m "feat: anadir formulario de login"
+    git checkout -q main
+    echo "titulo" > titulo.txt
+    git add .
+    git commit -q -m "fix: corregir titulo"
+    git merge -q -m "merge: integrar el login" feature/login
+  enunciado: |
+    Este repositorio ya tiene historia. Averigua con `git log` (por ejemplo `git log --oneline --graph --all`) y responde en dos archivos de texto:
+
+    - `merge.txt`: el **mensaje** del commit de merge, escrito tal cual (una línea).
+    - `rama.txt`: el nombre de la **otra rama** que existe además de `main` (una línea).
+
+    No modifiques el historial: solo lee y escribe los dos archivos.
+  comprobaciones:
+    - {archivo: merge.txt, igual: "merge: integrar el login", titulo: "merge.txt tiene el mensaje del commit de merge", mensaje: "Mira el commit de merge con git log --merges --oneline y copia su mensaje exacto."}
+    - {archivo: rama.txt, igual: "feature/login", titulo: "rama.txt tiene el nombre de la otra rama", mensaje: "git branch lista las ramas."}
+    - {git: "rev-list --count HEAD", igual: "4", titulo: "El historial no se ha modificado", mensaje: "No debes crear ni borrar commits en este ejercicio."}
+  pistas:
+    - "Hay opciones de git log que dibujan el historial como un grafo y otras que filtran solo ciertos commits."
+    - "git log --oneline --graph --all dibuja ramas y merges. git log --merges --oneline lista solo los commits de merge. git branch lista las ramas."
+    - "Con git log --merges --oneline ves el mensaje del merge; con git branch ves la otra rama. Escribe cada respuesta en su archivo con echo \"...\" > archivo o con nano."
+  solucion: |
+    git log --oneline --graph --all
+    git log --merges --oneline
+    git branch
+    echo "merge: integrar el login" > merge.txt
+    echo "feature/login" > rama.txt
+  explicacion: |
+    Saber **leer** el historial es tan importante como crearlo: con `--graph` ves dónde se separan y se unen las ramas, y con `--merges` solo los commits de merge.
+    En un repositorio real, `git branch -a -vv` además enseña qué ramas están subidas a GitHub.
+
+# ================================================================= JUNIOR
+- id: tg-011
+  tipo: terminal_git
+  tema: terminal_git
+  concepto: pipeline tr sort uniq
+  nivel: junior
+  titulo: Las 3 palabras más repetidas de un texto
+  origen: "Clases/GIT/Practica/nuevo_directorio/contar_palabras.sh línea 13 (tr | sort | uniq -c | sort -nr | head); la redirección > no se vio en clase"
+  preparar: |
+    printf 'El zorro rapido salta sobre el perro\nEl perro duerme\nEl zorro corre y el perro ladra\nEl zorro rapido gana el premio\nEl zorro cruza el rio\n' > texto.txt
+  enunciado: |
+    `texto.txt` tiene cinco líneas, con mayúsculas y minúsculas mezcladas y sin signos de puntuación.
+
+    Con **un solo pipeline** (varias órdenes unidas con `|`), obtén las **3 palabras más frecuentes**, con su número de repeticiones,
+    ordenadas de mayor a menor, y guárdalo en `top3.txt` (con la redirección `>`).
+
+    El archivo debe quedar con 3 líneas del estilo `   9 palabra` (el espaciado exacto no importa).
+  comprobaciones:
+    - {archivo: top3.txt, igual_normalizado: "9 el\n4 zorro\n3 perro", titulo: "top3.txt tiene las 3 palabras más frecuentes con su recuento", mensaje: "Cada palabra debe ir en minúsculas y en su propia línea antes de contar. Compara con la salida de cat top3.txt."}
+  pistas:
+    - "Piensa en el orden: una palabra por línea, todo en minúsculas, agrupar las iguales, contarlas, ordenar por el contador y quedarse con las primeras."
+    - "tr pasa a minúsculas y separa palabras, sort agrupa, uniq -c cuenta repetidas (y necesita datos ordenados), sort -nr ordena por número descendente y head -3 recorta."
+    - "cat texto.txt | tr de mayúsculas a minúsculas | tr -s de espacios a saltos de línea | sort | uniq -c | sort -nr | head -3, todo con > top3.txt al final."
+  solucion: |
+    cat texto.txt | tr '[:upper:]' '[:lower:]' | tr -s '[:space:]' '\n' | sort | uniq -c | sort -nr | head -3 > top3.txt
+    cat top3.txt
+  explicacion: |
+    Es el pipeline de `contar_palabras.sh`. `uniq -c` solo cuenta líneas **consecutivas** iguales, por eso hace falta `sort` antes.
+    El script original tiene una limitación: no quita la puntuación, así que `perezoso.` y `perezoso` cuentan como palabras distintas.
+
+- id: tg-012
+  tipo: terminal_git
+  tema: terminal_git
+  concepto: pipeline sobre un log
+  nivel: junior
+  titulo: Contar mensajes por nivel en un log
+  origen: "Clases/GIT/Teoria/Terminal.pdf p.11-13 (estructura de un log: timestamp, nivel, componente, mensaje); pipeline de contar_palabras.sh; cut no está en clase"
+  preparar: |
+    cat > app.log <<'EOF'
+    [2025-06-23 10:24:01] INFO Auth: Login successful
+    [2025-06-23 10:24:09] DEBUG Cache: Key not found
+    [2025-06-23 10:25:30] INFO Pipeline: Extract started
+    [2025-06-23 10:31:12] ERROR Pipeline: Connection timeout
+    [2025-06-23 10:31:20] INFO Pipeline: Retry 1
+    [2025-06-23 10:31:35] ERROR Pipeline: Connection timeout
+    [2025-06-23 10:32:02] INFO Pipeline: Extract finished
+    [2025-06-23 10:40:44] DEBUG Cache: Key stored
+    [2025-06-23 10:41:00] ERROR WebServer: Disk almost full
+    [2025-06-23 10:45:15] INFO WebServer: Request served
+    EOF
+  enunciado: |
+    `app.log` sigue la estructura de la clase: `[fecha hora] NIVEL Componente: Mensaje`.
+
+    Cuenta **cuántas líneas hay de cada nivel** (INFO, ERROR, DEBUG) y guarda el resultado en `niveles.txt`, ordenado de mayor a menor número,
+    con el formato `   5 INFO` (el espaciado exacto no importa).
+
+    Pista de estructura: los campos del log van separados por espacios y el nivel es el tercero.
+  comprobaciones:
+    - {archivo: niveles.txt, igual_normalizado: "5 INFO\n3 ERROR\n2 DEBUG", titulo: "niveles.txt cuenta las líneas de cada nivel, de mayor a menor", mensaje: "Revisa que cuentas solo el nivel (no toda la línea) y que ordenas por el número, de mayor a menor."}
+  pistas:
+    - "Primero extrae solo la columna del nivel de cada línea; después es el mismo patrón de contar repetidos que ya conoces."
+    - "cut -d' ' -f3 se queda con el tercer campo separado por espacios. Luego sort, uniq -c y sort -nr, y > para guardar."
+    - "cut del campo 3 de app.log, sort, uniq -c, sort -nr, y redirige la salida a niveles.txt."
+  solucion: |
+    cut -d' ' -f3 app.log | sort | uniq -c | sort -nr > niveles.txt
+    cat niveles.txt
+  explicacion: |
+    Así se resume un log sin abrir una herramienta: un campo, ordenar, contar. `cut` corta por delimitador igual que "Texto en columnas" en Excel.
+    Si la columna que quieres no es la tercera, cambia el número de `-f`. Con CSV reales con comillas, `cut` se queda corto: ahí hace falta un lector de CSV (Python).
+
+- id: tg-013
+  tipo: terminal_git
+  tema: terminal_git
+  concepto: git push -u a un remoto
+  nivel: junior
+  titulo: Subir main y una rama de tarjeta al remoto
+  origen: "Proyetos/hello_world_from_PR-v2/README.md (git checkout, git add, git commit, git push -u origin <rama>); manual-git-github-multicuenta.md sec 6D"
+  remoto: true
+  preparar: |
+    git init -q -b main
+    echo "# Proyecto en equipo" > README.md
+    git add .
+    git commit -q -m "first commit"
+    git remote add origin ../remoto.git
+  enunciado: |
+    El repositorio ya tiene configurado un remoto llamado `origin` (una carpeta local que hace de GitHub: `git remote -v`).
+
+    1. Sube `main` a `origin` **dejando la rama vinculada** (upstream) para poder usar luego `git push` a secas.
+    2. Crea la rama `feature/tarjeta-2-ingestion` y, en ella, un archivo `tarjeta.md` con un commit.
+    3. Sube esa rama también a `origin`, vinculada.
+  comprobaciones:
+    - {git: "rev-parse origin/main", regex: "^[0-9a-f]{40}$", titulo: "main está subida a origin", mensaje: "Todavía no has hecho push de main."}
+    - {git: "rev-parse --abbrev-ref main@{upstream}", igual: "origin/main", titulo: "main está vinculada a origin/main", mensaje: "Falta la opción que vincula la rama local con la remota."}
+    - {git: "rev-parse origin/feature/tarjeta-2-ingestion", regex: "^[0-9a-f]{40}$", titulo: "La rama de la tarjeta está subida", mensaje: "Falta hacer push de la rama feature/tarjeta-2-ingestion."}
+    - {git: "rev-parse --abbrev-ref feature/tarjeta-2-ingestion@{upstream}", igual: "origin/feature/tarjeta-2-ingestion", titulo: "La rama de la tarjeta está vinculada", mensaje: "Falta la opción -u en el push de la rama."}
+    - {git: "ls-tree -r --name-only origin/feature/tarjeta-2-ingestion", contiene: "tarjeta.md", titulo: "tarjeta.md está en la rama subida", mensaje: "El commit con tarjeta.md debe estar subido."}
+  pistas:
+    - "Subir tiene dos datos: a qué remoto y qué rama. Una opción extra hace que git recuerde la pareja."
+    - "git push -u origin <rama> sube la rama y la vincula (upstream). Después de eso, estando en la rama basta con git push."
+    - "git push -u origin main; git checkout -b feature/tarjeta-2-ingestion; crea tarjeta.md, git add, git commit; git push -u origin feature/tarjeta-2-ingestion."
+  solucion: |
+    git push -u origin main
+    git checkout -b feature/tarjeta-2-ingestion
+    echo "Recoleccion e ingestion" > tarjeta.md
+    git add tarjeta.md
+    git commit -m "Anade tarjeta Recoleccion e ingestion"
+    git push -u origin feature/tarjeta-2-ingestion
+  explicacion: |
+    Es el flujo de la práctica de PRs: una rama por tarjeta, `git push -u origin <rama>` la primera vez y `git push` después.
+    Aquí el remoto es una carpeta local (`remoto.git`), pero funciona igual que en GitHub; no se necesita ninguna cuenta ni contraseña.
+
+- id: tg-014
+  tipo: terminal_git
+  tema: terminal_git
+  concepto: corregir marcadores de conflicto commiteados
+  nivel: junior
+  titulo: "Auditoría de un merge con los marcadores dentro"
+  origen: "Clases/GIT/Practica/practica-git (merge 0dd5305 commiteado con marcadores en index.html; la corrección quedó sin commitear)"
+  preparar: |
+    git init -q -b main
+    printf '<html>\n<body>\n<p>Bienvenidos</p>\n</body>\n</html>\n' > index.html
+    git add .
+    git commit -q -m "first commit"
+    git checkout -q -b feature/nueva-seccion
+    printf '<html>\n<body>\n<p>Bienvenidos</p>\n<div>Nueva Seccion</div>\n</body>\n</html>\n' > index.html
+    git commit -q -am "feat: anadir nueva seccion"
+    git checkout -q main
+    printf '<html>\n<body>\n<p>Bienvenidos a mi portfolio</p>\n</body>\n</html>\n' > index.html
+    git commit -q -am "fix: actualizar el parrafo"
+    git merge -q feature/nueva-seccion || true
+    git add index.html
+    git commit -q -m "merge: resolver el conflicto entre las ramas"
+  enunciado: |
+    Alguien hizo el merge de `feature/nueva-seccion` en `main` y lo commiteó **sin resolver el conflicto**.
+
+    1. Comprueba si el último commit tiene marcadores: `git show HEAD:index.html` y busca `<<<<<<<`.
+    2. Arregla `index.html` quedándote con la versión de `feature/nueva-seccion` (con `Nueva Seccion`, sin marcadores).
+    3. Haz un **commit nuevo** con el mensaje que empiece por `fix:` (por ejemplo `fix: eliminar marcadores de conflicto`).
+
+    **No reescribas el historial** (nada de `--amend` ni `reset`): la corrección va en un commit nuevo.
+  comprobaciones:
+    - {git: "show HEAD:index.html", no_contiene: ["<<<<<<<", "=======", ">>>>>>>"], titulo: "El último commit ya no tiene marcadores", mensaje: "El index.html commiteado todavía contiene marcadores de conflicto."}
+    - {git: "show HEAD:index.html", contiene: "Nueva Seccion", titulo: "El último commit incluye la nueva sección", mensaje: "El archivo final debe tener la versión de la rama feature."}
+    - {git: "log -1 --format=%s", regex: "^fix:", titulo: "El último commit empieza por 'fix:'", mensaje: "El mensaje debe empezar por 'fix: '."}
+    - {git: "show HEAD~1:index.html", contiene: "<<<<<<<", titulo: "El commit anterior sigue intacto", mensaje: "No debes reescribir el commit de merge: añade un commit nuevo."}
+    - {git: "rev-list --count HEAD", igual: "5", titulo: "Hay un commit más (no se reescribió la historia)", mensaje: "Debe haber exactamente un commit nuevo."}
+    - {git: "status --porcelain", igual: "", titulo: "No queda nada pendiente", mensaje: "Hay cambios sin commitear."}
+  pistas:
+    - "El historial de un repositorio no se corrige en silencio: el error queda en el commit antiguo y se arregla con un commit nuevo encima."
+    - "git show HEAD:archivo enseña el archivo tal como está en el último commit. Edita el archivo, quítale los marcadores, y haz git add y git commit."
+    - "Con git show HEAD:index.html ves los marcadores; reescribe index.html con la versión de la rama feature (git show feature/nueva-seccion:index.html > index.html sirve), git add y git commit -m \"fix: ...\"."
+  solucion: |
+    git show HEAD:index.html
+    git show feature/nueva-seccion:index.html > index.html
+    git add index.html
+    git commit -m "fix: eliminar marcadores de conflicto"
+  explicacion: |
+    En `practica-git` el merge `0dd5305` se subió con los marcadores dentro y la corrección quedó sin commitear: un caso real.
+    Reescribir historial ya subido (amend, reset, force push) rompe el trabajo de los demás; lo seguro es un commit `fix:` nuevo.
+
+- id: tg-015
+  tipo: terminal_git
+  tema: terminal_git
+  concepto: git fetch y pull
+  nivel: junior
+  titulo: Traer los cambios de un compañero
+  origen: "Proyetos/hello_world_from_PR-v2/README.md (git fetch origin, git pull)"
+  remoto: true
+  preparar: |
+    git init -q -b main
+    echo "# Equipo" > README.md
+    git add .
+    git commit -q -m "first commit"
+    git remote add origin ../remoto.git
+    git push -q -u origin main
+    cd ..
+    git clone -q remoto.git companero
+    cd companero
+    echo "tarjeta del companero" > nuevo.txt
+    git add .
+    git commit -q -m "feat: tarjeta del companero"
+    git push -q origin main
+    cd ../trabajo
+  enunciado: |
+    Tu compañero ya ha subido un commit nuevo a `origin/main`, pero tu `main` local no lo tiene todavía.
+
+    1. **Descarga** la información del remoto **sin tocar tus archivos** y comprueba con `git log origin/main --oneline` que hay un commit nuevo.
+    2. **Integra** esos cambios en tu rama.
+
+    Al final tu `main` debe tener `nuevo.txt` y `git status -sb` no debe decir que vas por detrás.
+  comprobaciones:
+    - {git: "rev-list --count HEAD", igual: "2", titulo: "Tu rama tiene los dos commits", mensaje: "Todavía no has integrado el commit del compañero."}
+    - {archivo: nuevo.txt, existe: true, titulo: "nuevo.txt ha llegado a tu carpeta", mensaje: "El archivo del compañero aún no está en tu carpeta."}
+    - {git: "status -sb", no_contiene: "behind", titulo: "Ya no vas por detrás de origin/main", mensaje: "Todavía vas por detrás del remoto."}
+  pistas:
+    - "Traer cambios del remoto son dos ideas distintas: enterarte de lo que hay (sin tocar nada tuyo) y mezclarlo con tu trabajo."
+    - "git fetch origin descarga y actualiza origin/main sin tocar tus archivos. git pull hace fetch y además integra en tu rama."
+    - "git fetch origin, git log origin/main --oneline para verlo, y luego git pull (o git merge origin/main)."
+  solucion: |
+    git fetch origin
+    git log origin/main --oneline
+    git merge origin/main
+  explicacion: |
+    `git pull` = `git fetch` + `git merge`. Hacer `fetch` primero te deja mirar qué viene antes de mezclarlo, que es más prudente en un repositorio compartido.
+    Si tuvieras cambios sin commitear en los mismos archivos, el pull podría darte un conflicto.

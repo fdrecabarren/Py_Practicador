@@ -17,7 +17,8 @@ Cuando el alumno diga "añade ejercicios de la clase X", sigue la sección **Có
 
 ```
 app.py                     entrada de Streamlit (navegación)
-paginas/                   inicio, practicar, progreso, ajustes (+ comun.py con cache y editor)
+paginas/                   inicio, practicar, progreso, ajustes (+ comun.py con cache y editor,
+                           vistas_fase2.py con los paneles de Excel y Terminal)
 motor/
   config.py                rutas, .env, umbral 70 %, niveles
   banco.py                 carga y valida los YAML (ErrorBanco con todos los problemas)
@@ -26,6 +27,8 @@ motor/
   ejecutor_python.py       lanza harness.py con timeout en una carpeta temporal
   sql.py                   conexión MySQL (.env), validador de solo lectura, corrección
   fixture_olist.py         mini-Olist sintético en SQLite (solo tests y validación)
+  excel.py                 genera el .xlsx de partida y corrige el que sube el alumno (openpyxl)
+  terminal.py              sandbox por ejercicio, scripts de bash, comprobaciones de solo lectura de git
   niveles.py               regla del 70 %, bloqueo de niveles, siguiente ejercicio
   progreso.py              SQLite: intentos, ejercicios aprendidos, racha
 ejercicios/                _temas.yaml + un YAML por tema (+ preguntas_test.yaml)
@@ -49,8 +52,8 @@ Cada archivo `ejercicios/<nombre>.yaml` es una **lista** de ejercicios. Los tema
 
 | Campo | Contenido |
 |---|---|
-| `id` | Único en todo el banco. Prefijos: `pb-` python_basico, `pd-` pandas, `sq-` sql, `pq-` preguntas test. Siguiente número libre. |
-| `tipo` | `python`, `sql` o `test` (Fase 2: `excel`, `terminal_git`). |
+| `id` | Único en todo el banco. Prefijos: `pb-` python_basico, `pd-` pandas, `sq-` sql, `xl-` excel_pq, `tg-` terminal_git, `pq-` preguntas test. Siguiente número libre. |
+| `tipo` | `python`, `sql`, `excel`, `terminal_git` o `test`. |
 | `tema` | Id de un tema de `_temas.yaml`. |
 | `concepto` | Concepto concreto y corto (`fillna`, `LEFT JOIN con IS NULL`). Las estadísticas y el repaso espaciado agrupan por este texto: **reutiliza exactamente los conceptos ya existentes** cuando sea el mismo. |
 | `nivel` | `basico`, `intermedio` o `junior`. |
@@ -60,7 +63,7 @@ Cada archivo `ejercicios/<nombre>.yaml` es una **lista** de ejercicios. Los tema
 | `explicacion` | Markdown. Por qué funciona, error típico y conexión con lo que ya conoce (Excel, Power Query, pandas, SQL). |
 | `pistas` | Exactamente 3 textos: 1) idea general, 2) pista concreta (nombre de la función o cláusula, sin la solución completa), 3) solución explicada en palabras. La solución en código sale de `solucion`. |
 | `codigo_inicial` | Qué ve el alumno en el editor. Mejor un código que **falle de forma instructiva** (error real) o que dé un resultado incorrecto, que un editor vacío. No debe pasar los tests. |
-| `solucion` | Solución de referencia (código Python o consulta SQL). Obligatoria en `python` y `sql`. |
+| `solucion` | Solución de referencia. Obligatoria en `python`, `sql`, `excel` y `terminal_git`. Python/SQL: código. Excel: Markdown con los pasos y fórmulas. Terminal/Git: script de bash (una orden por línea) que se ejecuta de verdad al validar. |
 
 Campos opcionales: `datos` (lista de archivos de `datos/`, Python), `comparar` (opciones del comparador), `timeout` (segundos), `nota_dialecto` (texto sobre diferencias MySQL/SQLite), `solo_mysql: true` (el validador lo salta en SQLite).
 
@@ -116,10 +119,87 @@ Reglas para escribir ejercicios SQL:
 - Evita resultados de más de 20.000 filas (agrega o filtra).
 - Para sintaxis solo de MySQL (`GROUP_CONCAT ... SEPARATOR`, etc.) pon `solo_mysql: true` y `nota_dialecto`. `YEAR`, `MONTH`, `DAY`, `DATEDIFF` y `DATE_FORMAT` básico están emuladas en el mini-Olist de pruebas.
 
+### `tipo: excel` (Excel y Power Query)
+
+La app genera el libro de partida con `hojas`, el alumno lo resuelve en Excel y lo sube; se leen los **valores** guardados con openpyxl.
+
+```yaml
+nombre_archivo: sueldos.xlsx          # nombre del .xlsx descargable (acaba en .xlsx)
+hojas:                                # datos de partida
+  - nombre: Sueldos
+    columnas: [Empleado, USD, EUR]    # con filas en línea ...
+    filas: [[Ana, 1200, null]]
+    celdas: {F1: 0.92}                # celdas sueltas extra (etiquetas, parámetros)
+    fila_encabezado: 3                # opcional: encabezados en otra fila (por defecto 1)
+    combinar: ["A2:A4"]               # opcional: celdas combinadas de partida
+  - nombre: Clientes                  # ... o un CSV de datos/ (con estas opciones)
+    csv: customer_activity.csv
+    sep: ";"
+    renombrar: {" amount ": amount}
+    consulta: "country == 'india'"    # filtro (df.query)
+    elegir: [first_name, country]
+    n: 25                             # primeras n filas
+    numericas: [amount]               # el resto de columnas se queda como TEXTO
+    fechas: {rental_date: "%d/%m/%Y %H:%M"}
+    vacias: [nombre_completo]         # columnas en blanco para que el alumno las rellene
+comprobaciones: [...]                 # ver abajo
+```
+
+Las comprobaciones (todas admiten `titulo`, `mensaje` = pista que se muestra si falla, y `blando: true` = solo avisa, no suspende):
+
+| `tipo` | Campos | Qué comprueba |
+|---|---|---|
+| `celda` | `hoja`, `celda`, `valor` o `calc`, `tolerancia`, `formula`, `formula_contiene` | Valor de una celda y, si se pide, que sea fórmula |
+| `columna` | `hoja`, `encabezado`, `fila_encabezado`, `valores` o `calc`, `orden` (false = sin importar el orden), `formula`, `formula_contiene`, `solo_numeros`, `sin_vacios`, `sin_espacios_extra`, `sin_duplicados` | Valores bajo un encabezado |
+| `encabezados` | `hoja`, `valores`, `orden` | Nombres de las columnas |
+| `hoja` | `hoja`, `existe` (true/false) | Existe (o no) una hoja |
+| `filas` | `hoja`, `n` o `calc` | Número de filas de datos |
+| `tabla` | `hoja`, `nombre` | Hay una Tabla de Excel (Insertar > Tabla) |
+| `sin_combinadas` | `hoja` | No quedan celdas combinadas |
+| `formato_condicional` | `hoja`, `rango`, `regla` (`cellIs`, `containsText`, `colorScale`...), `operador`, `valor` | Regla aplicada a ese rango |
+| `grafico` | `tipo_grafico` (`circular`, `anillo`, `barras`, `lineas`), `etiquetas` (`porcentaje`/`valor`) | Gráfico en el XML del archivo |
+| `tabla_dinamica`, `power_query` | `contiene_m: [texto M]` | Existe la tabla dinámica / la consulta (y trozos de su código M) |
+
+- `calc` es una expresión pandas evaluada sobre los datos de partida: `datos['Hoja']['col']...`. El valor esperado se calcula siempre desde los datos entregados, no se escribe a mano. Se pueden usar `pd`, `np` y comprensiones.
+- `formula: true` exige que la celda sea fórmula; `formula: SUMIFS` además que use esa función. Las fórmulas se guardan **en inglés** (`IF`, `SUMIFS`, `COUNTIFS`, `DATE`, `PROPER`, `WEEKDAY`...) aunque el Excel del alumno esté en español.
+- Los valores de fórmulas solo existen si Excel guardó el archivo; la app avisa de ello.
+- Para Power Query comprueba el **resultado** cargado en una hoja con nombre fijo (`Limpio`, `Resumen`). `power_query` y `grafico` leen el XML del archivo y se han probado solo con archivos sintéticos: ponles `blando: true`.
+- No pongas en la pista 1 el nombre de la función exigida (el validador lo avisa). En Excel las funciones se escriben en español en el enunciado y la `solucion`.
+- Los textos se muestran como Markdown: un `$` suelto lo escapa la app, pero las fórmulas con `$` van mejor entre comillas invertidas.
+
+### `tipo: terminal_git` (Terminal y Git)
+
+Cada ejercicio vive en `sandbox/<id>/trabajo` (ignorada por Git). Se ejecuta con el Git Bash real.
+
+```yaml
+remoto: true          # opcional: crea sandbox/<id>/remoto.git (bare) y puedes usar ../remoto.git
+preparar: |           # script de bash que deja el punto de partida (cwd = trabajo; $DATOS = carpeta datos/)
+  git init -q -b main
+  echo "# Proyecto" > README.md
+  git add . && git commit -q -m "first commit"
+solucion: |           # script de bash; se ejecuta al validar el banco
+  git checkout -b feature/x
+comprobaciones:       # SOLO LEEN el estado final
+  - {archivo: datos, carpeta: true, titulo: "...", mensaje: "pista si falla"}
+  - {archivo: notas.txt, contiene: "texto"}          # existe | carpeta | contiene | no_contiene | igual | igual_normalizado | lineas | regex
+  - {archivo: viejo.txt, existe: false}
+  - {git: "rev-parse --abbrev-ref HEAD", igual: "feature/x"}
+  - {git: "check-ignore .env", contiene: ".env", permitir_error: true}   # comandos que devuelven 1 sin ser un fallo
+```
+
+Reglas:
+- Cada comprobación lleva `archivo` **o** `git` (un comando de Git de lectura: `log`, `status`, `rev-parse`, `rev-list`, `ls-files`, `show`, `ls-tree`, `check-ignore`, `branch --list`...; la app rechaza los que escriben).
+- `igual_normalizado` compara líneas ignorando espacios (útil con la salida de `uniq -c`).
+- El alumno trabaja con **su** Git (su identidad y su `init.defaultBranch`): no dependas del nombre de la rama por defecto, salvo que el `preparar` la cree (`git init -b main`).
+- Evita empates en pipelines de recuento (`sort -nr`): el orden de los empates no es fiable.
+- Nunca uses `git config --global` ni toques nada fuera de `sandbox/<id>`. Los remotos son carpetas locales, sin credenciales.
+- La redirección `>`, `grep`, `cut`, `pwd`... no se han visto en clase: dilo en `origen`.
+- El validador (`scripts/validar_banco.py`) monta el ejercicio, comprueba que **no** pasa, ejecuta la `solucion` y comprueba que **sí** pasa.
+
 ### `tipo: test` (pregunta rápida)
 
 ```yaml
-- id: pq-016
+- id: pq-026
   tipo: test
   tema: pandas
   concepto: isnull().sum()
@@ -148,5 +228,5 @@ No llevan `pistas`, `codigo_inicial` ni `solucion`. No cuentan para superar nive
 
 ## Pendiente por fases
 
-- Fase 2: temas `excel_pq` (genera `.xlsx` con instrucciones y lee valores de celdas con openpyxl; las fórmulas se guardan en inglés y los valores calculados solo existen si Excel guardó el archivo) y `terminal_git` (sandbox dentro del proyecto con su propio repo; botón Comprobar; nunca tocar repos reales).
+- Fases 1 y 2 hechas. Pendiente de la fase 2: probar los ejercicios de Excel con un archivo guardado por el Excel real del alumno (nunca se han abierto en Excel), sobre todo `power_query`, `grafico` y las fórmulas con cache.
 - Fase 3: repaso espaciado (1, 3 y 7 días por concepto fallado), panel de progreso ampliado y "Sesión de hoy" (unos 20 minutos).

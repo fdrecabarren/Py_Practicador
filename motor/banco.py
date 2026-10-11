@@ -16,6 +16,10 @@ from . import config
 TIPOS = ("python", "sql", "test", "excel", "terminal_git")
 TIPOS_CON_PISTAS = ("python", "sql", "excel", "terminal_git")
 TIPOS_TEST_PYTHON = ("resultado", "funcion", "salida")
+# comprobaciones de los ejercicios de Excel y de Terminal/Git (ver motor/excel.py y motor/terminal.py)
+COMPROBACIONES_EXCEL = ("celda", "columna", "encabezados", "hoja", "filas", "tabla", "sin_combinadas",
+                        "formato_condicional", "grafico", "tabla_dinamica", "power_query")
+CRITERIOS_TERMINAL = ("existe", "carpeta", "contiene", "no_contiene", "igual", "igual_normalizado", "lineas", "regex")
 
 
 class ErrorBanco(Exception):
@@ -60,7 +64,13 @@ class Ejercicio:
     solo_mysql: bool = False
     nota_dialecto: str = ""
     cuenta_nivel: bool = True
-    extra: dict = field(default_factory=dict)  # campos propios de excel / terminal_git
+    # excel / terminal_git
+    nombre_archivo: str = ""                      # excel: nombre del .xlsx que se descarga
+    hojas: list = field(default_factory=list)     # excel: datos de partida del libro
+    comprobaciones: list = field(default_factory=list)
+    preparar: str = ""                            # terminal_git: script bash que monta la carpeta de trabajo
+    remoto: bool = False                          # terminal_git: crea un remoto local (bare) junto a la carpeta
+    extra: dict = field(default_factory=dict)  # cualquier otro campo
     archivo: str = ""
 
     @property
@@ -88,7 +98,7 @@ def _validar(d: dict, archivo: str) -> list[str]:
             p.append(f"{pre}: 'pistas' debe tener exactamente 3 textos (idea general, pista concreta, solucion explicada)")
         if not str(d.get("explicacion", "")).strip():
             p.append(f"{pre}: falta 'explicacion'")
-        if tipo in ("python", "sql") and not str(d.get("solucion", "")).strip():
+        if tipo in ("python", "sql", "excel", "terminal_git") and not str(d.get("solucion", "")).strip():
             p.append(f"{pre}: falta 'solucion' (solucion de referencia)")
     if tipo == "python":
         for t in d.get("tests") or []:
@@ -98,6 +108,10 @@ def _validar(d: dict, archivo: str) -> list[str]:
                 p.append(f"{pre}: un test 'funcion' necesita 'nombre' y 'casos'")
             if t.get("tipo") == "salida" and "esperado" not in t:
                 p.append(f"{pre}: un test 'salida' necesita 'esperado'")
+    if tipo == "excel":
+        p += _validar_excel(d, pre)
+    if tipo == "terminal_git":
+        p += _validar_terminal(d, pre)
     if tipo == "test":
         ops = d.get("opciones") or []
         if len(ops) < 2:
@@ -107,6 +121,44 @@ def _validar(d: dict, archivo: str) -> list[str]:
             p.append(f"{pre}: 'correcta' debe ser el indice (desde 0) de una opcion")
         if not str(d.get("explicacion", "")).strip():
             p.append(f"{pre}: falta 'explicacion'")
+    return p
+
+
+def _validar_excel(d: dict, pre: str) -> list[str]:
+    p: list[str] = []
+    if not str(d.get("nombre_archivo", "")).lower().endswith(".xlsx"):
+        p.append(f"{pre}: 'nombre_archivo' debe acabar en .xlsx")
+    hojas = d.get("hojas") or []
+    if not hojas:
+        p.append(f"{pre}: falta 'hojas' (datos de partida del libro)")
+    for h in hojas:
+        if not h.get("nombre"):
+            p.append(f"{pre}: una hoja no tiene 'nombre'")
+        if not (h.get("csv") or (h.get("columnas") and h.get("filas") is not None)):
+            p.append(f"{pre}: la hoja '{h.get('nombre')}' necesita 'csv' o 'columnas' + 'filas'")
+    comps = d.get("comprobaciones") or []
+    if not comps:
+        p.append(f"{pre}: faltan 'comprobaciones'")
+    for c in comps:
+        if c.get("tipo") not in COMPROBACIONES_EXCEL:
+            p.append(f"{pre}: comprobacion con tipo '{c.get('tipo')}' no valido (usa {', '.join(COMPROBACIONES_EXCEL)})")
+        elif c["tipo"] == "celda" and not (c.get("hoja") and c.get("celda")):
+            p.append(f"{pre}: una comprobacion 'celda' necesita 'hoja' y 'celda'")
+        elif c["tipo"] == "columna" and not (c.get("hoja") and c.get("encabezado")):
+            p.append(f"{pre}: una comprobacion 'columna' necesita 'hoja' y 'encabezado'")
+    return p
+
+
+def _validar_terminal(d: dict, pre: str) -> list[str]:
+    p: list[str] = []
+    comps = d.get("comprobaciones") or []
+    if not comps:
+        p.append(f"{pre}: faltan 'comprobaciones'")
+    for c in comps:
+        if ("archivo" in c) == ("git" in c):
+            p.append(f"{pre}: cada comprobacion lleva 'archivo' o 'git' (uno solo)")
+        elif not any(k in c for k in CRITERIOS_TERMINAL):
+            p.append(f"{pre}: una comprobacion necesita un criterio ({', '.join(CRITERIOS_TERMINAL)})")
     return p
 
 

@@ -59,8 +59,15 @@ Si no vas a hacer ejercicios de SQL, salta al paso 4.
    SELECT COUNT(*) FROM orders;
    ```
 
-2. Abre `scripts/usuario_mysql.sql` en Workbench, **cambia la contraseña** que trae y ejecútalo con tu usuario `root`. Crea un usuario llamado `practicador` que **solo puede leer**, así la app nunca puede modificar tus datos.
-3. Abre el archivo `.env` con el Bloc de notas y escribe esa misma contraseña en `DB_PASSWORD=`. Guarda.
+2. Abre el archivo `.env` con el Bloc de notas y rellena el usuario y la contraseña con los que ya entras a tu MySQL (lo normal es `root`):
+
+   ```
+   DB_USER=root
+   DB_PASSWORD=la_contraseña_que_usas_en_Workbench
+   ```
+
+   Guarda. Con esto basta. La app solo deja pasar consultas `SELECT` y `WITH`, y abre la conexión en modo solo lectura, así que no modifica tus tablas aunque uses `root`.
+3. *(Opcional, más seguro)* Si prefieres no poner la contraseña de `root`, abre `scripts/usuario_mysql.sql` en Workbench, cambia la contraseña que trae y ejecútalo con `root`. Crea el usuario `practicador`, que solo puede leer la base `olist`. Entonces en `.env` pones `DB_USER=practicador` y esa contraseña.
 4. Abre la app (paso 4), entra en **Conexión y ajustes** y pulsa el botón de probar la conexión.
 
 > El archivo `.env` es solo tuyo. Git lo ignora y **no debes mandárselo a nadie**.
@@ -83,7 +90,7 @@ flowchart LR
     APP --> J
     APP --> P
     APP --> S
-    APP -- "lee con el usuario practicador" --> O
+    APP -- "lee con el usuario de tu .env" --> O
     E -. "da la contraseña" .-> APP
 ```
 
@@ -152,7 +159,7 @@ Se guarda en `progreso/progreso.db`, **solo en tu ordenador** (no se sube a GitH
 |---|---|
 | `py` o `python` no se reconoce | Reinstala Python 3.13 marcando **Add python.exe to PATH** y vuelve a ejecutar `instalar.bat` |
 | "Falta configurar la conexión a MySQL" | Rellena `DB_PASSWORD` en `.env` (paso 3) |
-| `Access denied for user` | La contraseña de `.env` no es la que pusiste en `usuario_mysql.sql` |
+| `Access denied for user` | El usuario o la contraseña de `.env` no son los que usas en Workbench (si pusiste `practicador`, comprueba que ejecutaste `usuario_mysql.sql` con esa misma contraseña) |
 | `Table ... doesn't exist` | Tu base `olist` no tiene esa tabla o se llama distinto |
 | "No encuentro Git Bash" | Instala Git for Windows |
 | La app dice que faltan datasets | Ejecuta `git pull` o descarga el proyecto de nuevo: los CSV vienen incluidos |

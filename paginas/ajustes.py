@@ -23,9 +23,10 @@ if not hay_credenciales:
     st.warning("Faltan `DB_USER` y/o `DB_PASSWORD`. Las credenciales se leen del archivo `.env` (nunca del código).", icon=":material/key_off:")
     with st.expander("Cómo configurarlo (2 minutos)", expanded=True):
         st.markdown(
-            "1. En MySQL Workbench, abre `scripts/usuario_mysql.sql`, cambia la contraseña y ejecútalo con tu usuario `root`. "
-            "Crea un usuario `practicador` que **solo puede leer** la base `olist`.\n"
-            "2. Copia `.env.example` como `.env` y escribe esa contraseña en `DB_PASSWORD`.\n"
+            "1. Copia `.env.example` como `.env` y escribe en `DB_USER` y `DB_PASSWORD` el usuario y la contraseña con los que entras a tu MySQL (normalmente `root`). "
+            "La app solo ejecuta `SELECT` y `WITH`, en modo solo lectura.\n"
+            "2. Opcional, más seguro: en MySQL Workbench abre `scripts/usuario_mysql.sql`, cambia la contraseña y ejecútalo con `root`. "
+            "Crea un usuario `practicador` que **solo puede leer** la base `olist`; úsalo en `.env`.\n"
             "3. Vuelve aquí y pulsa **Recargar conexión**."
         )
 if st.button("Probar conexión", disabled=not hay_credenciales, icon=":material/wifi_tethering:"):
